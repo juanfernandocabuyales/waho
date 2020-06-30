@@ -1,0 +1,42 @@
+logging:
+  level:
+    guru: 
+      springframework:
+        blogs:
+          controllers: INFO
+    org:
+      hibernate: ERROR
+      springframework: 
+        web: INFO
+  file: logs/ServicioWoaho.log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %c{1}:%L - %msg%n'
+    
+spring:
+  application:
+      name: MicroservicioWoaho
+  datasource:
+     password: ''
+     testWhileIdle: 'true'
+     url: jdbc:postgresql://162.0.226.48:5432/woaho
+     username: woaho
+     validationQuery: SELECT 1
+  jpa:
+     hibernate:
+       ddl-auto: update
+       naming:
+         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.PostgreSQLDialect
+     show-sql: 'true'
+server:
+  port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://10.11.6.47:8761/eureka}
+  instance:
+    preferIpAddress: true
