@@ -8,19 +8,17 @@ import javax.transaction.Transactional;
 import com.co.woaho.conexion.Persistencia;
 import com.co.woaho.enumeraciones.EnumProcedimientos;
 import com.co.woaho.interfaces.IPantallaDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.co.woaho.utilidades.RegistrarLog;
 
 @Repository
 public class PantallaDao extends Persistencia implements IPantallaDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(PantallaDao.class);
-	
+	private RegistrarLog logs = new RegistrarLog(PantallaDao.class);	
 	
 	@Override
 	@Transactional
 	public String consultarPantallas(int intPantallaId) {
-		logger.info("Se inicia llamado a procedimiento: " + EnumProcedimientos.FNDB_CONULTAR_PANTALLA.getProcedimiento());
+		logs.registrarLogInfoEjecutaPaqFunc(EnumProcedimientos.FNDB_CONULTAR_PANTALLA.getProcedimiento());
 		
 		String strResultado = "";
 		
@@ -32,7 +30,7 @@ public class PantallaDao extends Persistencia implements IPantallaDao {
 		
 		strResultado = (String) query.getOutputParameterValue("resultado");	
 		
-		logger.info("resultado obtenido procedimiento: " + strResultado);
+		logs.registrarLogInfoResultado(strResultado);
 
 		return strResultado;
 	}

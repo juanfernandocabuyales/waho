@@ -1,6 +1,6 @@
 package com.co.respuestas;
 
-import com.co.woaho.enumeraciones.GeneralEnum;
+import com.co.woaho.enumeraciones.EnumGeneral;
 
 /**
 * ****************************************************************.
@@ -12,7 +12,7 @@ import com.co.woaho.enumeraciones.GeneralEnum;
 public class RespuestaNegativa {
 
 	private int codigoServicio;
-	private final int tipoRespuesta = GeneralEnum.RESPUESTA_NEGATIVA.getValorInt();
+	private final int tipoRespuesta = EnumGeneral.RESPUESTA_NEGATIVA.getValorInt();
 	private String respuesta;
 	
 	

@@ -1,6 +1,6 @@
 package com.co.woaho.enumeraciones;
 
-public enum GeneralEnum {
+public enum EnumGeneral {
 	
 	RESPUESTA_NEGATIVA("1"),
 	RESPUESTA_POSITIVA("0"),
@@ -12,7 +12,7 @@ public enum GeneralEnum {
 	
 	private final String strValor;
 	
-	private GeneralEnum (String pStrValor) {
+	private EnumGeneral (String pStrValor) {
 		this.strValor = pStrValor;
 	}
 	
