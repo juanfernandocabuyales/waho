@@ -1,7 +1,3 @@
--- FUNCTION: woaho.consultar_mensajes_pantalla(integer)
-
--- DROP FUNCTION woaho.consultar_mensajes_pantalla(integer);
-
 CREATE OR REPLACE FUNCTION woaho.consultar_mensajes_pantalla(
 	p_pantalla integer)
     RETURNS character varying
