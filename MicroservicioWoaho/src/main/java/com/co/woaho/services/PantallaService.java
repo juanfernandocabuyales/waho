@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.co.respuestas.JsonGenerico;
 import com.co.respuestas.RespuestaNegativa;
 import com.co.respuestas.RespuestaPositiva;
-import com.co.woaho.dao.PantallaDao;
 import com.co.woaho.dto.MensajeDTO;
 import com.co.woaho.enumeraciones.EnumMensajes;
 import com.co.woaho.enumeraciones.EnumGeneral;
