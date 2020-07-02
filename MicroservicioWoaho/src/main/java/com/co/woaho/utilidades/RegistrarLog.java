@@ -1,7 +1,7 @@
 package com.co.woaho.utilidades;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class RegistrarLog {
@@ -18,9 +18,13 @@ public class RegistrarLog {
 	private static final String INFO_RESULTADO = "resultado obtenido: ";
 	private static final String INFO_SERVICIO = "Se va a ejecutar el servicio: ";
 	
+	public RegistrarLog() {
+		super();
+	}
+	
 	public RegistrarLog(Class<?> classlog) {
 		super();
-		logger = LogManager.getLogger(classlog);
+		logger = LoggerFactory.getLogger(classlog);
 	}
 	
 	public void registrarLogInfoEjecutaMetodo(String pNombreMetodo) {
@@ -55,14 +59,14 @@ public class RegistrarLog {
 	}
 	
 	public void registrarLogInfoResultado(String pMensaje) {
-		logger.info(HILO + "[ " + Thread.currentThread().getId() + CIERRE_HILO + INFO_RESULTADO + pMensaje);
+		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + INFO_RESULTADO + pMensaje);
 	}
 	
 	public void registrarLogInfoEjecutaServicio(String pNombreServicio) {
-		logger.info(HILO + "[ " + Thread.currentThread().getId() + CIERRE_HILO + INFO_SERVICIO + pNombreServicio);
+		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + INFO_SERVICIO + pNombreServicio);
 	}
 	
 	public void registrarLogInfo(String pMensaje) {
-		logger.info(HILO + "[ " + Thread.currentThread().getId() + CIERRE_HILO + pMensaje);
+		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + pMensaje);
 	}	
 }

@@ -1,7 +1,6 @@
 package com.co.woaho.dao;
 
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 import javax.transaction.Transactional;
@@ -12,7 +11,7 @@ import com.co.woaho.utilidades.RegistrarLog;
 
 @Repository
 public class PantallaDao extends Persistencia implements IPantallaDao {
-
+	
 	private RegistrarLog logs = new RegistrarLog(PantallaDao.class);	
 	
 	@Override

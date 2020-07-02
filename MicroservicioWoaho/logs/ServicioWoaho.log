@@ -1,0 +1,20 @@
+2020-07-02 10:50:11 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 12964 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
+2020-07-02 10:50:11 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
+2020-07-02 10:50:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-07-02 10:50:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 5ms. Found 0 repository interfaces.
+2020-07-02 10:50:12 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2020-07-02 10:50:12 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2020-07-02 10:50:12 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2020-07-02 10:50:13 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$76c78a3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-02 10:50:13 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$725e33d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-02 10:50:13 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-07-02 10:50:13 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-07-02 10:50:13 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
+2020-07-02 10:50:13 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-07-02 10:50:13 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
+2020-07-02 10:50:13 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-07-02 10:50:13 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-07-02 10:50:13 [main] INFO  o.a.c.c.C.[.[.[/]:173 - Initializing Spring embedded WebApplicationContext
+2020-07-02 10:50:13 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 1738 ms
+2020-07-02 10:50:14 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
+2020-07-02 10:50:16 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
