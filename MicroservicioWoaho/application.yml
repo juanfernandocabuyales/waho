@@ -17,7 +17,7 @@ spring:
   application:
       name: MicroservicioWoaho
   datasource:
-     password: ''
+     password: wO4h0;
      testWhileIdle: 'true'
      url: jdbc:postgresql://162.0.226.48:5432/woaho
      username: woaho
