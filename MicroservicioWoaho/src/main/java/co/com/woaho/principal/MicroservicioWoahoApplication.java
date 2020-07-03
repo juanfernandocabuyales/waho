@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.co.woaho"})
-@EntityScan("com.co.woaho")
+@ComponentScan(basePackages = { "co.com.woaho"})
+@EntityScan("co.com.woaho")
 public class MicroservicioWoahoApplication {
 	
 	private static RegistrarLog logs = new RegistrarLog(MicroservicioWoahoApplication.class);	
