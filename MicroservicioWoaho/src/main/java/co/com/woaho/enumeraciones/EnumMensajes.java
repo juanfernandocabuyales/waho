@@ -4,7 +4,8 @@ import java.text.MessageFormat;
 
 public enum EnumMensajes {
 
-	NO_MENSAJES_PANTALLA("No se han encontrado mensajes para la pantalla");
+	NO_MENSAJES_PANTALLA("No se han encontrado mensajes para la pantalla"),
+	NO_PAISES("No se han encontrado paises para la busqueda");
 	
 	private final String strValor;
 	

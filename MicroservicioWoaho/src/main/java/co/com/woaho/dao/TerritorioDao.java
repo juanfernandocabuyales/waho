@@ -26,7 +26,9 @@ public class TerritorioDao extends Persistencia implements ITerritorioDao {
 		try {
 
 			Query query = getEntityManager().createNamedQuery("Territorio.buscarTipo");
+			
 			query.setParameter("pTipoTerritorio", pStrTipoTerritorio);
+			
 			return query.getResultList();
 
 		}catch(Exception e) {
