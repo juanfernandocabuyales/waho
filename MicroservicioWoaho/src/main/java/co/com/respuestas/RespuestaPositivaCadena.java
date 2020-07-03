@@ -1,28 +1,21 @@
-package com.co.respuestas;
+package co.com.respuestas;
 
-import com.co.woaho.enumeraciones.EnumGeneral;
+import co.com.woaho.enumeraciones.EnumGeneral;
 
 /**
 * ****************************************************************.
 * @autor: Juan Cabuyales
 * @fecha: 30/06/2020
-* @descripcion: Clase que permite definir una respuesta positiva
+* @descripcion: Clase que permite definir una respuesta positiva en cadena
 * ****************************************************************
 */	
-@SuppressWarnings("rawtypes")
-public class RespuestaPositiva {
+public class RespuestaPositivaCadena {
 
 	private int codigoServicio;
 	private final int tipoRespuesta = EnumGeneral.RESPUESTA_POSITIVA.getValorInt();
-	private JsonGenerico respuesta;
-
-	public RespuestaPositiva(int pCodigoServicio, JsonGenerico pRespuesta) {
-		super();
-		this.codigoServicio = pCodigoServicio;
-		this.respuesta = pRespuesta;
-		
-	}
-
+	private String respuesta;
+	
+	
 	public int getCodigoServicio() {
 		return codigoServicio;
 	}
@@ -35,12 +28,12 @@ public class RespuestaPositiva {
 		return tipoRespuesta;
 	}
 
-	public JsonGenerico getRespuesta() {
+	public String getRespuesta() {
 		return respuesta;
 	}
 
-	public void setRespuesta(JsonGenerico pRespuestaJson) {
-		this.respuesta = pRespuestaJson;
+	public void setRespuesta(String pError) {
+		this.respuesta = pError;
 	}
 
 }

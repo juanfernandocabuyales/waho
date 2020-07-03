@@ -1,4 +1,4 @@
-package com.co.woaho.controllers;
+package co.com.woaho.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.co.woaho.interfaces.IPantallaService;
-import com.co.woaho.utilidades.RegistrarLog;
+import co.com.woaho.interfaces.IPantallaService;
+import co.com.woaho.utilidades.RegistrarLog;
 
 @RestController
 @RequestMapping("/pantalla")

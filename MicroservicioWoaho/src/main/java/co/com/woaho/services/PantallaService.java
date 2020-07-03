@@ -1,4 +1,4 @@
-package com.co.woaho.services;
+package co.com.woaho.services;
 
 import java.util.List;
 
@@ -6,18 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import com.co.respuestas.JsonGenerico;
-import com.co.respuestas.RespuestaNegativa;
-import com.co.respuestas.RespuestaPositiva;
-import com.co.woaho.dto.MensajeDTO;
-import com.co.woaho.enumeraciones.EnumMensajes;
-import com.co.woaho.enumeraciones.EnumGeneral;
-import com.co.woaho.interfaces.IPantallaDao;
-import com.co.woaho.interfaces.IPantallaService;
-import com.co.woaho.utilidades.ProcesarCadenas;
-import com.co.woaho.utilidades.RegistrarLog;
-import com.co.woaho.utilidades.Utilidades;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import co.com.respuestas.JsonGenerico;
+import co.com.respuestas.RespuestaNegativa;
+import co.com.respuestas.RespuestaPositiva;
+import co.com.woaho.dto.MensajeDTO;
+import co.com.woaho.enumeraciones.EnumGeneral;
+import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IPantallaDao;
+import co.com.woaho.interfaces.IPantallaService;
+import co.com.woaho.utilidades.ProcesarCadenas;
+import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 import org.springframework.context.annotation.ScopedProxyMode;
 

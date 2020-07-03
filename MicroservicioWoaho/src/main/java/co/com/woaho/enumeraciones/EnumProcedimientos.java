@@ -1,4 +1,4 @@
-package com.co.woaho.enumeraciones;
+package co.com.woaho.enumeraciones;
 
 public enum EnumProcedimientos {
 	

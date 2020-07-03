@@ -1,4 +1,4 @@
-package com.co.woaho.dto;
+package co.com.woaho.dto;
 
 public class MensajeDTO {
 

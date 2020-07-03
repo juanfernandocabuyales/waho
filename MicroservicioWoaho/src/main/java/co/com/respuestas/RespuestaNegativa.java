@@ -1,6 +1,6 @@
-package com.co.respuestas;
+package co.com.respuestas;
 
-import com.co.woaho.enumeraciones.EnumGeneral;
+import co.com.woaho.enumeraciones.EnumGeneral;
 
 /**
 * ****************************************************************.

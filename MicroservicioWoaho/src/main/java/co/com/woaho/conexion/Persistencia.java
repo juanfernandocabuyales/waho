@@ -1,4 +1,4 @@
-package com.co.woaho.conexion;
+package co.com.woaho.conexion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

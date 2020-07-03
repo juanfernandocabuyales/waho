@@ -1,7 +1,8 @@
-package com.co.woaho.utilidades;
+package co.com.woaho.utilidades;
 
-import com.co.respuestas.RespuestaNegativa;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import co.com.respuestas.RespuestaNegativa;
 
 public class Utilidades {
 

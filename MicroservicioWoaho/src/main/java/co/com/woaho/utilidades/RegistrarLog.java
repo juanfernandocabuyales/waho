@@ -1,4 +1,4 @@
-package com.co.woaho.utilidades;
+package co.com.woaho.utilidades;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

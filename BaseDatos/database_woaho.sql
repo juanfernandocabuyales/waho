@@ -13,6 +13,12 @@ ALTER SEQUENCE woaho.sec_pantalla OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_tipo CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_tipo OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_territorio CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_tipo OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_tipo_territorio CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_tipo_territorio OWNER TO postgres;
+
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -84,4 +90,46 @@ ALTER TABLE woaho.mensaje_pantalla
 COMMENT ON TABLE woaho.mensaje_pantalla
     IS 'Tabla que contiene la relacion entre mensajes y pantallas';
     
+CREATE TABLE woaho.tipo_territorio
+(
+    tipo_territorio_id integer NOT NULL DEFAULT nextval('woaho.sec_tipo_territorio'::regclass),
+    tipo_territorio_nombre character varying(4000),
+    CONSTRAINT tipo_territorio_pkey PRIMARY KEY (tipo_territorio_id)
+);
+ALTER TABLE woaho.tipo_territorio
+    OWNER to postgres;
+COMMENT ON TABLE woaho.tipo_territorio
+    IS 'Tabla que contiene los tipos de territorios';
     
+CREATE TABLE woaho.territorio
+(
+    territorio_id integer NOT NULL DEFAULT nextval('woaho.sec_territorio'::regclass),
+    territorio_nombre character varying(4000),
+    territorio_padre integer,
+    territorio_tipo integer,
+    territorio_codigo character varying(4000),
+    CONSTRAINT territorio_pkey PRIMARY KEY (territorio_id),
+    CONSTRAINT "FK_TERRITORIO_TIPO_TERRITORIO" FOREIGN KEY (territorio_tipo)
+        REFERENCES woaho.tipo_territorio (tipo_territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.territorio
+    OWNER to postgres;
+COMMENT ON TABLE woaho.territorio
+    IS 'Tabla que contiene los territorios registrados en el aplicativo';
+    
+/***************************************************************************************************
+	  Zona de inserts iniciales
+***************************************************************************************************/
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Pais');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Departamento');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Municipio');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Comuna');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Barrio');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Corregimiento');
+INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Vereda');
+
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Colombia', NULL, 1,'+57');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');

@@ -1,10 +1,11 @@
-package com.co.woaho.principal;
+package co.com.woaho.principal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import com.co.woaho.utilidades.RegistrarLog;
+
+import co.com.woaho.utilidades.RegistrarLog;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.co.woaho"})

@@ -1,13 +1,14 @@
-package com.co.woaho.dao;
+package co.com.woaho.dao;
 
 import org.springframework.stereotype.Repository;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 import javax.transaction.Transactional;
-import com.co.woaho.conexion.Persistencia;
-import com.co.woaho.enumeraciones.EnumProcedimientos;
-import com.co.woaho.interfaces.IPantallaDao;
-import com.co.woaho.utilidades.RegistrarLog;
+
+import co.com.woaho.conexion.Persistencia;
+import co.com.woaho.enumeraciones.EnumProcedimientos;
+import co.com.woaho.interfaces.IPantallaDao;
+import co.com.woaho.utilidades.RegistrarLog;
 
 @Repository
 public class PantallaDao extends Persistencia implements IPantallaDao {

@@ -1,4 +1,4 @@
-package com.co.woaho.interfaces;
+package co.com.woaho.interfaces;
 
 
 public interface IPantallaService {

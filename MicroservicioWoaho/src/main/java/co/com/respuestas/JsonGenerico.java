@@ -1,4 +1,4 @@
-package com.co.respuestas;
+package co.com.respuestas;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,10 +1,10 @@
-package com.co.woaho.utilidades;
+package co.com.woaho.utilidades;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.co.woaho.dto.MensajeDTO;
+import co.com.woaho.dto.MensajeDTO;
 
 public class ProcesarCadenas {
 
