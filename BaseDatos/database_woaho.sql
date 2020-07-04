@@ -19,6 +19,15 @@ ALTER SEQUENCE woaho.sec_tipo OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_tipo_territorio CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_tipo_territorio OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_usuario CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_usuario OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_estado CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_estado OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_codigo CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_codigo OWNER TO postgres;
+
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -118,6 +127,53 @@ ALTER TABLE woaho.territorio
     OWNER to postgres;
 COMMENT ON TABLE woaho.territorio
     IS 'Tabla que contiene los territorios registrados en el aplicativo';
+    
+
+CREATE TABLE woaho.usuario
+(
+    usuario_id integer NOT NULL DEFAULT nextval('woaho.sec_usuario'::regclass),
+    usuario_nombre character varying(4000),
+    usuario_apellido character varying(4000),
+    usuario_celular character varying(4000),
+    usuario_correo character varying(4000),
+    usuario_acepta_terminos character varying(4000),
+    usuario_fecha_hora_acepta_terminos TIMESTAMP,
+    CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id)
+);
+ALTER TABLE woaho.usuario
+    OWNER to postgres;
+COMMENT ON TABLE woaho.usuario
+    IS 'Tabla que contiene los usuarios registrados en el aplicativo';
+    
+CREATE TABLE woaho.estado
+(
+    estado_id integer NOT NULL DEFAULT nextval('woaho.sec_estado'::regclass),
+    estado_codigo character varying(4000),
+    CONSTRAINT estado_pkey PRIMARY KEY (estado_id)
+);
+ALTER TABLE woaho.estado
+    OWNER to postgres;
+COMMENT ON COLUMN woaho.estado.estado_codigo IS 'A activo, I inactivo, P pendiente, R rechazado';
+COMMENT ON TABLE woaho.estado
+    IS 'Tabla que contiene los estados para el aplicativo';
+    
+CREATE TABLE woaho.codigo
+(
+    codigo_id integer NOT NULL DEFAULT nextval('woaho.sec_codigo'::regclass),
+    codigo_numero character varying(4000),
+    codigo_celular character varying(4000),
+    codigo_intentos integer,
+    codigo_fecha_hora_registro TIMESTAMP,
+    CONSTRAINT codigo_pkey PRIMARY KEY (codigo_id),
+    CONSTRAINT "FK_CODIGO_USUARIO" FOREIGN KEY (codigo_celular)
+        REFERENCES woaho.usuario (usuario_celular) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.codigo
+    OWNER to postgres;
+COMMENT ON TABLE woaho.codigo
+    IS 'Tabla que contiene los codigos generados para completar el registro';
     
 /***************************************************************************************************
 	  Zona de inserts iniciales
