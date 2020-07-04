@@ -138,7 +138,8 @@ CREATE TABLE woaho.usuario
     usuario_correo character varying(4000),
     usuario_acepta_terminos character varying(4000),
     usuario_fecha_hora_acepta_terminos TIMESTAMP,
-    CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id)
+    CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
+    CONSTRAINT celular_key UNIQUE (usuario_celular)
 );
 ALTER TABLE woaho.usuario
     OWNER to postgres;
@@ -164,11 +165,16 @@ CREATE TABLE woaho.codigo
     codigo_celular character varying(4000),
     codigo_intentos integer,
     codigo_fecha_hora_registro TIMESTAMP,
+    codigo_estado integer,
     CONSTRAINT codigo_pkey PRIMARY KEY (codigo_id),
     CONSTRAINT "FK_CODIGO_USUARIO" FOREIGN KEY (codigo_celular)
         REFERENCES woaho.usuario (usuario_celular) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_CODIGO_ESTADO" FOREIGN KEY (codigo_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
 );
 ALTER TABLE woaho.codigo
     OWNER to postgres;
@@ -189,3 +195,8 @@ INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Vereda');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Colombia', NULL, 1,'+57');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');
+
+INSERT INTO woaho.estado (estado_codigo) VALUES ('A');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('I');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
