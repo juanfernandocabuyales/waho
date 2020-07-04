@@ -13,26 +13,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "territorio")
 @NamedQueries({ @NamedQuery(name="Territorio.findAll", query="SELECT t FROM Territorio t"),
-				@NamedQuery(name="Territorio.buscarTipo", query="SELECT t FROM Territorio t WHERE t.tipoTerritorio.strNombreTipo = :pTipoTerritorio")})
+	@NamedQuery(name="Territorio.buscarTipo", query="SELECT t FROM Territorio t WHERE t.tipoTerritorio.strNombreTipo = :pTipoTerritorio")})
 public class Territorio implements Serializable {
 
-private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "territorio_id", unique = true, nullable = false)
 	private Long idTerritorio;
-	
+
 	@Column(name ="territorio_nombre",length = 100)
 	private String strNombreTerritorio;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "territorio_padre")
-    private Territorio territorioPadre;
-	
+	@JoinColumn(name = "territorio_padre")
+	private Territorio territorioPadre;
+
 	@ManyToOne
 	@JoinColumn(name = "territorio_tipo")
 	private TipoTerritorio tipoTerritorio;
-	
+
 	@Column(name ="territorio_codigo",length = 100)
 	private String strCodigoTerritorio;
 

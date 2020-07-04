@@ -7,7 +7,9 @@ public enum EnumGeneral {
 	
 	
 	SERVICIO_CONSULTA_PANTALLAS("1"),
-	SERVICIO_CONSULTAR_PAISES("2")
+	SERVICIO_CONSULTAR_PAISES("2"),
+	
+	LLAVE_CIFRADO("W0ah0;")
 	
 	;
 	
