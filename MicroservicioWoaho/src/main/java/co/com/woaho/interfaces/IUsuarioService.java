@@ -3,5 +3,7 @@ package co.com.woaho.interfaces;
 
 public interface IUsuarioService {
 
-	String registrarUsuario(String pUsuarioDTO);
+	String registrarUsuario(String pCadenaUsuarioDTO);
+	
+	String actualizarUsuario(String pCadenaUsuarioDTO);
 }

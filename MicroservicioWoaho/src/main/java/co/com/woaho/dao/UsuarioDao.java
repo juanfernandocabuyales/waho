@@ -32,4 +32,21 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.NESTED)
+	public void actualizarUsuario(Usuario pUsuario) throws Exception {
+		try {
+
+			getEntityManager().merge(pUsuario);
+
+			getEntityManager().flush();
+
+			getEntityManager().clear();
+
+		}catch(Exception e) {
+			logs.registrarLogError("actualizarUsuario", "No se ha podido procesar la solicitud", e);
+			throw new Exception(e);
+		}		
+	}
+
 }

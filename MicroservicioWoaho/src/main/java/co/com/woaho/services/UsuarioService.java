@@ -60,4 +60,32 @@ public class UsuarioService implements IUsuarioService{
 		return resultado;
 	}
 
+	@Override
+	public String actualizarUsuario(String pCadenaUsuarioDTO) {
+		ObjectMapper mapper = new ObjectMapper();
+		String resultado = null;
+		RespuestaNegativa respuestaNegativa = new RespuestaNegativa();
+		respuestaNegativa.setCodigoServicio(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt());
+		logs.registrarLogInfoEjecutaMetodoConParam("actualizarUsuario",pCadenaUsuarioDTO);
+		try {
+			
+			UsuarioDTO pUsuarioDTO = new Gson().fromJson(pCadenaUsuarioDTO, UsuarioDTO.class);
+			
+			Usuario usuario = new Usuario();
+			usuario.setUsuarioId(Long.parseLong(pUsuarioDTO.getId()));
+			usuario.setStrClave(Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getPassword()));
+			usuario.setStrCorreo(pUsuarioDTO.getEmail());
+			
+			usuarioDao.actualizarUsuario(usuario);
+			
+			RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt(),EnumMensajes.REGISTRO_EXITOSO.getMensaje("del usuario "+pUsuarioDTO.getNombreApellido()));
+			resultado = mapper.writeValueAsString(respuestaPositiva);
+			
+		}catch (Exception e) {
+			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
+			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return resultado;
+	}
+
 }

@@ -26,8 +26,20 @@ public class UsuarioController {
 			logs.registrarLogInfoEjecutaServicio("registrarUsuario");
 			strResultado = usuarioService.registrarUsuario(pUsuarioDto);
 		}catch (Exception e) {
-			e.printStackTrace();
 			logs.registrarLogError("registrarUsuario", e.getMessage(),e);
+		}
+		logs.registrarLogInfoResultado(strResultado);
+		return strResultado;
+	}
+	
+	@PostMapping(value = "/actualizarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String actualizarUsuario(@RequestBody String pUsuarioDto) {
+		String strResultado = null;
+		try {
+			logs.registrarLogInfoEjecutaServicio("actualizarUsuario");
+			strResultado = usuarioService.actualizarUsuario(pUsuarioDto);
+		}catch (Exception e) {
+			logs.registrarLogError("actualizarUsuario", e.getMessage(),e);
 		}
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;

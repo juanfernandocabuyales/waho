@@ -7,9 +7,10 @@ public class UsuarioDTO {
 	private String lastName;
 	private String cell;
 	private String email;
-	private String checkTerminos;	
+	private String checkTerminos;
+	private String password;
 	
-	public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos) {
+	public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos,String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -17,8 +18,8 @@ public class UsuarioDTO {
 		this.cell = cell;
 		this.email = email;
 		this.checkTerminos = checkTerminos;
-	}
-	
+		this.password = password;
+	}	
 	
 	public String getId() {
 		return id;
@@ -59,6 +60,15 @@ public class UsuarioDTO {
 	public String getNombreApellido() {
 		return this.name + " " + this.lastName;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 	@Override
 	public String toString() {
