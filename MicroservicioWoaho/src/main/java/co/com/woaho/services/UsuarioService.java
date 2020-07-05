@@ -71,18 +71,23 @@ public class UsuarioService implements IUsuarioService{
 			
 			UsuarioDTO pUsuarioDTO = new Gson().fromJson(pCadenaUsuarioDTO, UsuarioDTO.class);
 			
-			Usuario usuario = new Usuario();
-			usuario.setUsuarioId(Long.parseLong(pUsuarioDTO.getId()));
-			usuario.setStrClave(Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getPassword()));
-			usuario.setStrCorreo(pUsuarioDTO.getEmail());
+			Usuario usuario = usuarioDao.obtenerUsuarioCelular(pUsuarioDTO.getCell());
 			
-			usuarioDao.actualizarUsuario(usuario);
-			
-			RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt(),EnumMensajes.REGISTRO_EXITOSO.getMensaje("del usuario "+pUsuarioDTO.getNombreApellido()));
-			resultado = mapper.writeValueAsString(respuestaPositiva);
-			
+			if(usuario == null) {
+				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje(pUsuarioDTO.getCell()));
+				resultado = mapper.writeValueAsString(respuestaNegativa);
+			}else {
+				
+				usuario.setStrClave(Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getPassword()));
+				usuario.setStrCorreo(pUsuarioDTO.getEmail());
+				
+				usuarioDao.actualizarUsuario(usuario);
+				
+				RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt(),EnumMensajes.REGISTRO_EXITOSO.getMensaje(usuario.getStrNombre()));
+				resultado = mapper.writeValueAsString(respuestaPositiva);
+			}			
 		}catch (Exception e) {
-			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
+			logs.registrarLogError("actualizarUsuario", "No se ha podido procesar la peticion", e);
 			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_ACTUALIZAR_USUARIO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return resultado;
