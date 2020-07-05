@@ -56,4 +56,13 @@ public class UsuarioDTO {
 	public void setCheckTerminos(String checkTerminos) {
 		this.checkTerminos = checkTerminos;
 	}
+	public String getNombreApellido() {
+		return this.name + " " + this.lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "UsuarioDTO [id=" + id + ", name=" + name + ", lastName=" + lastName + ", cell=" + cell + ", email="
+				+ email + ", checkTerminos=" + checkTerminos + "]";
+	}
 }

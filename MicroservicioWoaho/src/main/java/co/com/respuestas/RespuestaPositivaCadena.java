@@ -13,9 +13,14 @@ public class RespuestaPositivaCadena {
 
 	private int codigoServicio;
 	private final int tipoRespuesta = EnumGeneral.RESPUESTA_POSITIVA.getValorInt();
-	private String respuesta;
+	private String respuesta;	
 	
-	
+	public RespuestaPositivaCadena(int codigoServicio, String respuesta) {
+		super();
+		this.codigoServicio = codigoServicio;
+		this.respuesta = respuesta;
+	}
+
 	public int getCodigoServicio() {
 		return codigoServicio;
 	}
