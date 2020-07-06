@@ -28,6 +28,9 @@ ALTER SEQUENCE woaho.sec_estado OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_codigo CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_codigo OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_parametro CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_parametro OWNER TO postgres;
+
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -182,6 +185,19 @@ ALTER TABLE woaho.codigo
 COMMENT ON TABLE woaho.codigo
     IS 'Tabla que contiene los codigos generados para completar el registro';
     
+CREATE TABLE woaho.parametro
+(
+    parametro_id integer NOT NULL DEFAULT nextval('woaho.sec_parametro'::regclass),
+    parametro_nombre character varying(4000),
+    parametro_valor character varying(4000),
+    parametro_descripcion character varying(4000),
+    CONSTRAINT parametro_pkey PRIMARY KEY (parametro_id)
+);
+ALTER TABLE woaho.parametro
+    OWNER to postgres;
+COMMENT ON TABLE woaho.parametro
+    IS 'Tabla que contiene los parametros del aplicativo';
+    
 /***************************************************************************************************
 	  Zona de inserts iniciales
 ***************************************************************************************************/
@@ -201,3 +217,5 @@ INSERT INTO woaho.estado (estado_codigo) VALUES ('A');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('I');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
+
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro')
