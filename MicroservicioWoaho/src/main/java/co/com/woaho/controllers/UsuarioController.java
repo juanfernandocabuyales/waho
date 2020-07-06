@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.woaho.interfaces.IUsuarioService;
@@ -40,6 +41,19 @@ public class UsuarioController {
 			strResultado = usuarioService.actualizarUsuario(pUsuarioDto);
 		}catch (Exception e) {
 			logs.registrarLogError("actualizarUsuario", e.getMessage(),e);
+		}
+		logs.registrarLogInfoResultado(strResultado);
+		return strResultado;
+	}
+	
+	@PostMapping(value = "/consultarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String consultarUsuario(@RequestParam(name = "pStrCelular") String pStrCelular ) {
+		String strResultado = null;
+		try {
+			logs.registrarLogInfoEjecutaServicio("consultarUsuario");
+			strResultado = usuarioService.consultarUsuario(pStrCelular);
+		}catch (Exception e) {
+			logs.registrarLogError("consultarUsuario", e.getMessage(),e);
 		}
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;

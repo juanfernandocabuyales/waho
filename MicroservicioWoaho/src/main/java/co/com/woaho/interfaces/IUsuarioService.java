@@ -6,4 +6,6 @@ public interface IUsuarioService {
 	String registrarUsuario(String pCadenaUsuarioDTO);
 	
 	String actualizarUsuario(String pCadenaUsuarioDTO);
+	
+	String consultarUsuario(String pCelular);
 }
