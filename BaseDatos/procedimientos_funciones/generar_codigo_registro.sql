@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE prdb_generar_codigo_registro(IN p_celular usuario.usuario_celular%TYPE, INOUT p_resultado character varying)
+CREATE OR REPLACE PROCEDURE woaho.prdb_generar_codigo_registro(IN p_celular usuario.usuario_celular%TYPE, INOUT p_resultado character varying)
 LANGUAGE plpgsql    
 AS $$
 DECLARE
@@ -30,7 +30,7 @@ BEGIN
 						cant_intentos,
 						NOW(),
 						1);
-	p_resultado := '0,' || codigo_numero ||','||codigo_celular;
+	p_resultado := '0,' || codigo_generado ||','||p_celular;
 	
 EXCEPTION WHEN OTHERS THEN
 
@@ -45,3 +45,6 @@ EXCEPTION WHEN OTHERS THEN
 	
 END;
 $$;
+
+ALTER PROCEDURE woaho.prdb_generar_codigo_registro(usuario.usuario_celular%TYPE,character varying)
+  OWNER TO postgres;
