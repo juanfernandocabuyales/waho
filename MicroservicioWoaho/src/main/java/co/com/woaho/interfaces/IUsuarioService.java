@@ -8,4 +8,6 @@ public interface IUsuarioService {
 	String actualizarUsuario(String pCadenaUsuarioDTO);
 	
 	String consultarUsuario(String pCelular);
+	
+	String generarCodigoRegistro(String pCelular);
 }

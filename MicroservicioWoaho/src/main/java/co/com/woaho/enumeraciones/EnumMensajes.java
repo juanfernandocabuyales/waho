@@ -8,7 +8,8 @@ public enum EnumMensajes {
 	NO_PAISES("No se han encontrado paises para la busqueda"),
 	INCONVENIENTE_EN_OPERACION("Se ha presentado un inconveniente realizado la operación, favor intentar nuevamente"),
 	REGISTRO_EXITOSO("Se ha realizado el registro {0}"),
-	NO_USUARIO("No se ha encontrado un usuario para el número {0}")
+	NO_USUARIO("No se ha encontrado un usuario para el número {0}"),
+	NO_SOLICITUD("No se ha podido procesar la solicitud ")
 	;
 	
 	private final String strValor;

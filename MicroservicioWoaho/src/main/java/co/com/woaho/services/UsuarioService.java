@@ -111,12 +111,12 @@ public class UsuarioService implements IUsuarioService{
 			}else {
 				JsonGenerico<UsuarioDTO> jsonGenerico = new JsonGenerico<>();
 				UsuarioDTO usuarioDto = new UsuarioDTO(String.valueOf(usuario.getUsuarioId()), 
-													   usuario.getStrNombre(),
-													   usuario.getStrApellido(),
-													   usuario.getStrCelular(),
-													   usuario.getStrCorreo(),
-													   usuario.getStrAceptaTerminos(),
-													   usuario.getStrClave());
+						usuario.getStrNombre(),
+						usuario.getStrApellido(),
+						usuario.getStrCelular(),
+						usuario.getStrCorreo(),
+						usuario.getStrAceptaTerminos(),
+						usuario.getStrClave());
 				jsonGenerico.add(usuarioDto);
 				RespuestaPositiva respuestaPositiva = new RespuestaPositiva(
 						EnumGeneral.SERVICIO_CONSULTAR_USUARIO.getValorInt(), jsonGenerico);
@@ -125,6 +125,31 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("consultarUsuario", "No se ha podido procesar la peticion", e);
 			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_USUARIO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return resultado;
+	}
+
+	@Override
+	public String generarCodigoRegistro(String pCelular) {
+		ObjectMapper mapper = new ObjectMapper();
+		String resultado = null;
+		RespuestaNegativa respuestaNegativa = new RespuestaNegativa();
+		respuestaNegativa.setCodigoServicio(EnumGeneral.SERVICIO_GENERAR_CODIGO_REGISTRO.getValorInt());
+		logs.registrarLogInfoEjecutaMetodoConParam("generarCodigoRegistro",pCelular);
+		try {
+
+			String [] strRespuesta = usuarioDao.generarCodigoRegistro(pCelular).split("\\,");
+
+			if(strRespuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
+				respuestaNegativa.setRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+				resultado = mapper.writeValueAsString(respuestaNegativa);
+			}else {
+				RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_GENERAR_CODIGO_REGISTRO.getValorInt(),strRespuesta[1]);
+				resultado = mapper.writeValueAsString(respuestaPositiva);
+			}			
+		}catch (Exception e) {
+			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
+			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_GENERAR_CODIGO_REGISTRO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return resultado;
 	}

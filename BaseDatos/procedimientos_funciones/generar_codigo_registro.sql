@@ -1,5 +1,6 @@
-CREATE OR REPLACE PROCEDURE woaho.prdb_generar_codigo_registro(IN p_celular usuario.usuario_celular%TYPE, INOUT p_resultado character varying)
-LANGUAGE plpgsql    
+CREATE OR REPLACE FUNCTION woaho.fndb_generar_codigo_registro(p_celular character varying)
+RETURNS character varying 
+LANGUAGE plpgsql
 AS $$
 DECLARE
 	cant_intentos numeric;
@@ -30,7 +31,7 @@ BEGIN
 						cant_intentos,
 						NOW(),
 						1);
-	p_resultado := '0,' || codigo_generado ||','||p_celular;
+	RETURN '0,' || codigo_generado ||','||p_celular;
 	
 EXCEPTION WHEN OTHERS THEN
 
@@ -41,10 +42,10 @@ EXCEPTION WHEN OTHERS THEN
         v_hint    = pg_exception_hint,
         v_context = pg_exception_context;
         
-	p_resultado:= '1,Se ha presentado un error inesperado: '||v_state||' '||v_msg; 	
+	RETURN '1,Se ha presentado un error inesperado: '||v_state||' '||v_msg; 	
 	
 END;
 $$;
 
-ALTER PROCEDURE woaho.prdb_generar_codigo_registro(usuario.usuario_celular%TYPE,character varying)
+ALTER FUNCTION woaho.fndb_generar_codigo_registro(character varying)
   OWNER TO postgres;

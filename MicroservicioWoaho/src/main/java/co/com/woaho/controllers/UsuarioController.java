@@ -32,7 +32,7 @@ public class UsuarioController {
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;
 	}
-	
+
 	@PostMapping(value = "/actualizarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String actualizarUsuario(@RequestBody String pUsuarioDto) {
 		String strResultado = null;
@@ -45,7 +45,7 @@ public class UsuarioController {
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;
 	}
-	
+
 	@PostMapping(value = "/consultarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String consultarUsuario(@RequestParam(name = "pStrCelular") String pStrCelular ) {
 		String strResultado = null;
@@ -54,6 +54,19 @@ public class UsuarioController {
 			strResultado = usuarioService.consultarUsuario(pStrCelular);
 		}catch (Exception e) {
 			logs.registrarLogError("consultarUsuario", e.getMessage(),e);
+		}
+		logs.registrarLogInfoResultado(strResultado);
+		return strResultado;
+	}
+
+	@PostMapping(value = "/generarCodigoRegistro", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String generarCodigoRegistro(@RequestParam(name = "pStrCelular") String pStrCelular ) {
+		String strResultado = null;
+		try {
+			logs.registrarLogInfoEjecutaServicio("generarCodigoRegistro");
+			strResultado = usuarioService.generarCodigoRegistro(pStrCelular);
+		}catch (Exception e) {
+			logs.registrarLogError("generarCodigoRegistro", e.getMessage(),e);
 		}
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;

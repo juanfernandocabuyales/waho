@@ -9,4 +9,6 @@ public interface IUsuarioDao {
 	void actualizarUsuario(Usuario pUsuario) throws Exception;
 	
 	Usuario obtenerUsuarioCelular(String pStrCelular) throws Exception;
+	
+	String generarCodigoRegistro(String pStrCelular) throws Exception;
 }
