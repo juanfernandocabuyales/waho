@@ -71,4 +71,17 @@ public class UsuarioController {
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;
 	}
+	
+	@PostMapping(value = "/validarLogin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String validarLogin(@RequestParam(name = "pStrCorreo") String pStrCorreo,@RequestParam(name = "pStrClave") String pStrClave ) {
+		String strResultado = null;
+		try {
+			logs.registrarLogInfoEjecutaServicio("validarLogin");
+			strResultado = usuarioService.validarLogin(pStrCorreo, pStrClave);
+		}catch (Exception e) {
+			logs.registrarLogError("validarLogin", e.getMessage(),e);
+		}
+		logs.registrarLogInfoResultado(strResultado);
+		return strResultado;
+	}
 }

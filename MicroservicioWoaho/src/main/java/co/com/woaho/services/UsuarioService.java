@@ -76,7 +76,7 @@ public class UsuarioService implements IUsuarioService{
 			Usuario usuario = usuarioDao.obtenerUsuarioCelular(pUsuarioDTO.getCell());
 
 			if(usuario == null) {
-				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje(pUsuarioDTO.getCell()));
+				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje("número",pUsuarioDTO.getCell()));
 				resultado = mapper.writeValueAsString(respuestaNegativa);
 			}else {
 
@@ -106,7 +106,7 @@ public class UsuarioService implements IUsuarioService{
 			Usuario usuario = usuarioDao.obtenerUsuarioCelular(pCelular);
 
 			if(usuario == null) {
-				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje(pCelular));
+				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje("número",pCelular));
 				resultado = mapper.writeValueAsString(respuestaNegativa);
 			}else {
 				JsonGenerico<UsuarioDTO> jsonGenerico = new JsonGenerico<>();
@@ -150,6 +150,36 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
 			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_GENERAR_CODIGO_REGISTRO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return resultado;
+	}
+
+	@Override
+	public String validarLogin(String pCorreo, String pClave) {
+		ObjectMapper mapper = new ObjectMapper();
+		String resultado = null;
+		RespuestaNegativa respuestaNegativa = new RespuestaNegativa();
+		respuestaNegativa.setCodigoServicio(EnumGeneral.SERVICIO_VALIDAR_LOGIN.getValorInt());
+		logs.registrarLogInfoEjecutaMetodoConParam("validarLogin","pCorreo: " +pCorreo + "pClave: " + pClave);
+		try {
+
+			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(pCorreo);
+			
+			if (usuario == null) {
+				respuestaNegativa.setRespuesta(EnumMensajes.NO_USUARIO.getMensaje("correo",pCorreo));
+				resultado = mapper.writeValueAsString(respuestaNegativa);
+			}else {				
+				if(usuario.getStrClave().equalsIgnoreCase(pClave)) {
+					RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_VALIDAR_LOGIN.getValorInt(),EnumGeneral.OK.getValor());
+					resultado = mapper.writeValueAsString(respuestaPositiva);
+				}else {
+					respuestaNegativa.setRespuesta(EnumMensajes.CLAVE_INVALIDA.getMensaje());
+					resultado = mapper.writeValueAsString(respuestaNegativa);
+				}
+			}	
+		}catch (Exception e) {
+			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
+			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_VALIDAR_LOGIN.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return resultado;
 	}

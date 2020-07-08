@@ -96,4 +96,19 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 		}
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.NESTED)
+	public Usuario obtenerUsuarioCorreo(String pStrCorreo) throws Exception {
+		Usuario usuario = null;
+		try {
+			Query query = getEntityManager().createNamedQuery("Usuario.buscarEmail");
+			query.setParameter("pCorreo", pStrCorreo);
+			usuario = (Usuario) query.getSingleResult();
+			return usuario;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerUsuarioCorreo", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
+
 }

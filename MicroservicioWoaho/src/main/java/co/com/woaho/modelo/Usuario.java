@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "usuario")
 @NamedQueries({ @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u"),
-	@NamedQuery(name="Usuario.buscarCelular", query="SELECT u FROM Usuario u WHERE u.strCelular = :pCelular")})
+	@NamedQuery(name="Usuario.buscarCelular", query="SELECT u FROM Usuario u WHERE u.strCelular = :pCelular"),
+	@NamedQuery(name="Usuario.buscarEmail", query="SELECT u FROM Usuario u WHERE u.strCorreo = :pCorreo")})
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

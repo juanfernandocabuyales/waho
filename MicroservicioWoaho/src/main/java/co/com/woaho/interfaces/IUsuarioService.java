@@ -10,4 +10,6 @@ public interface IUsuarioService {
 	String consultarUsuario(String pCelular);
 	
 	String generarCodigoRegistro(String pCelular);
+	
+	String validarLogin(String pCorreo,String pClave);
 }
