@@ -184,4 +184,29 @@ public class UsuarioService implements IUsuarioService{
 		return resultado;
 	}
 
+	@Override
+	public String validarCodigoRegistro(String pCelular, String pCodigo) {
+		ObjectMapper mapper = new ObjectMapper();
+		String resultado = null;
+		RespuestaNegativa respuestaNegativa = new RespuestaNegativa();
+		respuestaNegativa.setCodigoServicio(EnumGeneral.SERVICIO_VALIDAR_CODIGO_REGISTRO.getValorInt());
+		logs.registrarLogInfoEjecutaMetodoConParam("validarCodigoRegistro","pCelular: " +pCelular + "pCodigo: " + pCodigo);
+		try {
+
+			String [] respuesta = usuarioDao.validarCodigoRegistro(pCelular, pCodigo).split("\\,");
+			
+			if(respuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
+				respuestaNegativa.setRespuesta(respuesta[1]);
+				resultado = mapper.writeValueAsString(respuestaNegativa);
+			}else {
+				RespuestaPositivaCadena respuestaPositiva = new RespuestaPositivaCadena(EnumGeneral.SERVICIO_VALIDAR_CODIGO_REGISTRO.getValorInt(),respuesta[1]);
+				resultado = mapper.writeValueAsString(respuestaPositiva);
+			}
+		}catch (Exception e) {
+			logs.registrarLogError("validarCodigoRegistro", "No se ha podido procesar la peticion", e);
+			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_VALIDAR_CODIGO_REGISTRO.getValorInt(), EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return resultado;
+	}
+
 }

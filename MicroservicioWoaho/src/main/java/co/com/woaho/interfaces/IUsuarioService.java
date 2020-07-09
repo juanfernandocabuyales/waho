@@ -12,4 +12,6 @@ public interface IUsuarioService {
 	String generarCodigoRegistro(String pCelular);
 	
 	String validarLogin(String pCorreo,String pClave);
+	
+	String validarCodigoRegistro(String pCelular,String pCodigo);
 }

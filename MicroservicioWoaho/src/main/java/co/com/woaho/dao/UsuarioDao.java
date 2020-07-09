@@ -95,6 +95,34 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 			return null;
 		}
 	}
+	
+	@Override
+	@Transactional(propagation = Propagation.NESTED)
+	public String validarCodigoRegistro(String pStrCelular,String pStrCodigo) throws Exception {
+		String strRespuesta = null;
+		try {
+			logs.registrarLogInfoEjecutaPaqFuncConParam(EnumProcedimientos.FNDB_VALIDAR_CODIGO_REGISTRO.getProcedimiento(), "pStrCelular: " + pStrCelular + "pStrCodigo: "+pStrCodigo);
+			
+			
+			StoredProcedureQuery query = getEntityManager().createStoredProcedureQuery(EnumProcedimientos.FNDB_VALIDAR_CODIGO_REGISTRO.getProcedimiento())
+					.registerStoredProcedureParameter("p_celular",String.class,ParameterMode.IN)
+					.registerStoredProcedureParameter("p_codigo",String.class,ParameterMode.IN)
+					.registerStoredProcedureParameter("respuesta",String.class,ParameterMode.OUT)
+					.setParameter("p_celular", pStrCelular)
+					.setParameter("p_codigo", pStrCodigo);
+			
+			query.execute();
+			
+			strRespuesta = (String) query.getOutputParameterValue("respuesta");
+			
+			logs.registrarLogInfoResultado(strRespuesta);
+			
+			return strRespuesta;
+		}catch (Exception e) {
+			logs.registrarLogError("validarCodigoRegistro", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
 
 	@Override
 	@Transactional(propagation = Propagation.NESTED)

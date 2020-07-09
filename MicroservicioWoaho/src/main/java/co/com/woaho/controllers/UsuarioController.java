@@ -84,4 +84,17 @@ public class UsuarioController {
 		logs.registrarLogInfoResultado(strResultado);
 		return strResultado;
 	}
+	
+	@PostMapping(value = "/validarCodigoRegistro", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String validarCodigoRegistro(@RequestParam(name = "pStrCelular") String pStrCelular,@RequestParam(name = "pStrCodigo") String pStrCodigo ) {
+		String strResultado = null;
+		try {
+			logs.registrarLogInfoEjecutaServicio("validarCodigoRegistro");
+			strResultado = usuarioService.validarCodigoRegistro(pStrCelular, pStrCodigo);
+		}catch (Exception e) {
+			logs.registrarLogError("validarCodigoRegistro", e.getMessage(),e);
+		}
+		logs.registrarLogInfoResultado(strResultado);
+		return strResultado;
+	}
 }
