@@ -219,3 +219,4 @@ INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
 
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro')
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIEMPO_COD_REGISTRO','2','Define el tiempo de valides de un codigo, se debe dar en Minutos');
