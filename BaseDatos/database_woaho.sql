@@ -31,6 +31,9 @@ ALTER SEQUENCE woaho.sec_codigo OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_parametro CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_parametro OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_direccion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_direccion OWNER TO postgres;
+
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -142,6 +145,7 @@ CREATE TABLE woaho.usuario
     usuario_acepta_terminos character varying(4000),
     usuario_fecha_hora_acepta_terminos TIMESTAMP,
     usuario_clave character varying(4000),
+    usuario_direccion integer,
     CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
     CONSTRAINT celular_key UNIQUE (usuario_celular)
 );
@@ -184,6 +188,36 @@ ALTER TABLE woaho.codigo
     OWNER to postgres;
 COMMENT ON TABLE woaho.codigo
     IS 'Tabla que contiene los codigos generados para completar el registro';
+    
+CREATE TABLE woaho.direccion
+(
+    direccion_id integer NOT NULL DEFAULT nextval('woaho.sec_direccion'::regclass),
+    direccion_nombre character varying(4000),
+    direccion_descripcion character varying(4000),
+    direccion_territorio_id integer,
+    direccion_edificacion character varying(4000),
+    direccion_estado integer,
+    direccion_usuario integer,
+    direccion_latitud character varying(4000),
+    direccion_longitud character varying(4000),
+    CONSTRAINT direccion_pkey PRIMARY KEY (direccion_id),
+    CONSTRAINT "FK_DIRECCION_TERRITORIO" FOREIGN KEY (direccion_territorio_id)
+        REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_DIRECCION_USUARIO" FOREIGN KEY (direccion_usuario)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_DIRECCION_ESTADO" FOREIGN KEY (direccion_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.direccion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.direccion
+    IS 'Tabla que contiene las direcciones registradas por los usuarios';
     
 CREATE TABLE woaho.parametro
 (

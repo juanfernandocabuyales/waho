@@ -12,3 +12,12 @@ BEGIN
    call woaho.prdb_generar_codigo_registro('3147453245',salida);
    RAISE NOTICE 'esto salio : %', salida;
 END first_block $$;
+
+/** Agregar FK a tabla ya creada **/
+ALTER TABLE woaho.usuario
+ADD CONSTRAINT FK_USUARIO_DIRECCION
+FOREIGN KEY (usuario_direccion)
+REFERENCES woaho.direccion(direccion_id)
+MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION;
