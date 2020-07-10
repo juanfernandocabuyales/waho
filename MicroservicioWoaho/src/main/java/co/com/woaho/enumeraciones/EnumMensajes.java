@@ -10,7 +10,8 @@ public enum EnumMensajes {
 	REGISTRO_EXITOSO("Se ha realizado el registro {0}"),
 	NO_USUARIO("No se ha encontrado un usuario para el {0} {1}"),
 	NO_SOLICITUD("No se ha podido procesar la solicitud "),
-	CLAVE_INVALIDA("La clave ingresada no corresponde al usuario. Intente nuevamente.")
+	CLAVE_INVALIDA("La clave ingresada no corresponde al usuario. Intente nuevamente."),
+	NO_DIRECCIONES("No se han encontrado direcciones registradas para el usuario")
 	;
 	
 	private final String strValor;
