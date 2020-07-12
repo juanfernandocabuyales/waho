@@ -34,6 +34,17 @@ ALTER SEQUENCE woaho.sec_parametro OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_direccion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_direccion OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_categoria CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_categoria OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_moneda CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_moneda OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_servicio CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_servicio OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_tarifa CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_tarifa OWNER TO postgres;
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -232,25 +243,73 @@ ALTER TABLE woaho.parametro
 COMMENT ON TABLE woaho.parametro
     IS 'Tabla que contiene los parametros del aplicativo';
     
-/***************************************************************************************************
-	  Zona de inserts iniciales
-***************************************************************************************************/
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Pais');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Departamento');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Municipio');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Comuna');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Barrio');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Corregimiento');
-INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Vereda');
-
-INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Colombia', NULL, 1,'+57');
-INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
-INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');
-
-INSERT INTO woaho.estado (estado_codigo) VALUES ('A');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('I');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
-
-INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro')
-INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIEMPO_COD_REGISTRO','2','Define el tiempo de valides de un codigo, se debe dar en Minutos');
+CREATE TABLE woaho.categoria
+(
+    categoria_id integer NOT NULL DEFAULT nextval('woaho.sec_categoria'::regclass),
+    categoria_descripcion character varying(4000),
+    categoria_imagen character varying(4000),
+    CONSTRAINT categoria_pkey PRIMARY KEY (categoria_id)
+);
+ALTER TABLE woaho.categoria
+    OWNER to postgres;
+COMMENT ON TABLE woaho.categoria
+    IS 'Tabla que contiene las categorias para el aplicativo';
+    
+CREATE TABLE woaho.moneda
+(
+    moneda_id integer NOT NULL DEFAULT nextval('woaho.sec_moneda'::regclass),
+    moneda_nombre character varying(4000),
+    moneda_territorio integer,
+    CONSTRAINT moneda_pkey PRIMARY KEY (moneda_id),
+    CONSTRAINT "FK_MONEDA_TERRITORIO" FOREIGN KEY (moneda_territorio)
+     REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
+     ON UPDATE NO ACTION
+     ON DELETE NO ACTION
+);
+ALTER TABLE woaho.moneda
+    OWNER to postgres;
+COMMENT ON TABLE woaho.moneda
+    IS 'Tabla que contiene las monedas para el aplicativo';
+    
+CREATE TABLE woaho.servicio
+(
+    servicio_id integer NOT NULL DEFAULT nextval('woaho.sec_servicio'::regclass),
+    servicio_nombre character varying(4000),
+    servicio_imagen character varying(4000),
+    servicio_categoria integer,
+    CONSTRAINT servicio_pkey PRIMARY KEY (servicio_id),
+    CONSTRAINT "FK_SERVICIO_CATEGORIA" FOREIGN KEY (servicio_categoria)
+       REFERENCES woaho.categoria (categoria_id) MATCH SIMPLE
+       ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+);
+ALTER TABLE woaho.servicio
+    OWNER to postgres;
+COMMENT ON TABLE woaho.servicio
+    IS 'Tabla que contiene los servicios para el aplicativo';
+    
+CREATE TABLE woaho.tarifa
+(
+    tarifa_id integer NOT NULL DEFAULT nextval('woaho.sec_tarifa'::regclass),
+    tarifa_valor decimal,
+    tarifa_moneda integer,
+    tarifa_territorio integer,
+    tarifa_servicio integer,
+    CONSTRAINT tarifa_pkey PRIMARY KEY (tarifa_id),
+    CONSTRAINT "FK_TARIFA_MONEDA" FOREIGN KEY (tarifa_moneda)
+        REFERENCES woaho.moneda (moneda_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_TARIFA_TERRITORIO" FOREIGN KEY (tarifa_territorio)
+        REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_TARIFA_SERVICIO" FOREIGN KEY (tarifa_servicio)
+        REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.tarifa
+    OWNER to postgres;
+COMMENT ON TABLE woaho.tarifa
+    IS 'Tabla que contiene las tarifas para el aplicativo';    
