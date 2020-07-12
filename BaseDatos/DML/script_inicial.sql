@@ -1,5 +1,5 @@
 /***************************************************************************************************
-	  Zona de inserts iniciales
+	  Inserts iniciales
 ***************************************************************************************************/
 INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Pais');
 INSERT INTO woaho.tipo_territorio (tipo_territorio_nombre) VALUES ('Departamento');
