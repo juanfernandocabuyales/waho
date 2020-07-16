@@ -52,6 +52,9 @@ ALTER SEQUENCE woaho.sec_codigo_promocional OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_promocion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_promocion OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_unidad_tarifa CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_unidad_tarifa OWNER TO postgres;
+
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -277,6 +280,17 @@ ALTER TABLE woaho.moneda
 COMMENT ON TABLE woaho.moneda
     IS 'Tabla que contiene las monedas para el aplicativo';
     
+CREATE TABLE woaho.unidad_tarifa
+(
+    unidad_tarifa_id integer NOT NULL DEFAULT nextval('woaho.sec_unidad_tarifa'::regclass),
+    unidad_tarifa_nombre character varying(4000),
+    CONSTRAINT unidad_tarifa_pkey PRIMARY KEY (unidad_tarifa_id)
+);
+ALTER TABLE woaho.unidad_tarifa
+    OWNER to postgres;
+COMMENT ON TABLE woaho.unidad_tarifa
+    IS 'Tabla que contiene las unidades de tarifas para el aplicativo';
+    
 CREATE TABLE woaho.servicio
 (
     servicio_id integer NOT NULL DEFAULT nextval('woaho.sec_servicio'::regclass),
@@ -301,6 +315,7 @@ CREATE TABLE woaho.tarifa
     tarifa_moneda integer,
     tarifa_territorio integer,
     tarifa_servicio integer,
+    tarifa_unidad integer,
     CONSTRAINT tarifa_pkey PRIMARY KEY (tarifa_id),
     CONSTRAINT "FK_TARIFA_MONEDA" FOREIGN KEY (tarifa_moneda)
         REFERENCES woaho.moneda (moneda_id) MATCH SIMPLE
@@ -312,6 +327,10 @@ CREATE TABLE woaho.tarifa
         ON DELETE NO ACTION,
     CONSTRAINT "FK_TARIFA_SERVICIO" FOREIGN KEY (tarifa_servicio)
         REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_TARIFA_UNIDAD" FOREIGN KEY (tarifa_unidad)
+        REFERENCES woaho.unidad_tarifa (unidad_tarifa_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

@@ -33,3 +33,9 @@ INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES ('bu
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('MXN',3);
+
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Hora');
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Dia');
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Semana');
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Mes');
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Año');
