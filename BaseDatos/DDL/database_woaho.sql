@@ -46,6 +46,12 @@ ALTER SEQUENCE woaho.sec_servicio OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_tarifa CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_tarifa OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_codigo_promocional CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_codigo_promocional OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_promocion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_promocion OWNER TO postgres;
+
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -312,4 +318,52 @@ CREATE TABLE woaho.tarifa
 ALTER TABLE woaho.tarifa
     OWNER to postgres;
 COMMENT ON TABLE woaho.tarifa
-    IS 'Tabla que contiene las tarifas para el aplicativo';    
+    IS 'Tabla que contiene las tarifas para el aplicativo';
+    
+CREATE TABLE woaho.promocion
+(
+    promocion_id integer NOT NULL DEFAULT nextval('woaho.sec_promocion'::regclass),
+    promocion_descuento integer,
+    promocion_tarifa integer,
+    promocion_estado integer,
+    promocion_descripcion character varying(4000),
+    CONSTRAINT promocion_pkey PRIMARY KEY (promocion_id),
+    CONSTRAINT "FK_PROM_TARIFA" FOREIGN KEY (promocion_tarifa)
+        REFERENCES woaho.tarifa (tarifa_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_PROM_ESTADO" FOREIGN KEY (promocion_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.promocion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.promocion
+    IS 'Tabla que contiene las promociones del aplicativo';    
+    
+CREATE TABLE woaho.codigo_promocional
+(
+    codigo_promocional_id integer NOT NULL DEFAULT nextval('woaho.sec_codigo_promocional'::regclass),
+    codigo_promocional_codigo character varying(4000),
+    codigo_promocional_usuario integer,
+    codigo_promocional_estado integer,
+    codigo_promocional_promocion integer,
+    CONSTRAINT codigo_promocional_pkey PRIMARY KEY (codigo_promocional_id),
+    CONSTRAINT "FK_COD_PROM_USUARIO" FOREIGN KEY (codigo_promocional_usuario)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_COD_PROM_ESTADO" FOREIGN KEY (codigo_promocional_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_COD_PROM_PROMOCION" FOREIGN KEY (codigo_promocional_promocion)
+        REFERENCES woaho.promocion (promocion_ID) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.codigo_promocional
+    OWNER to postgres;
+COMMENT ON TABLE woaho.codigo_promocional
+    IS 'Tabla que contiene los codigos promocionales del aplicativo';  
