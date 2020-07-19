@@ -55,6 +55,18 @@ ALTER SEQUENCE woaho.sec_promocion OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_unidad_tarifa CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_unidad_tarifa OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_pedido CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_pedido OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_profesional CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_profesional OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_imagen CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_imagen OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_calificacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_calificacion OWNER TO postgres;
+
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -252,12 +264,30 @@ ALTER TABLE woaho.parametro
 COMMENT ON TABLE woaho.parametro
     IS 'Tabla que contiene los parametros del aplicativo';
     
+CREATE TABLE woaho.imagen
+(
+    imagen_id integer NOT NULL DEFAULT nextval('woaho.sec_imagen'::regclass),
+    imagen_nombre character varying(4000),
+    imagen_ruta character varying(4000),
+    imagen_alto integer,
+    imagen_ancho integer,
+    CONSTRAINT imagen_pkey PRIMARY KEY (imagen_id)
+);
+ALTER TABLE woaho.imagen
+    OWNER to postgres;
+COMMENT ON TABLE woaho.imagen
+    IS 'Tabla que contiene las imagenes para el aplicativo';
+    
 CREATE TABLE woaho.categoria
 (
     categoria_id integer NOT NULL DEFAULT nextval('woaho.sec_categoria'::regclass),
     categoria_descripcion character varying(4000),
-    categoria_imagen character varying(4000),
-    CONSTRAINT categoria_pkey PRIMARY KEY (categoria_id)
+    categoria_imagen integer,
+    CONSTRAINT categoria_pkey PRIMARY KEY (categoria_id),
+    CONSTRAINT "FK_CATEGORIA_IMAGEN" FOREIGN KEY (categoria_imagen)
+     REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
+     ON UPDATE NO ACTION
+     ON DELETE NO ACTION
 );
 ALTER TABLE woaho.categoria
     OWNER to postgres;
@@ -378,11 +408,105 @@ CREATE TABLE woaho.codigo_promocional
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT "FK_COD_PROM_PROMOCION" FOREIGN KEY (codigo_promocional_promocion)
-        REFERENCES woaho.promocion (promocion_ID) MATCH SIMPLE
+        REFERENCES woaho.promocion (promocion_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
 ALTER TABLE woaho.codigo_promocional
     OWNER to postgres;
 COMMENT ON TABLE woaho.codigo_promocional
-    IS 'Tabla que contiene los codigos promocionales del aplicativo';  
+    IS 'Tabla que contiene los codigos promocionales del aplicativo';
+    
+CREATE TABLE woaho.profesional
+(
+	profesional_id integer NOT NULL DEFAULT nextval('woaho.sec_profesional'::regclass),
+	profesional_nombre character varying(4000),
+	profesional_profesiones character varying(4000),
+	profesional_nacionalidad integer,
+	profesional_servicios character varying(4000),
+	profesional_lenguajes character varying(4000),
+	profesional_descripcion character varying(4000),
+	profesional_imagen_icono integer,
+	profesional_cant_estrellas decimal,
+	profesional_cant_servicios integer,
+	profesional_comentarios character varying(4000),
+	profesional_ubicacion integer,
+	CONSTRAINT profesional_pkey PRIMARY KEY (profesional_id),
+	CONSTRAINT "FK_PROFESIONAL_TERRITORIO" FOREIGN KEY (profesional_nacionalidad)
+        REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_PROFESIONAL_ICONO" FOREIGN KEY (profesional_imagen_icono)
+        REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.profesional
+    OWNER to postgres;
+COMMENT ON TABLE woaho.profesional
+    IS 'Tabla que contiene los profesionales del aplicativo';
+    
+CREATE TABLE woaho.calificacion
+(
+	calificacion_id integer NOT NULL DEFAULT nextval('woaho.sec_calificacion'::regclass),
+	calificacion_usuario integer,
+	calificacion_profesional integer,
+	calificacion_descripcion character varying(4000),
+	calificacion_calificacion integer,
+	calificacion_servicio integer,
+	CONSTRAINT calificacion_pkey PRIMARY KEY (calificacion_id),
+	CONSTRAINT "FK_CALIFICACION_USUARIO" FOREIGN KEY (calificacion_usuario)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+     CONSTRAINT "FK_CALIFICACION_PROFESIONAL" FOREIGN KEY (calificacion_profesional)
+        REFERENCES woaho.profesional (profesional_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+     CONSTRAINT "FK_CALIFICACION_SERVICIO" FOREIGN KEY (calificacion_servicio)
+        REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION 
+        
+);
+ALTER TABLE woaho.calificacion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.calificacion
+    IS 'Tabla que contiene las calificaciones de los profesionales';
+    
+CREATE TABLE woaho.pedido
+(
+    pedido_id integer NOT NULL DEFAULT nextval('woaho.sec_pedido'::regclass),
+    pedido_servicio integer,
+    pedido_usuario integer,
+    pedido_descripcion character varying(4000),
+    pedido_estado integer,
+    pedido_direccion integer,
+    pedido_cod_promocional character varying(4000),
+    pedido_profesional integer,
+    CONSTRAINT pedido_pkey PRIMARY KEY (pedido_id),
+    CONSTRAINT "FK_PEDIDO_SERVICIO" FOREIGN KEY (pedido_servicio)
+        REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_PEDIDO_USUARIO" FOREIGN KEY (pedido_servicio)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_PEDIDO_ESTADO" FOREIGN KEY (pedido_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+     CONSTRAINT "FK_PEDIDO_DIRECCION" FOREIGN KEY (pedido_direccion)
+        REFERENCES woaho.direccion (direccion_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+     CONSTRAINT "FK_PEDIDO_PROFESIONAL" FOREIGN KEY (pedido_profesional)
+        REFERENCES woaho.profesional (profesional_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.pedido
+    OWNER to postgres;
+COMMENT ON TABLE woaho.pedido
+    IS 'Tabla que contiene los pedidos del aplicativo';  
