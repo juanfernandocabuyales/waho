@@ -1,6 +1,7 @@
 package co.com.woaho.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "profesional")
-@NamedQueries({ @NamedQuery(name="Profesional.findAll", query="SELECT pr FROM Profesional pr")})
+@NamedQueries({ @NamedQuery(name="Profesional.findAll", query="SELECT pr FROM Profesional pr"),
+				@NamedQuery(name="Profesional.findServicio", query="SELECT pr FROM Profesional pr WHERE pr.strServicios LIKE :pServicios")})
 public class Profesional implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -50,7 +53,7 @@ public class Profesional implements Serializable {
 	private String strDescripcion;
 	
 	@ManyToOne
-	@Column(name ="profesional_imagen_icono",length = 100)
+	@JoinColumn(name ="profesional_imagen_icono")
 	private Imagen icono;
 	
 	@Column(name = "profesional_cant_estrellas", precision = 12)
@@ -58,6 +61,10 @@ public class Profesional implements Serializable {
 	
 	@Column(name = "profesional_cant_servicios", precision = 12)
 	private Long cantServicios;
+	
+	@ManyToOne
+	@JoinColumn(name ="profesional_imagen_icono")
+	private List<Calificacion> calificaciones;
 
 	public Long getProfesionalId() {
 		return profesionalId;
@@ -145,5 +152,13 @@ public class Profesional implements Serializable {
 
 	public void setCantServicios(Long cantServicios) {
 		this.cantServicios = cantServicios;
+	}
+
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
+	}
+
+	public void setCalificaciones(List<Calificacion> calificaciones) {
+		this.calificaciones = calificaciones;
 	}	
 }

@@ -39,7 +39,7 @@ public class Calificacion implements Serializable {
 	private String strDescripcion;
 	
 	@Column(name = "calificacion_calificacion", precision = 12)
-	private Long calificacion;
+	private Long calificacionValor;
 
 	public Long getCalificacionId() {
 		return calificacionId;
@@ -74,10 +74,10 @@ public class Calificacion implements Serializable {
 	}
 
 	public Long getCalificacion() {
-		return calificacion;
+		return calificacionValor;
 	}
 
 	public void setCalificacion(Long calificacion) {
-		this.calificacion = calificacion;
+		this.calificacionValor = calificacion;
 	}
 }

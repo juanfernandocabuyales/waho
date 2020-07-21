@@ -25,3 +25,28 @@ MATCH SIMPLE
 /** Cambia el tipo de dato en una colunma**/        
 ALTER TABLE woaho.imagen 
 ALTER COLUMN imagen_alto TYPE VARCHAR;
+
+/**  Inserts de prueba**/
+INSERT INTO woaho.imagen (imagen_nombre,imagen_ruta,imagen_alto,imagen_ancho) VALUES ('cabuyales','cabuyales.png',20,10);
+
+INSERT INTO woaho.imagen (imagen_nombre,imagen_ruta,imagen_alto,imagen_ancho) VALUES ('software','software.png',20,10);
+
+INSERT INTO woaho.profesional (profesional_nombre,profesional_apellido,profesional_profesiones,profesional_nacionalidad,profesional_servicios,profesional_lenguajes,profesional_descripcion,profesional_imagen_icono,profesional_cant_estrellas,profesional_cant_servicios)
+					 VALUES ('Juan','Cabuyales','1-2-3',1,'1-3','1-2','Ingeniero experto en desarrollo de software',1,0,0);
+					 
+INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (10,'Software');
+					 
+INSERT INTO woaho.servicio (servicio_nombre,servicio_imagen,servicio_categoria)
+							 VALUES ('Desarrollo Software',10,9);
+							 
+INSERT INTO woaho.tarifa (tarifa_valor,tarifa_moneda,tarifa_territorio,tarifa_servicio,tarifa_unidad)
+							 VALUES (20000,1,1,1,1);
+					 
+INSERT INTO woaho.calificacion (calificacion_usuario,calificacion_profesional,calificacion_descripcion,calificacion_calificacion,calificacion_servicio)
+					 VALUES (12,1,'Muy buen servicio',4,1);
+					 
+INSERT INTO woaho.calificacion (calificacion_usuario,calificacion_profesional,calificacion_descripcion,calificacion_calificacion,calificacion_servicio)
+					 VALUES (11,1,'servicio regular',3,1);
+					 
+
+					 
