@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -31,6 +33,10 @@ public class Ubicacion implements Serializable{
 	
 	@Column(name ="ubicacion_longitud",length = 100)
 	private String strLongitud;
+	
+	@ManyToOne
+	@JoinColumn(name = "ubicacion_profesional")
+	private Profesional profesional;
 
 	public Long getUbicacionId() {
 		return ubicacionId;
@@ -54,5 +60,13 @@ public class Ubicacion implements Serializable{
 
 	public void setStrLongitud(String strLongitud) {
 		this.strLongitud = strLongitud;
+	}
+
+	public Profesional getProfesional() {
+		return profesional;
+	}
+
+	public void setProfesional(Profesional profesional) {
+		this.profesional = profesional;
 	}
 }

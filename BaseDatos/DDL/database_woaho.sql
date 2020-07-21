@@ -356,11 +356,15 @@ CREATE TABLE woaho.servicio
 (
     servicio_id integer NOT NULL DEFAULT nextval('woaho.sec_servicio'::regclass),
     servicio_nombre character varying(4000),
-    servicio_imagen character varying(4000),
+    servicio_imagen integer,
     servicio_categoria integer,
     CONSTRAINT servicio_pkey PRIMARY KEY (servicio_id),
     CONSTRAINT "FK_SERVICIO_CATEGORIA" FOREIGN KEY (servicio_categoria)
        REFERENCES woaho.categoria (categoria_id) MATCH SIMPLE
+       ON UPDATE NO ACTION
+       ON DELETE NO ACTION,
+ 	CONSTRAINT "FK_SERVICIO_IMAGEN" FOREIGN KEY (servicio_imagen)
+       REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
        ON UPDATE NO ACTION
        ON DELETE NO ACTION
 );
@@ -461,7 +465,6 @@ CREATE TABLE woaho.profesional
 	profesional_imagen_icono integer,
 	profesional_cant_estrellas decimal,
 	profesional_cant_servicios integer,
-	profesional_comentarios character varying(4000),
 	CONSTRAINT profesional_pkey PRIMARY KEY (profesional_id),
 	CONSTRAINT "FK_PROFESIONAL_TERRITORIO" FOREIGN KEY (profesional_nacionalidad)
         REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
