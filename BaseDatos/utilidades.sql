@@ -21,3 +21,7 @@ REFERENCES woaho.direccion(direccion_id)
 MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION;
+        
+/** Cambia el tipo de dato en una colunma**/        
+ALTER TABLE woaho.imagen 
+ALTER COLUMN imagen_alto TYPE VARCHAR;

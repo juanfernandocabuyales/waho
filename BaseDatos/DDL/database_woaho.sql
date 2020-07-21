@@ -71,7 +71,10 @@ CREATE SEQUENCE woaho.sec_idioma CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9
 ALTER SEQUENCE woaho.sec_idioma OWNER TO postgres;
 
 CREATE SEQUENCE woaho.sec_ubicacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_ubicacion OWNER TO postgres;  
+ALTER SEQUENCE woaho.sec_ubicacion OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_profesion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;  
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -97,7 +100,18 @@ CREATE TABLE woaho.idioma
 ALTER TABLE woaho.idioma
     OWNER to postgres;
 COMMENT ON TABLE woaho.idioma
-    IS 'Tabla que contiene la información de los idiomas del aplicativo';    
+    IS 'Tabla que contiene la información de los idiomas del aplicativo';
+    
+CREATE TABLE woaho.profesion
+(
+    profesion_id integer NOT NULL DEFAULT nextval('woaho.sec_profesion'::regclass),
+    profesion_nombre character varying(4000),
+    CONSTRAINT profesion_pkey PRIMARY KEY (profesion_id)
+);
+ALTER TABLE woaho.profesion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.profesion
+    IS 'Tabla que contiene la información de las profesiones del aplicativo';     
 
 CREATE TABLE woaho.pantalla
 (
@@ -286,8 +300,8 @@ CREATE TABLE woaho.imagen
     imagen_id integer NOT NULL DEFAULT nextval('woaho.sec_imagen'::regclass),
     imagen_nombre character varying(4000),
     imagen_ruta character varying(4000),
-    imagen_alto integer,
-    imagen_ancho integer,
+    imagen_alto varying(4000),
+    imagen_ancho varying(4000),
     CONSTRAINT imagen_pkey PRIMARY KEY (imagen_id)
 );
 ALTER TABLE woaho.imagen
@@ -438,6 +452,7 @@ CREATE TABLE woaho.profesional
 (
 	profesional_id integer NOT NULL DEFAULT nextval('woaho.sec_profesional'::regclass),
 	profesional_nombre character varying(4000),
+	profesional_apellido character varying(4000),
 	profesional_profesiones character varying(4000),
 	profesional_nacionalidad integer,
 	profesional_servicios character varying(4000),
@@ -447,7 +462,6 @@ CREATE TABLE woaho.profesional
 	profesional_cant_estrellas decimal,
 	profesional_cant_servicios integer,
 	profesional_comentarios character varying(4000),
-	profesional_ubicacion integer,
 	CONSTRAINT profesional_pkey PRIMARY KEY (profesional_id),
 	CONSTRAINT "FK_PROFESIONAL_TERRITORIO" FOREIGN KEY (profesional_nacionalidad)
         REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
