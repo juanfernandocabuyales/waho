@@ -67,6 +67,12 @@ ALTER SEQUENCE woaho.sec_imagen OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_calificacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_calificacion OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_idioma CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_idioma OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_ubicacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_ubicacion OWNER TO postgres;  
+
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -80,7 +86,18 @@ ALTER TABLE woaho.tipo
     OWNER to postgres;
 COMMENT ON TABLE woaho.tipo
     IS 'Tabla que contiene la información de los tipos de pantalla';
-    
+
+CREATE TABLE woaho.idioma
+(
+    idioma_id integer NOT NULL DEFAULT nextval('woaho.sec_idioma'::regclass),
+    idioma_nombre character varying(4000),
+    idioma_codigo character varying(4000),
+    CONSTRAINT idioma_pkey PRIMARY KEY (idioma_id)
+);
+ALTER TABLE woaho.idioma
+    OWNER to postgres;
+COMMENT ON TABLE woaho.idioma
+    IS 'Tabla que contiene la información de los idiomas del aplicativo';    
 
 CREATE TABLE woaho.pantalla
 (
@@ -446,6 +463,23 @@ ALTER TABLE woaho.profesional
 COMMENT ON TABLE woaho.profesional
     IS 'Tabla que contiene los profesionales del aplicativo';
     
+CREATE TABLE woaho.ubicacion
+(
+    ubicacion_id integer NOT NULL DEFAULT nextval('woaho.sec_ubicacion'::regclass),
+    ubicacion_profesional integer,
+    ubicacion_latitud character varying(4000),
+    ubicacion_longitud character varying(4000),
+    CONSTRAINT ubicacion_pkey PRIMARY KEY (ubicacion_id),
+    CONSTRAINT "FK_UBICACION_PROFESIONAL" FOREIGN KEY (ubicacion_profesional)
+        REFERENCES woaho.profesional (profesional_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION    
+);
+ALTER TABLE woaho.ubicacion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.ubicacion
+    IS 'Tabla que contiene las ubicaciones de los profesionales';
+    
 CREATE TABLE woaho.calificacion
 (
 	calificacion_id integer NOT NULL DEFAULT nextval('woaho.sec_calificacion'::regclass),
@@ -500,7 +534,7 @@ CREATE TABLE woaho.pedido
      CONSTRAINT "FK_PEDIDO_DIRECCION" FOREIGN KEY (pedido_direccion)
         REFERENCES woaho.direccion (direccion_id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE NO ACTION,
      CONSTRAINT "FK_PEDIDO_PROFESIONAL" FOREIGN KEY (pedido_profesional)
         REFERENCES woaho.profesional (profesional_id) MATCH SIMPLE
         ON UPDATE NO ACTION

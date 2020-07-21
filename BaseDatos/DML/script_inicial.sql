@@ -48,3 +48,6 @@ INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Dia');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Semana');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Mes');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Año');
+
+INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('INGLES','ENG');
+INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','SPN');
