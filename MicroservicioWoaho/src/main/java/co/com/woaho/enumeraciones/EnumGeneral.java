@@ -5,6 +5,10 @@ public enum EnumGeneral {
 	RESPUESTA_NEGATIVA("1"),
 	RESPUESTA_POSITIVA("0"),
 	OK("ok"),
+	COMA(","),
+	PUNTO_COMA(";"),
+	PIPE("|"),
+	VIGURILLA("~"),
 	
 	
 	SERVICIO_CONSULTA_PANTALLAS("1"),

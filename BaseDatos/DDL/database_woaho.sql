@@ -484,6 +484,7 @@ CREATE TABLE woaho.ubicacion
 (
     ubicacion_id integer NOT NULL DEFAULT nextval('woaho.sec_ubicacion'::regclass),
     ubicacion_profesional integer,
+    ubicacion_lugar_id character varying(4000),
     ubicacion_latitud character varying(4000),
     ubicacion_longitud character varying(4000),
     CONSTRAINT ubicacion_pkey PRIMARY KEY (ubicacion_id),

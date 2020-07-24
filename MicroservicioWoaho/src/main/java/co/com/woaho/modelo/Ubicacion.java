@@ -34,6 +34,9 @@ public class Ubicacion implements Serializable{
 	@Column(name ="ubicacion_longitud",length = 100)
 	private String strLongitud;
 	
+	@Column(name ="ubicacion_lugar_id",length = 100)
+	private String strLugarId;
+	
 	@ManyToOne
 	@JoinColumn(name = "ubicacion_profesional")
 	private Profesional profesional;
@@ -68,5 +71,13 @@ public class Ubicacion implements Serializable{
 
 	public void setProfesional(Profesional profesional) {
 		this.profesional = profesional;
+	}
+
+	public String getStrLugarId() {
+		return strLugarId;
+	}
+
+	public void setStrLugarId(String strLugarId) {
+		this.strLugarId = strLugarId;
 	}
 }

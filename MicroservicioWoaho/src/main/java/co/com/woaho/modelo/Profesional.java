@@ -3,6 +3,7 @@ package co.com.woaho.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +44,9 @@ public class Profesional implements Serializable {
 	@JoinColumn(name = "profesional_nacionalidad")
 	private Territorio nacionalidad;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesional")
+	private List<Ubicacion> ubicacion;
+	
 	@Column(name ="profesional_servicios",length = 100)
 	private String strServicios;
 	
@@ -62,8 +66,7 @@ public class Profesional implements Serializable {
 	@Column(name = "profesional_cant_servicios", precision = 12)
 	private Long cantServicios;
 	
-	@ManyToOne
-	@JoinColumn(name ="profesional_imagen_icono")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesional")
 	private List<Calificacion> calificaciones;
 
 	public Long getProfesionalId() {
@@ -160,5 +163,13 @@ public class Profesional implements Serializable {
 
 	public void setCalificaciones(List<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
+	}
+
+	public List<Ubicacion> getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(List<Ubicacion> ubicacion) {
+		this.ubicacion = ubicacion;
 	}	
 }

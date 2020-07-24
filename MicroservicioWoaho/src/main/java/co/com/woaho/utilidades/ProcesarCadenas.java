@@ -7,7 +7,11 @@ import java.util.StringTokenizer;
 import co.com.respuestas.JsonGenerico;
 import co.com.woaho.dto.DireccionDTO;
 import co.com.woaho.dto.MensajeDTO;
+import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.modelo.Direccion;
+import co.com.woaho.modelo.Idioma;
+import co.com.woaho.modelo.Profesion;
+import co.com.woaho.modelo.Servicio;
 import co.com.woaho.modelo.Territorio;
 
 public class ProcesarCadenas {
@@ -33,23 +37,23 @@ public class ProcesarCadenas {
 		}
 		return mensajes;
 	}
-	
+
 	public JsonGenerico<DireccionDTO> obtenerDirecciones(List<Direccion> pListDireccion){
 		JsonGenerico<DireccionDTO> listDireccionesDTO = new JsonGenerico<>();
 		StringBuilder strCadena = new StringBuilder();
 		for (Direccion direccion : pListDireccion) {
 			DireccionDTO direccionDTO = new DireccionDTO(String.valueOf(direccion.getUsuarioId()),
-														 direccion.getStrDireccion(),
-														 obtenerCadenaTerritorio(direccion.getTerritorioDireccion(),strCadena),
-														 direccion.getStrDireccionLatitud(),
-														 direccion.getStrDireccionLongitud(),
-														 direccion.getStrNombreDireccion());
+					direccion.getStrDireccion(),
+					obtenerCadenaTerritorio(direccion.getTerritorioDireccion(),strCadena),
+					direccion.getStrDireccionLatitud(),
+					direccion.getStrDireccionLongitud(),
+					direccion.getStrNombreDireccion());
 			listDireccionesDTO.add(direccionDTO);
 		}
 		return listDireccionesDTO;
 	}
-	
-	
+
+
 	/**
 	 * @author juan.cabuyales
 	 * @since 06/06/2020
@@ -67,6 +71,48 @@ public class ProcesarCadenas {
 			strCadena.append(pTerritorio.getStrNombreTerritorio());
 		}
 		return strCadena.toString();
+	}
+
+	public String obtenerIdiomas(List<Idioma> listIdiomas) {
+		StringBuilder strBuilder = new StringBuilder();
+		for (int i = 0; i < listIdiomas.size(); i++) {
+			strBuilder.append(listIdiomas.get(i).getStrNombre());
+			if(i<listIdiomas.size()) {
+				strBuilder.append(EnumGeneral.COMA.getValor());
+			}
+		}
+		return strBuilder.toString();
+	}
+
+	public String procesarCadenas(List<Servicio> listServicios) {
+		StringBuilder strBuilder = new StringBuilder();
+		for (int i = 0; i < listServicios.size(); i++) {
+			strBuilder.append(listServicios.get(i).getStrNombre());
+			if(i<listServicios.size()) {
+				strBuilder.append(EnumGeneral.COMA.getValor());
+			}
+		}
+		return strBuilder.toString();
+	}
+
+	public String obtenerProfesiones(List<Profesion> listProfesion) {
+		StringBuilder strBuilder = new StringBuilder();
+		for (int i = 0; i < listProfesion.size(); i++) {
+			strBuilder.append(listProfesion.get(i).getStrNombre());
+			if(i<listProfesion.size()) {
+				strBuilder.append(EnumGeneral.COMA.getValor());
+			}
+		}
+		return strBuilder.toString();
+	}
+
+	public List<Long> obtenerListaLong(String pCadena){
+		List<Long> listadoLong = new ArrayList<>();
+		String [] tokens = pCadena.split(EnumGeneral.COMA.getValor());
+		for(String token : tokens) {
+			listadoLong.add(Long.parseLong(token));
+		}
+		return listadoLong;
 	}
 
 }
