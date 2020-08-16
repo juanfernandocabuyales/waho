@@ -42,8 +42,7 @@ public class ProfesionalService implements IProfesionalService {
 	private IServicioDao servicioDao;
 	
 	@Autowired
-	private IProfesionDao profesionDao;
-	
+	private IProfesionDao profesionDao;	
 	
 	private RegistrarLog logs = new RegistrarLog(ProfesionalService.class);	
 	
@@ -71,7 +70,7 @@ public class ProfesionalService implements IProfesionalService {
 					properties.setImage(profesional.getIcono().getStrRuta());
 					properties.setProfession(procesarCadenas.obtenerProfesiones(profesionDao.obtenerProfesiones(procesarCadenas.obtenerListaLong(profesional.getStrProfesiones()))));
 					properties.setNationality(profesional.getNacionalidad().getStrNombreTerritorio());
-					properties.setServices(procesarCadenas.procesarCadenas(servicioDao.obtenerServicios(procesarCadenas.obtenerListaLong(profesional.getStrServicios()))));
+					properties.setServices(procesarCadenas.procesarCadenas(servicioDao.obtenerServiciosId(procesarCadenas.obtenerListaLong(profesional.getStrServicios()))));
 					properties.setLanguages(procesarCadenas.obtenerIdiomas(idiomaDao.obtenerIdiomas(procesarCadenas.obtenerListaLong(profesional.getStrLenguajes()))));
 					properties.setAboutme(profesional.getStrDescripcion());
 					properties.setIconSize(new ProfesionalDTO.Properties.IconSize(Long.parseLong(profesional.getIcono().getStrAlto()), Long.parseLong(profesional.getIcono().getStrAncho())));
@@ -90,7 +89,7 @@ public class ProfesionalService implements IProfesionalService {
 					
 					profesionalDTO.setProperties(properties);
 					profesionalDTO.setGeometry(geometry);
-					objetoJson.add(profesionalDTO);
+					objetoJson.add(profesionalDTO);//width,heigt. Cifrado aplicacion. Medio de pago
 				}
 				
 				RespuestaPositiva respuestaPositiva = new RespuestaPositiva(
@@ -98,11 +97,11 @@ public class ProfesionalService implements IProfesionalService {
 				resultado = mapper.writeValueAsString(respuestaPositiva);
 				
 			}else {
-				resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_PROFESIONALES.getValorInt(), EnumMensajes.NO_PROFESIONALES.getMensaje());
+				resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_PROFESIONALES.getValorInt(),procesarCadenas.realizarTraduccion( EnumMensajes.NO_PROFESIONALES.getMensaje()));
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerProfesionales", "No se ha podido procesar la peticion", e);
-			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_PROFESIONALES.getValorInt(), EnumMensajes.NO_PROFESIONALES.getMensaje());
+			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_PROFESIONALES.getValorInt(), procesarCadenas.realizarTraduccion(EnumMensajes.NO_PROFESIONALES.getMensaje()));
 		}
 		return resultado;
 	}

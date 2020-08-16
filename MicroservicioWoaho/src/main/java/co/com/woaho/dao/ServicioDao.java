@@ -14,13 +14,13 @@ import co.com.woaho.modelo.Servicio;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class ServicioDao extends Persistencia implements IServicioDao {
 
 	private RegistrarLog logs = new RegistrarLog(ServicioDao.class);
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Servicio> obtenerServicios(List<Long> ids) {
+	public List<Servicio> obtenerServiciosId(List<Long> ids) {
 		List<Servicio> listServicios = new ArrayList<>();
 		try {
 			Query query = getEntityManager().createNamedQuery("Servicio.findId");
@@ -28,7 +28,20 @@ public class ServicioDao extends Persistencia implements IServicioDao {
 			listServicios = query.getResultList();
 			return listServicios;
 		}catch (Exception e) {
-			logs.registrarLogError("obtenerServicios", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			logs.registrarLogError("obtenerServiciosId", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return listServicios;
+		}
+	}
+
+	@Override
+	public List<Servicio> consultarServicios() {
+		List<Servicio> listServicios = new ArrayList<>();
+		try {
+			Query query = getEntityManager().createNamedQuery("Servicio.findAll");
+			listServicios = query.getResultList();
+			return listServicios;
+		}catch (Exception e) {
+			logs.registrarLogError("consultarServicios", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return listServicios;
 		}
 	}

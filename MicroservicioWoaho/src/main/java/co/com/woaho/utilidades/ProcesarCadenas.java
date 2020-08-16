@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import com.gtranslate.Language;
+import com.gtranslate.Translator;
+
 import co.com.respuestas.JsonGenerico;
 import co.com.woaho.dto.DireccionDTO;
 import co.com.woaho.dto.MensajeDTO;
@@ -81,7 +84,7 @@ public class ProcesarCadenas {
 				strBuilder.append(EnumGeneral.COMA.getValor());
 			}
 		}
-		return strBuilder.toString();
+		return  strBuilder.toString();
 	}
 
 	public String procesarCadenas(List<Servicio> listServicios) {
@@ -92,7 +95,7 @@ public class ProcesarCadenas {
 				strBuilder.append(EnumGeneral.COMA.getValor());
 			}
 		}
-		return strBuilder.toString();
+		return  strBuilder.toString();
 	}
 
 	public String obtenerProfesiones(List<Profesion> listProfesion) {
@@ -113,6 +116,11 @@ public class ProcesarCadenas {
 			listadoLong.add(Long.parseLong(token));
 		}
 		return listadoLong;
+	}
+	
+	public String realizarTraduccion(String pCadena) {		
+		Translator translate = Translator.getInstance();
+		return translate.translate(pCadena, Language.SPANISH, Language.ENGLISH);
 	}
 
 }

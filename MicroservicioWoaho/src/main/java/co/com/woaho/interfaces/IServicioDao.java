@@ -6,5 +6,7 @@ import co.com.woaho.modelo.Servicio;
 
 public interface IServicioDao {
 
-	List<Servicio> obtenerServicios(List<Long> ids);
+	List<Servicio> obtenerServiciosId(List<Long> ids);
+	
+	List<Servicio> consultarServicios();
 }

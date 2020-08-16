@@ -39,12 +39,12 @@ public class ProfesionalDTO {
 			
 			private Long alto;
 			
-			private Long anco;
+			private Long ancho;
 
-			public IconSize(Long alto, Long anco) {
+			public IconSize(Long alto, Long ancho) {
 				super();
 				this.alto = alto;
-				this.anco = anco;
+				this.ancho = ancho;
 			}
 
 			public Long getAlto() {
@@ -55,12 +55,12 @@ public class ProfesionalDTO {
 				this.alto = alto;
 			}
 
-			public Long getAnco() {
-				return anco;
+			public Long getAncho() {
+				return ancho;
 			}
 
-			public void setAnco(Long anco) {
-				this.anco = anco;
+			public void setAncho(Long ancho) {
+				this.ancho = ancho;
 			}
 		}
 		
