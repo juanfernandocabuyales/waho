@@ -8,6 +8,7 @@ public enum EnumMensajes {
 	NO_PAISES("No se han encontrado paises para la busqueda"),
 	NO_PROFESIONALES("No se han encontrado profesionales para la busqueda"),
 	NO_SERVICIOS("No se han encontrado servicios disponibles"),
+	NO_CATEGORIAS("No se han encontrado categorias disponibles"),
 	INCONVENIENTE_EN_OPERACION("Se ha presentado un inconveniente realizado la operación, favor intentar nuevamente"),
 	REGISTRO_EXITOSO("Se ha realizado el registro {0}"),
 	NO_USUARIO("No se ha encontrado un usuario para el {0} {1}"),
