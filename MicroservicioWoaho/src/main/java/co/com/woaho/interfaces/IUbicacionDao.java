@@ -1,5 +1,8 @@
 package co.com.woaho.interfaces;
 
-public class IUbicacionDao {
+import co.com.woaho.modelo.Ubicacion;
 
+public interface IUbicacionDao {
+
+	void registrarUbicacion(Ubicacion pUbicacion) throws Exception;
 }

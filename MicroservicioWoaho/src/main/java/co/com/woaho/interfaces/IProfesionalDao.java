@@ -8,5 +8,5 @@ public interface IProfesionalDao {
 
 	List<Profesional> obtenerProfesionales(String pIdServicio);
 	
-	void registrarProfesional (Profesional pProfesional) throws Exception;
+	Profesional registrarProfesional(Profesional pProfesional);
 }

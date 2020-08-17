@@ -5,19 +5,23 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IProfesionalDao;
+import co.com.woaho.interfaces.IProfesionalSP;
 import co.com.woaho.modelo.Profesional;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @Repository
 public class ProfesionalDao extends Persistencia implements IProfesionalDao {
 
+	@Autowired
+	private IProfesionalSP profesionalSP;
+	
+	
 	private RegistrarLog logs = new RegistrarLog(ProfesionalDao.class);
 	
 	@SuppressWarnings("unchecked")
@@ -36,19 +40,11 @@ public class ProfesionalDao extends Persistencia implements IProfesionalDao {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.NESTED)
-	public void registrarProfesional(Profesional pProfesional) throws Exception {
+	public Profesional registrarProfesional(Profesional pProfesional){
 		try {
-
-			getEntityManager().persist(pProfesional);
-
-			getEntityManager().flush();
-
-			getEntityManager().clear();
-
+			return profesionalSP.save(pProfesional);
 		}catch(Exception e) {
-			logs.registrarLogError("registrarProfesional", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
-			throw new Exception(e);
+			return null;
 		}
 
 	}

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import co.com.respuestas.JsonGenerico;
 import co.com.respuestas.RespuestaNegativa;
 import co.com.respuestas.RespuestaPositiva;
+import co.com.woaho.dao.UbicacionDao;
 import co.com.woaho.dto.cliente.ProfesionalDTO;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
@@ -47,6 +48,9 @@ public class ProfesionalService implements IProfesionalService {
 	
 	@Autowired
 	private IProfesionDao profesionDao;	
+	
+	@Autowired
+	private UbicacionDao ubicacionDao;
 	
 	private RegistrarLog logs = new RegistrarLog(ProfesionalService.class);	
 	
@@ -127,7 +131,17 @@ public class ProfesionalService implements IProfesionalService {
 			profesional.getIcono().setImagenId(Long.parseLong(request.getIdIcono()));
 			profesional.setCantEstrellas(EnumGeneral.RESPUESTA_POSITIVA.getValorInt());
 			profesional.setCantServicios(EnumGeneral.RESPUESTA_POSITIVA.getValorLong());
-			profesionalDao.registrarProfesional(profesional);
+			
+			Ubicacion ubicacionProfesional = new Ubicacion();
+			ubicacionProfesional.setStrLatitud(request.getUbicacion().getLatitud());
+			ubicacionProfesional.setStrLongitud(request.getUbicacion().getLongitud());
+			ubicacionProfesional.setStrLugarId(request.getUbicacion().getIdLugar());
+			
+			Profesional profesionalNuevo = profesionalDao.registrarProfesional(profesional);
+			
+			ubicacionProfesional.setProfesional(profesionalNuevo);
+			ubicacionDao.registrarUbicacion(ubicacionProfesional);		
+			
 			crearProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 			crearProfesionalResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 		}catch(Exception e) {
