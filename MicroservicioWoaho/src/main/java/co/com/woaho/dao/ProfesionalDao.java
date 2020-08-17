@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
@@ -31,6 +33,24 @@ public class ProfesionalDao extends Persistencia implements IProfesionalDao {
 			logs.registrarLogError("obtenerProfesionales", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return listProfesionales;
 		}
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.NESTED)
+	public void registrarProfesional(Profesional pProfesional) throws Exception {
+		try {
+
+			getEntityManager().persist(pProfesional);
+
+			getEntityManager().flush();
+
+			getEntityManager().clear();
+
+		}catch(Exception e) {
+			logs.registrarLogError("registrarProfesional", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			throw new Exception(e);
+		}
+
 	}
 
 }

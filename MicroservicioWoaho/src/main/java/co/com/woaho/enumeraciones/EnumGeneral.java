@@ -40,5 +40,9 @@ public enum EnumGeneral {
 	public int getValorInt() {
 		return Integer.parseInt(strValor);
 	}
+	
+	public Long getValorLong() {
+		return Long.parseLong(strValor);
+	}
 
 }

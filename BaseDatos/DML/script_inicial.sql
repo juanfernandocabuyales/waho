@@ -51,3 +51,7 @@ INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Año');
 
 INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('INGLES','ENG');
 INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','SPN');
+
+INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Ingeniero');
+INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Electrico');
+INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Estilista');

@@ -22,8 +22,12 @@ import co.com.woaho.interfaces.IProfesionalDao;
 import co.com.woaho.interfaces.IProfesionalService;
 import co.com.woaho.interfaces.IServicioDao;
 import co.com.woaho.modelo.Calificacion;
+import co.com.woaho.modelo.Imagen;
 import co.com.woaho.modelo.Profesional;
+import co.com.woaho.modelo.Territorio;
 import co.com.woaho.modelo.Ubicacion;
+import co.com.woaho.request.CrearProfesionalRequest;
+import co.com.woaho.response.CrearProfesionalResponse;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
@@ -104,6 +108,34 @@ public class ProfesionalService implements IProfesionalService {
 			resultado = Utilidades.getInstance().procesarException(EnumGeneral.SERVICIO_CONSULTAR_PROFESIONALES.getValorInt(), procesarCadenas.realizarTraduccion(EnumMensajes.NO_PROFESIONALES.getMensaje()));
 		}
 		return resultado;
+	}
+
+	@Override
+	public CrearProfesionalResponse crearProfesional(CrearProfesionalRequest request) {
+		CrearProfesionalResponse crearProfesionalResponse = new CrearProfesionalResponse();
+		try {
+			Profesional profesional = new Profesional();
+			profesional.setStrNombre(request.getNombre());
+			profesional.setStrApellido(request.getApellido());
+			profesional.setStrProfesiones(request.getProfesiones());
+			profesional.setNacionalidad(new Territorio());
+			profesional.getNacionalidad().setIdTerritorio(Long.parseLong(request.getNacionalidad()));
+			profesional.setStrServicios(request.getServicios());
+			profesional.setStrLenguajes(request.getLenguaje());
+			profesional.setStrDescripcion(request.getDescripcion());
+			profesional.setIcono(new Imagen());
+			profesional.getIcono().setImagenId(Long.parseLong(request.getIdIcono()));
+			profesional.setCantEstrellas(EnumGeneral.RESPUESTA_POSITIVA.getValorInt());
+			profesional.setCantServicios(EnumGeneral.RESPUESTA_POSITIVA.getValorLong());
+			profesionalDao.registrarProfesional(profesional);
+			crearProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+			crearProfesionalResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+		}catch(Exception e) {
+			logs.registrarLogError("crearProfesional", "No se ha podido procesar la peticion", e);
+			crearProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			crearProfesionalResponse.setMensajeRespuesta(EnumMensajes.NO_SOLICITUD.getMensaje());
+		}
+		return crearProfesionalResponse;
 	}
 
 }

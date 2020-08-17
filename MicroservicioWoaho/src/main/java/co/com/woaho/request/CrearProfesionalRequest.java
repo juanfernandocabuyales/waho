@@ -3,15 +3,21 @@ package co.com.woaho.request;
 public class CrearProfesionalRequest {
 
 	private String nombre;
+	
 	private String apellido;
+	
 	private String nacionalidad;
+	
 	private String servicios;
+	
 	private String lenguaje;
+	
 	private String descripcion;
+	
 	private String idIcono;
-	private int cantEstrellas;
-	private int cantServicios;
-	private String comentarios;
+	
+	private String profesiones;
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -54,22 +60,10 @@ public class CrearProfesionalRequest {
 	public void setIdIcono(String idIcono) {
 		this.idIcono = idIcono;
 	}
-	public int getCantEstrellas() {
-		return cantEstrellas;
+	public String getProfesiones() {
+		return profesiones;
 	}
-	public void setCantEstrellas(int cantEstrellas) {
-		this.cantEstrellas = cantEstrellas;
-	}
-	public int getCantServicios() {
-		return cantServicios;
-	}
-	public void setCantServicios(int cantServicios) {
-		this.cantServicios = cantServicios;
-	}
-	public String getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(String comentarios) {
-		this.comentarios = comentarios;
+	public void setProfesiones(String profesiones) {
+		this.profesiones = profesiones;
 	}
 }
