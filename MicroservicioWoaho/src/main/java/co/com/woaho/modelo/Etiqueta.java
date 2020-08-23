@@ -17,8 +17,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "etiqueta")
 @NamedQueries({ @NamedQuery(name="Etiqueta.findAll", query="SELECT et FROM Etiqueta et"),
-		 		@NamedQuery(name="Etiqueta.etiquetaCodigoIdioma", query="SELECT et FROM Etiqueta et WHERE et.idiomaEtiqueta = :pIdioma AND et.strCodigoEtiqueta = :pCodigo"),
-		 		@NamedQuery(name="Etiqueta.etiquetaIdioma", query="SELECT et FROM Etiqueta et WHERE et.idiomaEtiqueta = :pIdioma")})
+		 		@NamedQuery(name="Etiqueta.etiquetaCodigoIdioma", query="SELECT et FROM Etiqueta et WHERE et.idiomaEtiqueta.idiomaId = :pIdioma AND et.strCodigoEtiqueta = :pCodigo"),
+		 		@NamedQuery(name="Etiqueta.etiquetaIdioma", query="SELECT et FROM Etiqueta et WHERE et.idiomaEtiqueta.idiomaId = :pIdioma")})
 public class Etiqueta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
