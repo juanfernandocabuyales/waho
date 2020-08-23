@@ -55,3 +55,9 @@ INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','SPN');
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Ingeniero');
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Electrico');
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Estilista');
+
+INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('usuario',2,'1');
+INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('user',1,'1');
+INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('clave',2,'2');
+INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('password',1,'2');
+

@@ -74,7 +74,13 @@ CREATE SEQUENCE woaho.sec_ubicacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALU
 ALTER SEQUENCE woaho.sec_ubicacion OWNER TO postgres;
 
 CREATE SEQUENCE woaho.sec_profesion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;  
+ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_profesion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_etiqueta CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_etiqueta OWNER TO postgres;    
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -101,6 +107,24 @@ ALTER TABLE woaho.idioma
     OWNER to postgres;
 COMMENT ON TABLE woaho.idioma
     IS 'Tabla que contiene la información de los idiomas del aplicativo';
+    
+CREATE TABLE woaho.etiqueta
+(
+    etiqueta_id integer NOT NULL DEFAULT nextval('woaho.sec_etiqueta'::regclass),
+    etiqueta_valor character varying(4000),
+    etiqueta_idioma integer,
+    etiqueta_codigo character varying(4000),
+    CONSTRAINT etiqueta_pkey PRIMARY KEY (etiqueta_id),
+    CONSTRAINT "FK_ETIQUETA_IDIOMA" FOREIGN KEY (etiqueta_idioma)
+        REFERENCES woaho.idioma (idioma_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);
+ALTER TABLE woaho.etiqueta
+    OWNER to postgres;
+COMMENT ON TABLE woaho.etiqueta
+    IS 'Tabla que contiene las etiquetas del aplicativo';
     
 CREATE TABLE woaho.profesion
 (
