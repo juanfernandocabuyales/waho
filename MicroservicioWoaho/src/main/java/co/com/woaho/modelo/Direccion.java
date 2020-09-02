@@ -54,6 +54,9 @@ public class Direccion implements Serializable {
 	
 	@Column(name ="direccion_longitud",length = 100)
 	private String strDireccionLongitud;
+	
+	@Column(name ="direccion_lugar_id",length = 100)
+	private String strLugarId;
 
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -125,5 +128,13 @@ public class Direccion implements Serializable {
 
 	public void setStrDireccionLongitud(String strDireccionLongitud) {
 		this.strDireccionLongitud = strDireccionLongitud;
+	}
+
+	public String getStrLugarId() {
+		return strLugarId;
+	}
+
+	public void setStrLugarId(String strLugarId) {
+		this.strLugarId = strLugarId;
 	}	
 }

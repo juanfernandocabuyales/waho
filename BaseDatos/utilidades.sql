@@ -43,12 +43,18 @@ INSERT INTO woaho.servicio (servicio_nombre,servicio_imagen,servicio_categoria)
 							 
 INSERT INTO woaho.tarifa (tarifa_valor,tarifa_moneda,tarifa_territorio,tarifa_servicio,tarifa_unidad)
 							 VALUES (20000,1,1,1,1);
+							 
+INSERT INTO woaho.usuario(usuario_nombre,usuario_apellido,usuario_celular,usuario_correo,usuario_acepta_terminos,usuario_fecha_hora_acepta_terminos,usuario_clave,usuario_direccion)
+VALUES('juan','cabuyales','3147452427','juancabuyales@gmail.com','S',CURRENT_TIMESTAMP,'1234',null);
+
+INSERT INTO woaho.usuario(usuario_nombre,usuario_apellido,usuario_celular,usuario_correo,usuario_acepta_terminos,usuario_fecha_hora_acepta_terminos,usuario_clave,usuario_direccion)
+VALUES('dayana','muñoz','3147452428','dayana_98@gmail.com','S',CURRENT_TIMESTAMP,'5678',null);
 					 
 INSERT INTO woaho.calificacion (calificacion_usuario,calificacion_profesional,calificacion_descripcion,calificacion_calificacion,calificacion_servicio)
-					 VALUES (12,1,'Muy buen servicio',4,1);
+					 VALUES (1,1,'Muy buen servicio',4,1);
 					 
 INSERT INTO woaho.calificacion (calificacion_usuario,calificacion_profesional,calificacion_descripcion,calificacion_calificacion,calificacion_servicio)
-					 VALUES (11,1,'servicio regular',3,1);
+					 VALUES (2,1,'servicio regular',3,1);
 					 
 
 					 

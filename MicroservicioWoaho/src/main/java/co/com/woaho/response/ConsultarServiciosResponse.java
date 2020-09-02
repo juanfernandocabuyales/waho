@@ -36,102 +36,54 @@ public class ConsultarServiciosResponse {
 
 	public static class Servicio{
 	
-		private String idServicio;
+		private String id;
 		
-		private String nombreServicio;
+		private String image;
 		
-		private Categoria categoria;
+		private String name;
 		
-		private Imagen imagen;
+		private double price;
 		
-		public String getIdServicio() {
-			return idServicio;
+		private String category;
+
+		public String getId() {
+			return id;
 		}
 
-		public void setIdServicio(String idServicio) {
-			this.idServicio = idServicio;
+		public void setId(String id) {
+			this.id = id;
 		}
 
-		public String getNombreServicio() {
-			return nombreServicio;
+		public String getImage() {
+			return image;
 		}
 
-		public void setNombreServicio(String nombreServicio) {
-			this.nombreServicio = nombreServicio;
+		public void setImage(String image) {
+			this.image = image;
 		}
 
-		public Categoria getCategoria() {
-			return categoria;
+		public String getName() {
+			return name;
 		}
 
-		public void setCategoria(Categoria categoria) {
-			this.categoria = categoria;
+		public void setName(String name) {
+			this.name = name;
 		}
 
-		public Imagen getImagen() {
-			return imagen;
+		public double getPrice() {
+			return price;
 		}
 
-		public void setImagen(Imagen imagen) {
-			this.imagen = imagen;
+		public void setPrice(double price) {
+			this.price = price;
 		}
 
-		public static class Categoria{
-			
-			private String idCategoria;
-			
-			private String nombreCategoria;
-
-			public Categoria(String idCategoria, String nombreCategoria) {
-				super();
-				this.idCategoria = idCategoria;
-				this.nombreCategoria = nombreCategoria;
-			}
-
-			public String getIdCategoria() {
-				return idCategoria;
-			}
-
-			public void setIdCategoria(String idCategoria) {
-				this.idCategoria = idCategoria;
-			}
-
-			public String getNombreCategoria() {
-				return nombreCategoria;
-			}
-
-			public void setNombreCategoria(String nombreCategoria) {
-				this.nombreCategoria = nombreCategoria;
-			}		
+		public String getCategory() {
+			return category;
 		}
-		
-		public static class Imagen{
-			
-			private String idImagen;
-			
-			private String rutaImagen;
 
-			public Imagen(String idImagen, String rutaImagen) {
-				super();
-				this.idImagen = idImagen;
-				this.rutaImagen = rutaImagen;
-			}
-
-			public String getIdImagen() {
-				return idImagen;
-			}
-
-			public void setIdImagen(String idImagen) {
-				this.idImagen = idImagen;
-			}
-
-			public String getRutaImagen() {
-				return rutaImagen;
-			}
-
-			public void setRutaImagen(String rutaImagen) {
-				this.rutaImagen = rutaImagen;
-			}
-		}
+		public void setCategory(String category) {
+			this.category = category;
+		}		
 	}
 }

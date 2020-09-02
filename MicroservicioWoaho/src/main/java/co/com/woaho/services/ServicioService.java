@@ -13,7 +13,10 @@ import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IServicioDao;
 import co.com.woaho.interfaces.IServicioServices;
+import co.com.woaho.interfaces.ITarifaDao;
 import co.com.woaho.modelo.Servicio;
+import co.com.woaho.modelo.Tarifa;
+import co.com.woaho.request.ConsultarServiciosRequest;
 import co.com.woaho.response.ConsultarServiciosResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -23,13 +26,16 @@ public class ServicioService implements IServicioServices {
 
 	@Autowired
 	private IServicioDao serviciosDao;
+	
+	@Autowired
+	private ITarifaDao tarifaDao;
 
 	private RegistrarLog logs = new RegistrarLog(ServicioService.class);	
 
 	@Override
 	public ConsultarServiciosResponse consultarServicios() {
 		ConsultarServiciosResponse consultarServiciosResponse = new ConsultarServiciosResponse();
-		logs.registrarLogInfoEjecutaMetodoConParam("consultarServicios","");
+		logs.registrarLogInfoEjecutaMetodoConParam("consultarServicios","Sin parametros");
 		try {
 			List<Servicio> listServicios = serviciosDao.consultarServicios();
 
@@ -40,10 +46,16 @@ public class ServicioService implements IServicioServices {
 				List<ConsultarServiciosResponse.Servicio> listServiciosDto = new ArrayList<>();
 				for(Servicio servicio : listServicios) {
 					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
-					servicioDto.setIdServicio(String.valueOf(servicio.getServicioId()));
-					servicioDto.setNombreServicio(servicio.getStrNombre());
-					servicioDto.setCategoria(new ConsultarServiciosResponse.Servicio.Categoria(String.valueOf(servicio.getCategoria().getCategoriaId()),servicio.getCategoria().getStrDescripcion()));
-					servicioDto.setImagen(new ConsultarServiciosResponse.Servicio.Imagen(String.valueOf(servicio.getImagen().getImagenId()),servicio.getImagen().getStrRuta()));
+					servicioDto.setId(String.valueOf(servicio.getServicioId()));
+					servicioDto.setImage(servicio.getImagen().getStrRuta());
+					servicioDto.setName(servicio.getStrNombre());
+					Tarifa tarifa = tarifaDao.obtenerTarifaServicio(servicio.getServicioId());
+					if(tarifa == null) {
+						servicioDto.setPrice(0);
+					}else {
+						servicioDto.setPrice(tarifa.getValor());	
+					}
+					servicioDto.setCategory(servicio.getCategoria().getStrDescripcion());
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -52,6 +64,44 @@ public class ServicioService implements IServicioServices {
 			}
 		}catch(Exception e) {
 			logs.registrarLogError("consultarServicios", "No se ha podido procesar la peticion", e);
+			consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
+		}
+		return consultarServiciosResponse;
+	}
+
+	@Override
+	public ConsultarServiciosResponse consultarServiciosCategoria(ConsultarServiciosRequest request) {
+		ConsultarServiciosResponse consultarServiciosResponse = new ConsultarServiciosResponse();
+		logs.registrarLogInfoEjecutaMetodoConParam("consultarServicios","");
+		try {
+			List<Servicio> listServicios = serviciosDao.consultarServiciosCategoria(Long.valueOf(request.getIdCategoria()));
+
+			if(listServicios == null || listServicios.isEmpty()) {
+				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
+			}else {
+				List<ConsultarServiciosResponse.Servicio> listServiciosDto = new ArrayList<>();
+				for(Servicio servicio : listServicios) {
+					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
+					servicioDto.setId(String.valueOf(servicio.getServicioId()));
+					servicioDto.setImage(servicio.getImagen().getStrRuta());
+					servicioDto.setName(servicio.getStrNombre());
+					Tarifa tarifa = tarifaDao.obtenerTarifaServicio(servicio.getServicioId());
+					if(tarifa == null) {
+						servicioDto.setPrice(0);
+					}else {
+						servicioDto.setPrice(tarifa.getValor());	
+					}
+					servicioDto.setCategory(servicio.getCategoria().getStrDescripcion());
+					listServiciosDto.add(servicioDto);
+				}
+				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				consultarServiciosResponse.setListServicios(listServiciosDto);
+				consultarServiciosResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+			}
+		}catch(Exception e) {
+			logs.registrarLogError("consultarServiciosCategoria", "No se ha podido procesar la peticion", e);
 			consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
 		}

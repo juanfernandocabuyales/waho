@@ -17,7 +17,7 @@ import co.com.woaho.utilidades.RegistrarLog;
 
 @RestController
 @RequestMapping("/categoria")
-public class CategoriaController {
+public class CategoriaController extends BaseController {
 	
 	private RegistrarLog logs = new RegistrarLog(CategoriaController.class);
 	
@@ -33,7 +33,7 @@ public class CategoriaController {
 		ConsultarCategoriasResponse consultarCategoriasResponse = categoriaService.consultarCategorias();
 		
 		GeneralResponse resp = new GeneralResponse();
-		resp.setMensaje(gson.toJson(consultarCategoriasResponse));
+		resp.setMensaje(encrypt(gson.toJson(consultarCategoriasResponse)));
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}

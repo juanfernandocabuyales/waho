@@ -16,7 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tarifa")
-@NamedQueries({ @NamedQuery(name="Tarifa.findAll", query="SELECT ta FROM Tarifa ta")})
+@NamedQueries({ @NamedQuery(name="Tarifa.findAll", query="SELECT ta FROM Tarifa ta"),
+			    @NamedQuery(name="Tarifa.findServicio", query="SELECT ta FROM Tarifa ta WHERE ta.servicio.servicioId = :pIdServicio")
+             })
 public class Tarifa implements Serializable {
 
 private static final long serialVersionUID = 1L;

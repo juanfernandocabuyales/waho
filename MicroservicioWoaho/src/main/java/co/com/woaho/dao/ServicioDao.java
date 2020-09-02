@@ -46,4 +46,18 @@ public class ServicioDao extends Persistencia implements IServicioDao {
 		}
 	}
 
+	@Override
+	public List<Servicio> consultarServiciosCategoria(Long pIdCategoria) {
+		List<Servicio> listServicios = new ArrayList<>();
+		try {
+			Query query = getEntityManager().createNamedQuery("Servicio.servicioCategoria");
+			query.setParameter("pIdCategoria", pIdCategoria);
+			listServicios = query.getResultList();
+			return listServicios;
+		}catch (Exception e) {
+			logs.registrarLogError("consultarServiciosCategoria", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return listServicios;
+		}
+	}
+
 }

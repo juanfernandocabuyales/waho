@@ -27,6 +27,14 @@ public class RegistrarLog {
 		logger = LoggerFactory.getLogger(classlog);
 	}
 	
+	public void registrarInfo(String pInformacion) {
+		logger.info(HILO + Thread.currentThread().getId() + CIERRE_HILO + pInformacion);
+	}
+	
+	public void registrarError(Exception e) {
+		logger.error(HILO + Thread.currentThread().getId() + CIERRE_HILO + e.getMessage(),e);
+	}
+	
 	public void registrarLogInfoEjecutaMetodo(String pNombreMetodo) {
 		logger.info(HILO + Thread.currentThread().getId() + CIERRE_HILO + INFO_METODO + pNombreMetodo);
 	}

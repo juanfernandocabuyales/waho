@@ -76,11 +76,11 @@ ALTER SEQUENCE woaho.sec_ubicacion OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_profesion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;
 
-CREATE SEQUENCE woaho.sec_profesion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_profesion OWNER TO postgres;
-
 CREATE SEQUENCE woaho.sec_etiqueta CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_etiqueta OWNER TO postgres;    
+ALTER SEQUENCE woaho.sec_etiqueta OWNER TO postgres; 
+
+CREATE SEQUENCE woaho.sec_medio_pago CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_medio_pago OWNER TO postgres;    
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -269,7 +269,7 @@ CREATE TABLE woaho.codigo
     CONSTRAINT "FK_CODIGO_ESTADO" FOREIGN KEY (codigo_estado)
         REFERENCES woaho.estado (estado_id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE NO ACTION
 );
 ALTER TABLE woaho.codigo
     OWNER to postgres;
@@ -287,6 +287,7 @@ CREATE TABLE woaho.direccion
     direccion_usuario integer,
     direccion_latitud character varying(4000),
     direccion_longitud character varying(4000),
+    direccion_lugar_id character varying(4000),
     CONSTRAINT direccion_pkey PRIMARY KEY (direccion_id),
     CONSTRAINT "FK_DIRECCION_TERRITORIO" FOREIGN KEY (direccion_territorio_id)
         REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
@@ -324,8 +325,8 @@ CREATE TABLE woaho.imagen
     imagen_id integer NOT NULL DEFAULT nextval('woaho.sec_imagen'::regclass),
     imagen_nombre character varying(4000),
     imagen_ruta character varying(4000),
-    imagen_alto varying(4000),
-    imagen_ancho varying(4000),
+    imagen_alto character varying(4000),
+    imagen_ancho character varying(4000),
     CONSTRAINT imagen_pkey PRIMARY KEY (imagen_id)
 );
 ALTER TABLE woaho.imagen
@@ -382,6 +383,7 @@ CREATE TABLE woaho.servicio
     servicio_nombre character varying(4000),
     servicio_imagen integer,
     servicio_categoria integer,
+    servicio_territorio integer,
     CONSTRAINT servicio_pkey PRIMARY KEY (servicio_id),
     CONSTRAINT "FK_SERVICIO_CATEGORIA" FOREIGN KEY (servicio_categoria)
        REFERENCES woaho.categoria (categoria_id) MATCH SIMPLE
@@ -389,6 +391,10 @@ CREATE TABLE woaho.servicio
        ON DELETE NO ACTION,
  	CONSTRAINT "FK_SERVICIO_IMAGEN" FOREIGN KEY (servicio_imagen)
        REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
+       ON UPDATE NO ACTION
+       ON DELETE NO ACTION,
+    CONSTRAINT "FK_SERVICIO_TERRITORIO" FOREIGN KEY (servicio_territorio)
+       REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
        ON UPDATE NO ACTION
        ON DELETE NO ACTION
 );
@@ -543,12 +549,27 @@ CREATE TABLE woaho.calificacion
         REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION 
-        
 );
 ALTER TABLE woaho.calificacion
     OWNER to postgres;
 COMMENT ON TABLE woaho.calificacion
     IS 'Tabla que contiene las calificaciones de los profesionales';
+    
+CREATE TABLE woaho.medio_pago
+(
+	medio_pago_id integer NOT NULL DEFAULT nextval('woaho.sec_medio_pago'::regclass),
+	medio_pago_nombre character varying(4000),
+	medio_pago_territorio integer,
+	CONSTRAINT medio_pago_pkey PRIMARY KEY (medio_pago_id),
+	CONSTRAINT "FK_MEDIO_PAGO_TERRITORIO" FOREIGN KEY (medio_pago_territorio)
+        REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION	
+);
+ALTER TABLE woaho.medio_pago
+    OWNER to postgres;
+COMMENT ON TABLE woaho.medio_pago
+    IS 'Tabla que contiene los medios de pagos para el aplicativo';
     
 CREATE TABLE woaho.pedido
 (
@@ -560,6 +581,7 @@ CREATE TABLE woaho.pedido
     pedido_direccion integer,
     pedido_cod_promocional character varying(4000),
     pedido_profesional integer,
+    pedido_medio_pago integer,
     CONSTRAINT pedido_pkey PRIMARY KEY (pedido_id),
     CONSTRAINT "FK_PEDIDO_SERVICIO" FOREIGN KEY (pedido_servicio)
         REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
@@ -579,6 +601,10 @@ CREATE TABLE woaho.pedido
         ON DELETE NO ACTION,
      CONSTRAINT "FK_PEDIDO_PROFESIONAL" FOREIGN KEY (pedido_profesional)
         REFERENCES woaho.profesional (profesional_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+     CONSTRAINT "FK_PEDIDO_MEDIO_PAGO" FOREIGN KEY (pedido_medio_pago)
+        REFERENCES woaho.medio_pago (medio_pago_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

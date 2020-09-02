@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "servicio")
 @NamedQueries({ @NamedQuery(name="Servicio.findAll", query="SELECT se FROM Servicio se"),
+				@NamedQuery(name="Servicio.servicioCategoria", query="SELECT se FROM Servicio se WHERE se.categoria.categoriaId = :pIdCategoria"),
 				@NamedQuery(name="Servicio.findId", query="SELECT se FROM Servicio se WHERE se.servicioId IN ( :pId )")})
 public class Servicio implements Serializable {
 

@@ -27,7 +27,7 @@ INSERT INTO woaho.estado (estado_codigo) VALUES ('I');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
 
-INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro')
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro');
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIEMPO_COD_REGISTRO','2','Define el tiempo de valides de un codigo, se debe dar en Minutos');
 
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (1,'Todos');
@@ -37,7 +37,7 @@ INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (4,'
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (5,'Mascotas');
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (6,'Jardineria');
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (7,'Arreglos');
-INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (9,'Mecanica');
+INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (8,'Mecanica');
 
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
