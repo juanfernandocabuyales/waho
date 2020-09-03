@@ -39,9 +39,9 @@ public class CategoriaService implements ICategoriaService {
 				List<ConsultarCategoriasResponse.Categoria> listCategoriaDto = new ArrayList<>();
 				for(Categoria categoria : listCategoria) {
 					ConsultarCategoriasResponse.Categoria categoriaDto = new ConsultarCategoriasResponse.Categoria();
-					categoriaDto.setCategoriaId(String.valueOf(categoria.getCategoriaId()));
-					categoriaDto.setNombreCategoria(categoria.getStrDescripcion());
-					categoriaDto.setImagenCategoria(new ConsultarCategoriasResponse.Categoria.Imagen(String.valueOf(categoria.getImagen().getImagenId()),categoria.getImagen().getStrRuta()));
+					categoriaDto.setIcon(categoria.getImagen().getStrRuta());
+					categoriaDto.setId(String.valueOf(categoria.getCategoriaId()));
+					categoriaDto.setName(categoria.getStrDescripcion());
 					listCategoriaDto.add(categoriaDto);
 				}
 				consultarCategoriasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());

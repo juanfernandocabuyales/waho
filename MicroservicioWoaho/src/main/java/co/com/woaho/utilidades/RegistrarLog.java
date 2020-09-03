@@ -9,7 +9,7 @@ public class RegistrarLog {
 	private Logger logger;
 	
 	private static final String HILO = "Hilo[";
-	private static final String CIERRE_HILO = "]";
+	private static final String CIERRE_HILO = "] ";
 	private static final String INFO_METODO = "Se va a ejecutar el metodo: ";
 	private static final String INFO_PARAMETROS = "con parametros: ";
 	private static final String INFO_QUERY = "se ejecuta el query: ";

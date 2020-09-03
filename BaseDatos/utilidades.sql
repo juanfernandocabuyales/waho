@@ -49,6 +49,12 @@ VALUES('juan','cabuyales','3147452427','juancabuyales@gmail.com','S',CURRENT_TIM
 
 INSERT INTO woaho.usuario(usuario_nombre,usuario_apellido,usuario_celular,usuario_correo,usuario_acepta_terminos,usuario_fecha_hora_acepta_terminos,usuario_clave,usuario_direccion)
 VALUES('dayana','muñoz','3147452428','dayana_98@gmail.com','S',CURRENT_TIMESTAMP,'5678',null);
+
+INSERT INTO woaho.direccion(direccion_nombre,direccion_descripcion,direccion_territorio_id,direccion_edificacion,direccion_estado,direccion_usuario,direccion_latitud,direccion_longitud,direccion_lugar_id)
+VALUES('Casa','Calle 65B #2d-20',5,NULL,1,1,'3.4725913','-76.4910089','ChIJ8bNLzPCmMI4RaGGuUum1Dx8');
+
+INSERT INTO woaho.direccion(direccion_nombre,direccion_descripcion,direccion_territorio_id,direccion_edificacion,direccion_estado,direccion_usuario,direccion_latitud,direccion_longitud,direccion_lugar_id)
+VALUES('Casa','MZ j Casa 4',5,NULL,1,2,'4.8048592','-75.7487813','ChIJ_cFW60iHOI4RvN_x-RCUs5U');
 					 
 INSERT INTO woaho.calificacion (calificacion_usuario,calificacion_profesional,calificacion_descripcion,calificacion_calificacion,calificacion_servicio)
 					 VALUES (1,1,'Muy buen servicio',4,1);

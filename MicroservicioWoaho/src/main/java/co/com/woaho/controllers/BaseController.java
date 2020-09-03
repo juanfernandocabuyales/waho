@@ -22,7 +22,7 @@ public class BaseController {
 			String rawText = aes256.decrypt(request, "Llave");
 
 			logs.registrarInfo("***********************************************************************");
-			logs.registrarInfo("PETICION ENTRANTE ");
+			logs.registrarInfo("PETICION ENTRANTE CLIENTE");
 			logs.registrarInfo(rawText);
 			logs.registrarInfo("***********************************************************************");
 
@@ -36,7 +36,7 @@ public class BaseController {
 	public String encrypt(String response){
 		try {
 			logs.registrarInfo("***********************************************************************");
-			logs.registrarInfo("RESPONDIENDO A SIMS");
+			logs.registrarInfo("RESPONDIENDO CLIENTE");
 			logs.registrarInfo(response);
 			logs.registrarInfo("***********************************************************************");
 

@@ -33,7 +33,7 @@ public class CategoriaController extends BaseController {
 		ConsultarCategoriasResponse consultarCategoriasResponse = categoriaService.consultarCategorias();
 		
 		GeneralResponse resp = new GeneralResponse();
-		resp.setMensaje(encrypt(gson.toJson(consultarCategoriasResponse)));
+		resp.setMensaje(gson.toJson(consultarCategoriasResponse));
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
