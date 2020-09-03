@@ -1,0 +1,49 @@
+clave riux: W0ah0;
+
+IP address	162.0.226.48
+Port	    22
+Username	root
+Password	99PVFUnGMUQr6VmGmmmz
+
+wO4h0;
+
+var/lib/pgsql/12/data/  ==> directorio de configuracion para postgres
+
+
+/home/juan/jdk1.8.0_162/bin/java -jar   ==> comando para ejecutar un jar con java 1.8 (microservicio)
+/home/juan/jdk1.8.0_162/bin/java -jar SiceWebServiceCodesa-0.0.1-SNAPSHOT.jar ==> Ejemplo comando
+
+nohup java -jar MicroservicioWoaho-0.0.1-SNAPSHOT.jar &  ==> dejar micro arriba, asi cierre la session SSH
+
+firewall-cmd --zone=public --permanent --add-port 8082/tcp  ==> agregar puerto
+
+sudo firewall-cmd --reload ==> se recargan las configuraciones de puertos
+
+firewall-cmd --list-all ==> se listan los puertos habilitados
+
+ps aux | grep java  ==> revisar procesos java
+
+
+{"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"} ==> Crear Profesional
+
+endpoint: http://localhost:8082/woaho/direccion/consultarDirecciones
+request: {"strMensaje":"{"idUsuario":"1"}"}
+response: {"mensaje": "{"listDireccion":[{"placeId":"ChIJ8bNLzPCmMI4RaGGuUum1Dx8","mainAddress":"Calle 65B #2d-20","name":"Casa","secondaryAddress":"*","home":"*","location":{"lat":"3.4725913","lng":"-76.4910089"}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
+endpoint: http://localhost:8082/woaho/categoria/consultarCategorias
+request: 
+response: {"mensaje": "{"listCategorias":[{"id":"1","name":"Todos","icon":"url"},{"id":"2","name":"Manicure","icon":"url"},{"id":"3","name":"Peluqueria","icon":"url"},{"id":"4","name":"Comida","icon":"url"},{"id":"5","name":"Mascotas","icon":"url"},{"id":"6","name":"Jardineria","icon":"url"},{"id":"7","name":"Arreglos","icon":"url"},{"id":"9","name":"Mecanica","icon":"url"},{"id":"10","name":"Software","icon":"software.png"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
+endpoint: http://localhost:8082/woaho/etiquetas/obtenerEtiquetasIdioma
+request: {"strMensaje":"{"codigoEtiqueta":"","idiomaEtiqueta":"2"}"}
+response: {"mensaje": "{"listEtiquetas":[{"etiqueta":"usuario","codEtiqueta":"1","idEtiqueta":"1"},{"etiqueta":"clave","codEtiqueta":"2","idEtiqueta":"3"}],"mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/etiquetas/obtenerEtiquetasCodigoIdioma
+request: {"strMensaje":"{"codigoEtiqueta":"1","idiomaEtiqueta":"2"}"}
+response: {"mensaje": "{"listEtiquetas":[{"etiqueta":"usuario","codEtiqueta":"1","idEtiqueta":"1"}],"mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/profesional/crearProfesional
+request: {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
