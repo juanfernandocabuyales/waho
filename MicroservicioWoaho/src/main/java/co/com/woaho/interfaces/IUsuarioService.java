@@ -1,17 +1,27 @@
 package co.com.woaho.interfaces;
 
+import co.com.woaho.request.ConsultarUsuarioRequest;
+import co.com.woaho.request.GenerarCodigoRequest;
+import co.com.woaho.request.LoginRequest;
+import co.com.woaho.request.RegistrarUsuarioRequest;
+import co.com.woaho.request.ValidarCodigoRequest;
+import co.com.woaho.response.ConsultarUsuarioResponse;
+import co.com.woaho.response.GenerarCodigoResponse;
+import co.com.woaho.response.LoginResponse;
+import co.com.woaho.response.RegistrarUsuarioResponse;
+import co.com.woaho.response.ValidarCodigoResponse;
 
 public interface IUsuarioService {
 
-	String registrarUsuario(String pCadenaUsuarioDTO);
+	RegistrarUsuarioResponse registrarUsuario(RegistrarUsuarioRequest request);
 	
-	String actualizarUsuario(String pCadenaUsuarioDTO);
+	RegistrarUsuarioResponse actualizarUsuario(RegistrarUsuarioRequest request);
 	
-	String consultarUsuario(String pCelular);
+	ConsultarUsuarioResponse consultarUsuario(ConsultarUsuarioRequest request);
 	
-	String generarCodigoRegistro(String pCelular);
+	GenerarCodigoResponse generarCodigoRegistro(GenerarCodigoRequest request);
 	
-	String validarLogin(String pCorreo,String pClave);
+	LoginResponse validarLogin(LoginRequest request);
 	
-	String validarCodigoRegistro(String pCelular,String pCodigo);
+	ValidarCodigoResponse validarCodigoRegistro(ValidarCodigoRequest request);
 }

@@ -1,7 +1,9 @@
 package co.com.woaho.interfaces;
 
+import co.com.woaho.request.MensajesPantallaRequest;
+import co.com.woaho.response.MensajePantallaResponse;
 
 public interface IPantallaService {
 
-	String obtenerMensajesPantalla(int pIntPantallaId);
+	MensajePantallaResponse obtenerMensajesPantalla(MensajesPantallaRequest request);
 }
