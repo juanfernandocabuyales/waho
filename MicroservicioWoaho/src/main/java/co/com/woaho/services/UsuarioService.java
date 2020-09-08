@@ -158,7 +158,7 @@ public class UsuarioService implements IUsuarioService{
 				ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO, pCodigoRegistro));
 		pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
 		pParametros.put(Constantes.ID_DEVICE, pIdDevice);
-		envioNotificacion.notificarCodigoResgistro(pParametros); //TODO response.getCodigo();
+		envioNotificacion.notificarCodigoResgistro(pParametros);
 	}
 
 	@Override

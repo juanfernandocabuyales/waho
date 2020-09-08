@@ -46,7 +46,7 @@ public class ProcesarCadenas {
 		JsonGenerico<DireccionDTO> listDireccionesDTO = new JsonGenerico<>();
 		StringBuilder strCadena = new StringBuilder();
 		for (Direccion direccion : pListDireccion) {
-			DireccionDTO direccionDTO = new DireccionDTO(String.valueOf(direccion.getUsuarioId()),
+			DireccionDTO direccionDTO = new DireccionDTO(String.valueOf(direccion.getDireccionId()),
 					direccion.getStrDireccion(),
 					obtenerCadenaTerritorio(direccion.getTerritorioDireccion(),strCadena),
 					direccion.getStrDireccionLatitud(),

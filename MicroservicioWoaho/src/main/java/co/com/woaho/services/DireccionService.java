@@ -39,6 +39,7 @@ public class DireccionService implements IDireccionService {
 				List<ConsultarDireccionResponse.Direccion> listDireccionesDTO = new ArrayList<>();
 				for(Direccion direccion : listDirecciones) {
 					ConsultarDireccionResponse.Direccion direccionDTO = new ConsultarDireccionResponse.Direccion();
+					direccionDTO.setId(String.valueOf(direccion.getDireccionId()));
 					direccionDTO.setLocation(new ConsultarDireccionResponse.Direccion.Location());
 					direccionDTO.getLocation().setLat(direccion.getStrDireccionLatitud());
 					direccionDTO.getLocation().setLng(direccion.getStrDireccionLongitud());

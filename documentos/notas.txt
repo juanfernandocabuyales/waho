@@ -24,6 +24,14 @@ firewall-cmd --list-all ==> se listan los puertos habilitados
 
 ps aux | grep java  ==> revisar procesos java
 
+/************************************************************************
+		Peticiones OneSignal
+{app_id=0942319e-1677-4480-8992-a96e3882f7c7, contents={es=Este es el mensaje en español, en=message english}, headings={es=Este es el mensaje en español, en=message english}, include_player_ids=[8c09da82-a90e-4c1b-8bb5-34b34e839efc]} ==> funciona
+
+
+{app_id=0942319e-1677-4480-8992-a96e3882f7c7, contents={es=Tu codigo de verificación es 207316, en=message english}, headings={es=Bienvenido a Woaho, en=message english}, include_player_ids=[8c09da82-a90e-4c1b-8bb5-34b34e839efc]}
+******************************************************************************/
+
 
 {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"} ==> Crear Profesional
 
@@ -47,4 +55,8 @@ response: {"mensaje": "{"listEtiquetas":[{"etiqueta":"usuario","codEtiqueta":"1"
 
 endpoint: http://localhost:8082/woaho/profesional/crearProfesional
 request: {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/solicitarPedido
+request: {"strMensaje":"'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}

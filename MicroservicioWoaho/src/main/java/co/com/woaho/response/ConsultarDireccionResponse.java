@@ -16,6 +16,8 @@ public class ConsultarDireccionResponse extends BaseResponse {
 
 	public static class Direccion{
 		
+		private String id;
+		
 		private String placeId;
 		
 		private String mainAddress;
@@ -28,6 +30,14 @@ public class ConsultarDireccionResponse extends BaseResponse {
 		
 		private Location location;
 		
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
 		public String getPlaceId() {
 			return placeId;
 		}

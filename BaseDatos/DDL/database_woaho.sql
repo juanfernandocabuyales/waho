@@ -559,6 +559,7 @@ CREATE TABLE woaho.medio_pago
 (
 	medio_pago_id integer NOT NULL DEFAULT nextval('woaho.sec_medio_pago'::regclass),
 	medio_pago_nombre character varying(4000),
+	medio_pago_etiqueta character varying(4000),
 	medio_pago_territorio integer,
 	CONSTRAINT medio_pago_pkey PRIMARY KEY (medio_pago_id),
 	CONSTRAINT "FK_MEDIO_PAGO_TERRITORIO" FOREIGN KEY (medio_pago_territorio)
@@ -580,6 +581,8 @@ CREATE TABLE woaho.pedido
     pedido_estado integer,
     pedido_direccion integer,
     pedido_cod_promocional character varying(4000),
+    pedido_fecha character varying(4000),
+    pedido_hora character varying(4000),
     pedido_profesional integer,
     pedido_medio_pago integer,
     CONSTRAINT pedido_pkey PRIMARY KEY (pedido_id),

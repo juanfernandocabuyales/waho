@@ -26,7 +26,7 @@ public class Direccion implements Serializable {
 	@SequenceGenerator(name = "DIRECCIONID_GENERATOR", sequenceName = "SEC_DIRECCION", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DIRECCIONID_GENERATOR")
 	@Column(name = "direccion_id", unique = true, nullable = false, precision = 12)
-	private Long usuarioId;
+	private Long direccionId;
 	
 	@Column(name ="direccion_nombre",length = 100)
 	private String strNombreDireccion;
@@ -56,14 +56,14 @@ public class Direccion implements Serializable {
 	private String strDireccionLongitud;
 	
 	@Column(name ="direccion_lugar_id",length = 100)
-	private String strLugarId;
+	private String strLugarId;	
 
-	public Long getUsuarioId() {
-		return usuarioId;
+	public Long getDireccionId() {
+		return direccionId;
 	}
 
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
+	public void setDireccionId(Long direccionId) {
+		this.direccionId = direccionId;
 	}
 
 	public String getStrNombreDireccion() {

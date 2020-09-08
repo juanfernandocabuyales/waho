@@ -22,10 +22,11 @@ INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');
 
-INSERT INTO woaho.estado (estado_codigo) VALUES ('A');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('I');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('P');
-INSERT INTO woaho.estado (estado_codigo) VALUES ('R');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('ACTIVO');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('INACTIVO');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('PENDIENTE');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('REGISTRADO');
+INSERT INTO woaho.estado (estado_codigo) VALUES ('FINALIZADO');
 
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro');
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIEMPO_COD_REGISTRO','2','Define el tiempo de valides de un codigo, se debe dar en Minutos');
@@ -60,4 +61,9 @@ INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALU
 INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('user',1,'1');
 INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('clave',2,'2');
 INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('password',1,'2');
+
+
+INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Efectivo','Efectivo',1);
+INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Credito','Credito',1);
+INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Debito','Debito',1);
 
