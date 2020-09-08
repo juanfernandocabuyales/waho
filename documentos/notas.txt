@@ -4,7 +4,8 @@ IP address	162.0.226.48
 Port	    22
 Username	root
 Password	99PVFUnGMUQr6VmGmmmz
-
+correo: woahoapplication@gmail.com
+clave correo: wO4h0appl1c4ti0n;
 wO4h0;
 
 var/lib/pgsql/12/data/  ==> directorio de configuracion para postgres

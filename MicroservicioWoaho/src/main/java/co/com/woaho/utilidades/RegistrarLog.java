@@ -31,8 +31,20 @@ public class RegistrarLog {
 		logger.info(HILO + Thread.currentThread().getId() + CIERRE_HILO + pInformacion);
 	}
 	
+	public void registrarInfo(Object pObjecto) {
+		logger.info(HILO + Thread.currentThread().getId() + CIERRE_HILO + pObjecto);
+	}
+	
+	public void registrarDebug(Object pObjecto) {
+		logger.debug("result : {}", pObjecto);
+	}
+	
 	public void registrarError(Exception e) {
 		logger.error(HILO + Thread.currentThread().getId() + CIERRE_HILO + e.getMessage(),e);
+	}
+	
+	public void registrarError(Exception e,String pMensaje) {
+		logger.error(HILO + Thread.currentThread().getId() + CIERRE_HILO + pMensaje,e);
 	}
 	
 	public void registrarLogInfoEjecutaMetodo(String pNombreMetodo) {

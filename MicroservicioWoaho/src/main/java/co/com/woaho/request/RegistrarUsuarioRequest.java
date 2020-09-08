@@ -20,6 +20,7 @@ public class RegistrarUsuarioRequest{
 		private String email;
 		private String checkTerminos;
 		private String password;
+		private String idSuscriptor;
 		
 		public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos,String password) {
 			super();
@@ -80,11 +81,12 @@ public class RegistrarUsuarioRequest{
 			this.password = password;
 		}
 
+		public String getIdSuscriptor() {
+			return idSuscriptor;
+		}
 
-		@Override
-		public String toString() {
-			return "UsuarioDTO [id=" + id + ", name=" + name + ", lastName=" + lastName + ", cell=" + cell + ", email="
-					+ email + ", checkTerminos=" + checkTerminos + "]";
+		public void setIdSuscriptor(String idSuscriptor) {
+			this.idSuscriptor = idSuscriptor;
 		}
 	}
 }

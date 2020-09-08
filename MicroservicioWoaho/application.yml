@@ -42,3 +42,7 @@ eureka:
       defaultZone: ${EUREKA_URI:http://10.11.6.47:8761/eureka}
   instance:
     preferIpAddress: true
+    
+parametracion-adicional:
+  appid: '0942319e-1677-4480-8992-a96e3882f7c7'
+  restKey: 'Basic MTJiZjhkNmUtMTc0Ni00OTU5LWJmNDgtOTA0NDVjZmI5N2U3'

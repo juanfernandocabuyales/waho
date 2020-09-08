@@ -53,6 +53,9 @@ public class Usuario implements Serializable {
 	@Column(name = "usuario_clave")
 	private String strClave;
 	
+	@Column(name = "usuario_id_suscriptor")
+	private String idSuscriptor;
+	
 
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -116,5 +119,13 @@ public class Usuario implements Serializable {
 
 	public void setStrClave(String strClave) {
 		this.strClave = strClave;
+	}
+
+	public String getIdSuscriptor() {
+		return idSuscriptor;
+	}
+
+	public void setIdSuscriptor(String idSuscriptor) {
+		this.idSuscriptor = idSuscriptor;
 	}
 }

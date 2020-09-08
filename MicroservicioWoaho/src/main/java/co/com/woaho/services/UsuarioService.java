@@ -1,12 +1,14 @@
 package co.com.woaho.services;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
+import co.com.woaho.alertas.EnviarNotificacion;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IUsuarioDao;
@@ -22,6 +24,8 @@ import co.com.woaho.response.GenerarCodigoResponse;
 import co.com.woaho.response.LoginResponse;
 import co.com.woaho.response.RegistrarUsuarioResponse;
 import co.com.woaho.response.ValidarCodigoResponse;
+import co.com.woaho.utilidades.Constantes;
+import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
 
@@ -33,6 +37,9 @@ public class UsuarioService implements IUsuarioService{
 
 	@Autowired
 	private IUsuarioDao usuarioDao;
+	
+	@Autowired
+	private EnviarNotificacion envioNotificacion;
 
 	@Override
 	public RegistrarUsuarioResponse registrarUsuario(RegistrarUsuarioRequest request) {
@@ -47,6 +54,7 @@ public class UsuarioService implements IUsuarioService{
 			usuario.setStrCelular(pUsuarioDTO.getCell());
 			usuario.setStrAceptaTerminos(pUsuarioDTO.getCheckTerminos());
 			usuario.setFechaHoraAceptaTerminos(new Date());
+			usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
 
 			usuarioDao.registarUsuario(usuario);
 			
@@ -134,6 +142,7 @@ public class UsuarioService implements IUsuarioService{
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				response.setCodigo(strRespuesta[1]);
+				enviarNotificacionPush(response.getCodigo(),strRespuesta[3]);
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
@@ -141,6 +150,15 @@ public class UsuarioService implements IUsuarioService{
 			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return response;
+	}
+	
+	private void enviarNotificacionPush(String pCodigoRegistro,String pIdDevice) {
+		HashMap<String, String> pParametros = new HashMap<>();
+		pParametros.put(Constantes.CONTENIDO, 
+				ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO, pCodigoRegistro));
+		pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
+		pParametros.put(Constantes.ID_DEVICE, pIdDevice);
+		envioNotificacion.notificarCodigoResgistro(pParametros); //TODO response.getCodigo();
 	}
 
 	@Override

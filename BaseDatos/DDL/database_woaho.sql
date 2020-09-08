@@ -232,7 +232,7 @@ CREATE TABLE woaho.usuario
     usuario_acepta_terminos character varying(4000),
     usuario_fecha_hora_acepta_terminos TIMESTAMP,
     usuario_clave character varying(4000),
-    usuario_direccion integer,
+    usuario_id_suscriptor character varying(4000),
     CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
     CONSTRAINT celular_key UNIQUE (usuario_celular)
 );

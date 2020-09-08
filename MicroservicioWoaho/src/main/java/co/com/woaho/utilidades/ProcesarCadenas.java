@@ -1,5 +1,6 @@
 package co.com.woaho.utilidades;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -121,6 +122,10 @@ public class ProcesarCadenas {
 	public String realizarTraduccion(String pCadena) {		
 		Translator translate = Translator.getInstance();
 		return translate.translate(pCadena, Language.SPANISH, Language.ENGLISH);
+	}
+	
+	public String obtenerMensajeFormat(String pForma, Object ...objects) {
+		return MessageFormat.format(pForma, objects);
 	}
 
 }

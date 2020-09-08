@@ -10,6 +10,7 @@ public enum EnumMensajes {
 	NO_SERVICIOS("No se han encontrado servicios disponibles"),
 	NO_CATEGORIAS("No se han encontrado categorias disponibles"),
 	INCONVENIENTE_EN_OPERACION("Se ha presentado un inconveniente realizado la operación, favor intentar nuevamente"),
+	INCONVENIENTE_EN_NOTIFICACION("Se ha presentado un inconveniente al solicitar la notificacion"),
 	REGISTRO_EXITOSO("Se ha realizado el registro {0}"),
 	NO_USUARIO("No se ha encontrado un usuario para el {0} {1}"),
 	NO_SOLICITUD("No se ha podido procesar la solicitud "),
