@@ -34,12 +34,18 @@ INSERT INTO woaho.imagen (imagen_nombre,imagen_ruta,imagen_alto,imagen_ancho) VA
 INSERT INTO woaho.profesional (profesional_nombre,profesional_apellido,profesional_profesiones,profesional_nacionalidad,profesional_servicios,profesional_lenguajes,profesional_descripcion,profesional_imagen_icono,profesional_cant_estrellas,profesional_cant_servicios)
 					 VALUES ('Juan','Cabuyales','1-2-3',1,'1-3','1-2','Ingeniero experto en desarrollo de software',1,0,0);
 					 
+INSERT INTO woaho.profesional (profesional_id, profesional_nombre, profesional_apellido, profesional_profesiones, profesional_nacionalidad, profesional_servicios, profesional_lenguajes, profesional_descripcion, profesional_imagen_icono, profesional_cant_estrellas, profesional_cant_servicios)
+					VALUES(2, 'Juan', 'Beca', '1-2-3', 1, '4-5', '1-2', 'Ingeniero experto en desarrollo Back', 1, 0, 0);
+					 
 INSERT INTO woaho.ubicacion (ubicacion_profesional,ubicacion_lugar_id,ubicacion_latitud,ubicacion_longitud) VALUES (1,'328','3.470289','-76.489222');
 					 
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (10,'Software');
 					 
-INSERT INTO woaho.servicio (servicio_nombre,servicio_imagen,servicio_categoria)
-							 VALUES ('Desarrollo Software',10,9);
+INSERT INTO woaho.servicio (servicio_nombre,servicio_imagen,servicio_categoria, servicio_territorio)
+							 VALUES ('Desarrollo Software',10,10,1);
+							 
+INSERT INTO woaho.servicio (servicio_id, servicio_nombre, servicio_imagen, servicio_categoria, servicio_territorio)
+							VALUES(2, 'Mecanica General', 10, 9, 1);
 							 
 INSERT INTO woaho.tarifa (tarifa_valor,tarifa_moneda,tarifa_territorio,tarifa_servicio,tarifa_unidad)
 							 VALUES (20000,1,1,1,1);

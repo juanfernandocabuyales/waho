@@ -30,7 +30,7 @@ public class ProfesionalDao extends Persistencia implements IProfesionalDao {
 		List<Profesional> listProfesionales = new ArrayList<>();
 		try {
 			Query query = getEntityManager().createNamedQuery("Profesional.findServicio");
-			query.setParameter("pServicios", "%"+ pIdServicio + "%");
+			query.setParameter("pServicios", pIdServicio);
 			listProfesionales = query.getResultList();
 			return listProfesionales;
 		}catch (Exception e) {

@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "profesional")
 @NamedQueries({ @NamedQuery(name="Profesional.findAll", query="SELECT pr FROM Profesional pr"),
-				@NamedQuery(name="Profesional.findServicio", query="SELECT pr FROM Profesional pr WHERE pr.strServicios LIKE :pServicios")})
+				@NamedQuery(name="Profesional.findServicio", query="SELECT pr FROM Profesional pr WHERE pr.strServicios LIKE CONCAT('%',:pServicios,'%')")})
 public class Profesional implements Serializable {
 
 	private static final long serialVersionUID = 1L;

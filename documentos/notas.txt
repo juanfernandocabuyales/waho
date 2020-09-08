@@ -57,6 +57,18 @@ endpoint: http://localhost:8082/woaho/profesional/crearProfesional
 request: {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
 
+endpoint: http://localhost:8082/woaho/profesional/consultarProfesionales
+request: {"strMensaje":"{'servicio':'1'}"}
+response: {"mensaje": "{"listProfesionales":[{"id":"1","properties":{"name":"Juan Cabuyales","image":"url","profession":"Ingeniero,Electrico,Estilista,","nationality":"Colombia","services":"Desarrollo Software,","languages":"INGLES,ESPAÑOL,","aboutme":"Ingeniero experto en desarrollo de software","iconSize":{"alto":0,"ancho":0},"numberStars":0.0,"numberServices":0,"comments":[{"message":"Muy buen servicio"},{"message":"servicio regular"}]},"geometry":{"placeId":"328","location":{"lat":"3.470289","lng":"-76.489222"}}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/servicio/consultarServicios
+request:
+response: {"mensaje": "{"listServicios":[{"id":"1","image":"software.png","name":"Desarrollo Software","price":20000.0,"category":"Software"},{"id":"2","image":"software.png","name":"Mecanica General","price":0.0,"category":"Mecanica"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/servicio/consultarServiciosCategoria
+request: {"strMensaje":"{'idCategoria':'9'}"}
+response: {"mensaje": "{"listServicios":[{"id":"1","image":"software.png","name":"Desarrollo Software","price":20000.0,"category":"Software"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
 endpoint: http://localhost:8082/woaho/pedido/solicitarPedido
 request: {"strMensaje":"{'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
@@ -76,3 +88,31 @@ response: {"mensaje": "{"listPedidos":[{"servicio":"Desarrollo Software","descri
 endpoint: http://localhost:8082/woaho/pedido/cancelarPedido
 request: {"strMensaje":"{'idPedido':'1','motivo':'No se termino a tiempo el desarrollo'}"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/territorio/consultarPaises
+request: {"strMensaje":"{'tipoTerritorio':'Pais'}"}
+response: {"mensaje": "{"lisPaisesDto":[{"id":"1","name":"Colombia","code":"+57"},{"id":"2","name":"Estados Unidos","code":"+1"},{"id":"3","name":"México","code":"+52"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/registrarUsuario
+request: {"strMensaje":"{'usuarioDto':{'id':'','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','checkTerminos':'S','password':'445566','idSuscriptor':'ASDASDASDASD-asdadasd-asdasda'}}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/actualizarUsuario
+request: {"strMensaje":"{'usuarioDto':{'id':'3','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','checkTerminos':'S','password':'445566','idSuscriptor':'ASDASDASDASD-asdadasd-asdasda'}}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/consultarUsuario
+request: {"strMensaje":"{'numeroCelular':'3146538900','correoPersona':''}"}
+response: {"mensaje":"{"usuarioDto":{"id":"3","name":"usuario","lastName":"registro","cell":"3146538900","email":"usuario@woaho.com.co","checkTerminos":"S","password":"zgKbdd5zz/c="},"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/generarCodigoRegistro
+request: {"strMensaje":"{'celular':'3146538900'}"}
+response: {"mensaje": "{"codigo":"498808","codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/validarLogin
+request: {"strMensaje":"{'correo':'usuario@woaho.com.co','clave':'zgKbdd5zz/c='}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/usuario/validarCodigoRegistro
+request: {"strMensaje":"{'celular':'3146538900','codigo':'498808'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}

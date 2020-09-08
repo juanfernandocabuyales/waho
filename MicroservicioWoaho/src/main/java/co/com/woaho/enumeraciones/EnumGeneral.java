@@ -9,6 +9,7 @@ public enum EnumGeneral {
 	PUNTO_COMA(";"),
 	PIPE("|"),
 	VIGURILLA("~"),
+	GUION("-"),
 	
 	
 	SERVICIO_CONSULTA_PANTALLAS("1"),

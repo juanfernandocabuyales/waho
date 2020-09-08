@@ -114,7 +114,7 @@ public class ProcesarCadenas {
 
 	public List<Long> obtenerListaLong(String pCadena){
 		List<Long> listadoLong = new ArrayList<>();
-		String [] tokens = pCadena.split(EnumGeneral.COMA.getValor());
+		String [] tokens = pCadena.split(EnumGeneral.GUION.getValor());
 		for(String token : tokens) {
 			listadoLong.add(Long.parseLong(token));
 		}

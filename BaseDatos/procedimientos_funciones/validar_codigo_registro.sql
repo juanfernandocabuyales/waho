@@ -17,7 +17,7 @@ DECLARE
     	
 BEGIN
 
-	SELECT cod.codigo_numero,cod.codigo_intentos,EXTRACT(minute FROM (now() - codigo.codigo_fecha_hora_registro))::numeric
+	SELECT cod.codigo_numero,cod.codigo_intentos,EXTRACT(minute FROM (now() - cod.codigo_fecha_hora_registro))::numeric
 	INTO codigo_generado,cant_intentos,cant_minutos_codigo
 	FROM codigo cod
 	WHERE cod.codigo_celular = p_celular
@@ -35,7 +35,7 @@ BEGIN
 			UPDATE codigo
 			SET codigo_estado = 2
 			WHERE codigo.codigo_celular = p_celular
-			AND cod.codigo_estado = 1;
+			AND codigo.codigo_estado = 1;
 			
 			IF (cant_minutos_codigo > parametro_tiempo) THEN
 				RETURN '1,El codigo ingresado ha caducado.Solicite un nuevo codigo.';
@@ -47,7 +47,7 @@ BEGIN
 				UPDATE codigo
 				SET codigo_intentos = cant_intentos - 1
 				WHERE codigo.codigo_celular = p_celular
-				AND cod.codigo_estado = 1;
+				AND codigo.codigo_estado = 1;
 				RETURN '1,El codigo ingresado no corresponde.Intente nuevamente o solicite un nuevo codigo.';
 			ELSE
 				RETURN '1,El codigo ingresado ya no es valido.Solicite un nuevo codigo.';
