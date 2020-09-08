@@ -1,7 +1,9 @@
 package co.com.woaho.utilidades;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -126,6 +128,11 @@ public class ProcesarCadenas {
 	
 	public String obtenerMensajeFormat(String pForma, Object ...objects) {
 		return MessageFormat.format(pForma, objects);
+	}
+	
+	public String formatearFecha(String pFormato, Date pFecha) {
+		SimpleDateFormat format = new SimpleDateFormat(pFormato);
+		return format.format(pFecha);
 	}
 
 }

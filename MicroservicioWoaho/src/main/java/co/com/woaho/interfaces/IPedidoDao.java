@@ -11,4 +11,6 @@ public interface IPedidoDao {
 	Pedido crearActualizarPedido(Pedido pPedido);
 	
 	List<Pedido> obtenerPedidosProfesional(Long pIdProfesional);
+	
+	Pedido obtenerPedido(Long pIdPedido);
 }

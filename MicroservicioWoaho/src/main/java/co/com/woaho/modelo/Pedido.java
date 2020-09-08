@@ -1,6 +1,7 @@
 package co.com.woaho.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +14,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "pedido")
-@NamedQueries({ @NamedQuery(name="Pedido.findAll", query="SELECT pe FROM Pedido pe"),
+@NamedQueries({ @NamedQuery(name="Pedido.findAll", query="SELECT pe.pedidoId FROM Pedido pe"),
+				@NamedQuery(name="Pedido.findId", query="SELECT pe FROM Pedido pe WHERE pe.pedidoId = :pId"),
 				@NamedQuery(name="Pedido.findUser", query="SELECT pe FROM Pedido pe WHERE pe.pedidoUsuario.usuarioId = :pIdUsario"),
 				@NamedQuery(name="Pedido.findProfesional", query="SELECT pe FROM Pedido pe WHERE pe.pedidoProfesional.profesionalId = :pIdProfesional")})
 public class Pedido implements Serializable {
@@ -64,6 +68,10 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "pedido_medio_pago")
 	private MedioPago pedidoMedioPago;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "pedido_fecha_final", nullable = false)
+	private Date fechafinal;
 
 	public Long getPedidoId() {
 		return pedidoId;
@@ -151,5 +159,13 @@ public class Pedido implements Serializable {
 
 	public void setPedidoMedioPago(MedioPago pedidoMedioPago) {
 		this.pedidoMedioPago = pedidoMedioPago;
+	}
+
+	public Date getFechafinal() {
+		return fechafinal;
+	}
+
+	public void setFechafinal(Date fechafinal) {
+		this.fechafinal = fechafinal;
 	}
 }

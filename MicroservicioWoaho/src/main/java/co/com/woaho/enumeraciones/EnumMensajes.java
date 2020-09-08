@@ -16,7 +16,9 @@ public enum EnumMensajes {
 	NO_SOLICITUD("No se ha podido procesar la solicitud "),
 	CLAVE_INVALIDA("La clave ingresada no corresponde al usuario. Intente nuevamente."),
 	NO_DIRECCIONES("No se han encontrado direcciones registradas para el usuario"),
-	NO_PEDIDOS("Listado de pedidos vacio y/o invalido")
+	NO_PEDIDOS("Listado de pedidos vacio y/o invalido"),
+	NO_PEDIDOS_PARA("No se han encontrado pedidos para el {0} ."),
+	NO_PEDIDO("No se ha encontrado un pedido para cancelar")
 	;
 	
 	private final String strValor;

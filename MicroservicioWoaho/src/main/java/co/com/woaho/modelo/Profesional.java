@@ -171,5 +171,9 @@ public class Profesional implements Serializable {
 
 	public void setUbicacion(List<Ubicacion> ubicacion) {
 		this.ubicacion = ubicacion;
-	}	
+	}
+	
+	public String getNombreCompleto() {
+		return this.strNombre + " " + this.strApellido;
+	}
 }

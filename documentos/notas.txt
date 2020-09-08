@@ -58,5 +58,21 @@ request: {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','n
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
 
 endpoint: http://localhost:8082/woaho/pedido/solicitarPedido
-request: {"strMensaje":"'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]"}
+request: {"strMensaje":"{'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/actualizarPedido
+request: {"strMensaje":"{'listPedidos':[{'id':'1','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/consultarPedidosUsuario
+request: {"strMensaje":"{'idUsuario':'2'}"}
+response: {"mensaje": "{"listPedidos":[{"servicio":"Desarrollo Software","descripcion":"desarrollo por Sprint","estado":"PENDIENTE","direccion":"MZ j Casa 4","fechaHoraInicio":"2020-09-08 17:27:45","profesional":"Juan Cabuyales","medioPago":"Efectivo","fechaHoraFin":"*"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/consultarPedidosProfesional
+request: {"strMensaje":"{'idProfesional':'2'}"}
+response: {"mensaje": "{"listPedidos":[{"servicio":"Desarrollo Software","descripcion":"desarrollo por Sprint","estado":"PENDIENTE","direccion":"MZ j Casa 4","fechaHora":"2020-09-08 17:27:45","usuario":"dayana muñoz","medioPago":"Efectivo","fechaHoraFinal":"*"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/cancelarPedido
+request: {"strMensaje":"{'idPedido':'1','motivo':'No se termino a tiempo el desarrollo'}"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}

@@ -80,7 +80,10 @@ CREATE SEQUENCE woaho.sec_etiqueta CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE
 ALTER SEQUENCE woaho.sec_etiqueta OWNER TO postgres; 
 
 CREATE SEQUENCE woaho.sec_medio_pago CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_medio_pago OWNER TO postgres;    
+ALTER SEQUENCE woaho.sec_medio_pago OWNER TO postgres;  
+
+CREATE SEQUENCE woaho.sec_cancelacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_cancelacion OWNER TO postgres;    
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -585,6 +588,7 @@ CREATE TABLE woaho.pedido
     pedido_hora character varying(4000),
     pedido_profesional integer,
     pedido_medio_pago integer,
+    pedido_fecha_final TIMESTAMP,
     CONSTRAINT pedido_pkey PRIMARY KEY (pedido_id),
     CONSTRAINT "FK_PEDIDO_SERVICIO" FOREIGN KEY (pedido_servicio)
         REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
@@ -614,4 +618,21 @@ CREATE TABLE woaho.pedido
 ALTER TABLE woaho.pedido
     OWNER to postgres;
 COMMENT ON TABLE woaho.pedido
-    IS 'Tabla que contiene los pedidos del aplicativo';  
+    IS 'Tabla que contiene los pedidos del aplicativo';
+    
+CREATE TABLE woaho.cancelacion
+(
+	cancelacion_id integer NOT NULL DEFAULT nextval('sec_cancelacion'::regclass),
+	cancelacion_pedido integer,
+	cancelacion_motivo character varying(4000),
+	cancelacion_fecha TIMESTAMP,
+	CONSTRAINT cancelacion_pkey PRIMARY KEY (cancelacion_id),
+	CONSTRAINT "FK_CANCELACION_PEDIDO" FOREIGN KEY (cancelacion_pedido)
+        REFERENCES woaho.pedido (pedido_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.cancelacion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.cancelacion
+    IS 'Tabla que contiene las cancelaciones realizadas';  

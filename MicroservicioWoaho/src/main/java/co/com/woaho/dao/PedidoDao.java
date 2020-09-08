@@ -66,5 +66,20 @@ public class PedidoDao extends Persistencia implements IPedidoDao {
 			return listPedidos;
 		}
 	}
+	
+	@Override
+	@Transactional(propagation = Propagation.NESTED)
+	public Pedido obtenerPedido(Long pIdPedido) {
+		Pedido pedido = null;
+		try {
+			Query query = getEntityManager().createNamedQuery("Pedido.findId");
+			query.setParameter("pId", pIdPedido);
+			pedido = (Pedido) query.getSingleResult();
+			return pedido;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerPedido", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
 
 }

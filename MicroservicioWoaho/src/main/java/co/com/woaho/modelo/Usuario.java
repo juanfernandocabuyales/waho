@@ -128,4 +128,8 @@ public class Usuario implements Serializable {
 	public void setIdSuscriptor(String idSuscriptor) {
 		this.idSuscriptor = idSuscriptor;
 	}
+	
+	public String getNombreCompleto() {
+		return this.strNombre + " " + this.strApellido;
+	}
 }
