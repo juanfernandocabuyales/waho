@@ -1,0 +1,48 @@
+/* +++++++++++++++++++++COLORES++++++++++++++++++*/
+
+.gris {
+    color: rgba(55, 55, 55, 0.8);
+}
+
+.negro {
+    color: rgba(0, 0, 0, 1);
+}
+
+.gris-oscuro {
+    color: rgb(28, 28, 28) !important;
+}
+
+.color {
+    background: rgba(34, 181, 115, 1);
+    // border: 1px solid rgba(34, 181, 115, 1);
+}
+
+.sin-color {
+    background: rgba(255, 255, 255, 1);
+}
+
+.background-gris {
+    background-color: rgb(242, 242, 242);
+    --background: rgb(242, 242, 242);
+}
+
+.color-line {
+    --border-color: var(--ion-color-primary);
+}
+
+.color-text-input {
+    font-weight: 600;
+    color: black;
+}
+
+.degradado {
+    background: linear-gradient(to top, rgba(250, 103, 103, 1) 0%, rgba(249, 25, 84, 1) 65%, rgba(249, 25, 84, 1) 100%);
+}
+
+.transparente {
+    --background: transparent !important;
+}
+
+.danger {
+    color: var(--ion-color-danger) !important;
+}

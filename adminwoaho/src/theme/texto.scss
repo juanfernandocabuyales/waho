@@ -1,0 +1,185 @@
+/* ++++++++++++++++++TEXTO+++++++++++++++ */
+
+.text-toolbar {
+    font-family: "Futura";
+    ion-label {
+        margin-left: 10px;
+        margin-right: 10px;
+        text-align: left;
+        font-weight: bold;
+        display: contents !important;
+    }
+}
+
+.text-principal {
+    font-family: "Futura";
+    width: 90%;
+    white-space: normal !important;
+    h5 {
+        font-size: 1.4em;
+        color: var(--ion-color-primary);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h6 {
+        font-size: 0.9em;
+        color: rgba(179, 179, 179, 1);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+// programar servicio
+.texto-item {
+    //font-family: "Futura";
+    text-align: left;
+    font-size: 0.9em;
+    padding: inherit;
+    color: rgba(55, 55, 55, 0.8);
+    .item-native {
+        padding-left: inherit;
+    }
+}
+
+.texto {
+    margin-bottom: 0.5em;
+    text-align: left;
+    font-size: 0.8em !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.texto-left {
+    text-align: left;
+}
+
+.texto-letra-pequena {
+    margin-bottom: 0.5em;
+    text-align: left;
+    font-size: 0.7em;
+}
+
+.texto-textarea {
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.8em;
+}
+
+// Elegir profesional
+.text-item-profesional {
+    font-family: "Futura" !important;
+    text-align: left;
+    white-space: normal !important;
+    width: 100%;
+    h5 {
+        font-size: 1.1em;
+        color: rgb(55, 55, 55);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h6 {
+        font-size: 0.9em;
+        color: rgba(179, 179, 179, 1);
+        margin-top: 0px;
+    }
+}
+
+// servicio programado
+.text-item-mensaje {
+    font-family: "Futura" !important;
+    text-align: left;
+    white-space: normal !important;
+    width: 100%;
+    h5 {
+        font-size: 0.8em;
+        color: rgb(55, 55, 55);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h6 {
+        font-size: 0.7em;
+        color: rgba(179, 179, 179, 1);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.texto-con-icono {
+    margin-left: 0.5em;
+    text-align: left;
+    font-size: 0.8em !important;
+}
+
+.texto-centrado {
+    text-align: center;
+    font-size: 0.8em !important;
+    display: block;
+}
+
+// registro
+.titulo {
+    font-family: "futura";
+    h1 {
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+}
+
+.label-input {
+    font-size: 0.8em;
+    color: rgba(55, 55, 55, 0.6) !important;
+    font-family: "futura";
+}
+
+.text-registro {
+    font-family: "Futura" !important;
+    text-align: left;
+    white-space: normal !important;
+    width: 100%;
+    h5 {
+        font-size: 1em;
+        color: rgb(55, 55, 55);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h6 {
+        color: rgba(55, 55, 55, 0.9);
+        margin-top: 0px;
+        font-size: 1.4em;
+        // font-style: italic;
+    }
+}
+
+.text-nombre-registro {
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+// direccion
+.text-direccion {
+    font-family: "Futura" !important;
+    white-space: normal !important;
+    text-align: left;
+    width: 100%;
+    h5 {
+        font-size: 1em;
+        color: rgb(55, 55, 55);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h6 {
+        color: rgba(55, 55, 55, 0.9);
+        margin-top: 0px;
+        font-size: 0.8em;
+        font-style: italic;
+    }
+}
+
+.texto-alerta {
+    margin-bottom: 0.5em;
+    text-align: left;
+    font-size: 1em !important;
+    font-weight: 100 !important;
+}
