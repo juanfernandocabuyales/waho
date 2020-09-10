@@ -1,5 +1,5 @@
 <ion-content class="ion-padding">
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="validarLogin()">
     <ion-grid fixed>
       <ion-row>
 
@@ -12,19 +12,19 @@
               <ion-label class="label-input" position="floating">
                 <h1>Usuario</h1>
               </ion-label>
-              <ion-input class="texto-item" type="text"></ion-input>
+              <ion-input #inputLogin  class="texto-item" type="text" formControlName="login"></ion-input>
           </ion-item>
         </ion-col>
 
         <ion-col size="12">
           <ion-item class="item-style input-item" mode="md">
               <ion-label class="label-input" position="floating"><h1>Clave</h1></ion-label>
-              <ion-input class="texto-item" type="text" inputmode="text"></ion-input>
+              <ion-input class="texto-item" type="password" inputmode="text" formControlName="clave"></ion-input>
           </ion-item>
         </ion-col>
 
         <ion-col size="12">
-          <ion-button class="button-registro" type="submit" size="large" expand="block" mode="ios">
+          <ion-button class="button-registro" [disabled]="loginForm.invalid" type="submit" size="large" expand="block" mode="ios">
               <ion-text>
                   <h3>Ingresar</h3>
               </ion-text>
