@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {FooterPrincipalComponent} from './footer-principal/footer-principal.component';
+import { FooterPrincipalComponent } from './footer-principal/footer-principal.component';
+import { HeaderPrincipalComponent } from './header-principal/header-principal.component';
 
 @NgModule({
   declarations: [
-    FooterPrincipalComponent
+    FooterPrincipalComponent,
+    HeaderPrincipalComponent
   ],
   exports: [
-    FooterPrincipalComponent
+    FooterPrincipalComponent,
+    HeaderPrincipalComponent
   ],
   imports: [
     CommonModule,
