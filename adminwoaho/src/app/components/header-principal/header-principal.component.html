@@ -1,12 +1,19 @@
 <ion-header class="ion-no-border">
     <ion-toolbar mode="ios">
-        <ion-title>
+        <ion-title color="primary" size="default">
             Woaho
         </ion-title>        
         <ion-buttons slot="start">
             <ion-buttons slot="start">
-                <ion-back-button defaultHref="home" mode="md"></ion-back-button>
-            </ion-buttons>
+                <ion-back-button defaultHref="/" mode="md"></ion-back-button>                
+            </ion-buttons>        
         </ion-buttons>
+
+        <ion-buttons slot="end">
+            <ion-button (click)="onClick()">
+                <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
+            </ion-button>        
+        </ion-buttons>
+
     </ion-toolbar>
 </ion-header>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url_servicio : 'http://162.0.226.48:8082/'
+  url_servicio : 'http://162.0.226.48:8082/woaho/'
 };
 
 /*

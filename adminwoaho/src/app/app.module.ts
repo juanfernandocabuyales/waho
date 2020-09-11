@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
-
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @NgModule({
@@ -20,7 +19,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
    IonicModule.forRoot(),
    AppRoutingModule,
    HttpClientModule,
-   ComponentsModule
+   ComponentsModule,
+   
   ],
   providers: [
     StatusBar,
