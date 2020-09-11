@@ -13,8 +13,8 @@ export class HeaderPrincipalComponent implements OnInit {
   ngOnInit() {}
 
 
-  gotoBack() {   
-    this.navCtrl.pop();  
+  gotoBack() {
+    this.navCtrl.pop();
   }
 
 }
