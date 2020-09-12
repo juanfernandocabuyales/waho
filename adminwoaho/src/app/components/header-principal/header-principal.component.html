@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
     <ion-toolbar mode="ios">
         <ion-title color="primary" size="default">
-            Woaho
+            {{titulo}}
         </ion-title>        
         <ion-buttons slot="start">
             <ion-buttons slot="start">
@@ -9,7 +9,7 @@
             </ion-buttons>        
         </ion-buttons>
 
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" *ngIf="blnOpciones">
             <ion-button (click)="onClick()">
                 <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
             </ion-button>        

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,12 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./header-principal.component.scss'],
 })
 export class HeaderPrincipalComponent implements OnInit {
+
+  @Input('titulo')
+  titulo:string;
+
+  @Input('blnOpciones')
+  blnOpciones:boolean;
 
   constructor(private navCtrl: NavController) { }
 

@@ -8,6 +8,8 @@ import {SessionService} from '../../services/session.service';
 })
 export class HomePage implements OnInit {
 
+  blnOpciones:boolean = true;
+
   constructor(private sessionService: SessionService) { }
 
   ngOnInit() {

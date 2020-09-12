@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Servicio } from '../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
+import { ActionSheetController, LoadingController } from '@ionic/angular';
 import { UtilidadesService } from '../../services/utilidades.service';
-import { ActionSheetController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-servicios',
@@ -13,30 +14,33 @@ export class ServiciosPage implements OnInit {
 
   listServicios: Servicio[];
 
+  loading: any;
+
   constructor(private servicio: ServiceService,
+    private utilidades : UtilidadesService,
     private actionSheetCtrl: ActionSheetController,
-    private utilidades: UtilidadesService) { }
+    private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.cargarServicios();
   }
 
   cargarServicios() {
-    this.utilidades.presentLoading();
+    this.mostrarProgress();
     this.servicio.consultarServicios().subscribe(
       (data) => {
         console.log('data bien', JSON.stringify(data.mensaje));
         let objeto = JSON.parse(data.mensaje);
         if (objeto.codigoRespuesta === '0') {
           this.listServicios = objeto.listServicios;
-          this.utilidades.dismissDialog();
+          this.ocultarProgress();
         } else {
           console.log(objeto.mensajeRespuesta);
-          this.utilidades.dismissDialog();
+          this.ocultarProgress();
         }
       },
       (fail) => {
-        this.utilidades.dismissDialog();
+       this.ocultarProgress();
         console.log('data mal', JSON.stringify(fail));
         this.utilidades.presentarAlerta('Informacion', 'Se ha prensentado un problema');
       }
@@ -63,4 +67,18 @@ export class ServiciosPage implements OnInit {
     await actionSheet.present();
   }
 
+  onClick() {
+    console.log('presiono la tarjeta');
+  }
+
+  protected async mostrarProgress() {
+    this.loading = await this.loadingController.create({
+      message: 'Por favor espere ...'
+    });
+    return await this.loading.present();
+  }
+
+  protected async ocultarProgress() {
+    this.loading.dismiss();
+  }
 }
