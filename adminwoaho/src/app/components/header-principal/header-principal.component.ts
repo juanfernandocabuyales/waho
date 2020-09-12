@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
 
 @Component({
   selector: 'app-header-principal',
@@ -9,18 +10,30 @@ import { NavController } from '@ionic/angular';
 export class HeaderPrincipalComponent implements OnInit {
 
   @Input('titulo')
-  titulo:string;
+  titulo: string;
 
   @Input('blnOpciones')
-  blnOpciones:boolean;
+  blnOpciones: boolean;
 
-  constructor(private navCtrl: NavController) { }
+  items = ['Opcion uno','Opcion dos','Opcion tres']
 
-  ngOnInit() {}
+  constructor(private navCtrl: NavController, private popCtrl: PopoverController) { }
+
+  ngOnInit() { }
 
 
   gotoBack() {
     this.navCtrl.pop();
+  }
+
+  async mostrarOpciones( event ) {
+    const popOver = await this.popCtrl.create({
+      component : PopoverComponent,
+      event : event,
+      mode : 'ios',
+      
+    })
+    await popOver.present();
   }
 
 }
