@@ -1,0 +1,73 @@
+/* +++++++++++++++++++ITEM+++++++++++++++++*/
+
+ion-item {
+    --min-height: 30px;
+}
+
+.item-style {
+    --inner-padding-end: 0px;
+    --padding-start: 0px;
+    /* ion-select {
+        margin-left: -8px;
+    }*/
+}
+
+.item-style-end {
+    --inner-padding-end: 0px;
+}
+
+.item-select {
+    ion-label {
+        max-width: 0%;
+    }
+    ion-select {
+        min-width: 100% !important;
+        max-width: 100%;
+        padding: 0;
+        font-size: 0.8em;
+    }
+}
+
+.item-left {
+    margin-left: 5%;
+}
+
+.item-right {
+    margin-right: 5%;
+}
+
+.input-item {
+    --background: transparent;
+    color: var(--ion-color-light);
+    margin-left: 1%;
+    margin-right: 1%;
+    input {
+        color: var(--ion-color-light);
+    }
+}
+
+.margin-bottom-item {
+    margin-bottom: 25%;
+}
+
+.item-checkbox {
+    ion-label {
+        font-family: "Futura" !important;
+        font-size: 0.9em;
+    }
+    ion-checkbox {
+        --border-radius: 50% !important;
+    }
+}
+
+.item-padding-top {
+    padding-top: 1px;
+}
+
+.icon-detail-size {
+    --detail-icon-font-size: 14px;
+}
+
+.icon-help {
+    height: 100%;
+}
