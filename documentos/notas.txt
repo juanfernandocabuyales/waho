@@ -14,7 +14,7 @@ var/lib/pgsql/12/data/  ==> directorio de configuracion para postgres
 /home/juan/jdk1.8.0_162/bin/java -jar   ==> comando para ejecutar un jar con java 1.8 (microservicio)
 /home/juan/jdk1.8.0_162/bin/java -jar SiceWebServiceCodesa-0.0.1-SNAPSHOT.jar ==> Ejemplo comando
 
-nohup java -jar MicroservicioWoaho-0.0.1-SNAPSHOT.jar &  ==> dejar micro arriba, asi cierre la session SSH
+nohup java -jar MicroservicioWoaho.jar &  ==> dejar micro arriba, asi cierre la session SSH
 
 firewall-cmd --zone=public --permanent --add-port 8082/tcp  ==> agregar puerto
 
