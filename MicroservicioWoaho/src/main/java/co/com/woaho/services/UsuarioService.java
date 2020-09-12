@@ -176,6 +176,7 @@ public class UsuarioService implements IUsuarioService{
 		try {
 
 			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(request.getCorreo());
+			request.setClave(Utilidades.getInstance().encriptarTexto(request.getClave()));
 			
 			if (usuario == null) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
