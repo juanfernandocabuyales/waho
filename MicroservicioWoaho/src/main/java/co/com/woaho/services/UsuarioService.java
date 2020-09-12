@@ -46,20 +46,28 @@ public class UsuarioService implements IUsuarioService{
 		logs.registrarLogInfoEjecutaMetodo("registrarUsuario");
 		RegistrarUsuarioResponse response = new RegistrarUsuarioResponse();
 		try {
-			RegistrarUsuarioRequest.UsuarioDTO pUsuarioDTO = request.getUsuarioDto();
-
-			Usuario usuario = new Usuario();
-			usuario.setStrNombre(pUsuarioDTO.getName());
-			usuario.setStrApellido(pUsuarioDTO.getLastName());
-			usuario.setStrCelular(pUsuarioDTO.getCell());
-			usuario.setStrAceptaTerminos(pUsuarioDTO.getCheckTerminos());
-			usuario.setFechaHoraAceptaTerminos(new Date());
-			usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
-
-			usuarioDao.registarUsuario(usuario);
 			
-			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-			response.setMensajeRespuesta(EnumGeneral.OK.getValor());
+			RegistrarUsuarioRequest.UsuarioDTO pUsuarioDTO = request.getUsuarioDto();
+			
+			Usuario usuarioval = usuarioDao.obtenerUsuarioCelular(pUsuarioDTO.getCell());
+			
+			if(usuarioval == null) {
+				Usuario usuario = new Usuario();
+				usuario.setStrNombre(pUsuarioDTO.getName());
+				usuario.setStrApellido(pUsuarioDTO.getLastName());
+				usuario.setStrCelular(pUsuarioDTO.getCell());
+				usuario.setStrAceptaTerminos(pUsuarioDTO.getCheckTerminos());
+				usuario.setFechaHoraAceptaTerminos(new Date());
+				usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
+
+				usuarioDao.registarUsuario(usuario);
+				
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
+			}else {
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				response.setMensajeRespuesta(EnumMensajes.USUARIO_REGISTRADO.getMensaje(pUsuarioDTO.getCell()));
+			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());

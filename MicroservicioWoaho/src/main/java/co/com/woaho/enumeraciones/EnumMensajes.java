@@ -18,7 +18,8 @@ public enum EnumMensajes {
 	NO_DIRECCIONES("No se han encontrado direcciones registradas para el usuario"),
 	NO_PEDIDOS("Listado de pedidos vacio y/o invalido"),
 	NO_PEDIDOS_PARA("No se han encontrado pedidos para el {0} ."),
-	NO_PEDIDO("No se ha encontrado un pedido para cancelar")
+	NO_PEDIDO("No se ha encontrado un pedido para cancelar"),
+	USUARIO_REGISTRADO("El número {0} ya se encuentra registrado.")
 	;
 	
 	private final String strValor;

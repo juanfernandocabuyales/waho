@@ -233,7 +233,7 @@ public class PedidoService implements IPedidoService{
 				solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDOS.getMensaje());
 			}			
 		}catch(Exception e) {
-			logs.registrarLogError("soliciarPedido", "No se ha podido procesar la peticion", e);
+			logs.registrarLogError("actualizarPedido", "No se ha podido procesar la peticion", e);
 			solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}

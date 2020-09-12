@@ -24,6 +24,8 @@ firewall-cmd --list-all ==> se listan los puertos habilitados
 
 ps aux | grep java  ==> revisar procesos java
 
+tail -f ServicioWoaho.log ==> ver log en tiempo real
+
 /************************************************************************
 		Peticiones OneSignal
 {app_id=0942319e-1677-4480-8992-a96e3882f7c7, contents={es=Este es el mensaje en español, en=message english}, headings={es=Este es el mensaje en español, en=message english}, include_player_ids=[8c09da82-a90e-4c1b-8bb5-34b34e839efc]} ==> funciona
@@ -94,7 +96,7 @@ request: {"strMensaje":"{'tipoTerritorio':'Pais'}"}
 response: {"mensaje": "{"lisPaisesDto":[{"id":"1","name":"Colombia","code":"+57"},{"id":"2","name":"Estados Unidos","code":"+1"},{"id":"3","name":"México","code":"+52"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 endpoint: http://localhost:8082/woaho/usuario/registrarUsuario
-request: {"strMensaje":"{'usuarioDto':{'id':'','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','checkTerminos':'S','password':'445566','idSuscriptor':'ASDASDASDASD-asdadasd-asdasda'}}"}
+request: {"strMensaje":"{'usuarioDto':{'id':'','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','checkTerminos':'S','password':'445566','idSuscriptor':'8c09da82-a90e-4c1b-8bb5-34b34e839efc'}}"}
 response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
 
 endpoint: http://localhost:8082/woaho/usuario/actualizarUsuario
