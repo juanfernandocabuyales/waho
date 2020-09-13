@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { SessionService } from '../../services/session.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class PopoverComponent implements OnInit {
 
   opciones:string[];
 
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService,private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.opciones = this.session.getOpciones(1);
@@ -18,6 +19,9 @@ export class PopoverComponent implements OnInit {
   }
 
   onClick(opcion:string){
+    this.popoverController.dismiss({
+      item: opcion
+    });
     console.log(opcion);
   }
 
