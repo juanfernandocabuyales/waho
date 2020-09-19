@@ -12,8 +12,14 @@ import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IDireccionDao;
 import co.com.woaho.interfaces.IDireccionService;
+import co.com.woaho.interfaces.IUsuarioDao;
 import co.com.woaho.modelo.Direccion;
+import co.com.woaho.modelo.Estado;
+import co.com.woaho.modelo.Territorio;
+import co.com.woaho.modelo.Usuario;
+import co.com.woaho.request.ActualizarCrearDireccionRequest;
 import co.com.woaho.request.ConsultarDireccionRequest;
+import co.com.woaho.response.ActualizarCrearDireccionResponse;
 import co.com.woaho.response.ConsultarDireccionResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
@@ -26,6 +32,9 @@ public class DireccionService implements IDireccionService {
 
 	@Autowired
 	private IDireccionDao direccionDao;
+	
+	@Autowired
+	private IUsuarioDao usuarioDao;
 
 	@Override
 	public ConsultarDireccionResponse obtenerDireccionesUsuario(ConsultarDireccionRequest request) {
@@ -60,6 +69,46 @@ public class DireccionService implements IDireccionService {
 			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return response;
+	}
+
+	@Override
+	public ActualizarCrearDireccionResponse crearActualizarDireccion(ActualizarCrearDireccionRequest request) {
+		ActualizarCrearDireccionResponse actualizarCrearDireccionResponse = new ActualizarCrearDireccionResponse();
+		try {
+			
+			Usuario usuarioDireccion = usuarioDao.obtenerUsuarioId(Long.parseLong(request.getDireccionDto().getIdUsuario()));
+			
+			if(usuarioDireccion == null) {
+				actualizarCrearDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				actualizarCrearDireccionResponse.setMensajeRespuesta(EnumMensajes.NO_USUARIO_VALIDO.getMensaje());
+			}else {
+				Direccion direccionModelo = new Direccion();
+				direccionModelo.setDireccionId(Long.parseLong(request.getDireccionDto().getId()));
+				direccionModelo.setStrNombreDireccion(request.getDireccionDto().getName());
+				direccionModelo.setStrDireccion(request.getDireccionDto().getMainAddress());
+				direccionModelo.setUsuarioDireccion(usuarioDireccion);
+				direccionModelo.setStrDireccionLatitud(request.getDireccionDto().getLocation().getLat());
+				direccionModelo.setStrDireccionLongitud(request.getDireccionDto().getLocation().getLng());
+				direccionModelo.setStrLugarId(request.getDireccionDto().getSecondaryAddress());
+				direccionModelo.setStrEdificacion(request.getDireccionDto().getSecondaryAddress());
+				
+				direccionModelo.setTerritorioDireccion(new Territorio());
+				direccionModelo.getTerritorioDireccion().setIdTerritorio(Long.parseLong(request.getDireccionDto().getIdTerritorio()));
+				
+				direccionModelo.setEstadoDireccion(new Estado());
+				direccionModelo.getEstadoDireccion().setEstadoId(Long.parseLong(request.getDireccionDto().getIdEstado()));
+				
+				direccionDao.crearActualizarDireccion(direccionModelo);
+				
+				actualizarCrearDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				actualizarCrearDireccionResponse.setMensajeRespuesta(EnumMensajes.OK.getMensaje());
+			}			
+		}catch(Exception e) {
+			logs.registrarLogError("crearActualizarDireccion", "No se ha podido procesar la peticion", e);
+			actualizarCrearDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			actualizarCrearDireccionResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return actualizarCrearDireccionResponse;
 	}
 
 }

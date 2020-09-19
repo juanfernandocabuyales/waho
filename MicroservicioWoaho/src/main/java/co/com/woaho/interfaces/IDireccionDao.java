@@ -7,4 +7,6 @@ import co.com.woaho.modelo.Direccion;
 public interface IDireccionDao {
 
 	List<Direccion> obtenerDireccionesUsuario(Long idUsuario);
+	
+	Direccion crearActualizarDireccion(Direccion pDireccion) throws Exception;
 }

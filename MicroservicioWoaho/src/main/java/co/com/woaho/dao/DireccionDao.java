@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
@@ -30,6 +31,17 @@ public class DireccionDao extends Persistencia implements IDireccionDao {
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerDireccionesUsuario", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return listDirecciones;
+		}
+	}
+
+	@Override
+	@Transactional
+	public Direccion crearActualizarDireccion(Direccion pDireccion) throws Exception{
+		try {
+			return getEntityManager().merge(pDireccion);
+		}catch(Exception e) {
+			logs.registrarLogError("crearActualizarDireccion", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			throw new Exception(e);
 		}
 	}
 

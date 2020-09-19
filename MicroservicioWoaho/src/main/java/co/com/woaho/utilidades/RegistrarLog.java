@@ -17,6 +17,7 @@ public class RegistrarLog {
 	private static final String INFO_PAQFUNCION = "Se va a ejecutar la funcion y/o procedimiento: ";
 	private static final String INFO_RESULTADO = "resultado obtenido: ";
 	private static final String INFO_SERVICIO = "Se va a ejecutar el servicio: ";
+	private static final String RESPONSE_SERVICIO = "Response del servicio: ";
 	
 	public RegistrarLog() {
 		super();
@@ -88,5 +89,13 @@ public class RegistrarLog {
 	
 	public void registrarLogInfo(String pMensaje) {
 		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + pMensaje);
-	}	
+	}
+	
+	public void registrarLogInfoRespuestaServicio(String pNombreServicio,String pResponse) {
+		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + RESPONSE_SERVICIO + pNombreServicio + " Response: " + pResponse);
+	}
+	
+	public void registrarLogInfoEjecutaServicio(String pNombreServicio,String pPeticion) {
+		logger.info(HILO  + Thread.currentThread().getId() + CIERRE_HILO + INFO_SERVICIO + pNombreServicio + " Peticion: " + pPeticion);
+	}
 }
