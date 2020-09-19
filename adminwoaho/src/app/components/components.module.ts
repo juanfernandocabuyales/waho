@@ -5,15 +5,18 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FooterPrincipalComponent } from './footer-principal/footer-principal.component';
 import { HeaderPrincipalComponent } from './header-principal/header-principal.component';
+import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [
     FooterPrincipalComponent,
-    HeaderPrincipalComponent
+    HeaderPrincipalComponent,
+    PopoverComponent
   ],
   exports: [
     FooterPrincipalComponent,
-    HeaderPrincipalComponent
+    HeaderPrincipalComponent,
+    PopoverComponent
   ],
   imports: [
     CommonModule,

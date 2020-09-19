@@ -19,5 +19,9 @@ export class ServiceService {
   consultarServicios(){
     return this.httClient.post<PeticionResponse>(`${apiUrl}servicio/consultarServicios`,null);
   }
+
+  consultarCategorias(){
+    return this.httClient.post<PeticionResponse>(`${apiUrl}categoria/consultarCategorias`,null);
+  }
 }
 

@@ -18,3 +18,9 @@ export interface Servicio{
     price: number,
     category: string
 }
+
+export interface Categoria{
+    id:string,
+    name:string,
+    icon:string
+}
