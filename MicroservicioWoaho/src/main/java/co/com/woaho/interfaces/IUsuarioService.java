@@ -15,13 +15,13 @@ public interface IUsuarioService {
 
 	RegistrarUsuarioResponse registrarUsuario(RegistrarUsuarioRequest request);
 	
-	RegistrarUsuarioResponse actualizarUsuario(RegistrarUsuarioRequest request);
-	
 	ConsultarUsuarioResponse consultarUsuario(ConsultarUsuarioRequest request);
 	
 	GenerarCodigoResponse generarCodigoRegistro(GenerarCodigoRequest request);
 	
-	LoginResponse validarLogin(LoginRequest request);
+	LoginResponse loginUsuario(LoginRequest request);
 	
 	ValidarCodigoResponse validarCodigoRegistro(ValidarCodigoRequest request);
+	
+	ValidarCodigoResponse validarCodigoLogin(ValidarCodigoRequest request);
 }

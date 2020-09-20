@@ -27,7 +27,6 @@ import co.com.woaho.response.ValidarCodigoResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
-import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -59,6 +58,7 @@ public class UsuarioService implements IUsuarioService{
 				usuario.setStrAceptaTerminos(pUsuarioDTO.getCheckTerminos());
 				usuario.setFechaHoraAceptaTerminos(new Date());
 				usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
+				usuario.setStrCorreo(pUsuarioDTO.getEmail());
 
 				usuarioDao.registarUsuario(usuario);
 				
@@ -70,36 +70,6 @@ public class UsuarioService implements IUsuarioService{
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
-			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
-		}
-		return response;
-	}
-
-	@Override
-	public RegistrarUsuarioResponse actualizarUsuario(RegistrarUsuarioRequest request) {
-		logs.registrarLogInfoEjecutaMetodo("actualizarUsuario");
-		RegistrarUsuarioResponse response = new RegistrarUsuarioResponse();
-		try {
-			RegistrarUsuarioRequest.UsuarioDTO pUsuarioDTO = request.getUsuarioDto();
-
-			Usuario usuario = usuarioDao.obtenerUsuarioCelular(pUsuarioDTO.getCell());
-
-			if(usuario == null) {
-				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("número",pUsuarioDTO.getCell()));
-			}else {
-
-				usuario.setStrClave(Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getPassword()));
-				usuario.setStrCorreo(pUsuarioDTO.getEmail());
-
-				usuarioDao.actualizarUsuario(usuario);
-
-				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
-			}			
-		}catch (Exception e) {
-			logs.registrarLogError("actualizarUsuario", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
@@ -150,7 +120,14 @@ public class UsuarioService implements IUsuarioService{
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				response.setCodigo(strRespuesta[1]);
-				enviarNotificacionPush(response.getCodigo(),strRespuesta[3]);
+				
+				HashMap<String, String> pParametros = new HashMap<>();
+				pParametros.put(Constantes.CONTENIDO, 
+						ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO, response.getCodigo()));
+				pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
+				pParametros.put(Constantes.ID_DEVICE, request.getIdSuscriptor());
+				
+				envioNotificacion.notificarCodigo(pParametros);
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
@@ -159,36 +136,32 @@ public class UsuarioService implements IUsuarioService{
 		}
 		return response;
 	}
-	
-	private void enviarNotificacionPush(String pCodigoRegistro,String pIdDevice) {
-		HashMap<String, String> pParametros = new HashMap<>();
-		pParametros.put(Constantes.CONTENIDO, 
-				ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO, pCodigoRegistro));
-		pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
-		pParametros.put(Constantes.ID_DEVICE, pIdDevice);
-		envioNotificacion.notificarCodigoResgistro(pParametros);
-	}
 
 	@Override
-	public LoginResponse validarLogin(LoginRequest request) {
+	public LoginResponse loginUsuario(LoginRequest request) {
 		logs.registrarLogInfoEjecutaMetodo("validarLogin");
 		LoginResponse response = new LoginResponse();
 		try {
 
-			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(request.getCorreo());
-			request.setClave(Utilidades.getInstance().encriptarTexto(request.getClave()));
-			
+			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(request.getCorreo());			
 			if (usuario == null) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("correo",request.getCorreo()));
 			}else {				
-				if(usuario.getStrClave().equalsIgnoreCase(request.getClave())) {
-					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-					response.setMensajeRespuesta(EnumGeneral.OK.getValor());
-				}else {
+				String [] strRespuesta = usuarioDao.generarCodigoRegistro(usuario.getStrCelular()).split("\\,");
+				
+				if(strRespuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
 					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-					response.setMensajeRespuesta(EnumMensajes.CLAVE_INVALIDA.getMensaje());
-				}
+					response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+				}else {					
+					HashMap<String, String> pParametros = new HashMap<>();
+					pParametros.put(Constantes.CONTENIDO, 
+							ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO,strRespuesta[1]));
+					pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
+					pParametros.put(Constantes.ID_DEVICE,usuario.getIdSuscriptor());
+					
+					envioNotificacion.notificarCodigo(pParametros);
+				}	
 			}	
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
@@ -215,6 +188,36 @@ public class UsuarioService implements IUsuarioService{
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("validarCodigoRegistro", "No se ha podido procesar la peticion", e);
+			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+		}
+		return response;
+	}
+
+	@Override
+	public ValidarCodigoResponse validarCodigoLogin(ValidarCodigoRequest request) {
+		logs.registrarLogInfoEjecutaMetodo("validarCodigoLogin");
+		ValidarCodigoResponse response = new ValidarCodigoResponse();
+		try {
+			
+			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(request.getCorreo());
+			
+			if(usuario == null) {
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("correo",request.getCorreo()));
+			}else {
+				String [] respuesta = usuarioDao.validarCodigoRegistro(usuario.getStrCelular(), request.getCodigo()).split("\\,");
+				
+				if(respuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
+					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					response.setMensajeRespuesta(respuesta[1]);
+				}else {
+					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+					response.setMensajeRespuesta(respuesta[1]);
+				}
+			}			
+		}catch (Exception e) {
+			logs.registrarLogError("validarCodigoLogin", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}

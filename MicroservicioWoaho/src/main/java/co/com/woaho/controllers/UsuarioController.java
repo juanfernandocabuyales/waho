@@ -37,78 +37,108 @@ public class UsuarioController {
 
 	@PostMapping(value = "/registrarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> registrarUsuario(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("registrarUsuario");
+		
+		logs.registrarLogInfoEjecutaServicio("registrarUsuario",request.getStrMensaje());
+		
 		Gson gson = new Gson();
+		
 		RegistrarUsuarioRequest registrarUsuarioRequest = gson.fromJson(request.getStrMensaje(), RegistrarUsuarioRequest.class);
 		RegistrarUsuarioResponse registrarUsuarioResponse = usuarioService.registrarUsuario(registrarUsuarioRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(registrarUsuarioResponse));
-
-		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
-	}
-
-	@PostMapping(value = "/actualizarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> actualizarUsuario(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("actualizarUsuario");
-		Gson gson = new Gson();
-		RegistrarUsuarioRequest registrarUsuarioRequest = gson.fromJson(request.getStrMensaje(), RegistrarUsuarioRequest.class);
-		RegistrarUsuarioResponse registrarUsuarioResponse = usuarioService.actualizarUsuario(registrarUsuarioRequest);
-
-		GeneralResponse resp = new GeneralResponse();
-		resp.setMensaje(gson.toJson(registrarUsuarioResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("registrarUsuario",resp.getMensaje());
 
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/consultarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> consultarUsuario(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("consultarUsuario");
+		
+		logs.registrarLogInfoEjecutaServicio("consultarUsuario",request.getStrMensaje());
+		
 		Gson gson = new Gson();
+		
 		ConsultarUsuarioRequest consultarUsuarioRequest = gson.fromJson(request.getStrMensaje(), ConsultarUsuarioRequest.class);
 		ConsultarUsuarioResponse consultarUsuarioResponse = usuarioService.consultarUsuario(consultarUsuarioRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarUsuarioResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("consultarUsuario",resp.getMensaje());
 
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/generarCodigoRegistro", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> generarCodigoRegistro(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("generarCodigoRegistro");
+		
+		logs.registrarLogInfoEjecutaServicio("generarCodigoRegistro",request.getStrMensaje());
+		
 		Gson gson = new Gson();
+		
 		GenerarCodigoRequest generarCodigoRequest = gson.fromJson(request.getStrMensaje(), GenerarCodigoRequest.class);
 		GenerarCodigoResponse generarCodigoResponse = usuarioService.generarCodigoRegistro(generarCodigoRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(generarCodigoResponse));
 
+		logs.registrarLogInfoRespuestaServicio("generarCodigoRegistro",resp.getMensaje());
+		
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);		
 	}
 	
 	@PostMapping(value = "/validarLogin", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> validarLogin(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("validarLogin");
+		
+		logs.registrarLogInfoEjecutaServicio("validarLogin",request.getStrMensaje());
+		
 		Gson gson = new Gson();
+		
 		LoginRequest loginRequest = gson.fromJson(request.getStrMensaje(), LoginRequest.class);
-		LoginResponse loginResponse = usuarioService.validarLogin(loginRequest);
+		LoginResponse loginResponse = usuarioService.loginUsuario(loginRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(loginResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("validarLogin",resp.getMensaje());
 
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);	
 	}
 	
 	@PostMapping(value = "/validarCodigoRegistro", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> validarCodigoRegistro(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("validarCodigoRegistro");
+		
+		logs.registrarLogInfoEjecutaServicio("validarCodigoRegistro",request.getStrMensaje());
+		
 		Gson gson = new Gson();
+		
 		ValidarCodigoRequest validarCodigoRequest = gson.fromJson(request.getStrMensaje(), ValidarCodigoRequest.class);
 		ValidarCodigoResponse validarCodigoResponse = usuarioService.validarCodigoRegistro(validarCodigoRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(validarCodigoResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("validarCodigoRegistro",resp.getMensaje());
+
+		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/validarCodigoLogin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> validarCodigoLogin(@RequestBody GeneralRequest request) {
+		
+		logs.registrarLogInfoEjecutaServicio("validarCodigoLogin",request.getStrMensaje());
+		
+		Gson gson = new Gson();
+		
+		ValidarCodigoRequest validarCodigoRequest = gson.fromJson(request.getStrMensaje(), ValidarCodigoRequest.class);
+		ValidarCodigoResponse validarCodigoResponse = usuarioService.validarCodigoLogin(validarCodigoRequest);
+
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(validarCodigoResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("validarCodigoLogin",resp.getMensaje());
 
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
 	}

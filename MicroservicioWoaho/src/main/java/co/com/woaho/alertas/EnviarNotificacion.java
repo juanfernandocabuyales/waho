@@ -30,7 +30,7 @@ public class EnviarNotificacion implements IEnvioNotificacion {
 	
 	
 	@Override
-	public void notificarCodigoResgistro(HashMap<String, String> pParametros){
+	public void notificarCodigo(HashMap<String, String> pParametros){
 		try {
 			HttpHeaders headers = new HttpHeaders();
 	        headers.set("Authorization", configuracion.getRestKey());

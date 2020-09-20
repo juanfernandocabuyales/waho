@@ -6,6 +6,8 @@ public class Constantes {
 	
 	public static final String CONTENIDO_PUSH_REGISTRO = "Tu codigo de verificación es {0}";
 	
+	public static final String CONTENIDO_PUSH_ACCESO = "Tu codigo de ingreso es {0}";
+	
 	public static final String CONTENIDO_PUSH_CABECERA = "Bienvenido a Woaho";
 	
 	public static final String CONTENTS = "contents";

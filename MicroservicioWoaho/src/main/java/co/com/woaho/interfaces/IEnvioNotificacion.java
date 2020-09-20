@@ -4,5 +4,5 @@ import java.util.HashMap;
 
 public interface IEnvioNotificacion {
 
-	void notificarCodigoResgistro(HashMap<String, String> pParametros);
+	void notificarCodigo(HashMap<String, String> pParametros);
 }
