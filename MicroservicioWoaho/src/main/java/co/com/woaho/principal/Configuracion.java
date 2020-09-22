@@ -10,6 +10,8 @@ public class Configuracion {
 	private String appid;
 	
 	private String restKey;
+	
+	private String directorio;
 
 	public String getAppid() {
 		return appid;
@@ -25,5 +27,13 @@ public class Configuracion {
 
 	public void setRestKey(String restKey) {
 		this.restKey = restKey;
+	}
+
+	public String getDirectorio() {
+		return directorio;
+	}
+
+	public void setDirectorio(String directorio) {
+		this.directorio = directorio;
 	}
 }
