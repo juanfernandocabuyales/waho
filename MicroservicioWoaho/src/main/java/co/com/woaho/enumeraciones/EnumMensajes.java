@@ -23,7 +23,8 @@ public enum EnumMensajes {
 	USUARIO_REGISTRADO("El número {0} ya se encuentra registrado."),
 	OK("ok"),
 	
-	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado.")
+	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado."),
+	ARCHIVO_NULO("No se han enviando un archivo valido para guardar")
 	;
 	
 	private final String strValor;

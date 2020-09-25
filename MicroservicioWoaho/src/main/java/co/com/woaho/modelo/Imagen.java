@@ -13,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "imagen")
-@NamedQueries({ @NamedQuery(name="Imagen.findAll", query="SELECT im FROM Imagen im")})
+@NamedQueries({ @NamedQuery(name="Imagen.findAll", query="SELECT im FROM Imagen im"),
+	            @NamedQuery(name="Imagen.findId", query="SELECT im FROM Imagen im WHERE im.imagenId = :pId")})
 public class Imagen implements Serializable {
 
 	private static final long serialVersionUID = 1L;

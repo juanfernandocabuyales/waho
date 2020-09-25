@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.google.gson.Gson;
 
 import co.com.woaho.interfaces.IImagenService;
+import co.com.woaho.request.CrearImagenRequest;
+import co.com.woaho.request.GeneralRequest;
 import co.com.woaho.response.CrearImagenResponse;
 import co.com.woaho.response.GeneralResponse;
 import co.com.woaho.utilidades.RegistrarLog;
@@ -35,14 +37,17 @@ public class ImagenController {
 	private IImagenService imagenService;
 	
 	@PostMapping(value = "/guardarImagen")
-    public ResponseEntity<?> guardarImagen(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> guardarImagen(@RequestParam("file") MultipartFile file,@RequestParam("peticion") String request) {
         
 		logs.registrarLogInfoEjecutaServicio("guardarImagen");
 		
-		CrearImagenResponse crearImagenResponse = imagenService.guardarImagen(file);
-
 		Gson gson = new Gson();
 		
+		GeneralRequest peticionRequest = gson.fromJson(request, GeneralRequest.class);
+		
+		CrearImagenRequest crearImagenRequest = gson.fromJson(peticionRequest.getStrMensaje(), CrearImagenRequest.class);
+		CrearImagenResponse crearImagenResponse = imagenService.guardarImagen(file,crearImagenRequest);
+
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(crearImagenResponse));
 		

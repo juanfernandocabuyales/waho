@@ -18,8 +18,11 @@ import java.nio.file.StandardCopyOption;
 
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IImagenDao;
 import co.com.woaho.interfaces.IImagenService;
+import co.com.woaho.modelo.Imagen;
 import co.com.woaho.principal.Configuracion;
+import co.com.woaho.request.CrearImagenRequest;
 import co.com.woaho.response.CrearImagenResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -32,10 +35,13 @@ public class ImagenService implements IImagenService {
 	@Autowired
 	private Configuracion configuracion;
 	
+	@Autowired
+	private IImagenDao imagenDao;
+	
 	private Path fileStorageLocation;
 	
 	@Override
-	public CrearImagenResponse guardarImagen(MultipartFile file) {
+	public CrearImagenResponse guardarImagen(MultipartFile file,CrearImagenRequest request) {
 		
 		logs.registrarLogInfoEjecutaMetodoConParam("guardarImagen","");
 		
@@ -45,28 +51,45 @@ public class ImagenService implements IImagenService {
 		
 		try {
 			
-			fileStorageLocation = Paths.get(configuracion.getDirectorio())
-	                .toAbsolutePath().normalize();
-			
-            // Check if the file's name contains invalid characters
-            if(fileName.contains("..")) {
-            	crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-            	crearImagenResponse.setMensajeRespuesta(EnumMensajes.NOMBRE_ARCHIVO_INVALIDO.getMensaje());
-            }
+			if(fileName.isEmpty()) {
+				crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+	        	crearImagenResponse.setMensajeRespuesta(EnumMensajes.ARCHIVO_NULO.getMensaje());
+			}else {
+				fileStorageLocation = Paths.get(configuracion.getDirectorio())
+		                .toAbsolutePath().normalize();
+				
+				logs.registrarInfo("fileStorageLocation:  " + fileStorageLocation);
+				
+	            // Check if the file's name contains invalid characters
+	            if(fileName.contains("..")) {
+	            	crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+	            	crearImagenResponse.setMensajeRespuesta(EnumMensajes.NOMBRE_ARCHIVO_INVALIDO.getMensaje());
+	            }
 
-            // Copy file to the target location (Replacing existing file with the same name)
-            Path targetLocation = fileStorageLocation.resolve(fileName);
-            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+	            // Copy file to the target location (Replacing existing file with the same name)
+	            Path targetLocation = fileStorageLocation.resolve(fileName);
+	            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/imagen/downloadFile/")
-                    .path(fileName)
-                    .toUriString();
-            
-            crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-            crearImagenResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
-            crearImagenResponse.setUrlImagen(fileDownloadUri);
-            
+	            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+	                    .path("/imagen/downloadFile/")
+	                    .path(fileName)
+	                    .toUriString();
+	            
+	            Imagen imagen = new Imagen();
+	            if(request.getIdImagen() == null || request.getIdImagen().isEmpty()) {
+	            	imagen.setImagenId(null);
+	            }
+	            imagen.setStrNombre(request.getNombreImagen());
+	            imagen.setStrRuta(fileDownloadUri);
+	            imagen.setStrAlto(request.getAlto());
+	            imagen.setStrAncho(request.getAncho());
+	            
+	            imagenDao.guardarActualizarImagen(imagen);
+	            
+	            crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+	            crearImagenResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+	            crearImagenResponse.setUrlImagen(fileDownloadUri);
+			}            
         } catch (Exception ex) {
         	logs.registrarLogError("guardarImagen", "No se ha podido procesar la peticion", ex);
         	crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
