@@ -21,6 +21,10 @@ INSERT INTO woaho.imagen (imagen_nombre,imagen_ruta,imagen_alto,imagen_ancho) VA
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Colombia', NULL, 1,'+57');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Valle del Cauca', 1, 2,'+57');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Calí', 4, 3,'+57');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Risaralda', 1, 2,'+57');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Pereira', 6, 3,'+57');
 
 INSERT INTO woaho.estado (estado_codigo) VALUES ('ACTIVO');
 INSERT INTO woaho.estado (estado_codigo) VALUES ('INACTIVO');
@@ -63,8 +67,13 @@ INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALU
 INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('clave',2,'2');
 INSERT INTO woaho.etiqueta (etiqueta_valor,etiqueta_idioma,etiqueta_codigo) VALUES ('password',1,'2');
 
-
 INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Efectivo','Efectivo',1);
 INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Credito','Credito',1);
 INSERT INTO woaho.medio_pago (medio_pago_nombre,medio_pago_etiqueta,medio_pago_territorio) VALUES ('Debito','Debito',1);
+
+INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Slide');
+INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Pantalla');
+INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Titulo');
+INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Subtitulo');
+INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Pie');
 

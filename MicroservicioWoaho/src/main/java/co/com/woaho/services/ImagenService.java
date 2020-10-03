@@ -47,7 +47,7 @@ public class ImagenService implements IImagenService {
 		
 		CrearImagenResponse crearImagenResponse = new CrearImagenResponse();
 		
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		String fileName = StringUtils.cleanPath(request.getNombreImagen());
 		
 		try {
 			

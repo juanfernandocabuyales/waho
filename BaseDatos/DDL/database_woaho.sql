@@ -138,17 +138,36 @@ CREATE TABLE woaho.profesion
 ALTER TABLE woaho.profesion
     OWNER to postgres;
 COMMENT ON TABLE woaho.profesion
-    IS 'Tabla que contiene la información de las profesiones del aplicativo';     
+    IS 'Tabla que contiene la información de las profesiones del aplicativo';
+    
+CREATE TABLE woaho.imagen
+(
+    imagen_id integer NOT NULL DEFAULT nextval('woaho.sec_imagen'::regclass),
+    imagen_nombre character varying(4000),
+    imagen_ruta character varying(4000),
+    imagen_alto character varying(4000),
+    imagen_ancho character varying(4000),
+    CONSTRAINT imagen_pkey PRIMARY KEY (imagen_id)
+);
+ALTER TABLE woaho.imagen
+    OWNER to postgres;
+COMMENT ON TABLE woaho.imagen
+    IS 'Tabla que contiene las imagenes para el aplicativo';     
 
 CREATE TABLE woaho.pantalla
 (
     pantalla_id integer NOT NULL DEFAULT nextval('woaho.sec_pantalla'::regclass),
     pantalla_nombre character varying(4000) COLLATE pg_catalog."default",
-    pantalla_imagen character varying(4000) COLLATE pg_catalog."default",
+    pantalla_imagen integer,
     pantalla_tipo_pantalla integer,
     CONSTRAINT pantalla_pkey PRIMARY KEY (pantalla_id),
     CONSTRAINT "FK_PANTALLA_TIPO_PANTLLA" FOREIGN KEY (pantalla_tipo_pantalla)
         REFERENCES woaho.tipo (tipo_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+	CONSTRAINT "FK_PANTALLA_IMAGEN" FOREIGN KEY (pantalla_imagen)
+        REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
         NOT VALID
@@ -322,21 +341,7 @@ ALTER TABLE woaho.parametro
     OWNER to postgres;
 COMMENT ON TABLE woaho.parametro
     IS 'Tabla que contiene los parametros del aplicativo';
-    
-CREATE TABLE woaho.imagen
-(
-    imagen_id integer NOT NULL DEFAULT nextval('woaho.sec_imagen'::regclass),
-    imagen_nombre character varying(4000),
-    imagen_ruta character varying(4000),
-    imagen_alto character varying(4000),
-    imagen_ancho character varying(4000),
-    CONSTRAINT imagen_pkey PRIMARY KEY (imagen_id)
-);
-ALTER TABLE woaho.imagen
-    OWNER to postgres;
-COMMENT ON TABLE woaho.imagen
-    IS 'Tabla que contiene las imagenes para el aplicativo';
-    
+        
 CREATE TABLE woaho.categoria
 (
     categoria_id integer NOT NULL DEFAULT nextval('woaho.sec_categoria'::regclass),

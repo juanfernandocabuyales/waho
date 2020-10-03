@@ -1,9 +1,9 @@
 clave riux: W0ah0;
 
-IP address	162.0.226.48
+IP address	198.54.123.142
 Port	    22
 Username	root
-Password	99PVFUnGMUQr6VmGmmmz
+Password	6zYBGCtGiht5VoVDDWN3
 correo: woahoapplication@gmail.com
 clave correo: wO4h0appl1c4ti0n;
 wO4h0;
@@ -27,6 +27,15 @@ firewall-cmd --list-all ==> se listan los puertos habilitados
 ps aux | grep java  ==> revisar procesos java
 
 tail -f ServicioWoaho.log ==> ver log en tiempo real
+
+sudo dnf install firewalld ==> install firewall Centos8
+sudo systemctl enable firewalld ==> activa el servicio firewall
+sudo systemctl start firewalld ==> lo inicia al arrancar el SO firewall
+
+sudo dnf install java-1.8.0-openjdk ==> install java 1.8
+
+sudo systemctl start postgresql ==> inicia el servicio
+sudo systemctl stop postgresql ==> detiene el servicio
 
 /************************************************************************
 		Peticiones OneSignal
