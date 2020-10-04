@@ -77,3 +77,40 @@ INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Titulo');
 INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Subtitulo');
 INSERT INTO woaho.tipo (tipo_nombre) VALUES ('Pie');
 
+/*****************************************************************************************************************
+	Antes de insertar las pantallas, se deben subir las imagenes de cada pantalla para asignarlas en en este
+	insert
+*****************************************************************************************************************/
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide uno',14,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide dos',15,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide tres',16,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide cuatro',17,1);
+
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('MANICURE',3);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('PELUQUERÍA',3);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('COCINA',3);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('TODO A TUS MANOS',3);
+
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Separa tu turno y tendras más de 1000 profesionales a tu servicio.',4);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Necesitas un nuevo estilo, contamos con servicio profesional.',4);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Ya no necesitas ir a un restaurante, el restaurante va a ti.',4);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Contamos con los profesionales calificados para atender tus necesidades.',4);
+
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Separa tu turno y tendras más de 1000 profesionales a tu servicio.',5);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra y sientete renovado.',5);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra los mejores chef y deleita tu paladar.',5);
+INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra todo lo que necesitas, sin salir de tu casa.',5);
+
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (1,1);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (1,5);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (1,9);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (2,2);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (2,6);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (2,10);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (3,3);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (3,7);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (3,11);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,4);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,8);
+INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,12);
+

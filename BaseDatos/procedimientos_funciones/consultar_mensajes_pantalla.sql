@@ -41,6 +41,8 @@ BEGIN
 	END LOOP;
 	CLOSE cu_mensajes;
 	
+	RETURN cadena_resultado;
+	
 END;
 $BODY$;
 
