@@ -19,6 +19,7 @@ import co.com.woaho.modelo.Idioma;
 import co.com.woaho.modelo.Profesion;
 import co.com.woaho.modelo.Servicio;
 import co.com.woaho.modelo.Territorio;
+import co.com.woaho.response.ConsultarPantallasResponse;
 
 public class ProcesarCadenas {
 
@@ -134,5 +135,26 @@ public class ProcesarCadenas {
 		SimpleDateFormat format = new SimpleDateFormat(pFormato);
 		return format.format(pFecha);
 	}
-
+	
+	public List<ConsultarPantallasResponse.Slide> obtenerSlides(String pStrTrama){
+		List<ConsultarPantallasResponse.Slide> listSlides = new ArrayList<>();
+		StringTokenizer tokens = new StringTokenizer(pStrTrama,"|");
+		while(tokens.hasMoreTokens()) {
+			String [] elementos = tokens.nextToken().split("\\;");
+			ConsultarPantallasResponse.Slide slide = new ConsultarPantallasResponse.Slide();
+			slide.setImage(elementos[2]);
+			List<MensajeDTO> listMensajes = obtenerMensajesCadena(elementos[3]);
+			for(MensajeDTO mensaje : listMensajes) {
+				if(mensaje.getStrTipo().equalsIgnoreCase(Constantes.TITULO)) {
+					slide.setTitle(mensaje.getStrMensaje());
+				}else if(mensaje.getStrTipo().equalsIgnoreCase(Constantes.SUB_TITULO)) {
+					slide.setSubtitle(mensaje.getStrMensaje());
+				}else {
+					slide.setFooter(mensaje.getStrMensaje());
+				}
+			}
+			listSlides.add(slide);
+		}		
+		return listSlides;
+	}
 }

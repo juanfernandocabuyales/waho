@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 
 public enum EnumMensajes {
 
-	NO_MENSAJES_PANTALLA("No se han encontrado mensajes para la pantalla"),
+	NO_MENSAJES_PANTALLA("No se han encontrado slides registrados"),
 	NO_PAISES("No se han encontrado paises para la busqueda"),
 	NO_PROFESIONALES("No se han encontrado profesionales para la busqueda"),
 	NO_SERVICIOS("No se han encontrado servicios disponibles"),

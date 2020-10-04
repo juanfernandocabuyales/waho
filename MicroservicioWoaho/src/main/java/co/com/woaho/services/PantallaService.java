@@ -7,13 +7,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 
-import co.com.woaho.dto.MensajeDTO;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IPantallaDao;
 import co.com.woaho.interfaces.IPantallaService;
-import co.com.woaho.request.MensajesPantallaRequest;
-import co.com.woaho.response.MensajePantallaResponse;
+import co.com.woaho.request.ConsultarPantallasRequest;
+import co.com.woaho.response.ConsultarPantallasResponse;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -30,24 +29,23 @@ public class PantallaService implements IPantallaService {
 
 
 	@Override
-	public MensajePantallaResponse obtenerMensajesPantalla(MensajesPantallaRequest request) {
+	public ConsultarPantallasResponse obtenerMensajesPantalla(ConsultarPantallasRequest request) {
 		logs.registrarLogInfoEjecutaMetodo("obtenerMensajesPantalla");
-		MensajePantallaResponse response = new MensajePantallaResponse();
+		ConsultarPantallasResponse response = new ConsultarPantallasResponse();
 		try {
 
-			String strCadena = pantallaDao.consultarPantallas(Integer.parseInt(request.getIdPantalla()));
+			String strCadena = pantallaDao.consultarPantallas(Integer.parseInt(request.getTipoPantalla()));
 
 			logs.registrarLogInfo(strCadena);
 
-			List<MensajeDTO> mensajesList = ProcesarCadenas.getInstance().obtenerMensajesCadena(strCadena);
-
-			if(mensajesList != null && !mensajesList.isEmpty()) {
-				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
-				response.setListMensajesDto(mensajesList);
-			}else {
-				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+			if(strCadena.isEmpty()) {
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 				response.setMensajeRespuesta(EnumMensajes.NO_MENSAJES_PANTALLA.getMensaje());
+			}else {
+				List<ConsultarPantallasResponse.Slide> listSlides = ProcesarCadenas.getInstance().obtenerSlides(strCadena);
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				response.setMensajeRespuesta(EnumMensajes.OK.getMensaje());
+				response.setListSlides(listSlides);
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerMensajesPantalla", "No se ha podido procesar la peticion", e);

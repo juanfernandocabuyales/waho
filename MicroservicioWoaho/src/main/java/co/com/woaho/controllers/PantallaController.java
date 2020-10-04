@@ -13,10 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import co.com.woaho.interfaces.IPantallaService;
+import co.com.woaho.request.ConsultarPantallasRequest;
 import co.com.woaho.request.GeneralRequest;
-import co.com.woaho.request.MensajesPantallaRequest;
 import co.com.woaho.response.GeneralResponse;
-import co.com.woaho.response.MensajePantallaResponse;
+import co.com.woaho.response.ConsultarPantallasResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @RestController
@@ -29,13 +29,13 @@ public class PantallaController {
 	private RegistrarLog logs = new RegistrarLog(PantallaController.class);
 
 
-	@PostMapping(value = "/consultarPantalla", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> consultarPantalla(@RequestBody GeneralRequest request) {
-		logs.registrarLogInfoEjecutaServicio("consultarPantalla");
+	@PostMapping(value = "/consultarSlides", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> consultarSlides(@RequestBody GeneralRequest request) {
+		logs.registrarLogInfoEjecutaServicio("consultarSlides");
 
 		Gson gson = new Gson();
-		MensajesPantallaRequest mensajesPantallaRequest = gson.fromJson(request.getStrMensaje(), MensajesPantallaRequest.class);
-		MensajePantallaResponse mensajePantallaResponse = pantallaService.obtenerMensajesPantalla(mensajesPantallaRequest);
+		ConsultarPantallasRequest consultarPantallasRequest = gson.fromJson(request.getStrMensaje(), ConsultarPantallasRequest.class);
+		ConsultarPantallasResponse mensajePantallaResponse = pantallaService.obtenerMensajesPantalla(consultarPantallasRequest);
 
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(mensajePantallaResponse));

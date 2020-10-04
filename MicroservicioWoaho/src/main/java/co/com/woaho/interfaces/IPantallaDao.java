@@ -2,5 +2,5 @@ package co.com.woaho.interfaces;
 
 public interface IPantallaDao {
 
-	String consultarPantallas(int intPantallaId);
+	String consultarPantallas(int intTipoPantalla);
 }

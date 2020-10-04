@@ -1,9 +1,9 @@
 package co.com.woaho.interfaces;
 
-import co.com.woaho.request.MensajesPantallaRequest;
-import co.com.woaho.response.MensajePantallaResponse;
+import co.com.woaho.request.ConsultarPantallasRequest;
+import co.com.woaho.response.ConsultarPantallasResponse;
 
 public interface IPantallaService {
 
-	MensajePantallaResponse obtenerMensajesPantalla(MensajesPantallaRequest request);
+	ConsultarPantallasResponse obtenerMensajesPantalla(ConsultarPantallasRequest request);
 }

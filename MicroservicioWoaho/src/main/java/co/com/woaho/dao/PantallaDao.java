@@ -17,15 +17,15 @@ public class PantallaDao extends Persistencia implements IPantallaDao {
 	
 	@Override
 	@Transactional
-	public String consultarPantallas(int intPantallaId) {
-		logs.registrarLogInfoEjecutaPaqFunc(EnumProcedimientos.FNDB_CONULTAR_PANTALLA.getProcedimiento());
+	public String consultarPantallas(int intTipoPantalla) {
+		logs.registrarLogInfoEjecutaPaqFunc(EnumProcedimientos.FNDB_CONULTAR_PANTALLAS.getProcedimiento());
 		
 		String strResultado = "";
 		
-		StoredProcedureQuery query = this.getEntityManager().createStoredProcedureQuery(EnumProcedimientos.FNDB_CONULTAR_PANTALLA.getProcedimiento())
-				.registerStoredProcedureParameter("p_pantalla",Integer.class, ParameterMode.IN)
+		StoredProcedureQuery query = this.getEntityManager().createStoredProcedureQuery(EnumProcedimientos.FNDB_CONULTAR_PANTALLAS.getProcedimiento())
+				.registerStoredProcedureParameter("p_tipo_pantalla",Integer.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("resultado", String.class, ParameterMode.OUT)
-				.setParameter("p_pantalla", intPantallaId);
+				.setParameter("p_tipo_pantalla", intTipoPantalla);
 		query.execute();
 		
 		strResultado = (String) query.getOutputParameterValue("resultado");	

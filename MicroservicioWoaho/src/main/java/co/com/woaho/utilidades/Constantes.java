@@ -25,4 +25,10 @@ public class Constantes {
 	public static final String CABECERA = "cabecera";
 	
 	public static final String CONTENIDO = "contenido";
+	
+	public static final String TITULO = "Titulo";
+	
+	public static final String SUB_TITULO = "Subtitulo";
+	
+	public static final String PIE = "Pie";
 }
