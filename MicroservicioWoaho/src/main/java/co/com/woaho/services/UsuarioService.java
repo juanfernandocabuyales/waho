@@ -161,6 +161,9 @@ public class UsuarioService implements IUsuarioService{
 					pParametros.put(Constantes.ID_DEVICE,usuario.getIdSuscriptor());
 					
 					envioNotificacion.notificarCodigo(pParametros);
+					
+					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+					response.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				}	
 			}	
 		}catch (Exception e) {

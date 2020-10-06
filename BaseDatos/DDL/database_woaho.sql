@@ -284,10 +284,6 @@ CREATE TABLE woaho.codigo
     codigo_fecha_hora_registro TIMESTAMP,
     codigo_estado integer,
     CONSTRAINT codigo_pkey PRIMARY KEY (codigo_id),
-    CONSTRAINT "FK_CODIGO_USUARIO" FOREIGN KEY (codigo_celular)
-        REFERENCES woaho.usuario (usuario_celular) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
     CONSTRAINT "FK_CODIGO_ESTADO" FOREIGN KEY (codigo_estado)
         REFERENCES woaho.estado (estado_id) MATCH SIMPLE
         ON UPDATE NO ACTION
