@@ -1,0 +1,108 @@
+CONSIDERACIONES
+
+Todos los servicios son por POST
+localhost debe ser ==> 198.54.123.142
+puerto 8082 se mantiene
+{"mensaje": "mensajeRespuesta":"mensaje indicando el error","codRespuesta":"1"}"} ==> respuesta negativa de todos los servicios
+
+
+
+LISTADO DE SERVICIOS
+
+endpoint: http://localhost:8082/woaho/direccion/consultarDirecciones
+request: {"strMensaje":"{"idUsuario":"1"}"}
+response: {"mensaje": "{"listDireccion":[{"placeId":"ChIJ8bNLzPCmMI4RaGGuUum1Dx8","mainAddress":"Calle 65B #2d-20","name":"Casa","secondaryAddress":"*","home":"*","location":{"lat":"3.4725913","lng":"-76.4910089"}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
+endpoint: http://localhost:8082/woaho/categoria/consultarCategorias
+request: 
+response: {"mensaje": "{"listCategorias":[{"id":"1","name":"Todos","icon":"url"},{"id":"2","name":"Manicure","icon":"url"},{"id":"3","name":"Peluqueria","icon":"url"},{"id":"4","name":"Comida","icon":"url"},{"id":"5","name":"Mascotas","icon":"url"},{"id":"6","name":"Jardineria","icon":"url"},{"id":"7","name":"Arreglos","icon":"url"},{"id":"9","name":"Mecanica","icon":"url"},{"id":"10","name":"Software","icon":"software.png"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
+endpoint: http://localhost:8082/woaho/etiquetas/obtenerEtiquetasIdioma
+request: {"strMensaje":"{"codigoEtiqueta":"","idiomaEtiqueta":"2"}"}
+response: {"mensaje": "{"listEtiquetas":[{"etiqueta":"usuario","codEtiqueta":"1","idEtiqueta":"1"},{"etiqueta":"clave","codEtiqueta":"2","idEtiqueta":"3"}],"mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/etiquetas/obtenerEtiquetasCodigoIdioma
+request: {"strMensaje":"{"codigoEtiqueta":"1","idiomaEtiqueta":"2"}"}
+response: {"mensaje": "{"listEtiquetas":[{"etiqueta":"usuario","codEtiqueta":"1","idEtiqueta":"1"}],"mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/profesional/crearProfesional
+request: {"strMensaje":"{'nombre':'Juan Fernando','apellido':'Cabuyales Beca','nacionalidad':'1','servicios' :'1' ,'lenguaje':'2,1','descripcion':'Ingeniero experto en desarrollo back','idIcono':9,'profesiones':'2,1'},'Ubicacion':'{'latitud':'4.8118725','longitud':'-75.73522','idLugar':'4321'}'"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/profesional/consultarProfesionales
+request: {"strMensaje":"{'servicio':'1'}"}
+response: {"mensaje": "{"listProfesionales":[{"id":"1","properties":{"name":"Juan Cabuyales","image":"url","profession":"Ingeniero,Electrico,Estilista,","nationality":"Colombia","services":"Desarrollo Software,","languages":"INGLES,ESPAÑOL,","aboutme":"Ingeniero experto en desarrollo de software","iconSize":{"alto":0,"ancho":0},"numberStars":0.0,"numberServices":0,"comments":[{"message":"Muy buen servicio"},{"message":"servicio regular"}]},"geometry":{"placeId":"328","location":{"lat":"3.470289","lng":"-76.489222"}}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/servicio/consultarServicios
+request:
+response: {"mensaje": "{"listServicios":[{"id":"1","image":"software.png","name":"Desarrollo Software","price":20000.0,"category":"Software"},{"id":"2","image":"software.png","name":"Mecanica General","price":0.0,"category":"Mecanica"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/servicio/consultarServiciosCategoria
+request: {"strMensaje":"{'idCategoria':'9'}"}
+response: {"mensaje": "{"listServicios":[{"id":"1","image":"software.png","name":"Desarrollo Software","price":20000.0,"category":"Software"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/solicitarPedido
+request: {"strMensaje":"{'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/actualizarPedido
+request: {"strMensaje":"{'listPedidos':[{'id':'1','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/consultarPedidosUsuario
+request: {"strMensaje":"{'idUsuario':'2'}"}
+response: {"mensaje": "{"listPedidos":[{"servicio":"Desarrollo Software","descripcion":"desarrollo por Sprint","estado":"PENDIENTE","direccion":"MZ j Casa 4","fechaHoraInicio":"2020-09-08 17:27:45","profesional":"Juan Cabuyales","medioPago":"Efectivo","fechaHoraFin":"*"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/consultarPedidosProfesional
+request: {"strMensaje":"{'idProfesional':'2'}"}
+response: {"mensaje": "{"listPedidos":[{"servicio":"Desarrollo Software","descripcion":"desarrollo por Sprint","estado":"PENDIENTE","direccion":"MZ j Casa 4","fechaHora":"2020-09-08 17:27:45","usuario":"dayana muñoz","medioPago":"Efectivo","fechaHoraFinal":"*"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+endpoint: http://localhost:8082/woaho/pedido/cancelarPedido
+request: {"strMensaje":"{'idPedido':'1','motivo':'No se termino a tiempo el desarrollo'}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+endpoint: http://localhost:8082/woaho/territorio/consultarPaises
+request: {"strMensaje":"{'tipoTerritorio':'Pais'}"}
+response: {"mensaje": "{"lisPaisesDto":[{"id":"1","name":"Colombia","code":"+57"},{"id":"2","name":"Estados Unidos","code":"+1"},{"id":"3","name":"México","code":"+52"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+PROCESO DE REGISTRO
+
+1. GENERAR CODIGO
+endpoint: http://localhost:8082/woaho/usuario/generarCodigoRegistro
+request: {"strMensaje":"{'celular':'3146538900','idSuscriptor':'8c09da82-a90e-4c1b-8bb5-34b34e839efc'}"}
+response: {"mensaje": "{"codigo":"498808","codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+2. VALIDA CODIGO REGISTRO
+endpoint: http://localhost:8082/woaho/usuario/validarCodigoRegistro
+request: {"strMensaje":"{'celular':'3146538900','codigo':'498808'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+3. REGISTRAR USUARIO
+endpoint: http://localhost:8082/woaho/usuario/registrarUsuario
+request: {"strMensaje":"{'usuarioDto':{'id':'','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','checkTerminos':'S','idSuscriptor':'8c09da82-a90e-4c1b-8bb5-34b34e839efc'}}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
+4. GENERAR CODIGO LOGIN
+endpoint: http://localhost:8082/woaho/usuario/validarLogin
+request: {"strMensaje":"{'correo':'usuario@woaho.com.co'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+5. VALIDAR CODIGO LOGIN
+endpoint: http://localhost:8082/woaho/usuario/validarCodigoLogin
+request: {"strMensaje":"{'correo':'usuario@woaho.com.co','codigo':'577176'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+6. CONSULTAR USUARIO POR CELULAR
+endpoint: http://localhost:8082/woaho/usuario/consultarUsuario
+request: {"strMensaje":"{'numeroCelular':'3146538900','correoPersona':''}"}
+response: {"mensaje":"{"usuarioDto":{"id":"3","name":"usuario","lastName":"registro","cell":"3146538900","email":"usuario@woaho.com.co","checkTerminos":"S","password":"zgKbdd5zz/c="},"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+CONSULTA SLIDES
+
+endpoint: http://localhost:8082/woaho/pantalla/consultarSlides
+request: {"strMensaje":"{'idioma':'es'}"}    //es o en
+reponse: {"mensaje": "{"listSlides":[{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_uno.png","title":"MANICURE","subtitle":"Separa tu turno y tendras más de 1000 profesionales a tu servicio.","footer":"Encuentra aquí todos los estilos."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_dos.png","title":"PELUQUERÍA","subtitle":"Necesitas un nuevo estilo, contamos con servicio profesional.","footer":"Encuentra y sientete renovado."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_tres.png","title":"COCINA","subtitle":"Ya no necesitas ir a un restaurante, el restaurante va a ti.","footer":"Encuentra los mejores chef y deleita tu paladar."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_cuatro.png","title":"TODO A TUS MANOS","subtitle":"Contamos con los profesionales calificados para atender tus necesidades.","footer":"Encuentra todo lo que necesitas, sin salir de tu casa."}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
