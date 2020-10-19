@@ -83,7 +83,10 @@ CREATE SEQUENCE woaho.sec_medio_pago CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVAL
 ALTER SEQUENCE woaho.sec_medio_pago OWNER TO postgres;  
 
 CREATE SEQUENCE woaho.sec_cancelacion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
-ALTER SEQUENCE woaho.sec_cancelacion OWNER TO postgres;    
+ALTER SEQUENCE woaho.sec_cancelacion OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_traduccion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_traduccion OWNER TO postgres;
 
 /***************************************************************************************************
 	  Zona de tablas
@@ -110,24 +113,6 @@ ALTER TABLE woaho.idioma
     OWNER to postgres;
 COMMENT ON TABLE woaho.idioma
     IS 'Tabla que contiene la información de los idiomas del aplicativo';
-    
-CREATE TABLE woaho.etiqueta
-(
-    etiqueta_id integer NOT NULL DEFAULT nextval('woaho.sec_etiqueta'::regclass),
-    etiqueta_valor character varying(4000),
-    etiqueta_idioma integer,
-    etiqueta_codigo character varying(4000),
-    CONSTRAINT etiqueta_pkey PRIMARY KEY (etiqueta_id),
-    CONSTRAINT "FK_ETIQUETA_IDIOMA" FOREIGN KEY (etiqueta_idioma)
-        REFERENCES woaho.idioma (idioma_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
-);
-ALTER TABLE woaho.etiqueta
-    OWNER to postgres;
-COMMENT ON TABLE woaho.etiqueta
-    IS 'Tabla que contiene las etiquetas del aplicativo';
     
 CREATE TABLE woaho.profesion
 (
@@ -180,8 +165,8 @@ COMMENT ON TABLE woaho.pantalla
 CREATE TABLE woaho.mensaje
 (
     mensaje_id integer NOT NULL DEFAULT nextval('woaho.sec_mensaje'::regclass),
-    mensaje_mensaje character varying(4000) COLLATE pg_catalog."default",
     mensaje_tipo integer,
+    mensaje_codigo character varying(4000),
     CONSTRAINT mensaje_pkey PRIMARY KEY (mensaje_id),
     CONSTRAINT "FK_MENSAJE_TIPO" FOREIGN KEY (mensaje_tipo)
         REFERENCES woaho.tipo (tipo_id) MATCH SIMPLE
@@ -193,6 +178,40 @@ ALTER TABLE woaho.mensaje
     OWNER to postgres;
 COMMENT ON TABLE woaho.mensaje
     IS 'Tabla que contiene la información de los mensajes por pantalla';
+    
+CREATE TABLE woaho.traduccion(
+	traduccion_id integer NOT NULL DEFAULT nextval('woaho.sec_traduccion'::regclass),
+	traduccion_codigo_mensaje character varying(4000),
+	traduccion_traduccion character varying(4000),
+	traduccion_idioma integer,
+	CONSTRAINT traduccion_pkey PRIMARY KEY (traduccion_id),
+    CONSTRAINT "FK_TRADUCCION_IDIOMA" FOREIGN KEY (traduccion_idioma)
+       REFERENCES woaho.idioma (idioma_id) MATCH SIMPLE
+       ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+       NOT VALID
+);
+ALTER TABLE woaho.traduccion
+    OWNER to postgres;
+COMMENT ON TABLE woaho.traduccion
+    IS 'Tabla que contiene la traduccion de los mensajes del aplicativo';
+    
+CREATE TABLE woaho.etiqueta
+(
+    etiqueta_id integer NOT NULL DEFAULT nextval('woaho.sec_etiqueta'::regclass),
+    etiqueta_codigo character varying(4000),
+    etiqueta_idioma integer,
+    CONSTRAINT etiqueta_pkey PRIMARY KEY (etiqueta_id),
+    CONSTRAINT "FK_ETIQUETA_IDIOMA" FOREIGN KEY (etiqueta_idioma)
+       REFERENCES woaho.idioma (idioma_id) MATCH SIMPLE
+       ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+       NOT VALID
+);
+ALTER TABLE woaho.etiqueta
+    OWNER to postgres;
+COMMENT ON TABLE woaho.etiqueta
+    IS 'Tabla que contiene las etiquetas del aplicativo';
 
 CREATE TABLE woaho.mensaje_pantalla
 (

@@ -7,9 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.gtranslate.Language;
-import com.gtranslate.Translator;
-
 import co.com.respuestas.JsonGenerico;
 import co.com.woaho.dto.DireccionDTO;
 import co.com.woaho.dto.MensajeDTO;
@@ -120,11 +117,6 @@ public class ProcesarCadenas {
 			listadoLong.add(Long.parseLong(token));
 		}
 		return listadoLong;
-	}
-	
-	public String realizarTraduccion(String pCadena) {		
-		Translator translate = Translator.getInstance();
-		return translate.translate(pCadena, Language.SPANISH, Language.ENGLISH);
 	}
 	
 	public String obtenerMensajeFormat(String pForma, Object ...objects) {

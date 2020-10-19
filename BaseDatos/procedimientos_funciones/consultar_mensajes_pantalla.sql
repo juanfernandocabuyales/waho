@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION woaho.consultar_mensajes_pantalla(
-	p_pantalla integer)
+	p_pantalla integer,p_idioma integer)
     RETURNS character varying
     LANGUAGE 'plpgsql'
 
@@ -19,10 +19,12 @@ tipo_mensaje character varying;
 cadena_resultado character varying;
 
 cu_mensajes CURSOR FOR 
-			SELECT me.mensaje_mensaje,tp.tipo_nombre
-			FROM mensaje me,mensaje_pantalla mp,tipo tp
+			SELECT me.mensaje_codigo,tp.tipo_nombre,tr.traduccion_traduccion 
+			FROM mensaje me,mensaje_pantalla mp,tipo tp,traduccion tr 
 			WHERE mp.mensaje_pantalla_pantalla_id = p_pantalla
 			AND mp.mensaje_pantalla_mensaje_id = me.mensaje_id
+			AND tr.traduccion_idioma = p_idioma
+			AND tr.traduccion_codigo_mensaje = me.mensaje_codigo 
 			AND me.mensaje_tipo = tp.tipo_id;
 		
 BEGIN
@@ -46,5 +48,5 @@ BEGIN
 END;
 $BODY$;
 
-ALTER FUNCTION woaho.consultar_mensajes_pantalla(integer)
+ALTER FUNCTION woaho.consultar_mensajes_pantalla(integer,integer)
     OWNER TO postgres;

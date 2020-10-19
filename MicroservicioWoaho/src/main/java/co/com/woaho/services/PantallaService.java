@@ -13,6 +13,7 @@ import co.com.woaho.interfaces.IPantallaDao;
 import co.com.woaho.interfaces.IPantallaService;
 import co.com.woaho.request.ConsultarPantallasRequest;
 import co.com.woaho.response.ConsultarPantallasResponse;
+import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -34,7 +35,8 @@ public class PantallaService implements IPantallaService {
 		ConsultarPantallasResponse response = new ConsultarPantallasResponse();
 		try {
 
-			String strCadena = pantallaDao.consultarPantallas(Integer.parseInt(request.getTipoPantalla()));
+			String strCadena = pantallaDao.consultarPantallas(Integer.parseInt(Constantes.TIPO_SLIDES),
+					                                          request.getIdioma().toUpperCase());
 
 			logs.registrarLogInfo(strCadena);
 

@@ -31,4 +31,6 @@ public class Constantes {
 	public static final String SUB_TITULO = "Subtitulo";
 	
 	public static final String PIE = "Pie";
+	
+	public static final String TIPO_SLIDES = "1";
 }

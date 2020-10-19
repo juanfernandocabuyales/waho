@@ -55,8 +55,8 @@ INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Semana');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Mes');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Año');
 
-INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('INGLES','ENG');
-INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','SPN');
+INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('INGLES','EN');
+INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','ES');
 
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Ingeniero');
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Electrico');
@@ -86,20 +86,20 @@ INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantal
 INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide tres',16,1);
 INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide cuatro',17,1);
 
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('MANICURE',3);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('PELUQUERÍA',3);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('COCINA',3);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('TODO A TUS MANOS',3);
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (3,'1');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (3,'2');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (3,'3');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (3,'4');
 
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Separa tu turno y tendras más de 1000 profesionales a tu servicio.',4);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Necesitas un nuevo estilo, contamos con servicio profesional.',4);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Ya no necesitas ir a un restaurante, el restaurante va a ti.',4);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Contamos con los profesionales calificados para atender tus necesidades.',4);
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (4,'5');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (4,'6');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (4,'7');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (4,'8');
 
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Separa tu turno y tendras más de 1000 profesionales a tu servicio.',5);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra y sientete renovado.',5);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra los mejores chef y deleita tu paladar.',5);
-INSERT INTO woaho.mensaje (mensaje_mensaje,mensaje_tipo) VALUES ('Encuentra todo lo que necesitas, sin salir de tu casa.',5);
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (5,'9');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (5,'10');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (5,'11');
+INSERT INTO woaho.mensaje (mensaje_tipo,mensaje_codigo) VALUES (5,'12');
 
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (1,1);
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (1,5);
@@ -114,3 +114,43 @@ INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantall
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,8);
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,12);
 
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide uno',14,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide dos',15,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide tres',16,1);
+INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide cuatro',17,1);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('1','MANICURE',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('1','MANICURE',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('2','HAIRDRESSING',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('2','PELUQUERÍA',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('3','KITCHEN',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('3','COCINA',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('4','EVERYTHING AT YOUR HANDS',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('4','TODO A TUS MANOS',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('5','Separate your shift and you will have more than 1000 professionals at your service.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('5','Separa tu turno y tendras más de 1000 profesionales a tu servicio.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('6','Do you need a new style? We have professional service.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('6','Necesitas un nuevo estilo, contamos con servicio profesional.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('7','You no longer need to go to a restaurant, the restaurant goes to you.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('7','Ya no necesitas ir a un restaurante, el restaurante va a ti.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('8','We have qualified professionals to meet your needs.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('8','Contamos con los profesionales calificados para atender tus necesidades.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('9','Separate your shift and you will have more than 1000 professionals at your service.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('9','Separa tu turno y tendras más de 1000 profesionales a tu servicio.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('10','Find and feel renewed.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('10','Encuentra y sientete renovado.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('11','Find the best chefs and delight your palate.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('11','Encuentra los mejores chef y deleita tu paladar.',2);
+
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('12','Find everything you need, without leaving your home.',1);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('12','Encuentra todo lo que necesitas, sin salir de tu casa.',2);

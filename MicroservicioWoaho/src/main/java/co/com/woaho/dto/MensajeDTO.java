@@ -6,7 +6,7 @@ public class MensajeDTO {
 	
 	private String strTipo;	
 
-	public MensajeDTO(String strMensaje, String strTipo) {
+	public MensajeDTO(String strTipo,String strMensaje) {
 		super();
 		this.strMensaje = strMensaje;
 		this.strTipo = strTipo;

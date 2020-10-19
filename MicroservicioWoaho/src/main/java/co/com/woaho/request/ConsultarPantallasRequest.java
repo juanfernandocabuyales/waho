@@ -2,13 +2,13 @@ package co.com.woaho.request;
 
 public class ConsultarPantallasRequest {
 
-	private String tipoPantalla;
+	private String idioma;
 
-	public String getTipoPantalla() {
-		return tipoPantalla;
+	public String getIdioma() {
+		return idioma;
 	}
 
-	public void setTipoPantalla(String tipoPantalla) {
-		this.tipoPantalla = tipoPantalla;
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 }
