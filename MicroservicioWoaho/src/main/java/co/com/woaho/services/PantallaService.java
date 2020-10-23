@@ -51,7 +51,7 @@ public class PantallaService implements IPantallaService {
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerMensajesPantalla", "No se ha podido procesar la peticion", e);
-			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
 		}
 		return response;

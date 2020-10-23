@@ -33,4 +33,8 @@ public class Constantes {
 	public static final String PIE = "Pie";
 	
 	public static final String TIPO_SLIDES = "1";
+	
+	public static final String IDIOMA_ESPANOL = "es";
+	
+	public static final String IDIOMA_INGLES = "en";
 }

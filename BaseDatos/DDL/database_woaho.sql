@@ -88,6 +88,8 @@ ALTER SEQUENCE woaho.sec_cancelacion OWNER TO postgres;
 CREATE SEQUENCE woaho.sec_traduccion CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_traduccion OWNER TO postgres;
 
+CREATE SEQUENCE woaho.sec_equivalencia_idioma CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_equivalencia_idioma OWNER TO postgres;
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -656,3 +658,15 @@ ALTER TABLE woaho.cancelacion
     OWNER to postgres;
 COMMENT ON TABLE woaho.cancelacion
     IS 'Tabla que contiene las cancelaciones realizadas';  
+    
+CREATE TABLE woaho.equivalencia_idioma
+(
+	equivalencia_idioma_id integer NOT NULL DEFAULT nextval('sec_equivalencia_idioma'::regclass),
+	equivalencia_idioma_original character varying(4000),
+	equivalencia_idioma_ingles character varying(4000),
+	CONSTRAINT equivalencia_idioma_pkey PRIMARY KEY (equivalencia_idioma_id)
+);
+ALTER TABLE woaho.equivalencia_idioma
+    OWNER to postgres;
+COMMENT ON TABLE woaho.equivalencia_idioma
+    IS 'Tabla que contiene las traducciones de las etiquetas'; 

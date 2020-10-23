@@ -12,23 +12,30 @@ import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.ICategoriaDao;
 import co.com.woaho.interfaces.ICategoriaService;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.modelo.Categoria;
+import co.com.woaho.modelo.EquivalenciaIdioma;
+import co.com.woaho.request.ConsultarCategoriaRequest;
 import co.com.woaho.response.ConsultarCategoriasResponse;
+import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CategoriaService implements ICategoriaService {
-	
+
 	@Autowired
 	private ICategoriaDao categoriaDao;
+
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 
 	private RegistrarLog logs = new RegistrarLog(CategoriaService.class);
 
 	@Override
-	public ConsultarCategoriasResponse consultarCategorias() {
+	public ConsultarCategoriasResponse consultarCategorias(ConsultarCategoriaRequest request) {
 		ConsultarCategoriasResponse consultarCategoriasResponse = new ConsultarCategoriasResponse();
-		logs.registrarLogInfoEjecutaMetodoConParam("consultarServicios","");
+		logs.registrarLogInfoEjecutaMetodoConParam("consultarCategorias","");
 		try {
 			List<Categoria> listCategoria = categoriaDao.consultarCategorias();
 
@@ -41,7 +48,12 @@ public class CategoriaService implements ICategoriaService {
 					ConsultarCategoriasResponse.Categoria categoriaDto = new ConsultarCategoriasResponse.Categoria();
 					categoriaDto.setIcon(categoria.getImagen().getStrRuta());
 					categoriaDto.setId(String.valueOf(categoria.getCategoriaId()));
-					categoriaDto.setName(categoria.getStrDescripcion());
+					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(categoria.getStrDescripcion());
+					if(request.getLenguaje().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+						categoriaDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+					}else {
+						categoriaDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+					}
 					listCategoriaDto.add(categoriaDto);
 				}
 				consultarCategoriasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
