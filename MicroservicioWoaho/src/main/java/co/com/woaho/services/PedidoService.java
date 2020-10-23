@@ -13,6 +13,7 @@ import co.com.woaho.enumeraciones.EnumEstados;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.ICancelacionDao;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IPedidoDao;
 import co.com.woaho.interfaces.IPedidoService;
 import co.com.woaho.modelo.Cancelacion;
@@ -33,6 +34,7 @@ import co.com.woaho.response.ConsultarPedidoUsuarioResponse;
 import co.com.woaho.response.SolicitarPedidoResponse;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -43,6 +45,9 @@ public class PedidoService implements IPedidoService{
 	
 	@Autowired
 	private ICancelacionDao cancelacionDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 
 	private RegistrarLog logs = new RegistrarLog(PedidoService.class);
 
@@ -84,12 +89,12 @@ public class PedidoService implements IPedidoService{
 				solicitarPedidoResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {
 				solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDOS.getMensaje());
+				solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PEDIDOS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}			
 		}catch(Exception e) {
 			logs.registrarLogError("soliciarPedido", "No se ha podido procesar la peticion", e);
 			solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_MENSAJES_PANTALLA.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return solicitarPedidoResponse;
 	}

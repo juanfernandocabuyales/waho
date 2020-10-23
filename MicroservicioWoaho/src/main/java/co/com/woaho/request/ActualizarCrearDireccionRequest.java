@@ -3,7 +3,9 @@ package co.com.woaho.request;
 
 public class ActualizarCrearDireccionRequest {
 	
-	private Direccion direccionDto;	
+	private Direccion direccionDto;
+	
+	private String idioma;
 
 	public Direccion getDireccionDto() {
 		return direccionDto;
@@ -11,6 +13,14 @@ public class ActualizarCrearDireccionRequest {
 
 	public void setDireccionDto(Direccion direccionDto) {
 		this.direccionDto = direccionDto;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 
 	public static class Direccion{

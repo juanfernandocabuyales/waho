@@ -72,6 +72,27 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Desarrollo Software','Software Development');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Mecanica General','General Mechanics');
 
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado slides registrados','No slides found');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado paises para la busqueda','No country found');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado profesionales para la busqueda','No professional found');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado servicios disponibles','No services available');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado categorias disponibles','No found category vailable');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Se ha presentado un inconveniente realizado la operación, favor intentar nuevamente','There has been a problem when the operation has been performed, please try again');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Se ha presentado un inconveniente al solicitar la notificacion','There was a problem when requesting the notification');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Se ha realizado el registro {0}','Registration has been made {0}');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se ha encontrado un usuario para el {0} {1}','No user found for {0} {1}');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El usuario no es valido para registrar la direccion','The user is not valid to register the address');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se ha podido procesar la solicitud ','The request could not be processed');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('La clave ingresada no corresponde al usuario. Intente nuevamente.','The password entered does not correspond to the user. Try again');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado direcciones registradas para el usuario','No registered addresses found for the user');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Listado de pedidos vacio y/o invalido','Empty order list');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado pedidos para el {0} .','No orders found for {0}');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se ha encontrado un pedido para cancelar','An order to cancel was not found');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El número {0} ya se encuentra registrado.','the number {0} is already registered');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El nombre del archivo no cumple con el formato esperado.','The file name does not conform to the expected format.');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han enviando un archivo valido para guardar','They have not sent a valid file to save');
+
+
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('MXN',3);

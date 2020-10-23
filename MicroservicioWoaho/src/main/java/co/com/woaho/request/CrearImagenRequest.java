@@ -9,6 +9,8 @@ public class CrearImagenRequest {
 	private String alto;
 	
 	private String ancho;
+	
+	private String idioma;
 
 	public String getIdImagen() {
 		return idImagen;
@@ -40,5 +42,13 @@ public class CrearImagenRequest {
 
 	public void setAncho(String ancho) {
 		this.ancho = ancho;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 }

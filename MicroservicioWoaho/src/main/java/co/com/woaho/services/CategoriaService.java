@@ -14,11 +14,10 @@ import co.com.woaho.interfaces.ICategoriaDao;
 import co.com.woaho.interfaces.ICategoriaService;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.modelo.Categoria;
-import co.com.woaho.modelo.EquivalenciaIdioma;
 import co.com.woaho.request.ConsultarCategoriaRequest;
 import co.com.woaho.response.ConsultarCategoriasResponse;
-import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -48,17 +47,7 @@ public class CategoriaService implements ICategoriaService {
 					ConsultarCategoriasResponse.Categoria categoriaDto = new ConsultarCategoriasResponse.Categoria();
 					categoriaDto.setIcon(categoria.getImagen().getStrRuta());
 					categoriaDto.setId(String.valueOf(categoria.getCategoriaId()));
-					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(categoria.getStrDescripcion());
-					if(equivalencia == null) {
-						categoriaDto.setName(categoria.getStrDescripcion());
-					}else {
-						if(request.getLenguaje().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
-							categoriaDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
-						}else {
-							categoriaDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
-						}
-					}
-					
+					categoriaDto.setName(Utilidades.getInstance().obtenerEquivalencia(categoria.getStrDescripcion(), request.getLenguaje(), equivalenciaIdiomaDao));
 					listCategoriaDto.add(categoriaDto);
 				}
 				consultarCategoriasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -68,7 +57,8 @@ public class CategoriaService implements ICategoriaService {
 		}catch(Exception e) {
 			logs.registrarLogError("consultarCategorias", "No se ha podido procesar la peticion", e);
 			consultarCategoriasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarCategoriasResponse.setMensajeRespuesta(EnumMensajes.NO_CATEGORIAS.getMensaje());
+			consultarCategoriasResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+					request.getLenguaje(), equivalenciaIdiomaDao));
 		}
 		return consultarCategoriasResponse;
 	}	

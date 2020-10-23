@@ -12,6 +12,8 @@ import org.apache.commons.codec.binary.Base64;
 
 import co.com.respuestas.RespuestaNegativa;
 import co.com.woaho.enumeraciones.EnumGeneral;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
+import co.com.woaho.modelo.EquivalenciaIdioma;
 
 public class Utilidades {
 
@@ -42,6 +44,19 @@ public class Utilidades {
 		}catch (Exception e) {
 			logs.registrarLogError("procesarException", "No se ha podido procesar la peticion", e);
 			return "";
+		}
+	}
+	
+	public String obtenerEquivalencia(String pCadena,String pIdioma,IEquivalenciaIdiomaDao equivalenciaIdiomaDao) {
+		EquivalenciaIdioma equivalenciaIdioma = equivalenciaIdiomaDao.obtenerEquivalencia(pCadena);
+		if(equivalenciaIdioma == null) {
+			return pCadena;
+		}else {
+			if(pIdioma.equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+				return equivalenciaIdioma.getEquivalenciaIdiomaIngles();
+			}else {
+				return equivalenciaIdioma.getEquivalenciaIdiomaOriginal();
+			}
 		}
 	}
 

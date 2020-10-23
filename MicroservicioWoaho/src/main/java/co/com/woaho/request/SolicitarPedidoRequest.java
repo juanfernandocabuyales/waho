@@ -6,12 +6,22 @@ public class SolicitarPedidoRequest {
 
 	private List<PedidoDto> listPedidos;
 	
+	private String idioma;
+	
 	public List<PedidoDto> getListPedidos() {
 		return listPedidos;
 	}
 
 	public void setListPedidos(List<PedidoDto> listPedidos) {
 		this.listPedidos = listPedidos;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 
 	public static class PedidoDto{

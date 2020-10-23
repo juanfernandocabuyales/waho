@@ -18,6 +18,7 @@ import java.nio.file.StandardCopyOption;
 
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IImagenDao;
 import co.com.woaho.interfaces.IImagenService;
 import co.com.woaho.modelo.Imagen;
@@ -25,6 +26,7 @@ import co.com.woaho.principal.Configuracion;
 import co.com.woaho.request.CrearImagenRequest;
 import co.com.woaho.response.CrearImagenResponse;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -37,6 +39,9 @@ public class ImagenService implements IImagenService {
 	
 	@Autowired
 	private IImagenDao imagenDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdioma;
 	
 	private Path fileStorageLocation;
 	
@@ -53,7 +58,7 @@ public class ImagenService implements IImagenService {
 			
 			if(fileName.isEmpty()) {
 				crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-	        	crearImagenResponse.setMensajeRespuesta(EnumMensajes.ARCHIVO_NULO.getMensaje());
+				crearImagenResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.ARCHIVO_NULO.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 			}else {
 				fileStorageLocation = Paths.get(configuracion.getDirectorio())
 		                .toAbsolutePath().normalize();
@@ -63,7 +68,7 @@ public class ImagenService implements IImagenService {
 	            // Check if the file's name contains invalid characters
 	            if(fileName.contains("..")) {
 	            	crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-	            	crearImagenResponse.setMensajeRespuesta(EnumMensajes.NOMBRE_ARCHIVO_INVALIDO.getMensaje());
+	            	crearImagenResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NOMBRE_ARCHIVO_INVALIDO.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 	            }
 
 	            // Copy file to the target location (Replacing existing file with the same name)
@@ -93,7 +98,7 @@ public class ImagenService implements IImagenService {
         } catch (Exception ex) {
         	logs.registrarLogError("guardarImagen", "No se ha podido procesar la peticion", ex);
         	crearImagenResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-        	crearImagenResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+        	crearImagenResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdioma));
         }
 		return crearImagenResponse;
 	}

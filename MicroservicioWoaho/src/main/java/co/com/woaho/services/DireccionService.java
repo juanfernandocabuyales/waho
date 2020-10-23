@@ -12,6 +12,7 @@ import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IDireccionDao;
 import co.com.woaho.interfaces.IDireccionService;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IUsuarioDao;
 import co.com.woaho.modelo.Direccion;
 import co.com.woaho.modelo.Estado;
@@ -23,6 +24,7 @@ import co.com.woaho.response.ActualizarCrearDireccionResponse;
 import co.com.woaho.response.ConsultarDireccionResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -35,6 +37,9 @@ public class DireccionService implements IDireccionService {
 	
 	@Autowired
 	private IUsuarioDao usuarioDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaDao;
 
 	@Override
 	public ConsultarDireccionResponse obtenerDireccionesUsuario(ConsultarDireccionRequest request) {
@@ -43,7 +48,7 @@ public class DireccionService implements IDireccionService {
 			List<Direccion> listDirecciones = direccionDao.obtenerDireccionesUsuario(Long.parseLong(request.getIdUsuario()));
 			if(listDirecciones == null || listDirecciones.isEmpty()) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_DIRECCIONES.getMensaje());
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_DIRECCIONES.getMensaje(), request.getIdioma(), equivalenciaDao));
 			}else {
 				List<ConsultarDireccionResponse.Direccion> listDireccionesDTO = new ArrayList<>();
 				for(Direccion direccion : listDirecciones) {
@@ -66,7 +71,8 @@ public class DireccionService implements IDireccionService {
 		}catch(Exception e) {
 			logs.registrarLogError("obtenerDireccionesUsuario", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
+					request.getIdioma(), equivalenciaDao));
 		}
 		return response;
 	}
@@ -80,7 +86,8 @@ public class DireccionService implements IDireccionService {
 			
 			if(usuarioDireccion == null) {
 				actualizarCrearDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				actualizarCrearDireccionResponse.setMensajeRespuesta(EnumMensajes.NO_USUARIO_VALIDO.getMensaje());
+				actualizarCrearDireccionResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO_VALIDO.getMensaje(),
+						request.getIdioma(),equivalenciaDao));
 			}else {
 				Direccion direccionModelo = new Direccion();
 				direccionModelo.setDireccionId(Long.parseLong(request.getDireccionDto().getId()));
@@ -106,7 +113,8 @@ public class DireccionService implements IDireccionService {
 		}catch(Exception e) {
 			logs.registrarLogError("crearActualizarDireccion", "No se ha podido procesar la peticion", e);
 			actualizarCrearDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			actualizarCrearDireccionResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			actualizarCrearDireccionResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
+					request.getIdioma(), equivalenciaDao));
 		}
 		return actualizarCrearDireccionResponse;
 	}

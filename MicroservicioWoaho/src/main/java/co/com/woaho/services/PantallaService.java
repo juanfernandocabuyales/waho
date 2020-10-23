@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IPantallaDao;
 import co.com.woaho.interfaces.IPantallaService;
 import co.com.woaho.request.ConsultarPantallasRequest;
@@ -16,6 +17,7 @@ import co.com.woaho.response.ConsultarPantallasResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 import org.springframework.context.annotation.ScopedProxyMode;
 
@@ -25,6 +27,9 @@ public class PantallaService implements IPantallaService {
 
 	@Autowired
 	IPantallaDao pantallaDao;
+	
+	@Autowired
+	IEquivalenciaIdiomaDao equivalenciaIdioma;
 
 	private RegistrarLog logs = new RegistrarLog(PantallaService.class);	
 
@@ -42,7 +47,7 @@ public class PantallaService implements IPantallaService {
 
 			if(strCadena.isEmpty()) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_MENSAJES_PANTALLA.getMensaje());
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_MENSAJES_PANTALLA.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 			}else {
 				List<ConsultarPantallasResponse.Slide> listSlides = ProcesarCadenas.getInstance().obtenerSlides(strCadena);
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -52,7 +57,7 @@ public class PantallaService implements IPantallaService {
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerMensajesPantalla", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 		}
 		return response;
 	}
