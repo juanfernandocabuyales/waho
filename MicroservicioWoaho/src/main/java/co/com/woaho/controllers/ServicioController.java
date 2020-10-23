@@ -28,12 +28,14 @@ public class ServicioController {
 	private IServicioServices servicioService;
 	
 	@PostMapping(value = "/consultarServicios", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> consultarServicios() {
+	public ResponseEntity<?> consultarServicios(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("consultarServicios");
 		
 		Gson gson = new Gson();
-		ConsultarServiciosResponse consultarServiciosResponse = servicioService.consultarServicios();
+		
+		ConsultarServiciosRequest consultarServiciosRequest = gson.fromJson(request.getStrMensaje(), ConsultarServiciosRequest.class);
+		ConsultarServiciosResponse consultarServiciosResponse = servicioService.consultarServicios(consultarServiciosRequest);
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarServiciosResponse));

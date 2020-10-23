@@ -49,11 +49,16 @@ public class CategoriaService implements ICategoriaService {
 					categoriaDto.setIcon(categoria.getImagen().getStrRuta());
 					categoriaDto.setId(String.valueOf(categoria.getCategoriaId()));
 					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(categoria.getStrDescripcion());
-					if(request.getLenguaje().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
-						categoriaDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+					if(equivalencia == null) {
+						categoriaDto.setName(categoria.getStrDescripcion());
 					}else {
-						categoriaDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+						if(request.getLenguaje().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+							categoriaDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+						}else {
+							categoriaDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+						}
 					}
+					
 					listCategoriaDto.add(categoriaDto);
 				}
 				consultarCategoriasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());

@@ -2,13 +2,13 @@ package co.com.woaho.request;
 
 public class ConsultarCategoriaRequest {
 
-	private String lenguaje;
+	private String idioma;
 
 	public String getLenguaje() {
-		return lenguaje;
+		return idioma;
 	}
 
 	public void setLenguaje(String lenguaje) {
-		this.lenguaje = lenguaje;
+		this.idioma = lenguaje;
 	}
 }

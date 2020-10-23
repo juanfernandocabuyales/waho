@@ -11,13 +11,16 @@ import org.springframework.stereotype.Service;
 
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IServicioDao;
 import co.com.woaho.interfaces.IServicioServices;
 import co.com.woaho.interfaces.ITarifaDao;
+import co.com.woaho.modelo.EquivalenciaIdioma;
 import co.com.woaho.modelo.Servicio;
 import co.com.woaho.modelo.Tarifa;
 import co.com.woaho.request.ConsultarServiciosRequest;
 import co.com.woaho.response.ConsultarServiciosResponse;
+import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @Service
@@ -29,11 +32,14 @@ public class ServicioService implements IServicioServices {
 	
 	@Autowired
 	private ITarifaDao tarifaDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 
 	private RegistrarLog logs = new RegistrarLog(ServicioService.class);	
 
 	@Override
-	public ConsultarServiciosResponse consultarServicios() {
+	public ConsultarServiciosResponse consultarServicios(ConsultarServiciosRequest request) {
 		ConsultarServiciosResponse consultarServiciosResponse = new ConsultarServiciosResponse();
 		logs.registrarLogInfoEjecutaMetodoConParam("consultarServicios","Sin parametros");
 		try {
@@ -48,14 +54,24 @@ public class ServicioService implements IServicioServices {
 					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
 					servicioDto.setId(String.valueOf(servicio.getServicioId()));
 					servicioDto.setImage(servicio.getImagen().getStrRuta());
-					servicioDto.setName(servicio.getStrNombre());
+					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(servicio.getStrNombre());
+					if(equivalencia == null) {
+						servicioDto.setName(servicio.getStrNombre());
+					}else {
+						if(request.getIdioma().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+							servicioDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+						}else {
+							servicioDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+						}	
+					}
 					Tarifa tarifa = tarifaDao.obtenerTarifaServicio(servicio.getServicioId());
 					if(tarifa == null) {
 						servicioDto.setPrice(0);
 					}else {
 						servicioDto.setPrice(tarifa.getValor());	
 					}
-					servicioDto.setCategory(servicio.getCategoria().getStrDescripcion());
+					
+					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -86,14 +102,23 @@ public class ServicioService implements IServicioServices {
 					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
 					servicioDto.setId(String.valueOf(servicio.getServicioId()));
 					servicioDto.setImage(servicio.getImagen().getStrRuta());
-					servicioDto.setName(servicio.getStrNombre());
+					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(servicio.getStrNombre());
+					if(equivalencia == null) {
+						servicioDto.setName(servicio.getStrNombre());
+					}else {
+						if(request.getIdioma().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+							servicioDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+						}else {
+							servicioDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+						}	
+					}
 					Tarifa tarifa = tarifaDao.obtenerTarifaServicio(servicio.getServicioId());
 					if(tarifa == null) {
 						servicioDto.setPrice(0);
 					}else {
 						servicioDto.setPrice(tarifa.getValor());	
 					}
-					servicioDto.setCategory(servicio.getCategoria().getStrDescripcion());
+					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());

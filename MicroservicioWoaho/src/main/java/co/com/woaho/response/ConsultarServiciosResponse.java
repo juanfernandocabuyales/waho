@@ -44,7 +44,7 @@ public class ConsultarServiciosResponse {
 		
 		private double price;
 		
-		private String category;
+		private Long category;
 
 		public String getId() {
 			return id;
@@ -78,11 +78,11 @@ public class ConsultarServiciosResponse {
 			this.price = price;
 		}
 
-		public String getCategory() {
+		public Long getCategory() {
 			return category;
 		}
 
-		public void setCategory(String category) {
+		public void setCategory(Long category) {
 			this.category = category;
 		}		
 	}
