@@ -5,6 +5,8 @@ public class ConsultarUsuarioRequest {
 	private String numeroCelular;
 	
 	private String correoPersona;
+	
+	private String idioma;
 
 	public String getNumeroCelular() {
 		return numeroCelular;
@@ -20,5 +22,13 @@ public class ConsultarUsuarioRequest {
 
 	public void setCorreoPersona(String correoPersona) {
 		this.correoPersona = correoPersona;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}	
 }

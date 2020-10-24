@@ -18,6 +18,8 @@ public class CrearProfesionalRequest {
 	
 	private String profesiones;
 	
+	private String idioma;
+	
 	private Ubicacion ubicacion;
 	
 	public String getNombre() {
@@ -74,6 +76,13 @@ public class CrearProfesionalRequest {
 	}
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 
 	public static class Ubicacion{

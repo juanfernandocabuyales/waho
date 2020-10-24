@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION woaho.fndb_generar_codigo_registro(p_celular character varying)
+CREATE OR REPLACE FUNCTION woaho.fndb_generar_codigo_registro(p_celular character varying,p_idioma character varying)
 RETURNS character varying 
 LANGUAGE plpgsql
 AS $$
@@ -42,10 +42,10 @@ EXCEPTION WHEN OTHERS THEN
         v_hint    = pg_exception_hint,
         v_context = pg_exception_context;
         
-	RETURN '1,Se ha presentado un error inesperado: '||v_state||' '||v_msg; 	
+	RETURN '1,'|| woaho.fndb_consultar_equivalencia('Se ha presentado un error inesperado:',p_idioma) ||' '||v_state||' '||v_msg; 	
 	
 END;
 $$;
 
-ALTER FUNCTION woaho.fndb_generar_codigo_registro(character varying)
+ALTER FUNCTION woaho.fndb_generar_codigo_registro(character varying,character varying)
   OWNER TO postgres;

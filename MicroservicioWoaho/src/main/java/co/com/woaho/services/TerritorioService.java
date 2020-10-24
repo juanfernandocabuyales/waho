@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import co.com.woaho.dto.PaisDTO;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.ITerritorioDao;
 import co.com.woaho.interfaces.ITerritorioService;
 import co.com.woaho.modelo.Territorio;
 import co.com.woaho.request.ConsultarTerritorioRequest;
 import co.com.woaho.response.ConsultarTerritorioResponse;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -24,6 +26,9 @@ public class TerritorioService implements ITerritorioService {
 
 	@Autowired
 	private ITerritorioDao territorioDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 	
 	private RegistrarLog logs = new RegistrarLog(TerritorioService.class);	
 	
@@ -46,12 +51,12 @@ public class TerritorioService implements ITerritorioService {
 				response.setLisPaisesDto(listPaisesDto);				
 			}else {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_PAISES.getMensaje());
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PAISES.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerTerritorios", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}

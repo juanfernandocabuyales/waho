@@ -5,6 +5,8 @@ public class GenerarCodigoRequest {
 	private String celular;
 	
 	private String idSuscriptor;
+	
+	private String idioma;
 
 	public String getCelular() {
 		return celular;
@@ -20,5 +22,13 @@ public class GenerarCodigoRequest {
 
 	public void setIdSuscriptor(String idSuscriptor) {
 		this.idSuscriptor = idSuscriptor;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 }

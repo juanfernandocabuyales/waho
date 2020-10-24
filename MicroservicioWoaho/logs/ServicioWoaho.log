@@ -1,229 +1,56 @@
-2020-10-23 10:29:04 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 13468 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 10:29:04 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 10:29:05 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 10:29:05 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 173ms. Found 1 repository interfaces.
-2020-10-23 10:29:06 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 10:29:06 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 10:29:06 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 10:29:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$60f760a9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:29:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$cbe91bd8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:29:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:29:07 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:29:07 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 10:29:07 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:29:07 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 10:29:07 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 10:29:07 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:29:07 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 10:29:07 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3191 ms
-2020-10-23 10:29:08 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 10:29:10 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 10:30:21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 10:30:22 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 10:30:23 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 10:30:24 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 10:30:24 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 10:30:24 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 10:30:24 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 10:30:24 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 10:30:24 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 80.267 seconds (JVM running for 81.469)
-2020-10-23 10:31:39 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 10:31:39 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 10:31:40 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 99 ms
-2020-10-23 10:31:40 [http-nio-8082-exec-2] INFO  c.c.w.c.CategoriaController:87 - Hilo[28] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:31:40 [http-nio-8082-exec-2] INFO  c.c.w.s.CategoriaService:56 - Hilo[28] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:31:59 [http-nio-8082-exec-2] ERROR c.c.w.d.EquivalenciaIdiomaDao:70 - Hilo[28] se ha presentado un error en el metodo: obtenerEquivalencia No se ha podido procesar la solicitud 
-java.lang.IllegalArgumentException: Could not locate named parameter [pTexto], expecting one of []
-	at org.hibernate.query.internal.ParameterMetadataImpl.getNamedParameterDescriptor(ParameterMetadataImpl.java:218)
-	at org.hibernate.query.internal.ParameterMetadataImpl.getQueryParameter(ParameterMetadataImpl.java:187)
-	at org.hibernate.query.internal.QueryParameterBindingsImpl.getBinding(QueryParameterBindingsImpl.java:188)
-	at org.hibernate.query.internal.AbstractProducedQuery.setParameter(AbstractProducedQuery.java:493)
-	at org.hibernate.query.internal.AbstractProducedQuery.setParameter(AbstractProducedQuery.java:106)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao.obtenerEquivalencia(EquivalenciaIdiomaDao.java:40)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$FastClassBySpringCGLIB$$dcc810c3.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$EnhancerBySpringCGLIB$$94d8366.obtenerEquivalencia(<generated>)
-	at co.com.woaho.services.CategoriaService.consultarCategorias(CategoriaService.java:51)
-	at co.com.woaho.services.CategoriaService$$FastClassBySpringCGLIB$$9505d3a5.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.CategoriaService$$EnhancerBySpringCGLIB$$aab76dd8.consultarCategorias(<generated>)
-	at co.com.woaho.controllers.CategoriaController.consultarCategorias(CategoriaController.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 10:32:29 [http-nio-8082-exec-2] ERROR c.c.w.s.CategoriaService:70 - Hilo[28] se ha presentado un error en el metodo: consultarCategorias No se ha podido procesar la peticion
-java.lang.NullPointerException: null
-	at co.com.woaho.services.CategoriaService.consultarCategorias(CategoriaService.java:53)
-	at co.com.woaho.services.CategoriaService$$FastClassBySpringCGLIB$$9505d3a5.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.CategoriaService$$EnhancerBySpringCGLIB$$aab76dd8.consultarCategorias(<generated>)
-	at co.com.woaho.controllers.CategoriaController.consultarCategorias(CategoriaController.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 10:32:42 [http-nio-8082-exec-3] INFO  c.c.w.c.CategoriaController:87 - Hilo[29] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:32:42 [http-nio-8082-exec-3] INFO  c.c.w.s.CategoriaService:56 - Hilo[29] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:33:42 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 11672 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 10:33:42 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 10:33:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 10:33:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 187ms. Found 1 repository interfaces.
-2020-10-23 10:33:44 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 10:33:44 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 10:33:44 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 10:33:44 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$498ad5e8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:33:44 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$b47c9117] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:33:44 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:33:45 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:33:45 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 10:33:45 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:33:45 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 10:33:45 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 10:33:45 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:33:46 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 10:33:46 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3172 ms
-2020-10-23 10:33:46 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 10:33:47 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 10:34:56 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 10:34:57 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 10:34:57 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 10:34:58 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 10:34:58 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 10:34:58 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 10:34:58 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 10:34:58 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 10:34:58 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 75.916 seconds (JVM running for 76.759)
-2020-10-23 10:35:04 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 10:35:04 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 10:35:04 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 13 ms
-2020-10-23 10:35:04 [http-nio-8082-exec-2] INFO  c.c.w.c.CategoriaController:87 - Hilo[27] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:35:04 [http-nio-8082-exec-2] INFO  c.c.w.s.CategoriaService:56 - Hilo[27] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:35:53 [http-nio-8082-exec-2] ERROR c.c.w.d.EquivalenciaIdiomaDao:70 - Hilo[27] se ha presentado un error en el metodo: obtenerEquivalencia No se ha podido procesar la solicitud 
+2020-10-24 15:33:13 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 2380 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
+2020-10-24 15:33:13 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
+2020-10-24 15:33:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-24 15:33:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 143ms. Found 1 repository interfaces.
+2020-10-24 15:33:14 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2020-10-24 15:33:14 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2020-10-24 15:33:14 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2020-10-24 15:33:15 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c33a529c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 15:33:15 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$2e2c0dcb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 15:33:15 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 15:33:15 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 15:33:16 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
+2020-10-24 15:33:16 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 15:33:16 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
+2020-10-24 15:33:16 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-10-24 15:33:16 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 15:33:16 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
+2020-10-24 15:33:16 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 2634 ms
+2020-10-24 15:33:17 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
+2020-10-24 15:33:18 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
+2020-10-24 15:34:28 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-24 15:34:28 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-24 15:34:29 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-24 15:34:29 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
+2020-10-24 15:34:29 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2020-10-24 15:34:29 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
+2020-10-24 15:34:29 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
+2020-10-24 15:34:30 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
+2020-10-24 15:34:30 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 76.841 seconds (JVM running for 77.195)
+2020-10-24 15:34:44 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-24 15:34:44 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
+2020-10-24 15:34:44 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 57 ms
+2020-10-24 15:34:44 [http-nio-8082-exec-2] INFO  c.c.w.c.PedidoController:87 - Hilo[25] Se va a ejecutar el servicio: consultarPedidosUsuario
+2020-10-24 15:34:54 [http-nio-8082-exec-3] INFO  c.c.w.c.PedidoController:87 - Hilo[26] Se va a ejecutar el servicio: consultarPedidosUsuario
+2020-10-24 15:35:59 [http-nio-8082-exec-6] INFO  c.c.w.c.UsuarioController:99 - Hilo[29] Se va a ejecutar el servicio: consultarUsuario Peticion: {'numeroCelular':'873364','correoPersona':'','idioma':'en'}
+2020-10-24 15:35:59 [http-nio-8082-exec-6] INFO  c.c.w.s.UsuarioService:52 - Hilo[29] Se va a ejecutar el metodo: consultarUsuario
+2020-10-24 15:36:00 [http-nio-8082-exec-6] ERROR c.c.w.d.UsuarioDao:70 - Hilo[29] se ha presentado un error en el metodo: obtenerUsuarioCelular No se ha podido procesar la solicitud 
 javax.persistence.NoResultException: No entity found for query
 	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao.obtenerEquivalencia(EquivalenciaIdiomaDao.java:41)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$FastClassBySpringCGLIB$$dcc810c3.invoke(<generated>)
+	at co.com.woaho.dao.UsuarioDao.obtenerUsuarioCelular(UsuarioDao.java:65)
+	at co.com.woaho.dao.UsuarioDao$$FastClassBySpringCGLIB$$a60bdd6d.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$EnhancerBySpringCGLIB$$bb9587c1.obtenerEquivalencia(<generated>)
-	at co.com.woaho.services.CategoriaService.consultarCategorias(CategoriaService.java:51)
-	at co.com.woaho.services.CategoriaService$$FastClassBySpringCGLIB$$9505d3a5.invoke(<generated>)
+	at co.com.woaho.dao.UsuarioDao$$EnhancerBySpringCGLIB$$1dfe91f1.obtenerUsuarioCelular(<generated>)
+	at co.com.woaho.services.UsuarioService.consultarUsuario(UsuarioService.java:90)
+	at co.com.woaho.services.UsuarioService$$FastClassBySpringCGLIB$$f8e2ae0a.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -231,8 +58,8 @@ javax.persistence.NoResultException: No entity found for query
 	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.CategoriaService$$EnhancerBySpringCGLIB$$ee8a308c.consultarCategorias(<generated>)
-	at co.com.woaho.controllers.CategoriaController.consultarCategorias(CategoriaController.java:37)
+	at co.com.woaho.services.UsuarioService$$EnhancerBySpringCGLIB$$2f2ff8dc.consultarUsuario(<generated>)
+	at co.com.woaho.controllers.UsuarioController.consultarUsuario(UsuarioController.java:64)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -284,86 +111,26 @@ javax.persistence.NoResultException: No entity found for query
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 10:35:53 [http-nio-8082-exec-2] ERROR c.c.w.s.CategoriaService:70 - Hilo[27] se ha presentado un error en el metodo: consultarCategorias No se ha podido procesar la peticion
-java.lang.NullPointerException: null
-	at co.com.woaho.services.CategoriaService.consultarCategorias(CategoriaService.java:53)
-	at co.com.woaho.services.CategoriaService$$FastClassBySpringCGLIB$$9505d3a5.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.CategoriaService$$EnhancerBySpringCGLIB$$ee8a308c.consultarCategorias(<generated>)
-	at co.com.woaho.controllers.CategoriaController.consultarCategorias(CategoriaController.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 10:36:08 [http-nio-8082-exec-3] INFO  c.c.w.c.CategoriaController:87 - Hilo[28] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:36:08 [http-nio-8082-exec-3] INFO  c.c.w.s.CategoriaService:56 - Hilo[28] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:36:37 [http-nio-8082-exec-3] ERROR c.c.w.d.EquivalenciaIdiomaDao:70 - Hilo[28] se ha presentado un error en el metodo: obtenerEquivalencia No se ha podido procesar la solicitud 
+2020-10-24 15:36:00 [http-nio-8082-exec-6] INFO  c.c.w.c.UsuarioController:95 - Hilo[29] Response del servicio: consultarUsuario Response: {"codigoRespuesta":"1","mensajeRespuesta":"No user found for cel 873364"}
+2020-10-24 15:36:08 [http-nio-8082-exec-7] INFO  c.c.w.c.UsuarioController:99 - Hilo[30] Se va a ejecutar el servicio: consultarUsuario Peticion: {'numeroCelular':'873364','correoPersona':'','idioma':'es'}
+2020-10-24 15:36:08 [http-nio-8082-exec-7] INFO  c.c.w.s.UsuarioService:52 - Hilo[30] Se va a ejecutar el metodo: consultarUsuario
+2020-10-24 15:36:08 [http-nio-8082-exec-7] ERROR c.c.w.d.UsuarioDao:70 - Hilo[30] se ha presentado un error en el metodo: obtenerUsuarioCelular No se ha podido procesar la solicitud 
 javax.persistence.NoResultException: No entity found for query
 	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao.obtenerEquivalencia(EquivalenciaIdiomaDao.java:41)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$FastClassBySpringCGLIB$$dcc810c3.invoke(<generated>)
+	at co.com.woaho.dao.UsuarioDao.obtenerUsuarioCelular(UsuarioDao.java:65)
+	at co.com.woaho.dao.UsuarioDao$$FastClassBySpringCGLIB$$a60bdd6d.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$EnhancerBySpringCGLIB$$bb9587c1.obtenerEquivalencia(<generated>)
-	at co.com.woaho.services.CategoriaService.consultarCategorias(CategoriaService.java:51)
-	at co.com.woaho.services.CategoriaService$$FastClassBySpringCGLIB$$9505d3a5.invoke(<generated>)
+	at co.com.woaho.dao.UsuarioDao$$EnhancerBySpringCGLIB$$1dfe91f1.obtenerUsuarioCelular(<generated>)
+	at co.com.woaho.services.UsuarioService.consultarUsuario(UsuarioService.java:90)
+	at co.com.woaho.services.UsuarioService$$FastClassBySpringCGLIB$$f8e2ae0a.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -371,8 +138,8 @@ javax.persistence.NoResultException: No entity found for query
 	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.CategoriaService$$EnhancerBySpringCGLIB$$ee8a308c.consultarCategorias(<generated>)
-	at co.com.woaho.controllers.CategoriaController.consultarCategorias(CategoriaController.java:37)
+	at co.com.woaho.services.UsuarioService$$EnhancerBySpringCGLIB$$2f2ff8dc.consultarUsuario(<generated>)
+	at co.com.woaho.controllers.UsuarioController.consultarUsuario(UsuarioController.java:64)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -424,619 +191,75 @@ javax.persistence.NoResultException: No entity found for query
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 10:38:21 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 4484 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 10:38:21 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 10:38:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 10:38:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 195ms. Found 1 repository interfaces.
-2020-10-23 10:38:23 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 10:38:23 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 10:38:23 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 10:38:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1c654259] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:38:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$8756fd88] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:38:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 10:38:24 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:38:24 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 10:38:24 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:38:24 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 10:38:24 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 10:38:24 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 10:38:24 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 10:38:24 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3207 ms
-2020-10-23 10:38:25 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 10:38:26 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 10:39:36 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 10:39:36 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 10:39:37 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 10:39:37 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 10:39:37 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 10:39:37 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 10:39:37 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 10:39:37 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 10:39:37 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 76.702 seconds (JVM running for 77.579)
-2020-10-23 10:39:48 [http-nio-8082-exec-4] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 10:39:48 [http-nio-8082-exec-4] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 10:39:48 [http-nio-8082-exec-4] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 11 ms
-2020-10-23 10:39:48 [http-nio-8082-exec-4] INFO  c.c.w.c.CategoriaController:87 - Hilo[29] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:39:49 [http-nio-8082-exec-4] INFO  c.c.w.s.CategoriaService:56 - Hilo[29] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:42:04 [http-nio-8082-exec-9] INFO  c.c.w.c.CategoriaController:87 - Hilo[34] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:42:04 [http-nio-8082-exec-9] INFO  c.c.w.s.CategoriaService:56 - Hilo[34] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 10:42:21 [http-nio-8082-exec-6] INFO  c.c.w.c.CategoriaController:87 - Hilo[31] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 10:42:21 [http-nio-8082-exec-6] INFO  c.c.w.s.CategoriaService:56 - Hilo[31] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 11:00:22 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 6916 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 11:00:22 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 11:00:23 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 11:00:23 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 149ms. Found 1 repository interfaces.
-2020-10-23 11:00:24 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 11:00:24 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 11:00:24 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 11:00:24 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b59f8ada] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:00:24 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$20914609] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:00:24 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:00:24 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:00:25 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 11:00:25 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:00:25 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 11:00:25 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 11:00:25 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:00:25 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 11:00:25 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 2397 ms
-2020-10-23 11:00:25 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 11:00:26 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 11:01:35 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 11:01:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 11:01:36 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 11:01:36 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 11:01:36 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 11:01:36 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 11:01:36 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 11:01:36 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 11:01:36 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 74.063 seconds (JVM running for 74.513)
-2020-10-23 11:02:06 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 11:02:06 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 11:02:06 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 10 ms
-2020-10-23 11:02:07 [http-nio-8082-exec-2] INFO  c.c.w.c.CategoriaController:87 - Hilo[24] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 11:02:07 [http-nio-8082-exec-2] INFO  c.c.w.s.CategoriaService:56 - Hilo[24] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 11:02:36 [http-nio-8082-exec-3] INFO  c.c.w.c.ServicioController:87 - Hilo[25] Se va a ejecutar el servicio: consultarServicios
-2020-10-23 11:02:36 [http-nio-8082-exec-3] INFO  c.c.w.s.ServicioService:56 - Hilo[25] Se va a ejecutar el metodo: consultarServicioscon parametros: Sin parametros
-2020-10-23 11:02:37 [http-nio-8082-exec-3] ERROR c.c.w.d.EquivalenciaIdiomaDao:70 - Hilo[25] se ha presentado un error en el metodo: obtenerEquivalencia No se ha podido procesar la solicitud 
-javax.persistence.NoResultException: No entity found for query
-	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao.obtenerEquivalencia(EquivalenciaIdiomaDao.java:41)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$FastClassBySpringCGLIB$$dcc810c3.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$EnhancerBySpringCGLIB$$7f8b206c.obtenerEquivalencia(<generated>)
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:57)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$85cc1965.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 11:02:37 [http-nio-8082-exec-3] ERROR c.c.w.s.ServicioService:70 - Hilo[25] se ha presentado un error en el metodo: consultarServicios No se ha podido procesar la peticion
-java.lang.NullPointerException: null
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:61)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$85cc1965.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 11:03:09 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 212 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 11:03:09 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 11:03:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 11:03:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 205ms. Found 1 repository interfaces.
-2020-10-23 11:03:10 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 11:03:10 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 11:03:10 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 11:03:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2426d452] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:03:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$8f188f81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:03:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:03:11 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:03:12 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 11:03:12 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:03:12 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 11:03:12 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 11:03:12 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:03:12 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 11:03:12 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3154 ms
-2020-10-23 11:03:12 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 11:03:13 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 11:04:22 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 11:04:23 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 11:04:23 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 11:04:23 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 11:04:24 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 11:04:24 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 11:04:24 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 11:04:24 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 11:04:24 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 75.547 seconds (JVM running for 76.419)
-2020-10-23 11:04:29 [http-nio-8082-exec-6] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 11:04:29 [http-nio-8082-exec-6] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 11:04:29 [http-nio-8082-exec-6] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 13 ms
-2020-10-23 11:04:30 [http-nio-8082-exec-6] INFO  c.c.w.c.ServicioController:87 - Hilo[31] Se va a ejecutar el servicio: consultarServicios
-2020-10-23 11:04:30 [http-nio-8082-exec-6] INFO  c.c.w.s.ServicioService:56 - Hilo[31] Se va a ejecutar el metodo: consultarServicioscon parametros: Sin parametros
-2020-10-23 11:05:08 [http-nio-8082-exec-6] ERROR c.c.w.d.EquivalenciaIdiomaDao:70 - Hilo[31] se ha presentado un error en el metodo: obtenerEquivalencia No se ha podido procesar la solicitud 
-javax.persistence.NoResultException: No entity found for query
-	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao.obtenerEquivalencia(EquivalenciaIdiomaDao.java:41)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$FastClassBySpringCGLIB$$dcc810c3.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.EquivalenciaIdiomaDao$$EnhancerBySpringCGLIB$$2f51d9f0.obtenerEquivalencia(<generated>)
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:57)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$9c718fb2.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 11:09:56 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 13928 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 11:09:56 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 11:09:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 11:09:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 137ms. Found 1 repository interfaces.
-2020-10-23 11:09:58 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 11:09:58 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 11:09:58 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 11:09:58 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$668ee755] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:09:58 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$d180a284] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:09:58 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 11:09:59 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:09:59 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 11:09:59 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:09:59 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 11:09:59 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 11:09:59 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 11:09:59 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 11:09:59 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 2504 ms
-2020-10-23 11:09:59 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 11:10:00 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 11:11:10 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 11:11:11 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 11:11:11 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 11:11:11 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 11:11:11 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 11:11:11 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 11:11:11 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 11:11:11 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 11:11:11 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 75.453 seconds (JVM running for 75.91)
-2020-10-23 11:11:36 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 11:11:36 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 11:11:36 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 10 ms
-2020-10-23 11:11:36 [http-nio-8082-exec-2] INFO  c.c.w.c.ServicioController:87 - Hilo[24] Se va a ejecutar el servicio: consultarServicios
-2020-10-23 11:11:36 [http-nio-8082-exec-2] INFO  c.c.w.s.ServicioService:56 - Hilo[24] Se va a ejecutar el metodo: consultarServicioscon parametros: Sin parametros
-2020-10-23 11:11:37 [http-nio-8082-exec-2] ERROR c.c.w.d.TarifaDao:70 - Hilo[24] se ha presentado un error en el metodo: obtenerTarifaServicio No se ha podido procesar la solicitud 
-javax.persistence.NoResultException: No entity found for query
-	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.TarifaDao.obtenerTarifaServicio(TarifaDao.java:24)
-	at co.com.woaho.dao.TarifaDao$$FastClassBySpringCGLIB$$bad2acea.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.TarifaDao$$EnhancerBySpringCGLIB$$20718ee8.obtenerTarifaServicio(<generated>)
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:67)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$8405fe82.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 11:11:47 [http-nio-8082-exec-3] INFO  c.c.w.c.ServicioController:87 - Hilo[25] Se va a ejecutar el servicio: consultarServicios
-2020-10-23 11:11:47 [http-nio-8082-exec-3] INFO  c.c.w.s.ServicioService:56 - Hilo[25] Se va a ejecutar el metodo: consultarServicioscon parametros: Sin parametros
-2020-10-23 11:11:48 [http-nio-8082-exec-3] ERROR c.c.w.d.TarifaDao:70 - Hilo[25] se ha presentado un error en el metodo: obtenerTarifaServicio No se ha podido procesar la solicitud 
-javax.persistence.NoResultException: No entity found for query
-	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.TarifaDao.obtenerTarifaServicio(TarifaDao.java:24)
-	at co.com.woaho.dao.TarifaDao$$FastClassBySpringCGLIB$$bad2acea.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.TarifaDao$$EnhancerBySpringCGLIB$$20718ee8.obtenerTarifaServicio(<generated>)
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:67)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$8405fe82.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 11:12:35 [http-nio-8082-exec-4] INFO  c.c.w.c.ServicioController:87 - Hilo[26] Se va a ejecutar el servicio: consultarServicios
-2020-10-23 11:12:35 [http-nio-8082-exec-4] INFO  c.c.w.s.ServicioService:56 - Hilo[26] Se va a ejecutar el metodo: consultarServicioscon parametros: Sin parametros
-2020-10-23 11:12:36 [http-nio-8082-exec-4] ERROR c.c.w.d.TarifaDao:70 - Hilo[26] se ha presentado un error en el metodo: obtenerTarifaServicio No se ha podido procesar la solicitud 
-javax.persistence.NoResultException: No entity found for query
-	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1555)
-	at co.com.woaho.dao.TarifaDao.obtenerTarifaServicio(TarifaDao.java:24)
-	at co.com.woaho.dao.TarifaDao$$FastClassBySpringCGLIB$$bad2acea.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.TarifaDao$$EnhancerBySpringCGLIB$$20718ee8.obtenerTarifaServicio(<generated>)
-	at co.com.woaho.services.ServicioService.consultarServicios(ServicioService.java:67)
-	at co.com.woaho.services.ServicioService$$FastClassBySpringCGLIB$$a568afc.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioService$$EnhancerBySpringCGLIB$$8405fe82.consultarServicios(<generated>)
-	at co.com.woaho.controllers.ServicioController.consultarServicios(ServicioController.java:38)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-10-23 16:41:26 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 9844 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
-2020-10-23 16:41:26 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-10-23 16:41:27 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-10-23 16:41:28 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 227ms. Found 1 repository interfaces.
-2020-10-23 16:41:28 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-10-23 16:41:28 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-10-23 16:41:28 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-10-23 16:41:28 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$81efee7f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 16:41:28 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$ece1a9ae] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 16:41:28 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-23 16:41:29 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 16:41:29 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-10-23 16:41:29 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 16:41:29 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-10-23 16:41:29 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-10-23 16:41:29 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2020-10-23 16:41:30 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-10-23 16:41:30 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3343 ms
-2020-10-23 16:41:31 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-10-23 16:41:32 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-10-23 16:42:47 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-23 16:42:48 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-23 16:42:49 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-23 16:42:50 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-10-23 16:42:50 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-10-23 16:42:50 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-10-23 16:42:50 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-10-23 16:42:50 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-10-23 16:42:50 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 83.811 seconds (JVM running for 84.496)
-2020-10-23 16:43:03 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-23 16:43:03 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-10-23 16:43:03 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 50 ms
-2020-10-23 16:43:03 [http-nio-8082-exec-2] INFO  c.c.w.c.CategoriaController:87 - Hilo[24] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 16:43:03 [http-nio-8082-exec-2] INFO  c.c.w.s.CategoriaService:56 - Hilo[24] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
-2020-10-23 16:43:13 [http-nio-8082-exec-3] INFO  c.c.w.c.CategoriaController:87 - Hilo[25] Se va a ejecutar el servicio: consultarCategorias
-2020-10-23 16:43:13 [http-nio-8082-exec-3] INFO  c.c.w.s.CategoriaService:56 - Hilo[25] Se va a ejecutar el metodo: consultarCategoriascon parametros: 
+2020-10-24 15:36:08 [http-nio-8082-exec-7] INFO  c.c.w.c.UsuarioController:95 - Hilo[30] Response del servicio: consultarUsuario Response: {"codigoRespuesta":"1","mensajeRespuesta":"No se ha encontrado un usuario para el cel 873364"}
+2020-10-24 16:01:05 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 14020 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
+2020-10-24 16:01:06 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
+2020-10-24 16:01:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-24 16:01:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 131ms. Found 1 repository interfaces.
+2020-10-24 16:01:07 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2020-10-24 16:01:07 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2020-10-24 16:01:07 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2020-10-24 16:01:07 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cbfa934] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:01:07 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$77b16463] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:01:07 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:01:08 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:01:08 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
+2020-10-24 16:01:08 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:01:08 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
+2020-10-24 16:01:08 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-10-24 16:01:08 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:01:08 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
+2020-10-24 16:01:08 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 2448 ms
+2020-10-24 16:01:08 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
+2020-10-24 16:01:10 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
+2020-10-24 16:02:17 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-24 16:02:17 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-24 16:02:18 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-24 16:02:18 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
+2020-10-24 16:02:18 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2020-10-24 16:02:18 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
+2020-10-24 16:02:18 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
+2020-10-24 16:02:18 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
+2020-10-24 16:02:18 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 72.82 seconds (JVM running for 73.17)
+2020-10-24 16:09:36 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on DESA-5146-T with PID 7160 (D:\personal\desarrollos\woaho\waho\MicroservicioWoaho\target\classes started by juan.cabuyales in D:\personal\desarrollos\woaho\waho\MicroservicioWoaho)
+2020-10-24 16:09:36 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
+2020-10-24 16:09:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-24 16:09:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 134ms. Found 1 repository interfaces.
+2020-10-24 16:09:37 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2020-10-24 16:09:37 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2020-10-24 16:09:37 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2020-10-24 16:09:37 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$eca9cbe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:09:37 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$79bc57ed] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:09:37 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-24 16:09:38 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:09:38 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
+2020-10-24 16:09:38 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:09:38 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
+2020-10-24 16:09:38 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-10-24 16:09:38 [main] ERROR o.a.c.c.AprLifecycleListener:173 - An incompatible version [1.2.8] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-10-24 16:09:38 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
+2020-10-24 16:09:38 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 2456 ms
+2020-10-24 16:09:39 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
+2020-10-24 16:09:40 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
+2020-10-24 16:10:48 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-24 16:10:48 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-24 16:10:49 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-24 16:10:49 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
+2020-10-24 16:10:49 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2020-10-24 16:10:49 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
+2020-10-24 16:10:49 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
+2020-10-24 16:10:49 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
+2020-10-24 16:10:49 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 73.332 seconds (JVM running for 73.696)
+2020-10-24 16:11:06 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-24 16:11:06 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
+2020-10-24 16:11:06 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 8 ms
+2020-10-24 16:11:06 [http-nio-8082-exec-2] INFO  c.c.w.c.UsuarioController:99 - Hilo[24] Se va a ejecutar el servicio: validarCodigoLogin Peticion: {'correo':'usuario@woaho.com.co','codigo':'577176','idioma':'en'}
+2020-10-24 16:11:06 [http-nio-8082-exec-2] INFO  c.c.w.s.UsuarioService:52 - Hilo[24] Se va a ejecutar el metodo: validarCodigoLogin
+2020-10-24 16:11:07 [http-nio-8082-exec-2] INFO  c.c.w.d.UsuarioDao:74 - Hilo[24] Se va a ejecutar la funcion y/o procedimiento: woaho.fndb_validar_codigo_registrocon parametros: pStrCelular: 3146538900pStrCodigo: 577176
+2020-10-24 16:11:07 [http-nio-8082-exec-2] INFO  c.c.w.d.UsuarioDao:83 - Hilo[24] resultado obtenido: 1,The code entered is not registered, please try again or request a new code.
+2020-10-24 16:11:07 [http-nio-8082-exec-2] INFO  c.c.w.c.UsuarioController:95 - Hilo[24] Response del servicio: validarCodigoLogin Response: {"codigoRespuesta":"1","mensajeRespuesta":"The code entered is not registered"}
+2020-10-24 16:11:14 [http-nio-8082-exec-3] INFO  c.c.w.c.UsuarioController:99 - Hilo[25] Se va a ejecutar el servicio: validarCodigoLogin Peticion: {'correo':'usuario@woaho.com.co','codigo':'577176','idioma':'es'}
+2020-10-24 16:11:14 [http-nio-8082-exec-3] INFO  c.c.w.s.UsuarioService:52 - Hilo[25] Se va a ejecutar el metodo: validarCodigoLogin
+2020-10-24 16:11:15 [http-nio-8082-exec-3] INFO  c.c.w.d.UsuarioDao:74 - Hilo[25] Se va a ejecutar la funcion y/o procedimiento: woaho.fndb_validar_codigo_registrocon parametros: pStrCelular: 3146538900pStrCodigo: 577176
+2020-10-24 16:11:15 [http-nio-8082-exec-3] INFO  c.c.w.d.UsuarioDao:83 - Hilo[25] resultado obtenido: 1,El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo.
+2020-10-24 16:11:15 [http-nio-8082-exec-3] INFO  c.c.w.c.UsuarioController:95 - Hilo[25] Response del servicio: validarCodigoLogin Response: {"codigoRespuesta":"1","mensajeRespuesta":"El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo."}

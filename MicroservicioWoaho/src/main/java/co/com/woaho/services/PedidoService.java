@@ -94,7 +94,7 @@ public class PedidoService implements IPedidoService{
 		}catch(Exception e) {
 			logs.registrarLogError("soliciarPedido", "No se ha podido procesar la peticion", e);
 			solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_MENSAJES_PANTALLA.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+			solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return solicitarPedidoResponse;
 	}
@@ -123,12 +123,13 @@ public class PedidoService implements IPedidoService{
 				consultarPedidoUsuarioResponse.setListPedidos(listPedidoUsuarioDto);
 			}else {
 				consultarPedidoUsuarioResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				consultarPedidoUsuarioResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDOS_PARA.getMensaje("usuario"));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PEDIDOS_PARA.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				consultarPedidoUsuarioResponse.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "usuario"));
 			}
 		}catch(Exception e) {
 			logs.registrarLogError("consultarPedidosUsuario", "No se ha podido procesar la peticion", e);
 			consultarPedidoUsuarioResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarPedidoUsuarioResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			consultarPedidoUsuarioResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));			
 		}
 		return consultarPedidoUsuarioResponse;
 	}
@@ -157,12 +158,13 @@ public class PedidoService implements IPedidoService{
 				consultarPedidoProfesionalResponse.setListPedidos(listPedidoProfesionalDto);
 			}else {
 				consultarPedidoProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				consultarPedidoProfesionalResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDOS_PARA.getMensaje("profesional"));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PEDIDOS_PARA.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				consultarPedidoProfesionalResponse.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "profesional"));
 			}
 		}catch(Exception e) {
 			logs.registrarLogError("consultarPedidosProfesional", "No se ha podido procesar la peticion", e);
 			consultarPedidoProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarPedidoProfesionalResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			consultarPedidoProfesionalResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return consultarPedidoProfesionalResponse;
 	}
@@ -186,12 +188,12 @@ public class PedidoService implements IPedidoService{
 				cancelarPedidoResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {
 				cancelarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				cancelarPedidoResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDO.getMensaje());
+				cancelarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PEDIDO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}
 		}catch(Exception e) {
 			logs.registrarLogError("cancelarPedido", "No se ha podido procesar la peticion", e);
 			cancelarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			cancelarPedidoResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			cancelarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return cancelarPedidoResponse;
 	}
@@ -235,12 +237,12 @@ public class PedidoService implements IPedidoService{
 				solicitarPedidoResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {
 				solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.NO_PEDIDOS.getMensaje());
+				solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PEDIDOS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}			
 		}catch(Exception e) {
 			logs.registrarLogError("actualizarPedido", "No se ha podido procesar la peticion", e);
 			solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			solicitarPedidoResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return solicitarPedidoResponse;
 	}

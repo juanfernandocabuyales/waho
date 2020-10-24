@@ -72,7 +72,7 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 
 	@Override
 	@Transactional(propagation = Propagation.NESTED)
-	public String generarCodigoRegistro(String pStrCelular) throws Exception {
+	public String generarCodigoRegistro(String pStrCelular,String pIdioma) throws Exception {
 		String strRespuesta = null;
 		try {
 			logs.registrarLogInfoEjecutaPaqFuncConParam(EnumProcedimientos.FNDB_GENERAR_CODIGO_REGISTRO.getProcedimiento(), "pStrCelular: " + pStrCelular);
@@ -80,7 +80,9 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 			
 			StoredProcedureQuery query = getEntityManager().createStoredProcedureQuery(EnumProcedimientos.FNDB_GENERAR_CODIGO_REGISTRO.getProcedimiento())
 					.registerStoredProcedureParameter("p_celular",String.class,ParameterMode.IN)
+					.registerStoredProcedureParameter("p_idioma", String.class, ParameterMode.IN)
 					.registerStoredProcedureParameter("respuesta",String.class,ParameterMode.OUT)
+					.setParameter("p_idioma",pIdioma)
 					.setParameter("p_celular", pStrCelular);
 			
 			query.execute();
@@ -98,7 +100,7 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 	
 	@Override
 	@Transactional(propagation = Propagation.NESTED)
-	public String validarCodigoRegistro(String pStrCelular,String pStrCodigo) throws Exception {
+	public String validarCodigoRegistro(String pStrCelular,String pStrCodigo,String pIdioma) throws Exception {
 		String strRespuesta = null;
 		try {
 			logs.registrarLogInfoEjecutaPaqFuncConParam(EnumProcedimientos.FNDB_VALIDAR_CODIGO_REGISTRO.getProcedimiento(), "pStrCelular: " + pStrCelular + "pStrCodigo: "+pStrCodigo);
@@ -107,8 +109,10 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 			StoredProcedureQuery query = getEntityManager().createStoredProcedureQuery(EnumProcedimientos.FNDB_VALIDAR_CODIGO_REGISTRO.getProcedimiento())
 					.registerStoredProcedureParameter("p_celular",String.class,ParameterMode.IN)
 					.registerStoredProcedureParameter("p_codigo",String.class,ParameterMode.IN)
+					.registerStoredProcedureParameter("p_idioma",String.class,ParameterMode.IN)
 					.registerStoredProcedureParameter("respuesta",String.class,ParameterMode.OUT)
 					.setParameter("p_celular", pStrCelular)
+					.setParameter("p_idioma", pIdioma)
 					.setParameter("p_codigo", pStrCodigo);
 			
 			query.execute();

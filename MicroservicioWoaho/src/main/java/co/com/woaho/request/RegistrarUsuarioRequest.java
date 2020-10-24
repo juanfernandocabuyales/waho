@@ -2,8 +2,18 @@ package co.com.woaho.request;
 
 public class RegistrarUsuarioRequest{
 
-	private UsuarioDTO usuarioDto;	
+	private UsuarioDTO usuarioDto;
 	
+	private String idioma;
+	
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+
 	public UsuarioDTO getUsuarioDto() {
 		return usuarioDto;
 	}

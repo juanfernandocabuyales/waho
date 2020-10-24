@@ -12,6 +12,7 @@ import co.com.woaho.dao.UbicacionDao;
 import co.com.woaho.dto.cliente.ProfesionalDTO;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IIdiomaDao;
 import co.com.woaho.interfaces.IProfesionDao;
 import co.com.woaho.interfaces.IProfesionalDao;
@@ -28,6 +29,7 @@ import co.com.woaho.response.ConsultarProfesionalResponse;
 import co.com.woaho.response.CrearProfesionalResponse;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -47,6 +49,9 @@ public class ProfesionalService implements IProfesionalService {
 	
 	@Autowired
 	private UbicacionDao ubicacionDao;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 	
 	private RegistrarLog logs = new RegistrarLog(ProfesionalService.class);	
 	
@@ -97,12 +102,12 @@ public class ProfesionalService implements IProfesionalService {
 				response.setListProfesionales(listProfesionalesDto);				
 			}else {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_PROFESIONALES.getMensaje());
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_PROFESIONALES.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerProfesionales", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -140,7 +145,7 @@ public class ProfesionalService implements IProfesionalService {
 		}catch(Exception e) {
 			logs.registrarLogError("crearProfesional", "No se ha podido procesar la peticion", e);
 			crearProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			crearProfesionalResponse.setMensajeRespuesta(EnumMensajes.NO_SOLICITUD.getMensaje());
+			crearProfesionalResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_SOLICITUD.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return crearProfesionalResponse;
 	}

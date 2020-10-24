@@ -92,6 +92,11 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El nombre del archivo no cumple con el formato esperado.','The file name does not conform to the expected format.');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han enviando un archivo valido para guardar','They have not sent a valid file to save');
 
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo.','The code entered is not registered, please try again or request a new code.');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado ha caducado.Solicite un nuevo codigo.','The code entered has expired, please request a new code.');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado no corresponde.Intente nuevamente o solicite un nuevo codigo.','The code entered does not correspond, please try again or request a new code.');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado ya no es valido.Solicite un nuevo codigo.','The code entered is no longer valid, please request a new code.');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Se ha presentado un error inesperado:','An unexpected error has occurred:');
 
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);

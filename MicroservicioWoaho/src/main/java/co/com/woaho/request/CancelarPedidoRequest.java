@@ -5,6 +5,8 @@ public class CancelarPedidoRequest {
 	private String idPedido;
 	
 	private String motivo;
+	
+	private String idioma;
 
 	public String getIdPedido() {
 		return idPedido;
@@ -20,5 +22,13 @@ public class CancelarPedidoRequest {
 
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 }

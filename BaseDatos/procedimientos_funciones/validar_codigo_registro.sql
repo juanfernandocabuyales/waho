@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION woaho.fndb_validar_codigo_registro(p_celular character varying,p_codigo character varying)
+CREATE OR REPLACE FUNCTION woaho.fndb_validar_codigo_registro(p_celular character varying,p_codigo character varying,p_idioma character varying)
 RETURNS character varying 
 LANGUAGE plpgsql
 AS $$
@@ -24,7 +24,7 @@ BEGIN
 	AND cod.codigo_estado = 1;
 	
 	IF (codigo_generado IS NULL) THEN
-		RETURN '1,El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo.';
+		RETURN '1,'|| woaho.fndb_consultar_equivalencia('El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo.',p_idioma);
 	ELSE
 		SELECT par.parametro_valor::numeric
 		INTO parametro_tiempo
@@ -38,7 +38,7 @@ BEGIN
 			AND codigo.codigo_estado = 1;
 			
 			IF (cant_minutos_codigo > parametro_tiempo) THEN
-				RETURN '1,El codigo ingresado ha caducado.Solicite un nuevo codigo.';
+				RETURN '1,'|| woaho.fndb_consultar_equivalencia('El codigo ingresado ha caducado.Solicite un nuevo codigo.',p_idioma);
 			ELSE
 				RETURN '0,OK';
 			END IF;					
@@ -48,9 +48,9 @@ BEGIN
 				SET codigo_intentos = cant_intentos - 1
 				WHERE codigo.codigo_celular = p_celular
 				AND codigo.codigo_estado = 1;
-				RETURN '1,El codigo ingresado no corresponde.Intente nuevamente o solicite un nuevo codigo.';
+				RETURN '1,'|| woaho.fndb_consultar_equivalencia('El codigo ingresado no corresponde.Intente nuevamente o solicite un nuevo codigo.',p_idioma);
 			ELSE
-				RETURN '1,El codigo ingresado ya no es valido.Solicite un nuevo codigo.';
+				RETURN '1,'|| woaho.fndb_consultar_equivalencia('El codigo ingresado ya no es valido.Solicite un nuevo codigo.',p_idioma);
 			END IF;
 		END IF;		
 	END IF;	
@@ -63,10 +63,10 @@ EXCEPTION WHEN OTHERS THEN
         v_hint    = pg_exception_hint,
         v_context = pg_exception_context;
         
-	RETURN '1,Se ha presentado un error inesperado: '||v_state||' '||v_msg; 	
+	RETURN '1,'|| woaho.fndb_consultar_equivalencia('Se ha presentado un error inesperado:',p_idioma) ||' '||v_state||' '||v_msg;
 	
 END;
 $$;
 
-ALTER FUNCTION woaho.fndb_validar_codigo_registro(character varying,character varying)
+ALTER FUNCTION woaho.fndb_validar_codigo_registro(character varying,character varying,character varying)
   OWNER TO postgres;

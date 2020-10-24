@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.com.woaho.alertas.EnviarNotificacion;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IUsuarioDao;
 import co.com.woaho.interfaces.IUsuarioService;
 import co.com.woaho.modelo.Usuario;
@@ -27,6 +28,7 @@ import co.com.woaho.response.ValidarCodigoResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.ProcesarCadenas;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -39,6 +41,9 @@ public class UsuarioService implements IUsuarioService{
 	
 	@Autowired
 	private EnviarNotificacion envioNotificacion;
+	
+	@Autowired
+	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
 
 	@Override
 	public RegistrarUsuarioResponse registrarUsuario(RegistrarUsuarioRequest request) {
@@ -66,12 +71,13 @@ public class UsuarioService implements IUsuarioService{
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.USUARIO_REGISTRADO.getMensaje(pUsuarioDTO.getCell()));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.USUARIO_REGISTRADO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, pUsuarioDTO.getCell()));
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -85,7 +91,8 @@ public class UsuarioService implements IUsuarioService{
 
 			if(usuario == null) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("número",request.getNumeroCelular()));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "cel",request.getNumeroCelular()));			
 			}else {
 				ConsultarUsuarioResponse.UsuarioDTO usuarioDto = new ConsultarUsuarioResponse.UsuarioDTO(String.valueOf(usuario.getUsuarioId()), 
 						usuario.getStrNombre(),
@@ -101,7 +108,7 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("consultarUsuario", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -111,11 +118,11 @@ public class UsuarioService implements IUsuarioService{
 		logs.registrarLogInfoEjecutaMetodo("generarCodigoRegistro");
 		GenerarCodigoResponse response = new GenerarCodigoResponse();
 		try {
-			String [] strRespuesta = usuarioDao.generarCodigoRegistro(request.getCelular()).split("\\,");
+			String [] strRespuesta = usuarioDao.generarCodigoRegistro(request.getCelular(),request.getIdioma()).split("\\,");
 
 			if(strRespuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 			}else {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
@@ -132,7 +139,7 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -146,13 +153,14 @@ public class UsuarioService implements IUsuarioService{
 			Usuario usuario = usuarioDao.obtenerUsuarioCorreo(request.getCorreo());			
 			if (usuario == null) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("correo",request.getCorreo()));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "email",request.getCorreo()));
 			}else {				
-				String [] strRespuesta = usuarioDao.generarCodigoRegistro(usuario.getStrCelular()).split("\\,");
+				String [] strRespuesta = usuarioDao.generarCodigoRegistro(usuario.getStrCelular(),request.getIdioma()).split("\\,");
 				
 				if(strRespuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
 					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-					response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+					response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 				}else {					
 					HashMap<String, String> pParametros = new HashMap<>();
 					pParametros.put(Constantes.CONTENIDO, 
@@ -169,7 +177,7 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("generarCodigoRegistro", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -180,7 +188,7 @@ public class UsuarioService implements IUsuarioService{
 		ValidarCodigoResponse response = new ValidarCodigoResponse();
 		try {
 
-			String [] respuesta = usuarioDao.validarCodigoRegistro(request.getCelular(), request.getCodigo()).split("\\,");
+			String [] respuesta = usuarioDao.validarCodigoRegistro(request.getCelular(), request.getCodigo(),request.getIdioma()).split("\\,");
 			
 			if(respuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
@@ -192,7 +200,7 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("validarCodigoRegistro", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}
@@ -207,9 +215,10 @@ public class UsuarioService implements IUsuarioService{
 			
 			if(usuario == null) {
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				response.setMensajeRespuesta(EnumMensajes.NO_USUARIO.getMensaje("correo",request.getCorreo()));
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "email",request.getCorreo()));
 			}else {
-				String [] respuesta = usuarioDao.validarCodigoRegistro(usuario.getStrCelular(), request.getCodigo()).split("\\,");
+				String [] respuesta = usuarioDao.validarCodigoRegistro(usuario.getStrCelular(), request.getCodigo(),request.getIdioma()).split("\\,");
 				
 				if(respuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
 					response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
@@ -222,7 +231,7 @@ public class UsuarioService implements IUsuarioService{
 		}catch (Exception e) {
 			logs.registrarLogError("validarCodigoLogin", "No se ha podido procesar la peticion", e);
 			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			response.setMensajeRespuesta(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
 	}

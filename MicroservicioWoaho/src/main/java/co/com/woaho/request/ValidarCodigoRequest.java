@@ -7,6 +7,8 @@ public class ValidarCodigoRequest {
 	private String codigo;
 	
 	private String correo;
+	
+	private String idioma;
 
 	public String getCelular() {
 		return celular;
@@ -30,5 +32,13 @@ public class ValidarCodigoRequest {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 }

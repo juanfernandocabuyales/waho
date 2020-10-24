@@ -22,6 +22,7 @@ import co.com.woaho.request.ConsultarServiciosRequest;
 import co.com.woaho.response.ConsultarServiciosResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
+import co.com.woaho.utilidades.Utilidades;
 
 @Service
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -81,7 +82,7 @@ public class ServicioService implements IServicioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("consultarServicios", "No se ha podido procesar la peticion", e);
 			consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
+			consultarServiciosResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_SERVICIOS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return consultarServiciosResponse;
 	}
@@ -128,7 +129,7 @@ public class ServicioService implements IServicioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("consultarServiciosCategoria", "No se ha podido procesar la peticion", e);
 			consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
+			consultarServiciosResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_SERVICIOS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return consultarServiciosResponse;
 	}
