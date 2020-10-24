@@ -73,6 +73,7 @@ public class ServicioService implements IServicioServices {
 					}
 					
 					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
+					servicioDto.setClicks(Long.parseLong("0"));
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -120,6 +121,7 @@ public class ServicioService implements IServicioServices {
 						servicioDto.setPrice(tarifa.getValor());	
 					}
 					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
+					servicioDto.setClicks(Long.parseLong("0"));
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
