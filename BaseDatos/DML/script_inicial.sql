@@ -98,6 +98,9 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado ya no es valido.Solicite un nuevo codigo.','The code entered is no longer valid, please request a new code.');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Se ha presentado un error inesperado:','An unexpected error has occurred:');
 
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Servicios para desarrollo de soluciones tecnologicas mediante software','Services for the development of technological solutions through software');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Servicios para problemas mecanimos presentandos en los vehiculos','Services for mechanical problems presenting in vehicles');
+
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('MXN',3);

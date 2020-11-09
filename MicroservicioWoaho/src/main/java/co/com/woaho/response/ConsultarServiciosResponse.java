@@ -47,6 +47,8 @@ public class ConsultarServiciosResponse {
 		private Long category;
 		
 		private Long clicks;
+		
+		private String description;
 
 		public String getId() {
 			return id;
@@ -94,6 +96,14 @@ public class ConsultarServiciosResponse {
 
 		public void setClicks(Long clicks) {
 			this.clicks = clicks;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
 		}		
 	}
 }

@@ -42,10 +42,10 @@ INSERT INTO woaho.ubicacion (ubicacion_profesional,ubicacion_lugar_id,ubicacion_
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (10,'Software');
 					 
 INSERT INTO woaho.servicio (servicio_nombre,servicio_imagen,servicio_categoria, servicio_territorio)
-							 VALUES ('Desarrollo Software',10,10,1);
+							 VALUES ('Desarrollo Software',10,10,1,'Servicios para desarrollo de soluciones tecnologicas mediante software');
 							 
 INSERT INTO woaho.servicio (servicio_id, servicio_nombre, servicio_imagen, servicio_categoria, servicio_territorio)
-							VALUES(2, 'Mecanica General', 10, 9, 1);
+							VALUES(2, 'Mecanica General', 10, 9, 1,'Servicios para problemas mecanimos presentandos en los vehiculos');
 							 
 INSERT INTO woaho.tarifa (tarifa_valor,tarifa_moneda,tarifa_territorio,tarifa_servicio,tarifa_unidad)
 							 VALUES (20000,1,1,1,1);

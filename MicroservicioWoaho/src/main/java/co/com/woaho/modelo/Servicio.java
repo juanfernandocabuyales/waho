@@ -39,6 +39,9 @@ public class Servicio implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "servicio_categoria")
 	private Categoria categoria;
+	
+	@Column(name ="servicio_descripcion",length = 100)
+	private String strDescripcion;
 
 	public Long getServicioId() {
 		return servicioId;
@@ -70,5 +73,13 @@ public class Servicio implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getStrDescripcion() {
+		return strDescripcion;
+	}
+
+	public void setStrDescripcion(String strDescripcion) {
+		this.strDescripcion = strDescripcion;
 	}
 }

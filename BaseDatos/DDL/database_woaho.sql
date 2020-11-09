@@ -409,6 +409,7 @@ CREATE TABLE woaho.servicio
     servicio_imagen integer,
     servicio_categoria integer,
     servicio_territorio integer,
+    servicio_descripcion character varying(4000), 
     CONSTRAINT servicio_pkey PRIMARY KEY (servicio_id),
     CONSTRAINT "FK_SERVICIO_CATEGORIA" FOREIGN KEY (servicio_categoria)
        REFERENCES woaho.categoria (categoria_id) MATCH SIMPLE

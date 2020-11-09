@@ -72,6 +72,7 @@ public class ServicioService implements IServicioServices {
 						servicioDto.setPrice(tarifa.getValor());	
 					}
 					
+					servicioDto.setDescription(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrDescripcion(), request.getIdioma(), equivalenciaIdiomaDao));
 					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
 					servicioDto.setClicks(Long.parseLong("0"));
 					listServiciosDto.add(servicioDto);
@@ -120,6 +121,7 @@ public class ServicioService implements IServicioServices {
 					}else {
 						servicioDto.setPrice(tarifa.getValor());	
 					}
+					servicioDto.setDescription(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrDescripcion(), request.getIdioma(), equivalenciaIdiomaDao));
 					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
 					servicioDto.setClicks(Long.parseLong("0"));
 					listServiciosDto.add(servicioDto);
