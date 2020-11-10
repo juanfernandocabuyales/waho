@@ -62,7 +62,8 @@ public class ProfesionalService implements IProfesionalService {
 		logs.registrarLogInfoEjecutaMetodo("obtenerProfesionales");
 		ConsultarProfesionalResponse response = new ConsultarProfesionalResponse();
 		try {
-			List<Profesional> listProfesionales = profesionalDao.obtenerProfesionales(request.getServicio());
+			String servicios = ProcesarCadenas.getInstance().cambiarSeparador(request.getServicio(), EnumGeneral.COMA.getValor(), EnumGeneral.GUION.getValor());
+			List<Profesional> listProfesionales = profesionalDao.obtenerProfesionales(servicios);
 			
 			if(listProfesionales != null && !listProfesionales.isEmpty()) {
 				

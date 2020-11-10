@@ -128,6 +128,20 @@ public class ProcesarCadenas {
 		return format.format(pFecha);
 	}
 	
+	public String cambiarSeparador(String pCadena,String pSeparador,String pNuevoSeparador) {
+		StringBuilder strNuevaCadena = new StringBuilder();
+		String [] tokens = pCadena.split(pSeparador);
+		if(tokens == null || tokens.length == 0) {
+			return pCadena;
+		}else {
+			for(String token : tokens) {
+				strNuevaCadena.append(token);
+				strNuevaCadena.append(pNuevoSeparador);
+			}
+			return strNuevaCadena.substring(0, strNuevaCadena.length() -1 );
+		}
+	}
+	
 	public List<ConsultarPantallasResponse.Slide> obtenerSlides(String pStrTrama){
 		List<ConsultarPantallasResponse.Slide> listSlides = new ArrayList<>();
 		StringTokenizer tokens = new StringTokenizer(pStrTrama,"|");
