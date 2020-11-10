@@ -17,7 +17,7 @@ export class ServiciosPage implements OnInit {
   loading: any;
 
   constructor(private servicio: ServiceService,
-    private utilidades : UtilidadesService,
+    private utilidades: UtilidadesService,
     private actionSheetCtrl: ActionSheetController,
     private loadingController: LoadingController) { }
 
@@ -40,7 +40,7 @@ export class ServiciosPage implements OnInit {
         }
       },
       (fail) => {
-       this.ocultarProgress();
+        this.ocultarProgress();
         console.log('data mal', JSON.stringify(fail));
         this.utilidades.presentarAlerta('Informacion', 'Se ha prensentado un problema');
       }
@@ -72,13 +72,18 @@ export class ServiciosPage implements OnInit {
   }
 
   protected async mostrarProgress() {
-    this.loading = await this.loadingController.create({
-      message: 'Por favor espere ...'
-    });
-    return await this.loading.present();
+    if (this.loading == undefined) {
+      this.loading = this.loadingController.create({
+        message: 'Realizando petición, por favor espera...',
+      });
+      this.loading.present();
+    }
   }
 
   protected async ocultarProgress() {
-    this.loading.dismiss();
+    if (this.loading != undefined) {
+      this.loading.dismiss();
+      this.loading = undefined;
+    }
   }
 }

@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'categorias',
     loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule)
+  },
+  {
+    path: 'modal-servicios',
+    loadChildren: () => import('./pages/modals/modal-servicios/modal-servicios.module').then( m => m.ModalServiciosPageModule)
   }
 ];
 

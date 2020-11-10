@@ -1,0 +1,20 @@
+.modal-generico{
+    background: transparent;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    top: 23%;
+    height: 57%;
+    left: 10%;
+    right: 10%;
+    @media only screen and (min-width: 760px) {
+        height: -webkit-fill-available;
+    }
+}
+
+.fondo-modal {
+    .ion-page.show-page {
+        background:rgba(0, 0, 0, 0.030);    
+    }
+}
