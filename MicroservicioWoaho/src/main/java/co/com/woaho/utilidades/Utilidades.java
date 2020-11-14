@@ -46,10 +46,10 @@ public class Utilidades {
 			return "";
 		}
 	}
-	
+
 	public String obtenerEquivalencia(String pCadena,String pIdioma,IEquivalenciaIdiomaDao equivalenciaIdiomaDao) {
 		EquivalenciaIdioma equivalenciaIdioma = equivalenciaIdiomaDao.obtenerEquivalencia(pCadena);
-		if(equivalenciaIdioma == null) {
+		if(equivalenciaIdioma == null || pIdioma == null) {
 			return pCadena;
 		}else {
 			if(pIdioma.equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
