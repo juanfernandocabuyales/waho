@@ -72,6 +72,12 @@ public class Pedido implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "pedido_fecha_final", nullable = false)
 	private Date fechafinal;
+	
+	@Column(name ="pedido_latitud",length = 100)
+	private String pedidoLatitud;
+	
+	@Column(name ="pedido_longitu",length = 100)
+	private String pedidoLongitud;
 
 	public Long getPedidoId() {
 		return pedidoId;
@@ -167,5 +173,21 @@ public class Pedido implements Serializable {
 
 	public void setFechafinal(Date fechafinal) {
 		this.fechafinal = fechafinal;
+	}
+
+	public String getPedidoLatitud() {
+		return pedidoLatitud;
+	}
+
+	public void setPedidoLatitud(String pedidoLatitud) {
+		this.pedidoLatitud = pedidoLatitud;
+	}
+
+	public String getPedidoLongitud() {
+		return pedidoLongitud;
+	}
+
+	public void setPedidoLongitud(String pedidoLongitud) {
+		this.pedidoLongitud = pedidoLongitud;
 	}
 }

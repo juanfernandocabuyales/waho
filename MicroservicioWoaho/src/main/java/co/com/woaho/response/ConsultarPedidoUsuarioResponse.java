@@ -16,6 +16,8 @@ public class ConsultarPedidoUsuarioResponse extends BaseResponse {
 
 	public static class PedidoUsuarioDto{
 		
+		private String idPedido;
+		
 		private String servicio;
 		
 		private String descripcion;
@@ -94,6 +96,14 @@ public class ConsultarPedidoUsuarioResponse extends BaseResponse {
 
 		public void setFechaHoraFin(String fechaHoraFin) {
 			this.fechaHoraFin = fechaHoraFin;
+		}
+
+		public String getIdPedido() {
+			return idPedido;
+		}
+
+		public void setIdPedido(String idPedido) {
+			this.idPedido = idPedido;
 		}
 	}
 }

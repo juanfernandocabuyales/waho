@@ -37,26 +37,26 @@ public class ProfesionalService implements IProfesionalService {
 
 	@Autowired
 	private IProfesionalDao profesionalDao;
-	
+
 	@Autowired
 	private IIdiomaDao idiomaDao;
-	
+
 	@Autowired
 	private IServicioDao servicioDao;
-	
+
 	@Autowired
 	private IProfesionDao profesionDao;	
-	
+
 	@Autowired
 	private UbicacionDao ubicacionDao;
-	
+
 	@Autowired
 	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
-	
+
 	private RegistrarLog logs = new RegistrarLog(ProfesionalService.class);	
-	
+
 	private ProcesarCadenas procesarCadenas = ProcesarCadenas.getInstance();
-	
+
 	@Override
 	public ConsultarProfesionalResponse obtenerProfesionales(ConsultarProfesionalRequest request) {
 		logs.registrarLogInfoEjecutaMetodo("obtenerProfesionales");
@@ -64,11 +64,11 @@ public class ProfesionalService implements IProfesionalService {
 		try {
 			String servicios = ProcesarCadenas.getInstance().cambiarSeparador(request.getServicio(), EnumGeneral.COMA.getValor(), EnumGeneral.GUION.getValor());
 			List<Profesional> listProfesionales = profesionalDao.obtenerProfesionales(servicios);
-			
+
 			if(listProfesionales != null && !listProfesionales.isEmpty()) {
-				
+
 				List<ProfesionalDTO> listProfesionalesDto = new ArrayList<>();
-				
+
 				for(Profesional profesional: listProfesionales) {
 					ProfesionalDTO profesionalDTO = new ProfesionalDTO();
 					profesionalDTO.setId(String.valueOf(profesional.getProfesionalId()));
@@ -88,12 +88,12 @@ public class ProfesionalService implements IProfesionalService {
 						listComentarios.add(new ProfesionalDTO.Properties.Comments(calificacion.getStrDescripcion()));
 					}
 					properties.setComments(listComentarios);
-					
+
 					ProfesionalDTO.Geometry geometry = new ProfesionalDTO.Geometry();
 					Ubicacion ubicacionProfesional = profesional.getUbicacion().get(0);
 					geometry.setPlaceId(ubicacionProfesional.getStrLugarId());
 					geometry.setLocation(new ProfesionalDTO.Geometry.Location(ubicacionProfesional.getStrLatitud(), ubicacionProfesional.getStrLongitud()));
-					
+
 					profesionalDTO.setProperties(properties);
 					profesionalDTO.setGeometry(geometry);
 					listProfesionalesDto.add(profesionalDTO);
@@ -130,17 +130,17 @@ public class ProfesionalService implements IProfesionalService {
 			profesional.getIcono().setImagenId(Long.parseLong(request.getIdIcono()));
 			profesional.setCantEstrellas(EnumGeneral.RESPUESTA_POSITIVA.getValorInt());
 			profesional.setCantServicios(EnumGeneral.RESPUESTA_POSITIVA.getValorLong());
-			
+
 			Ubicacion ubicacionProfesional = new Ubicacion();
 			ubicacionProfesional.setStrLatitud(request.getUbicacion().getLatitud());
 			ubicacionProfesional.setStrLongitud(request.getUbicacion().getLongitud());
 			ubicacionProfesional.setStrLugarId(request.getUbicacion().getIdLugar());
-			
+
 			Profesional profesionalNuevo = profesionalDao.registrarProfesional(profesional);
-			
+
 			ubicacionProfesional.setProfesional(profesionalNuevo);
 			ubicacionDao.registrarUbicacion(ubicacionProfesional);		
-			
+
 			crearProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 			crearProfesionalResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 		}catch(Exception e) {
@@ -149,6 +149,32 @@ public class ProfesionalService implements IProfesionalService {
 			crearProfesionalResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_SOLICITUD.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return crearProfesionalResponse;
+	}
+
+	@Override
+	public Profesional obtenerProfesionalCercano(String pServicios,Double pLatUsuario,Double pLongUsuario) {
+		Profesional profesionalCercano = null;		
+		try {
+			List<Profesional> profesionalList = profesionalDao.obtenerProfesionales(pServicios);
+			if(profesionalList != null && !profesionalList.isEmpty()) {
+				profesionalList.forEach( profesional ->{
+					Double distanciaKm = Utilidades.distanciaCoord(Double.parseDouble(profesional.getUbicacion().get(0).getStrLatitud()),
+							Double.parseDouble(profesional.getUbicacion().get(0).getStrLongitud()),
+							pLatUsuario, pLongUsuario);
+					profesional.setDistanciaUsuario(distanciaKm);
+				});
+				for(int i = 0; i< profesionalList.size(); i++) {
+					for(int j = 0; j< profesionalList.size(); j++) {
+						if( i!=j && (profesionalList.get(i).getDistanciaUsuario() < profesionalList.get(j).getDistanciaUsuario())) {
+							profesionalCercano = profesionalList.get(i);
+						}
+					}
+				}
+			}
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerProfesionalCercano", "No se ha podido procesar la peticion", e);
+		}
+		return profesionalCercano;
 	}
 
 }

@@ -16,8 +16,8 @@ import co.com.woaho.interfaces.ICancelacionDao;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IPedidoDao;
 import co.com.woaho.interfaces.IPedidoService;
+import co.com.woaho.interfaces.IProfesionalService;
 import co.com.woaho.modelo.Cancelacion;
-import co.com.woaho.modelo.Direccion;
 import co.com.woaho.modelo.Estado;
 import co.com.woaho.modelo.MedioPago;
 import co.com.woaho.modelo.Pedido;
@@ -42,12 +42,15 @@ public class PedidoService implements IPedidoService{
 
 	@Autowired
 	private IPedidoDao pedidoDao;
-	
+
 	@Autowired
 	private ICancelacionDao cancelacionDao;
-	
+
 	@Autowired
 	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
+
+	@Autowired
+	private IProfesionalService profesionalService;
 
 	private RegistrarLog logs = new RegistrarLog(PedidoService.class);
 
@@ -63,19 +66,33 @@ public class PedidoService implements IPedidoService{
 					nuevoPedido.setPedidoCodPromocional(pedidoDto.getCodPromocional());
 					nuevoPedido.setPedidoDescripcion(pedidoDto.getPreferenceService());
 					nuevoPedido.setPedidoFecha(pedidoDto.getDate());
-					nuevoPedido.setPedidoHora(pedidoDto.getHour());					
+					nuevoPedido.setPedidoHora(pedidoDto.getHour());
+					nuevoPedido.setPedidoLatitud(pedidoDto.getLat());
+					nuevoPedido.setPedidoLongitud(pedidoDto.getLon());
 
 					nuevoPedido.setPedidoServicio(new Servicio());
-					nuevoPedido.getPedidoServicio().setServicioId(Long.parseLong(pedidoDto.getIdService()));	
+					nuevoPedido.getPedidoServicio().setServicioId(Long.parseLong(pedidoDto.getService().getIdService()));	
 
 					nuevoPedido.setPedidoUsuario(new Usuario());
 					nuevoPedido.getPedidoUsuario().setUsuarioId(Long.parseLong(pedidoDto.getIdPerson()));
 
-					nuevoPedido.setPedidoDireccion(new Direccion());
-					nuevoPedido.getPedidoDireccion().setDireccionId(Long.parseLong(pedidoDto.getAddress()));
+					nuevoPedido.setPedidoLatitud(pedidoDto.getAddress().getLat());
+					nuevoPedido.setPedidoLongitud(pedidoDto.getAddress().getLng());
 
-					nuevoPedido.setPedidoProfesional(new Profesional());
-					nuevoPedido.getPedidoProfesional().setProfesionalId(Long.parseLong(pedidoDto.getProfessional()));
+					if(null == pedidoDto.getProfessional() || pedidoDto.getProfessional().isEmpty()) {
+						Profesional profesional = profesionalService.obtenerProfesionalCercano(pedidoDto.getService().getIdService(),
+								Double.parseDouble(nuevoPedido.getPedidoLatitud()), Double.parseDouble(nuevoPedido.getPedidoLongitud()));
+						if(profesional != null) {
+							nuevoPedido.setPedidoProfesional(profesional);
+						}else {
+							solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+							solicitarPedidoResponse.setMensajeRespuesta(EnumMensajes.NO_PROFESIONALES.getMensaje());
+							return solicitarPedidoResponse;
+						}
+					}else {
+						nuevoPedido.setPedidoProfesional(new Profesional());
+						nuevoPedido.getPedidoProfesional().setProfesionalId(Long.parseLong(pedidoDto.getProfessional()));
+					}
 
 					nuevoPedido.setPedidoMedioPago(new MedioPago());
 					nuevoPedido.getPedidoMedioPago().setMedioPagoId(Long.parseLong(pedidoDto.getPaymentMethod()));
@@ -106,8 +123,9 @@ public class PedidoService implements IPedidoService{
 			List<Pedido> listPedidos = pedidoDao.obtenerPedidosUsuario(Long.parseLong(request.getIdUsuario()));
 			if(listPedidos != null && !listPedidos.isEmpty()) {
 				List<ConsultarPedidoUsuarioResponse.PedidoUsuarioDto> listPedidoUsuarioDto = new ArrayList<>();
-				for(Pedido pedido : listPedidos) {
+				listPedidos.forEach( pedido ->{
 					ConsultarPedidoUsuarioResponse.PedidoUsuarioDto pedidoUsuarioDto = new ConsultarPedidoUsuarioResponse.PedidoUsuarioDto();
+					pedidoUsuarioDto.setIdPedido(String.valueOf(pedido.getPedidoId()));
 					pedidoUsuarioDto.setServicio(pedido.getPedidoServicio().getStrNombre());
 					pedidoUsuarioDto.setDescripcion(pedido.getPedidoDescripcion());
 					pedidoUsuarioDto.setEstado(pedido.getPedidoEstado().getStrCodigoEstado());
@@ -117,7 +135,7 @@ public class PedidoService implements IPedidoService{
 					pedidoUsuarioDto.setMedioPago(pedido.getPedidoMedioPago().getMedioPagoNombre());
 					pedidoUsuarioDto.setFechaHoraFin( (pedido.getFechafinal() == null ? "*":ProcesarCadenas.getInstance().formatearFecha("dd/MM/yyyy HH:mm:ss", pedido.getFechafinal())) );
 					listPedidoUsuarioDto.add(pedidoUsuarioDto);
-				}
+				});				
 				consultarPedidoUsuarioResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				consultarPedidoUsuarioResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				consultarPedidoUsuarioResponse.setListPedidos(listPedidoUsuarioDto);
@@ -141,8 +159,9 @@ public class PedidoService implements IPedidoService{
 			List<Pedido> listPedidos = pedidoDao.obtenerPedidosProfesional(Long.parseLong(request.getIdProfesional()));
 			if(listPedidos != null && !listPedidos.isEmpty()) {
 				List<ConsultarPedidoProfesionalResponse.PedidoProfesionalDto> listPedidoProfesionalDto = new ArrayList<>();
-				for(Pedido pedido : listPedidos) {
+				listPedidos.forEach( pedido -> {
 					ConsultarPedidoProfesionalResponse.PedidoProfesionalDto pedidoUsuarioDto = new ConsultarPedidoProfesionalResponse.PedidoProfesionalDto();
+					pedidoUsuarioDto.setIdPedido(String.valueOf(pedido.getPedidoId()));
 					pedidoUsuarioDto.setServicio(pedido.getPedidoServicio().getStrNombre());
 					pedidoUsuarioDto.setDescripcion(pedido.getPedidoDescripcion());
 					pedidoUsuarioDto.setEstado(pedido.getPedidoEstado().getStrCodigoEstado());
@@ -152,7 +171,8 @@ public class PedidoService implements IPedidoService{
 					pedidoUsuarioDto.setMedioPago(pedido.getPedidoMedioPago().getMedioPagoNombre());
 					pedidoUsuarioDto.setFechaHoraFinal( (pedido.getFechafinal() == null ? "*":ProcesarCadenas.getInstance().formatearFecha("dd/MM/yyyy HH:mm:ss", pedido.getFechafinal())) );
 					listPedidoProfesionalDto.add(pedidoUsuarioDto);
-				}
+				});
+
 				consultarPedidoProfesionalResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				consultarPedidoProfesionalResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				consultarPedidoProfesionalResponse.setListPedidos(listPedidoProfesionalDto);
@@ -204,9 +224,9 @@ public class PedidoService implements IPedidoService{
 		try {
 
 			if(request.getListPedidos() != null && !request.getListPedidos().isEmpty()) {
-				for(SolicitarPedidoRequest.PedidoDto pedidoDto : request.getListPedidos()) {
+				request.getListPedidos().forEach( pedidoDto -> {
 					Pedido nuevoPedido = new Pedido();
-					
+
 					nuevoPedido.setPedidoId(Long.parseLong(pedidoDto.getId()));
 					nuevoPedido.setPedidoCodPromocional(pedidoDto.getCodPromocional());
 					nuevoPedido.setPedidoDescripcion(pedidoDto.getPreferenceService());
@@ -214,13 +234,13 @@ public class PedidoService implements IPedidoService{
 					nuevoPedido.setPedidoHora(pedidoDto.getHour());					
 
 					nuevoPedido.setPedidoServicio(new Servicio());
-					nuevoPedido.getPedidoServicio().setServicioId(Long.parseLong(pedidoDto.getIdService()));	
+					nuevoPedido.getPedidoServicio().setServicioId(Long.parseLong(pedidoDto.getService().getIdService()));	
 
 					nuevoPedido.setPedidoUsuario(new Usuario());
 					nuevoPedido.getPedidoUsuario().setUsuarioId(Long.parseLong(pedidoDto.getIdPerson()));
 
-					nuevoPedido.setPedidoDireccion(new Direccion());
-					nuevoPedido.getPedidoDireccion().setDireccionId(Long.parseLong(pedidoDto.getAddress()));
+					nuevoPedido.setPedidoLatitud(pedidoDto.getAddress().getLat());
+					nuevoPedido.setPedidoLongitud(pedidoDto.getAddress().getLng());
 
 					nuevoPedido.setPedidoProfesional(new Profesional());
 					nuevoPedido.getPedidoProfesional().setProfesionalId(Long.parseLong(pedidoDto.getProfessional()));
@@ -232,7 +252,8 @@ public class PedidoService implements IPedidoService{
 					nuevoPedido.getPedidoEstado().setEstadoId(EnumEstados.ESTADO_PENDIENTE.getIdEstado());
 
 					pedidoDao.crearActualizarPedido(nuevoPedido);
-				}
+				});
+
 				solicitarPedidoResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				solicitarPedidoResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {

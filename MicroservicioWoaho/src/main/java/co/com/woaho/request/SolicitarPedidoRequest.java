@@ -32,9 +32,9 @@ public class SolicitarPedidoRequest {
 		
 		private String preferenceService;
 		
-		private String address;
+		private Adress address;
 		
-		private String idService;
+		private Service service;
 		
 		private String state;
 		
@@ -47,6 +47,10 @@ public class SolicitarPedidoRequest {
 		private String paymentMethod;
 		
 		private String codPromocional;
+		
+		private String lat;
+		
+		private String lon;
 
 		public String getId() {
 			return id;
@@ -72,20 +76,20 @@ public class SolicitarPedidoRequest {
 			this.preferenceService = preferenceService;
 		}
 
-		public String getAddress() {
+		public Adress getAddress() {
 			return address;
 		}
 
-		public void setAddress(String address) {
+		public void setAddress(Adress address) {
 			this.address = address;
+		}	
+
+		public Service getService() {
+			return service;
 		}
 
-		public String getIdService() {
-			return idService;
-		}
-
-		public void setIdService(String idService) {
-			this.idService = idService;
+		public void setService(Service service) {
+			this.service = service;
 		}
 
 		public String getState() {
@@ -134,6 +138,68 @@ public class SolicitarPedidoRequest {
 
 		public void setCodPromocional(String codPromocional) {
 			this.codPromocional = codPromocional;
+		}
+
+		public String getLat() {
+			return lat;
+		}
+
+		public void setLat(String lat) {
+			this.lat = lat;
+		}
+
+		public String getLon() {
+			return lon;
+		}
+
+		public void setLon(String lon) {
+			this.lon = lon;
+		}
+		
+		public static class Adress{
+			
+			private String lat;
+			
+			private String lng;
+
+			public String getLat() {
+				return lat;
+			}
+
+			public void setLat(String lat) {
+				this.lat = lat;
+			}
+
+			public String getLng() {
+				return lng;
+			}
+
+			public void setLng(String lng) {
+				this.lng = lng;
+			}
+		}
+		
+		public static class Service{
+			
+			private String idService;
+			
+			private Long number;
+
+			public String getIdService() {
+				return idService;
+			}
+
+			public void setIdService(String idService) {
+				this.idService = idService;
+			}
+
+			public Long getNumber() {
+				return number;
+			}
+
+			public void setNumber(Long number) {
+				this.number = number;
+			} 
 		}
 	}
 }

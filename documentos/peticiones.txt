@@ -44,8 +44,7 @@ request: {"strMensaje":"{'idCategoria':'9'}"}
 response: {"mensaje": "{"listServicios":[{"id":"1","image":"software.png","name":"Desarrollo Software","price":20000.0,"category":"Software"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 endpoint: http://localhost:8082/woaho/pedido/solicitarPedido
-request: {"strMensaje":"{'listPedidos':[{'id':'','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}
-response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+request: {"strMensaje":"{"listPedidos":[{"idPerson":"1","preferenceService":"","address":{"lat":"3.0014819999999998","lng":"-76.4933097"},"service":{"number":1,"idService":"2"},"state":"","date":"2020-10-27","hour":"12:00:00","professional":"2","paymentMethod":"1","codPromocional":""}],"idioma":"en"}"}
 
 endpoint: http://localhost:8082/woaho/pedido/actualizarPedido
 request: {"strMensaje":"{'listPedidos':[{'id':'1','idPerson':'2','preferenceService':'desarrollo por horas','address':'2','idService':'1','state':'','date':'2020-09-08','hour':'15:00:21','professional':'1','paymentMethod':'1','codPromocional':''}]}"}

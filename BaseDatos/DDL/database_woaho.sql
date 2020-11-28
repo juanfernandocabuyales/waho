@@ -102,7 +102,7 @@ CREATE TABLE woaho.tipo
 ALTER TABLE woaho.tipo
     OWNER to postgres;
 COMMENT ON TABLE woaho.tipo
-    IS 'Tabla que contiene la información de los tipos de pantalla';
+    IS 'Tabla que contiene la informaciï¿½n de los tipos de pantalla';
 
 CREATE TABLE woaho.idioma
 (
@@ -114,7 +114,7 @@ CREATE TABLE woaho.idioma
 ALTER TABLE woaho.idioma
     OWNER to postgres;
 COMMENT ON TABLE woaho.idioma
-    IS 'Tabla que contiene la información de los idiomas del aplicativo';
+    IS 'Tabla que contiene la informaciï¿½n de los idiomas del aplicativo';
     
 CREATE TABLE woaho.profesion
 (
@@ -125,7 +125,7 @@ CREATE TABLE woaho.profesion
 ALTER TABLE woaho.profesion
     OWNER to postgres;
 COMMENT ON TABLE woaho.profesion
-    IS 'Tabla que contiene la información de las profesiones del aplicativo';
+    IS 'Tabla que contiene la informaciï¿½n de las profesiones del aplicativo';
     
 CREATE TABLE woaho.imagen
 (
@@ -162,7 +162,7 @@ CREATE TABLE woaho.pantalla
 ALTER TABLE woaho.pantalla
     OWNER to postgres;
 COMMENT ON TABLE woaho.pantalla
-    IS 'Tabla que contiene la información de las pantallas';
+    IS 'Tabla que contiene la informaciï¿½n de las pantallas';
     
 CREATE TABLE woaho.mensaje
 (
@@ -179,7 +179,7 @@ CREATE TABLE woaho.mensaje
 ALTER TABLE woaho.mensaje
     OWNER to postgres;
 COMMENT ON TABLE woaho.mensaje
-    IS 'Tabla que contiene la información de los mensajes por pantalla';
+    IS 'Tabla que contiene la informaciï¿½n de los mensajes por pantalla';
     
 CREATE TABLE woaho.traduccion(
 	traduccion_id integer NOT NULL DEFAULT nextval('woaho.sec_traduccion'::regclass),
@@ -612,6 +612,8 @@ CREATE TABLE woaho.pedido
     pedido_profesional integer,
     pedido_medio_pago integer,
     pedido_fecha_final TIMESTAMP,
+    pedido_latitud character varying(4000),
+    pedido_longitu character varying(4000),
     CONSTRAINT pedido_pkey PRIMARY KEY (pedido_id),
     CONSTRAINT "FK_PEDIDO_SERVICIO" FOREIGN KEY (pedido_servicio)
         REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE

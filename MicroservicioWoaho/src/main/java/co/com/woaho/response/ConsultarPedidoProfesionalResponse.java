@@ -16,6 +16,8 @@ public class ConsultarPedidoProfesionalResponse extends BaseResponse{
 	}
 
 	public static class PedidoProfesionalDto{
+		
+		private String idPedido;
 
 		private String servicio;
 
@@ -95,6 +97,14 @@ public class ConsultarPedidoProfesionalResponse extends BaseResponse{
 
 		public void setFechaHoraFinal(String fechaHoraFinal) {
 			this.fechaHoraFinal = fechaHoraFinal;
+		}
+
+		public String getIdPedido() {
+			return idPedido;
+		}
+
+		public void setIdPedido(String idPedido) {
+			this.idPedido = idPedido;
 		}
 	}
 }

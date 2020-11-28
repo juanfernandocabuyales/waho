@@ -36,6 +36,9 @@ INSERT INTO woaho.profesional (profesional_nombre,profesional_apellido,profesion
 					 
 INSERT INTO woaho.profesional (profesional_id, profesional_nombre, profesional_apellido, profesional_profesiones, profesional_nacionalidad, profesional_servicios, profesional_lenguajes, profesional_descripcion, profesional_imagen_icono, profesional_cant_estrellas, profesional_cant_servicios)
 					VALUES(2, 'Juan', 'Beca', '1-2-3', 1, '4-5', '1-2', 'Ingeniero experto en desarrollo Back', 1, 0, 0);
+					
+INSERT INTO woaho.profesional (profesional_id, profesional_nombre, profesional_apellido, profesional_profesiones, profesional_nacionalidad, profesional_servicios, profesional_lenguajes, profesional_descripcion, profesional_imagen_icono, profesional_cant_estrellas, profesional_cant_servicios)
+					VALUES(2, 'Juan', 'Beca', '1-2-3', 1, '4-5', '3', 'Ingeniero experto en desarrollo Back', 1, 0, 0);
 					 
 INSERT INTO woaho.ubicacion (ubicacion_profesional,ubicacion_lugar_id,ubicacion_latitud,ubicacion_longitud) VALUES (1,'328','3.470289','-76.489222');
 					 
@@ -54,7 +57,7 @@ INSERT INTO woaho.usuario(usuario_nombre,usuario_apellido,usuario_celular,usuari
 VALUES('juan','cabuyales','3147452427','juancabuyales@gmail.com','S',CURRENT_TIMESTAMP,'1234');
 
 INSERT INTO woaho.usuario(usuario_nombre,usuario_apellido,usuario_celular,usuario_correo,usuario_acepta_terminos,usuario_fecha_hora_acepta_terminos,usuario_clave)
-VALUES('dayana','muñoz','3147452428','dayana_98@gmail.com','S',CURRENT_TIMESTAMP,'5678');
+VALUES('dayana','muï¿½oz','3147452428','dayana_98@gmail.com','S',CURRENT_TIMESTAMP,'5678');
 
 INSERT INTO woaho.direccion(direccion_nombre,direccion_descripcion,direccion_territorio_id,direccion_edificacion,direccion_estado,direccion_usuario,direccion_latitud,direccion_longitud,direccion_lugar_id)
 VALUES('Casa','Calle 65B #2d-20',5,NULL,1,1,'3.4725913','-76.4910089','ChIJ8bNLzPCmMI4RaGGuUum1Dx8');

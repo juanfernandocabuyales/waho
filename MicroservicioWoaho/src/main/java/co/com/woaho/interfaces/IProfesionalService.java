@@ -1,5 +1,7 @@
 package co.com.woaho.interfaces;
 
+
+import co.com.woaho.modelo.Profesional;
 import co.com.woaho.request.ConsultarProfesionalRequest;
 import co.com.woaho.request.CrearProfesionalRequest;
 import co.com.woaho.response.ConsultarProfesionalResponse;
@@ -10,4 +12,6 @@ public interface IProfesionalService {
 	ConsultarProfesionalResponse obtenerProfesionales(ConsultarProfesionalRequest request);
 	
 	CrearProfesionalResponse crearProfesional (CrearProfesionalRequest request);
+	
+	Profesional obtenerProfesionalCercano(String pServicios,Double pLatUsuario,Double pLongUsuario);
 }

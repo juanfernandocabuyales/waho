@@ -68,6 +68,8 @@ public class Profesional implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesional")
 	private List<Calificacion> calificaciones;
+	
+	private double distanciaUsuario;
 
 	public Long getProfesionalId() {
 		return profesionalId;
@@ -175,5 +177,13 @@ public class Profesional implements Serializable {
 	
 	public String getNombreCompleto() {
 		return this.strNombre + " " + this.strApellido;
+	}
+
+	public double getDistanciaUsuario() {
+		return distanciaUsuario;
+	}
+
+	public void setDistanciaUsuario(double distanciaUsuario) {
+		this.distanciaUsuario = distanciaUsuario;
 	}
 }
