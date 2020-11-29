@@ -57,6 +57,9 @@ public class Usuario implements Serializable {
 	@Column(name = "usuario_id_suscriptor")
 	private String idSuscriptor;
 	
+	@Column(name = "usuario_referralCode")
+	private String referralCode;
+	
 
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -132,5 +135,13 @@ public class Usuario implements Serializable {
 	
 	public String getNombreCompleto() {
 		return this.strNombre + " " + this.strApellido;
+	}
+
+	public String getReferralCode() {
+		return referralCode;
+	}
+
+	public void setReferralCode(String referralCode) {
+		this.referralCode = referralCode;
 	}
 }

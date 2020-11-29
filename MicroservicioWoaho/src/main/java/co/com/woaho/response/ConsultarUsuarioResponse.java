@@ -21,8 +21,9 @@ public class ConsultarUsuarioResponse extends BaseResponse {
 		private String email;
 		private String checkTerminos;
 		private String password;
+		private String referralCode;
 
-		public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos,String password) {
+		public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos,String password,String referralCode) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -31,6 +32,7 @@ public class ConsultarUsuarioResponse extends BaseResponse {
 			this.email = email;
 			this.checkTerminos = checkTerminos;
 			this.password = password;
+			this.referralCode = referralCode;
 		}	
 
 		public String getId() {
@@ -81,6 +83,13 @@ public class ConsultarUsuarioResponse extends BaseResponse {
 			this.password = password;
 		}
 
+		public String getReferralCode() {
+			return referralCode;
+		}
+
+		public void setReferralCode(String referralCode) {
+			this.referralCode = referralCode;
+		}
 
 		@Override
 		public String toString() {

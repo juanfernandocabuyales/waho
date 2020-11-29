@@ -40,7 +40,7 @@ public class ServicioController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarServiciosResponse));
 		
-		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/consultarServiciosCategoria", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,11 +50,16 @@ public class ServicioController {
 		
 		Gson gson = new Gson();
 		ConsultarServiciosRequest consultarServiciosRequest = gson.fromJson(request.getStrMensaje(), ConsultarServiciosRequest.class);
-		ConsultarServiciosResponse consultarServiciosResponse = servicioService.consultarServiciosCategoria(consultarServiciosRequest);
+		ConsultarServiciosResponse consultarServiciosResponse = null;
+		if(consultarServiciosRequest.getIdCategoria().equalsIgnoreCase("1")) {
+			consultarServiciosResponse = servicioService.consultarServicios(consultarServiciosRequest);
+		}else {
+			consultarServiciosResponse = servicioService.consultarServiciosCategoria(consultarServiciosRequest);
+		}		 
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarServiciosResponse));
 		
-		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 }

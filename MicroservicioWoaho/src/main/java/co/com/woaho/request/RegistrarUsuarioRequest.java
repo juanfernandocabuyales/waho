@@ -31,6 +31,7 @@ public class RegistrarUsuarioRequest{
 		private String checkTerminos;
 		private String password;
 		private String idSuscriptor;
+		private String referralCode;
 		
 		public UsuarioDTO(String id, String name, String lastName, String cell, String email, String checkTerminos,String password) {
 			super();
@@ -97,6 +98,14 @@ public class RegistrarUsuarioRequest{
 
 		public void setIdSuscriptor(String idSuscriptor) {
 			this.idSuscriptor = idSuscriptor;
+		}
+
+		public String getReferralCode() {
+			return referralCode;
+		}
+
+		public void setReferralCode(String referralCode) {
+			this.referralCode = referralCode;
 		}
 	}
 }

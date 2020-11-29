@@ -276,6 +276,7 @@ CREATE TABLE woaho.usuario
     usuario_fecha_hora_acepta_terminos TIMESTAMP,
     usuario_clave character varying(4000),
     usuario_id_suscriptor character varying(4000),
+    usuario_referralCode character varying(4000),
     CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
     CONSTRAINT celular_key UNIQUE (usuario_celular)
 );
@@ -521,6 +522,7 @@ CREATE TABLE woaho.profesional
 	profesional_imagen_icono integer,
 	profesional_cant_estrellas decimal,
 	profesional_cant_servicios integer,
+	profesional_distancia decimal DEFAULT 0,
 	CONSTRAINT profesional_pkey PRIMARY KEY (profesional_id),
 	CONSTRAINT "FK_PROFESIONAL_TERRITORIO" FOREIGN KEY (profesional_nacionalidad)
         REFERENCES woaho.territorio (territorio_id) MATCH SIMPLE

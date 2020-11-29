@@ -64,6 +64,7 @@ public class UsuarioService implements IUsuarioService{
 				usuario.setFechaHoraAceptaTerminos(new Date());
 				usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
 				usuario.setStrCorreo(pUsuarioDTO.getEmail());
+				usuario.setReferralCode(pUsuarioDTO.getReferralCode());
 
 				usuarioDao.registarUsuario(usuario);
 				
@@ -100,7 +101,8 @@ public class UsuarioService implements IUsuarioService{
 						usuario.getStrCelular(),
 						usuario.getStrCorreo(),
 						usuario.getStrAceptaTerminos(),
-						usuario.getStrClave());
+						usuario.getStrClave(),
+						usuario.getReferralCode());
 				response.setUsuarioDto(usuarioDto);
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());							

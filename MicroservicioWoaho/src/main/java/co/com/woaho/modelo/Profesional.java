@@ -69,6 +69,7 @@ public class Profesional implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesional")
 	private List<Calificacion> calificaciones;
 	
+	@Column(name = "profesional_distancia", precision = 12)
 	private double distanciaUsuario;
 
 	public Long getProfesionalId() {
