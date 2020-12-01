@@ -98,6 +98,11 @@ endpoint: http://localhost:8082/woaho/usuario/consultarUsuario
 request: {"strMensaje":"{'numeroCelular':'3146538900','correoPersona':''}"}
 response: {"mensaje":"{"usuarioDto":{"id":"3","name":"usuario","lastName":"registro","cell":"3146538900","email":"usuario@woaho.com.co","checkTerminos":"S","password":"zgKbdd5zz/c="},"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
+7. Actualizar usuario por Id
+endpoint: http://localhost:8082/woaho/usuario/actualizarUsuario
+request: {"strMensaje":"{'usuarioDto':{'id':'1','name':'usuario','lastName':'registro','cell':'3146538900','email':'usuario@woaho.com.co','referralCode':'asdaskasdas'}}"}
+response: {"mensaje": "mensajeRespuesta":"ok","codRespuesta":"0"}"}
+
 CONSULTA SLIDES
 
 endpoint: http://localhost:8082/woaho/pantalla/consultarSlides

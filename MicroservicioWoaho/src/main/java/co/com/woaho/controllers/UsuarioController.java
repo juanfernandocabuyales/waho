@@ -52,6 +52,24 @@ public class UsuarioController {
 
 		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
 	}
+	
+	@PostMapping(value = "/actualizarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> actualizarUsuario(@RequestBody GeneralRequest request) {
+		
+		logs.registrarLogInfoEjecutaServicio("actualizarUsuario",request.getStrMensaje());
+		
+		Gson gson = new Gson();
+		
+		RegistrarUsuarioRequest registrarUsuarioRequest = gson.fromJson(request.getStrMensaje(), RegistrarUsuarioRequest.class);
+		RegistrarUsuarioResponse registrarUsuarioResponse = usuarioService.actualizarUsuario(registrarUsuarioRequest);
+
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(registrarUsuarioResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("actualizarUsuario",resp.getMensaje());
+
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
 
 	@PostMapping(value = "/consultarUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> consultarUsuario(@RequestBody GeneralRequest request) {
