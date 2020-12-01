@@ -80,6 +80,42 @@ public class UsuarioService implements IUsuarioService{
 		}
 		return response;
 	}
+	
+	@Override
+	public RegistrarUsuarioResponse actualizarUsuario(RegistrarUsuarioRequest request) {
+		logs.registrarLogInfoEjecutaMetodo("actualizarUsuario");
+		RegistrarUsuarioResponse response = new RegistrarUsuarioResponse();
+		try {
+			
+			RegistrarUsuarioRequest.UsuarioDTO pUsuarioDTO = request.getUsuarioDto();
+			
+			Usuario usuarioval = usuarioDao.obtenerUsuarioId(Long.parseLong(pUsuarioDTO.getId()));
+			
+			if(usuarioval == null) {
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "cel",pUsuarioDTO.getCell()));
+			}else {
+				Usuario usuario = new Usuario();
+				usuario.setUsuarioId(Long.parseLong(pUsuarioDTO.getId()));
+				usuario.setStrNombre(pUsuarioDTO.getName());
+				usuario.setStrApellido(pUsuarioDTO.getLastName());
+				usuario.setStrCelular(pUsuarioDTO.getCell());				
+				usuario.setStrCorreo(pUsuarioDTO.getEmail());
+				usuario.setReferralCode(pUsuarioDTO.getReferralCode());
+
+				usuarioDao.actualizarUsuario(usuarioval);
+				
+				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
+			}		
+		}catch (Exception e) {
+			logs.registrarLogError("actualizarUsuario", "No se ha podido procesar la peticion", e);
+			response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return response;
+	}
 
 	@Override
 	public ConsultarUsuarioResponse consultarUsuario(ConsultarUsuarioRequest request) {	
@@ -257,5 +293,4 @@ public class UsuarioService implements IUsuarioService{
 			throw e;
 		}
 	}
-
 }
