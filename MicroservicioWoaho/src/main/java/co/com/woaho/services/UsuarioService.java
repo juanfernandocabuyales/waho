@@ -71,9 +71,7 @@ public class UsuarioService implements IUsuarioService{
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
 			}else {
-				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.USUARIO_REGISTRADO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
-				response.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, pUsuarioDTO.getCell()));
+				generarCodigoIngreso(usuarioval, request.getIdioma());
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
@@ -236,6 +234,28 @@ public class UsuarioService implements IUsuarioService{
 			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
+	}
+
+	@Override
+	public void generarCodigoIngreso(Usuario pUsuario,String pIdioma) throws Exception {
+		try {
+			String [] strRespuesta = usuarioDao.generarCodigoRegistro(pUsuario.getStrCelular(),pIdioma).split("\\,");
+			
+			if(strRespuesta[0].equalsIgnoreCase(EnumGeneral.RESPUESTA_NEGATIVA.getValor())) {
+				throw new Exception(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), pIdioma, equivalenciaIdiomaDao));
+			}else {					
+				HashMap<String, String> pParametros = new HashMap<>();
+				pParametros.put(Constantes.CONTENIDO, 
+						ProcesarCadenas.getInstance().obtenerMensajeFormat(Constantes.CONTENIDO_PUSH_REGISTRO,strRespuesta[1]));
+				pParametros.put(Constantes.CABECERA, Constantes.CONTENIDO_PUSH_CABECERA);
+				pParametros.put(Constantes.ID_DEVICE,pUsuario.getIdSuscriptor());
+				
+				envioNotificacion.notificarCodigo(pParametros);
+			}	
+		}catch(Exception e) {
+			logs.registrarLogError("generarCodigoIngreso", "No se ha podido procesar la peticion", e);
+			throw e;
+		}
 	}
 
 }

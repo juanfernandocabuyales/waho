@@ -1,5 +1,6 @@
 package co.com.woaho.interfaces;
 
+import co.com.woaho.modelo.Usuario;
 import co.com.woaho.request.ConsultarUsuarioRequest;
 import co.com.woaho.request.GenerarCodigoRequest;
 import co.com.woaho.request.LoginRequest;
@@ -24,4 +25,6 @@ public interface IUsuarioService {
 	ValidarCodigoResponse validarCodigoRegistro(ValidarCodigoRequest request);
 	
 	ValidarCodigoResponse validarCodigoLogin(ValidarCodigoRequest request);
+	
+	void generarCodigoIngreso(Usuario pUsuario,String pIdioma) throws Exception;
 }
