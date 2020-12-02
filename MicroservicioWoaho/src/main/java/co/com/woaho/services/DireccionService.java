@@ -90,13 +90,15 @@ public class DireccionService implements IDireccionService {
 						request.getIdioma(),equivalenciaDao));
 			}else {
 				Direccion direccionModelo = new Direccion();
-				direccionModelo.setDireccionId(Long.parseLong(request.getDireccionDto().getId()));
+				if(null != request.getDireccionDto().getId() && !request.getDireccionDto().getId().isEmpty()) {
+					direccionModelo.setDireccionId(Long.parseLong(request.getDireccionDto().getId()));	
+				}
 				direccionModelo.setStrNombreDireccion(request.getDireccionDto().getName());
 				direccionModelo.setStrDireccion(request.getDireccionDto().getMainAddress());
 				direccionModelo.setUsuarioDireccion(usuarioDireccion);
 				direccionModelo.setStrDireccionLatitud(request.getDireccionDto().getLocation().getLat());
 				direccionModelo.setStrDireccionLongitud(request.getDireccionDto().getLocation().getLng());
-				direccionModelo.setStrLugarId(request.getDireccionDto().getSecondaryAddress());
+				direccionModelo.setStrLugarId(request.getDireccionDto().getPlaceId());
 				direccionModelo.setStrEdificacion(request.getDireccionDto().getSecondaryAddress());
 				
 				direccionModelo.setTerritorioDireccion(new Territorio());
