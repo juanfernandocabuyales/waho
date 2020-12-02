@@ -2,6 +2,7 @@ package co.com.woaho.utilidades;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.security.MessageDigest;
+import java.text.MessageFormat;
 import java.util.Arrays;
 
 import javax.crypto.Cipher;
@@ -56,6 +57,19 @@ public class Utilidades {
 				return equivalenciaIdioma.getEquivalenciaIdiomaIngles();
 			}else {
 				return equivalenciaIdioma.getEquivalenciaIdiomaOriginal();
+			}
+		}
+	}
+	
+	public String obtenerEquivalencia(String pCadena,String pIdioma,IEquivalenciaIdiomaDao equivalenciaIdiomaDao,Object ... pParametros) {
+		EquivalenciaIdioma equivalenciaIdioma = equivalenciaIdiomaDao.obtenerEquivalencia(pCadena);
+		if(equivalenciaIdioma == null || pIdioma == null) {
+			return pCadena;
+		}else {
+			if(pIdioma.equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
+				return MessageFormat.format(equivalenciaIdioma.getEquivalenciaIdiomaIngles(), pParametros);
+			}else {
+				return MessageFormat.format(equivalenciaIdioma.getEquivalenciaIdiomaOriginal(), pParametros);
 			}
 		}
 	}

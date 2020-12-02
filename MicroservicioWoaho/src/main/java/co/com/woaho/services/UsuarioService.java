@@ -73,7 +73,7 @@ public class UsuarioService implements IUsuarioService{
 			}else {
 				generarCodigoIngreso(usuarioval, request.getIdioma());
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NUMERO_REGISTRADO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+				response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NUMERO_REGISTRADO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao,request.getUsuarioDto().getCell()));
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);
