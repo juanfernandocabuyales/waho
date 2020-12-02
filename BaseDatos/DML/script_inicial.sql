@@ -20,7 +20,7 @@ INSERT INTO woaho.imagen (imagen_nombre,imagen_ruta,imagen_alto,imagen_ancho) VA
 
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Colombia', NULL, 1,'+57');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Estados Unidos', NULL, 1,'+1');
-INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('M�xico', NULL, 1,'+52');
+INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('México', NULL, 1,'+52');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Valle del Cauca', 1, 2,'+57');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Cal�', 4, 3,'+57');
 INSERT INTO woaho.territorio (territorio_nombre,territorio_padre,territorio_tipo,territorio_codigo) VALUES ('Risaralda', 1, 2,'+57');
@@ -91,9 +91,10 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Listado de pedidos vacio y/o invalido','Empty order list');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado pedidos para el {0} .','No orders found for {0}');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se ha encontrado un pedido para cancelar','An order to cancel was not found');
-INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El n�mero {0} ya se encuentra registrado.','the number {0} is already registered');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El número {0} ya se encuentra registrado.','the number {0} is already registered');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El nombre del archivo no cumple con el formato esperado.','The file name does not conform to the expected format.');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han enviando un archivo valido para guardar','They have not sent a valid file to save');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El número {0} ya se encuentra registrado. Hemos enviado un codigo de acceso a este numero','the number {0} is already registered. We have sent an access code to this number');
 
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado no se encuentra registrado.Intente nuevamente o solicite un nuevo codigo.','The code entered is not registered, please try again or request a new code.');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El codigo ingresado ha caducado.Solicite un nuevo codigo.','The code entered has expired, please request a new code.');
@@ -118,10 +119,10 @@ INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Hora');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Dia');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Semana');
 INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Mes');
-INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('A�o');
+INSERT INTO woaho.unidad_tarifa (unidad_tarifa_nombre) VALUES ('Año');
 
 INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('INGLES','EN');
-INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPA�OL','ES');
+INSERT INTO woaho.idioma (idioma_nombre,idioma_codigo) VALUES ('ESPAÑOL','ES');
 
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Ingeniero');
 INSERT INTO woaho.profesion (profesion_nombre) VALUES ('Electrico');
@@ -188,7 +189,7 @@ INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,tr
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('1','MANICURE',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('2','HAIRDRESSING',1);
-INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('2','PELUQUER�A',2);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('2','PELUQUERíA',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('3','KITCHEN',1);
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('3','COCINA',2);
@@ -197,7 +198,7 @@ INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,tr
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('4','TODO A TUS MANOS',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('5','Separate your shift and you will have more than 1000 professionals at your service.',1);
-INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('5','Separa tu turno y tendras m�s de 1000 profesionales a tu servicio.',2);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('5','Separa tu turno y tendras más de 1000 profesionales a tu servicio.',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('6','Do you need a new style? We have professional service.',1);
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('6','Necesitas un nuevo estilo, contamos con servicio profesional.',2);
@@ -209,7 +210,7 @@ INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,tr
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('8','Contamos con los profesionales calificados para atender tus necesidades.',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('9','Separate your shift and you will have more than 1000 professionals at your service.',1);
-INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('9','Separa tu turno y tendras m�s de 1000 profesionales a tu servicio.',2);
+INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('9','Separa tu turno y tendras más de 1000 profesionales a tu servicio.',2);
 
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('10','Find and feel renewed.',1);
 INSERT INTO woaho.traduccion (traduccion_codigo_mensaje,traduccion_traduccion,traduccion_idioma) values ('10','Encuentra y sientete renovado.',2);
