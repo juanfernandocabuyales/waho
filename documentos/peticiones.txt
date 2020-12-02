@@ -14,7 +14,7 @@ request: {"strMensaje":"{"idUsuario":"1"}"}
 response: {"mensaje": "{"listDireccion":[{"placeId":"ChIJ8bNLzPCmMI4RaGGuUum1Dx8","mainAddress":"Calle 65B #2d-20","name":"Casa","secondaryAddress":"*","home":"*","location":{"lat":"3.4725913","lng":"-76.4910089"}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 endpoint: http://localhost:8082/woaho/direccion/actualizarCrearDireccion
-request: {"strMensaje":"{"idUsuario":"1"}"}
+request: {"strMensaje":"{"idioma":"es","direccionDto":"{"idUsuario":"","id":"","placeId":"","mainAddress":"","name":"","secondaryAddress":"","home":"","idTerritorio":"","idEstado":"","location":{"lat":"","long":""}}"}"}
 response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 
