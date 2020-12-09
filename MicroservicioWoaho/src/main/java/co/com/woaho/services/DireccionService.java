@@ -20,8 +20,10 @@ import co.com.woaho.modelo.Territorio;
 import co.com.woaho.modelo.Usuario;
 import co.com.woaho.request.ActualizarCrearDireccionRequest;
 import co.com.woaho.request.ConsultarDireccionRequest;
+import co.com.woaho.request.EliminarDireccionRequest;
 import co.com.woaho.response.ActualizarCrearDireccionResponse;
 import co.com.woaho.response.ConsultarDireccionResponse;
+import co.com.woaho.response.EliminarDireccionResponse;
 import co.com.woaho.utilidades.Constantes;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
@@ -119,6 +121,29 @@ public class DireccionService implements IDireccionService {
 					request.getIdioma(), equivalenciaDao));
 		}
 		return actualizarCrearDireccionResponse;
+	}
+
+	@Override
+	public EliminarDireccionResponse eliminarDireccion(EliminarDireccionRequest request) {
+		EliminarDireccionResponse eliminarDireccionResponse = new EliminarDireccionResponse();
+		try {
+			Direccion direccionUsuario = direccionDao.obtenerDireccion(Long.parseLong(request.getIdDireccion()));
+			
+			if(null != direccionUsuario) {
+				direccionDao.eliminarDireccion(direccionUsuario);
+				eliminarDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				eliminarDireccionResponse.setMensajeRespuesta(EnumMensajes.OK.getMensaje());
+			}else {
+				eliminarDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				eliminarDireccionResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_DIRECCIONES.getMensaje(), request.getIdioma(), equivalenciaDao));
+			}
+		}catch(Exception e) {
+			logs.registrarLogError("crearActualizarDireccion", "No se ha podido procesar la peticion", e);
+			eliminarDireccionResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			eliminarDireccionResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
+					request.getIdioma(), equivalenciaDao));
+		}
+		return eliminarDireccionResponse;
 	}
 
 }

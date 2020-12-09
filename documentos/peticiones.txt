@@ -14,7 +14,7 @@ request: {"strMensaje":"{"idUsuario":"1"}"}
 response: {"mensaje": "{"listDireccion":[{"placeId":"ChIJ8bNLzPCmMI4RaGGuUum1Dx8","mainAddress":"Calle 65B #2d-20","name":"Casa","secondaryAddress":"*","home":"*","location":{"lat":"3.4725913","lng":"-76.4910089"}}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 endpoint: http://localhost:8082/woaho/direccion/actualizarCrearDireccion
-request: {"strMensaje":"{"idioma":"es","direccionDto":"{"idUsuario":"","id":"","placeId":"","mainAddress":"","name":"","secondaryAddress":"","home":"","idTerritorio":"","idEstado":"","location":{"lat":"","long":""}}"}"}
+request: {"strMensaje":"{"idioma":"es","direccionDto":{"idUsuario":"5","id":"","placeId":"kddfs","mainAddress":"calle 13 #22a-24","name":"trabajo","secondaryAddress":"calle 13 #22a-26","home":"*","idTerritorio":"1","idEstado":"1","location":{"lat":"3.4725994","lng":"-76.490998"}}}"}
 response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 
@@ -112,5 +112,13 @@ CONSULTA SLIDES
 endpoint: http://localhost:8082/woaho/pantalla/consultarSlides
 request: {"strMensaje":"{'idioma':'es'}"}    //es o en
 reponse: {"mensaje": "{"listSlides":[{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_uno.png","title":"MANICURE","subtitle":"Separa tu turno y tendras más de 1000 profesionales a tu servicio.","footer":"Encuentra aquí todos los estilos."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_dos.png","title":"PELUQUERÍA","subtitle":"Necesitas un nuevo estilo, contamos con servicio profesional.","footer":"Encuentra y sientete renovado."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_tres.png","title":"COCINA","subtitle":"Ya no necesitas ir a un restaurante, el restaurante va a ti.","footer":"Encuentra los mejores chef y deleita tu paladar."},{"image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/slide_cuatro.png","title":"TODO A TUS MANOS","subtitle":"Contamos con los profesionales calificados para atender tus necesidades.","footer":"Encuentra todo lo que necesitas, sin salir de tu casa."}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+
+NUEVOS SERVICIOS
+
+1. Eliminar Direccion
+end point: http://localhost:8082/woaho/direccion/eliminarDireccion
+request: {"strMensaje":"{'idDireccion':'6','idioma':'es'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
 

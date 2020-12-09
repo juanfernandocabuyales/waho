@@ -14,9 +14,11 @@ import com.google.gson.Gson;
 import co.com.woaho.interfaces.IDireccionService;
 import co.com.woaho.request.ActualizarCrearDireccionRequest;
 import co.com.woaho.request.ConsultarDireccionRequest;
+import co.com.woaho.request.EliminarDireccionRequest;
 import co.com.woaho.request.GeneralRequest;
 import co.com.woaho.response.ActualizarCrearDireccionResponse;
 import co.com.woaho.response.ConsultarDireccionResponse;
+import co.com.woaho.response.EliminarDireccionResponse;
 import co.com.woaho.response.GeneralResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -30,7 +32,7 @@ public class DireccionController {
 	private IDireccionService direccionService;
 	
 	@PostMapping(value = "/consultarDirecciones", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> consultarDirecciones(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> consultarDirecciones(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("consultarDirecciones",request.getStrMensaje());
 		
@@ -45,11 +47,11 @@ public class DireccionController {
 		
 		logs.registrarLogInfoRespuestaServicio("consultarDirecciones",resp.getMensaje());
 		
-		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/actualizarCrearDireccion", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> actualizarCrearDireccion(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> actualizarCrearDireccion(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("actualizarCrearDireccion",request.getStrMensaje());
 		
@@ -64,7 +66,26 @@ public class DireccionController {
 		
 		logs.registrarLogInfoRespuestaServicio("actualizarCrearDireccion",resp.getMensaje());
 		
-		return new ResponseEntity<GeneralResponse>(resp, HttpStatus.OK);
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/eliminarDireccion", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<GeneralResponse> eliminarDireccion(@RequestBody GeneralRequest request) {
+		
+		logs.registrarLogInfoEjecutaServicio("eliminarDireccion",request.getStrMensaje());
+		
+		Gson gson = new Gson();
+		
+		EliminarDireccionRequest eliminarDireccionRequest = gson.fromJson(request.getStrMensaje(), EliminarDireccionRequest.class);
+		
+		EliminarDireccionResponse eliminarDireccionResponse = direccionService.eliminarDireccion(eliminarDireccionRequest);
+		
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(eliminarDireccionResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("eliminarDireccion",resp.getMensaje());
+		
+		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 
 }

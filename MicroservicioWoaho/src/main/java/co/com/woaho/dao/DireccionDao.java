@@ -45,4 +45,28 @@ public class DireccionDao extends Persistencia implements IDireccionDao {
 		}
 	}
 
+	@Override
+	@Transactional
+	public void eliminarDireccion(Direccion pDireccion) throws Exception {
+		try {
+			getEntityManager().remove(pDireccion);
+		}catch(Exception e) {
+			logs.registrarLogError("eliminarDireccion", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			throw new Exception(e);
+		}
+	}
+
+	@Override
+	public Direccion obtenerDireccion(Long pIdDireccion) {
+		Direccion direccion = null;
+		try {
+			Query query = getEntityManager().createNamedQuery("Direccion.findId");
+			query.setParameter("pId", pIdDireccion);
+			direccion = (Direccion) query.getSingleResult();
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerDireccionesUsuario", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+		}
+		return direccion;
+	}
+
 }
