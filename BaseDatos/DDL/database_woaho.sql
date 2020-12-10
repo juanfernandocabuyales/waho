@@ -90,6 +90,9 @@ ALTER SEQUENCE woaho.sec_traduccion OWNER TO postgres;
 
 CREATE SEQUENCE woaho.sec_equivalencia_idioma CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_equivalencia_idioma OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_servicio_favorito CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_servicio_favorito OWNER TO postgres;
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -674,4 +677,24 @@ CREATE TABLE woaho.equivalencia_idioma
 ALTER TABLE woaho.equivalencia_idioma
     OWNER to postgres;
 COMMENT ON TABLE woaho.equivalencia_idioma
-    IS 'Tabla que contiene las traducciones de las etiquetas'; 
+    IS 'Tabla que contiene las traducciones de las etiquetas';
+    
+CREATE TABLE woaho.servicio_favorito
+(
+	servicio_favorito_id integer NOT NULL DEFAULT nextval('sec_servicio_favorito'::regclass),
+	servicio_favorito_servicio integer,
+	servicio_favorito_usuario integer,
+	CONSTRAINT servicio_favorito_pkey PRIMARY KEY (servicio_favorito_id),
+	CONSTRAINT "FK_FAVORITO_SERVICIO" FOREIGN KEY (servicio_favorito_servicio)
+        REFERENCES woaho.servicio (servicio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_FAVORITO_USUARIO" FOREIGN KEY (servicio_favorito_usuario)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.servicio_favorito
+    OWNER to postgres;
+COMMENT ON TABLE woaho.servicio_favorito
+    IS 'Tabla que contiene los servicios favoritos del usuario';  

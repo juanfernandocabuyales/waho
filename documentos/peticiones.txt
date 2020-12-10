@@ -121,4 +121,19 @@ end point: http://localhost:8082/woaho/direccion/eliminarDireccion
 request: {"strMensaje":"{'idDireccion':'6','idioma':'es'}"}
 response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
+2. Crear Servicios Favoritos
+end point: http://localhost:8082/woaho/servicioFavorito/crearFavoritos
+request: {"strMensaje":"{'idUsuario':'1','idServicio':'8','idioma':'es'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+3. Consultar Servicios Favoritos
+end point: http://localhost:8082/woaho/servicioFavorito/consultarFavoritos
+request: {"strMensaje":"{'idUsuario':'1','idioma':'es'}"}
+response: {"mensaje": "{"listServicios":[{"id":"3","image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/desarrollo_sofware","name":"Desarrollo Software","price":20000.0,"category":9,"clicks":0,"description":"Servicios para desarrollo de soluciones tecnologicas mediante software"},{"id":"8","image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/servicio_arreglos","name":"Arreglos","price":45000.0,"category":7,"clicks":0,"description":"Servicio para arreglos en el hogar"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+4. Eliminar Servicios Favoritos
+end point: http://localhost:8082/woaho/servicioFavorito/eliminarFavoritos
+request: {"strMensaje":"{'idUsuario':'1','idServicio':'8','idioma':'es'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
 
