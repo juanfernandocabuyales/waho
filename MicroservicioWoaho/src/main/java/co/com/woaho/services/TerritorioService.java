@@ -44,9 +44,12 @@ public class TerritorioService implements ITerritorioService {
 				
 				for(Territorio territorio: listTerritorio) {
 					PaisDTO pais = new PaisDTO(String.valueOf(territorio.getIdTerritorio()),
-											   territorio.getStrNombreTerritorio(),
+											   territorio.getStrNombreTerritorio().substring(0,3),
 											   territorio.getStrCodigoTerritorio(),
 											   (null == territorio.getTerritorioImagen() ? "*" :territorio.getTerritorioImagen().getStrRuta()));
+					if(pais.getId().equalsIgnoreCase("2")) {
+						pais.setName("Usa");
+					}
 					listPaisesDto.add(pais);
 				}
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
