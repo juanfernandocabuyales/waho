@@ -4,13 +4,15 @@ public class PaisDTO {
 
 	private String id;
 	private String name;
-	private String code;	
+	private String code;
+	private String image;
 	
-	public PaisDTO(String id, String name, String code) {
+	public PaisDTO(String id, String name, String code,String image) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.code = code;
+		this.image = image;
 	}	
 	
 	public String getId() {
@@ -30,5 +32,11 @@ public class PaisDTO {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}	
 }

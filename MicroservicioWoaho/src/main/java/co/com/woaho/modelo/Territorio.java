@@ -35,6 +35,10 @@ public class Territorio implements Serializable {
 
 	@Column(name ="territorio_codigo",length = 100)
 	private String strCodigoTerritorio;
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "territorio_imagen")
+	private Imagen territorioImagen;
 
 	public Long getIdTerritorio() {
 		return idTerritorio;
@@ -74,5 +78,13 @@ public class Territorio implements Serializable {
 
 	public void setStrCodigoTerritorio(String strCodigoTerritorio) {
 		this.strCodigoTerritorio = strCodigoTerritorio;
+	}
+
+	public Imagen getTerritorioImagen() {
+		return territorioImagen;
+	}
+
+	public void setTerritorioImagen(Imagen territorioImagen) {
+		this.territorioImagen = territorioImagen;
 	}
 }

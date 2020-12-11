@@ -1,113 +1,42 @@
-2020-12-10 16:52:46 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on 19Y9P13 with PID 4764 (E:\personal\woaho\waho\MicroservicioWoaho\target\classes started by jcabuyales in E:\personal\woaho\waho\MicroservicioWoaho)
-2020-12-10 16:52:46 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
-2020-12-10 16:52:48 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-12-10 16:52:48 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 305ms. Found 1 repository interfaces.
-2020-12-10 16:52:49 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-2020-12-10 16:52:49 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
-2020-12-10 16:52:49 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-2020-12-10 16:52:49 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fd72a246] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-12-10 16:52:49 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$68645d75] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-12-10 16:52:49 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-12-10 16:52:50 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
-2020-12-10 16:52:50 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
-2020-12-10 16:52:50 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
-2020-12-10 16:52:50 [main] INFO  o.a.c.c.AprLifecycleListener:173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/programas/sts-4.8.1.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.0.v20201014-1246/jre/bin/server;E:/programas/sts-4.8.1.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.0.v20201014-1246/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Users\jcabuyales\AppData\Local\Microsoft\WindowsApps;;C:\Users\jcabuyales\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jcabuyales\AppData\Roaming\npm;E:\programas\sts-4.8.1.RELEASE;;.]
-2020-12-10 16:52:50 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
-2020-12-10 16:52:50 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 3880 ms
-2020-12-10 16:52:51 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
-2020-12-10 16:52:52 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
-2020-12-10 16:54:06 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-12-10 16:54:07 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-12-10 16:54:08 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-12-10 16:54:08 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
-2020-12-10 16:54:08 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
-2020-12-10 16:54:08 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
-2020-12-10 16:54:08 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
-2020-12-10 16:54:08 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
-2020-12-10 16:54:08 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 82.577 seconds (JVM running for 83.567)
-2020-12-10 16:55:39 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-12-10 16:55:39 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
-2020-12-10 16:55:39 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 18 ms
-2020-12-10 16:55:39 [http-nio-8082-exec-2] INFO  c.c.w.c.ServicioFavoritoController:99 - Hilo[25] Se va a ejecutar el servicio: crearFavoritos Peticion: {'idUsuario':'1','idServicio':'3','idioma':'es'}
-2020-12-10 16:55:40 [http-nio-8082-exec-2] INFO  c.c.w.c.ServicioFavoritoController:95 - Hilo[25] Response del servicio: crearFavoritos Response: {"codigoRespuesta":"0","mensajeRespuesta":"ok"}
-2020-12-10 16:56:14 [http-nio-8082-exec-3] INFO  c.c.w.c.ServicioFavoritoController:99 - Hilo[26] Se va a ejecutar el servicio: crearFavoritos Peticion: {'idUsuario':'1','idServicio':'8','idioma':'es'}
-2020-12-10 16:56:15 [http-nio-8082-exec-3] INFO  c.c.w.c.ServicioFavoritoController:95 - Hilo[26] Response del servicio: crearFavoritos Response: {"codigoRespuesta":"0","mensajeRespuesta":"ok"}
-2020-12-10 16:58:07 [http-nio-8082-exec-6] INFO  c.c.w.c.ServicioFavoritoController:99 - Hilo[29] Se va a ejecutar el servicio: consultarFavoritos Peticion: {'idUsuario':'1','idioma':'es'}
-2020-12-10 16:58:09 [http-nio-8082-exec-6] INFO  c.c.w.c.ServicioFavoritoController:95 - Hilo[29] Response del servicio: consultarFavoritos Response: {"listServicios":[{"id":"3","image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/desarrollo_sofware","name":"Desarrollo Software","price":20000.0,"category":9,"clicks":0,"description":"Servicios para desarrollo de soluciones tecnologicas mediante software"},{"id":"8","image":"http://198.54.123.142:8082/woaho/imagen/downloadFile/servicio_arreglos","name":"Arreglos","price":45000.0,"category":7,"clicks":0,"description":"Servicio para arreglos en el hogar"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}
-2020-12-10 17:00:05 [http-nio-8082-exec-9] INFO  c.c.w.c.ServicioFavoritoController:99 - Hilo[32] Se va a ejecutar el servicio: eliminarFavoritos Peticion: {'idUsuario':'1','idServicio':'8','idioma':'es'}
-2020-12-10 17:00:05 [http-nio-8082-exec-9] ERROR c.c.w.d.ServicioFavoritoDao:70 - Hilo[32] se ha presentado un error en el metodo: eliminarServicioFavorito No se ha podido procesar la solicitud 
-javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:292)
-	at com.sun.proxy.$Proxy122.remove(Unknown Source)
-	at co.com.woaho.dao.ServicioFavoritoDao.eliminarServicioFavorito(ServicioFavoritoDao.java:59)
-	at co.com.woaho.dao.ServicioFavoritoDao$$FastClassBySpringCGLIB$$6e1b878d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.dao.ServicioFavoritoDao$$EnhancerBySpringCGLIB$$89932b76.eliminarServicioFavorito(<generated>)
-	at co.com.woaho.services.ServicioFavoritoService.eliminarServicioFavorito(ServicioFavoritoService.java:135)
-	at co.com.woaho.services.ServicioFavoritoService$$FastClassBySpringCGLIB$$22031b76.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:136)
-	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
-	at co.com.woaho.services.ServicioFavoritoService$$EnhancerBySpringCGLIB$$fb0a3664.eliminarServicioFavorito(<generated>)
-	at co.com.woaho.controllers.ServicioFavoritoController.eliminarFavoritos(ServicioFavoritoController.java:75)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:748)
-2020-12-10 17:00:05 [http-nio-8082-exec-9] INFO  c.c.w.c.ServicioFavoritoController:95 - Hilo[32] Response del servicio: eliminarFavoritos Response: {"codigoRespuesta":"0","mensajeRespuesta":"ok"}
+2020-12-11 15:52:06 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:50 - Starting MicroservicioWoahoApplication on 19Y9P13 with PID 5848 (E:\personal\woaho\waho\MicroservicioWoaho\target\classes started by jcabuyales in E:\personal\woaho\waho\MicroservicioWoaho)
+2020-12-11 15:52:06 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:675 - No active profile set, falling back to default profiles: default
+2020-12-11 15:52:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-12-11 15:52:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate:182 - Finished Spring Data repository scanning in 614ms. Found 1 repository interfaces.
+2020-12-11 15:52:11 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:188 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2020-12-11 15:52:11 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:275 - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2020-12-11 15:52:11 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor:426 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2020-12-11 15:52:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5809ca9a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-11 15:52:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$c2fb85c9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-11 15:52:11 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-11 15:52:12 [main] INFO  o.s.b.w.e.t.TomcatWebServer:90 - Tomcat initialized with port(s): 8082 (http)
+2020-12-11 15:52:13 [main] INFO  o.a.c.c.StandardService:173 - Starting service [Tomcat]
+2020-12-11 15:52:13 [main] INFO  o.a.c.c.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-12-11 15:52:13 [main] INFO  o.a.c.c.AprLifecycleListener:173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:/programas/sts-4.8.1.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.0.v20201014-1246/jre/bin/server;E:/programas/sts-4.8.1.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.0.v20201014-1246/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Gradle\gradle-6.7.1\bin;C:\Users\jcabuyales\AppData\Local\Microsoft\WindowsApps;;C:\Users\jcabuyales\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jcabuyales\AppData\Roaming\npm;E:\programas\sts-4.8.1.RELEASE;;.]
+2020-12-11 15:52:13 [main] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring embedded WebApplicationContext
+2020-12-11 15:52:13 [main] INFO  o.s.w.c.ContextLoader:296 - Root WebApplicationContext: initialization completed in 6028 ms
+2020-12-11 15:52:14 [main] INFO  c.z.h.HikariDataSource:110 - HikariPool-1 - Starting...
+2020-12-11 15:52:16 [main] INFO  c.z.h.HikariDataSource:123 - HikariPool-1 - Start completed.
+2020-12-11 15:53:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean:415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-11 15:53:56 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration:236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-11 15:53:57 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-11 15:53:57 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler:171 - Initializing ExecutorService 'taskScheduler'
+2020-12-11 15:53:57 [main] INFO  o.s.i.e.EventDrivenConsumer:107 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2020-12-11 15:53:57 [main] INFO  o.s.i.c.PublishSubscribeChannel:64 - Channel 'MicroservicioWoaho.errorChannel' has 1 subscriber(s).
+2020-12-11 15:53:57 [main] INFO  o.s.i.e.EventDrivenConsumer:159 - started _org.springframework.integration.errorLogger
+2020-12-11 15:53:57 [main] INFO  o.s.b.w.e.t.TomcatWebServer:204 - Tomcat started on port(s): 8082 (http) with context path '/woaho'
+2020-12-11 15:53:57 [main] INFO  c.c.w.p.MicroservicioWoahoApplication:59 - Started MicroservicioWoahoApplication in 112.512 seconds (JVM running for 114.373)
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[.[.[/woaho]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:524 - Initializing Servlet 'dispatcherServlet'
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  o.s.w.s.DispatcherServlet:546 - Completed initialization in 15 ms
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  c.c.w.c.TerritorioController:87 - Hilo[25] Se va a ejecutar el servicio: consultarPaises
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  c.c.w.s.TerritorioService:52 - Hilo[25] Se va a ejecutar el metodo: obtenerTerritorios
+2020-12-11 15:54:08 [http-nio-8082-exec-2] INFO  c.c.w.d.TerritorioDao:61 - Hilo[25] se ejecuta el query: Territorio.buscarTipo
+2020-12-11 15:55:25 [http-nio-8082-exec-5] INFO  c.c.w.c.TerritorioController:87 - Hilo[28] Se va a ejecutar el servicio: consultarPaises
+2020-12-11 15:55:25 [http-nio-8082-exec-5] INFO  c.c.w.s.TerritorioService:52 - Hilo[28] Se va a ejecutar el metodo: obtenerTerritorios
+2020-12-11 15:55:25 [http-nio-8082-exec-5] INFO  c.c.w.d.TerritorioDao:61 - Hilo[28] se ejecuta el query: Territorio.buscarTipo
+2020-12-11 15:55:43 [http-nio-8082-exec-6] INFO  c.c.w.c.TerritorioController:87 - Hilo[29] Se va a ejecutar el servicio: consultarPaises
+2020-12-11 15:55:43 [http-nio-8082-exec-6] INFO  c.c.w.s.TerritorioService:52 - Hilo[29] Se va a ejecutar el metodo: obtenerTerritorios
+2020-12-11 15:55:43 [http-nio-8082-exec-6] INFO  c.c.w.d.TerritorioDao:61 - Hilo[29] se ejecuta el query: Territorio.buscarTipo
+2020-12-11 15:56:42 [http-nio-8082-exec-7] INFO  c.c.w.c.TerritorioController:87 - Hilo[30] Se va a ejecutar el servicio: consultarPaises
+2020-12-11 15:56:42 [http-nio-8082-exec-7] INFO  c.c.w.s.TerritorioService:52 - Hilo[30] Se va a ejecutar el metodo: obtenerTerritorios
+2020-12-11 15:56:42 [http-nio-8082-exec-7] INFO  c.c.w.d.TerritorioDao:61 - Hilo[30] se ejecuta el query: Territorio.buscarTipo

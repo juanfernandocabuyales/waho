@@ -32,6 +32,8 @@ public class EnviarNotificacion implements IEnvioNotificacion {
 	@Override
 	public void notificarCodigo(HashMap<String, String> pParametros){
 		try {
+			logs.registrarLogInfo("Parametros envio notificacion: " + pParametros);
+			
 			HttpHeaders headers = new HttpHeaders();
 	        headers.set("Authorization", configuracion.getRestKey());
 	        headers.set("Content-Type", "application/json");	        

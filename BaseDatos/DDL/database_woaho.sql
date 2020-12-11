@@ -256,9 +256,14 @@ CREATE TABLE woaho.territorio
     territorio_padre integer,
     territorio_tipo integer,
     territorio_codigo character varying(4000),
+    territorio_imagen integer,
     CONSTRAINT territorio_pkey PRIMARY KEY (territorio_id),
     CONSTRAINT "FK_TERRITORIO_TIPO_TERRITORIO" FOREIGN KEY (territorio_tipo)
         REFERENCES woaho.tipo_territorio (tipo_territorio_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+    CONSTRAINT "FK_TERRITORIO_IMAGEN" FOREIGN KEY (territorio_imagen)
+        REFERENCES woaho.imagen (imagen_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
