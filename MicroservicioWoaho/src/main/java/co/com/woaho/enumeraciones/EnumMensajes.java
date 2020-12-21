@@ -22,6 +22,7 @@ public enum EnumMensajes {
 	NO_PEDIDO("No se ha encontrado un pedido para cancelar"),
 	USUARIO_REGISTRADO("El número {0} ya se encuentra registrado."),
 	NUMERO_REGISTRADO("El número {0} ya se encuentra registrado. Hemos enviado un codigo de acceso a este numero"),
+	NO_REGISTROS("No se han encontrado registros para la busqueda"),
 	OK("ok"),
 	
 	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado."),

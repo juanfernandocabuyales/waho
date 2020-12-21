@@ -93,6 +93,9 @@ ALTER SEQUENCE woaho.sec_equivalencia_idioma OWNER TO postgres;
 
 CREATE SEQUENCE woaho.sec_servicio_favorito CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_servicio_favorito OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_medio_pago_usuario CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_medio_pago_usuario OWNER TO postgres;
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -702,4 +705,33 @@ CREATE TABLE woaho.servicio_favorito
 ALTER TABLE woaho.servicio_favorito
     OWNER to postgres;
 COMMENT ON TABLE woaho.servicio_favorito
-    IS 'Tabla que contiene los servicios favoritos del usuario';  
+    IS 'Tabla que contiene los servicios favoritos del usuario';
+    
+CREATE TABLE woaho.medio_pago_usuario
+(
+	medio_pago_usuario_id integer NOT NULL DEFAULT nextval('sec_medio_pago_usuario'::regclass),
+	medio_pago_usuario_nombre character varying(4000),
+	medio_pago_usuario_fecha_vencimiento character varying(4000),
+	medio_pago_usuario_cvc character varying(4000),
+	medio_pago_usuario_codigo character varying(4000),
+	medio_pago_usuario_estado integer,
+	medio_pago_usuario_usuario integer,
+	medio_pago_usuario_medio_pago integer,
+	CONSTRAINT medio_pago_usuario_pkey PRIMARY KEY (medio_pago_usuario_id),
+	CONSTRAINT "FK_MEDIO_PAGO_USUARIO_ESTADO" FOREIGN KEY (medio_pago_usuario_estado)
+        REFERENCES woaho.estado (estado_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_MEDIO_PAGO_USUARIO_USUARIO" FOREIGN KEY (medio_pago_usuario_usuario)
+        REFERENCES woaho.usuario (usuario_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+   CONSTRAINT "FK_MEDIO_PAGO_USUARIO_MEDIO_PAGO" FOREIGN KEY (medio_pago_usuario_medio_pago)
+        REFERENCES woaho.medio_pago (medio_pago_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+ALTER TABLE woaho.medio_pago_usuario
+    OWNER to postgres;
+COMMENT ON TABLE woaho.medio_pago_usuario
+    IS 'Tabla que contiene los medios de pago para el usuario';  
