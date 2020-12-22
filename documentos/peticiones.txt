@@ -136,4 +136,29 @@ end point: http://localhost:8082/woaho/servicioFavorito/eliminarFavoritos
 request: {"strMensaje":"{'idUsuario':'1','idServicio':'8','idioma':'es'}"}
 response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
 
+5. Consultar Medios Pagos
+end point: http://localhost:8082/woaho/medioPago/obtenerMedios
+request: {"strMensaje":"{'idioma':'es'}"}
+response: {"mensaje": "{"listMediosPagos":[{"id":"1","nombre":"Efectivo","etiqueta":"Efectivo","territorio":"Colombia"},{"id":"2","nombre":"Credito","etiqueta":"Credito","territorio":"Colombia"},{"id":"3","nombre":"Debito","etiqueta":"Debito","territorio":"Colombia"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+6. Registrar Medio Pago Usuario
+end point: http://localhost:8082/woaho/medioPago/crearMedioPagoUsuario
+request: {"strMensaje":"{'idioma':'es','idMedioPagoUsuario':'','idUsuario':'5','medioPago':'2','nombre':'Visa','fecha':'12/24','cvc':'321','codigo':'','estado':'1'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+7. Actualizar Medio Pago Usuario
+end point: http://localhost:8082/woaho/medioPago/actualizarMedioPagoUsuario
+request: {"strMensaje":"{'idioma':'es','idMedioPagoUsuario':'1','idUsuario':'5','medioPago':'2','nombre':'Visa','fecha':'12/24','cvc':'321','codigo':'','estado':'1'}"}
+response: {"mensaje": "{"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+8. Consultar Medio Pago Usuario
+end point: http://localhost:8082/woaho/medioPago/consultarMedioPagoUsuario
+request: {"strMensaje":"{'idioma':'es','usuarioId':'5'}"}
+response: {"mensaje": "{"listMediosPagos":[{"id":"1","nombre":"Visa Gold","fecha":"12/24","cvc":"321","codigo":"","estado":"ACTIVO","medioPago":"Credito"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
+9. Consultar Medio Pago Usuario - Estado
+end point: http://localhost:8082/woaho/medioPago/consultarMedioPagoUsuarioEstado
+request: {"strMensaje":"{'idioma':'es','usuarioId':'5','estado':'1'}"}   ==> 1-Activo, 2-Inactivo
+response: {"mensaje": "{"listMediosPagos":[{"id":"1","nombre":"Visa Gold","fecha":"12/24","cvc":"321","codigo":"","estado":"ACTIVO","medioPago":"Credito"}],"codigoRespuesta":"0","mensajeRespuesta":"ok"}"}
+
 
