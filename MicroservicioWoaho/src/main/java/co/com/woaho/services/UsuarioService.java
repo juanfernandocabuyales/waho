@@ -70,10 +70,12 @@ public class UsuarioService implements IUsuarioService{
 				
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				response.setExisteNumero(EnumGeneral.NO.getValor());
 			}else {
 				generarCodigoIngreso(usuarioval, request.getIdioma());
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 				response.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				response.setExisteNumero(EnumGeneral.SI.getValor());
 			}			
 		}catch (Exception e) {
 			logs.registrarLogError("registrarUsuario", "No se ha podido procesar la peticion", e);

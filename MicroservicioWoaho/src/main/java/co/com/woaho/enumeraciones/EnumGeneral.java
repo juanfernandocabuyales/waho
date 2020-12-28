@@ -10,6 +10,8 @@ public enum EnumGeneral {
 	PIPE("|"),
 	VIGURILLA("~"),
 	GUION("-"),
+	SI("S"),
+	NO("N"),
 	
 	
 	SERVICIO_CONSULTA_PANTALLAS("1"),
