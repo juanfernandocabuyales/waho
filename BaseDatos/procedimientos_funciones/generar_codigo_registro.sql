@@ -5,6 +5,7 @@ AS $$
 DECLARE
 	cant_intentos numeric;
 	codigo_generado character varying;
+	codigo_anterior character varying;
 	
 	v_state   text;
     v_msg     text;
@@ -14,14 +15,21 @@ DECLARE
     	
 BEGIN
 	
-	SELECT (pa.parametro_valor::numeric)
-	INTO cant_intentos
-	FROM parametro pa
-	WHERE pa.parametro_nombre = 'CANT_INT_COD_REGISTRO';
+	SELECT codigo_numero
+	INTO codigo_anterior
+	FROM codigo cod
+	WHERE cod.codigo_celular = p_celular
+	AND cod.codigo_estado = 1;
 	
-	codigo_generado := generar_aleatorios(111111,999999)::character varying;
+	IF (codigo_anterior IS NULL) THEN
+		SELECT (pa.parametro_valor::numeric)
+		INTO cant_intentos
+		FROM parametro pa
+		WHERE pa.parametro_nombre = 'CANT_INT_COD_REGISTRO';
 	
-	INSERT INTO codigo (codigo_numero,
+		codigo_generado := generar_aleatorios(111111,999999)::character varying;
+	
+		INSERT INTO codigo (codigo_numero,
 						codigo_celular,
 						codigo_intentos,
 						codigo_fecha_hora_registro,
@@ -31,6 +39,10 @@ BEGIN
 						cant_intentos,
 						NOW(),
 						1);
+	ELSE
+		codigo_generado := codigo_anterior;
+	END IF;	
+	
 	RETURN '0,' || codigo_generado ||','||p_celular;
 	
 EXCEPTION WHEN OTHERS THEN
