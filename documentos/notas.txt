@@ -37,6 +37,8 @@ sudo dnf install java-1.8.0-openjdk ==> install java 1.8
 sudo systemctl start postgresql ==> inicia el servicio
 sudo systemctl stop postgresql ==> detiene el servicio
 
+ionic cordova run android ==> correr apk ionic
+
 /************************************************************************
 		Peticiones OneSignal
 {app_id=0942319e-1677-4480-8992-a96e3882f7c7, contents={es=Este es el mensaje en español, en=message english}, headings={es=Este es el mensaje en español, en=message english}, include_player_ids=[8c09da82-a90e-4c1b-8bb5-34b34e839efc]} ==> funciona

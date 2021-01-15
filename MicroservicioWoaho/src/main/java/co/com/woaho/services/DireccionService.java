@@ -16,7 +16,6 @@ import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IUsuarioDao;
 import co.com.woaho.modelo.Direccion;
 import co.com.woaho.modelo.Estado;
-import co.com.woaho.modelo.Territorio;
 import co.com.woaho.modelo.Usuario;
 import co.com.woaho.request.ActualizarCrearDireccionRequest;
 import co.com.woaho.request.ConsultarDireccionRequest;
@@ -103,11 +102,8 @@ public class DireccionService implements IDireccionService {
 				direccionModelo.setStrLugarId(request.getDireccionDto().getPlaceId());
 				direccionModelo.setStrEdificacion(request.getDireccionDto().getSecondaryAddress());
 				
-				direccionModelo.setTerritorioDireccion(new Territorio());
-				direccionModelo.getTerritorioDireccion().setIdTerritorio(Long.parseLong(request.getDireccionDto().getIdTerritorio()));
-				
 				direccionModelo.setEstadoDireccion(new Estado());
-				direccionModelo.getEstadoDireccion().setEstadoId(Long.parseLong(request.getDireccionDto().getIdEstado()));
+				direccionModelo.getEstadoDireccion().setEstadoId(EnumGeneral.ESTADO_ACTIVO.getValorLong());
 				
 				direccionDao.crearActualizarDireccion(direccionModelo);
 				
