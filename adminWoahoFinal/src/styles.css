@@ -15,11 +15,11 @@ a {
     box-sizing: content-box;
 }
 
-.card {
-    margin: 0 auto;
-    /* Added */
-    float: none;
-    /* Added */
-    margin-bottom: 10px;
-    /* Added */
+.degradado {
+    background-color: linear-gradient(to top, rgba(250, 103, 103, 1) 0%, rgba(249, 25, 84, 1) 65%, rgba(249, 25, 84, 1) 100%);
+}
+
+.btn-primary {
+    background-color: rgba(249, 25, 84, 1);
+    border-color: rgba(249, 25, 84, 1);
 }
