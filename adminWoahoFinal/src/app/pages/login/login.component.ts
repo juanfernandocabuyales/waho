@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  blnEscribio = false;
 
 
   constructor( private formBuilder: FormBuilder) { }
@@ -24,9 +25,13 @@ export class LoginComponent implements OnInit {
   }
 
   validarLogin(){
-    console.log('valor',this.f.username);
+    console.log('valor', this.f.username);
   }
 
   get f() { return this.loginForm.controls; }
+
+  cambioTexto(): void {
+    this.blnEscribio = !this.blnEscribio;
+  }
 
 }

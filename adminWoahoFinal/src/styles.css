@@ -23,3 +23,5 @@ a {
     background-color: rgba(249, 25, 84, 1);
     border-color: rgba(249, 25, 84, 1);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
