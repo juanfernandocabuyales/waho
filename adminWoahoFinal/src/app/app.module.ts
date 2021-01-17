@@ -9,17 +9,27 @@ import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogComponent } from './pages/dialog/dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DialogComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
-  ],exports:[
+    AppRoutingModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule
+  ],
+  exports: [
     MatIconModule
   ],
   providers: [],
