@@ -1,1 +1,12 @@
-<p>home works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <h1>Woaho</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <button mat-button [routerLink]="'/accounts'"> Profesionales </button>
+            <button mat-button [routerLink]="'/create-account'"> Categorias </button>
+            <button mat-button [routerLink]="'/contacts'"> Servicios </button>
+            <button mat-button [routerLink]="'/create-contact'"> Monedas </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
