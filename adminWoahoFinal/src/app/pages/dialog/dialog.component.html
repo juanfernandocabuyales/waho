@@ -2,7 +2,6 @@
 <div mat-dialog-content>
     <p>{{data.strInformacion}}</p>
 </div>
-<div mat-dialog-actions>
-    <button mat-button *ngIf="data.blnBotonCancelar">Cancelar</button>
-    <button mat-button [mat-dialog-close]="data.blnBotonCancelar" cdkFocusInitial>Ok</button>
+<div mat-dialog-actions align="center">
+    <button mat-button [mat-dialog-close]="data.blnBotonCancelar">Ok</button>
 </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 import { DataDialog } from '../../interface/interfaces';
+import { UtilidadesService } from '../../services/utilidades.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,7 @@ export class LoginComponent implements OnInit {
   blnEscribio = false;
 
 
-  constructor( private formBuilder: FormBuilder, private dialog: MatDialog) { }
+  constructor( private formBuilder: FormBuilder, private utilidades: UtilidadesService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
   });
   }
 
-  validarLogin(){
+  validarLogin(): void{
     console.log('valor', this.f.username.value);
     this.abrirDialogo();
   }
@@ -38,20 +37,7 @@ export class LoginComponent implements OnInit {
     this.blnEscribio = !this.blnEscribio;
   }
 
-  abrirDialogo(){
-    const dataDialog: DataDialog = {
-      blnBotonCancelar : true,
-      strInformacion: 'Este mensaje es de prueba',
-      strTitulo: 'Informacion'
-    };
-    console.log('alerta', dataDialog);
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data: dataDialog
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  abrirDialogo(): void{
+    this.utilidades.abrirDialogo('Este mensaje llega desde el login component', false, 'Titulo');
   }
 }
