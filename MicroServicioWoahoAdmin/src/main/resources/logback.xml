@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+		
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">		      
+			<pattern> 
+				%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %c{1}:%L - %msg%n
+			</pattern>
+		</encoder>
+	 </appender>		
+  	
+	<appender name="SAVE-TO-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>logs/log_%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+	        <totalSizeCap>100MB</totalSizeCap>
+	    </rollingPolicy>
+	    
+	    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	        <Pattern>
+	        	%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %c{1}:%L - %msg%n
+	        </Pattern>
+	    </encoder>
+	</appender>
+
+	<root level="info">
+	   <appender-ref ref="STDOUT"/>				    
+	   <appender-ref ref="SAVE-TO-FILE"/>		 
+	</root>		
+	
+	<logger name="org.springframework.web" level="INFO" additivity="false">
+	          <appender-ref ref="STDOUT" /> 
+	          <appender-ref ref="SAVE-TO-FILE" /> 
+	</logger>
+	
+	<logger name="com.woaho" level="DEBUG" additivity="false">
+	          <appender-ref ref="STDOUT" /> 
+	          <appender-ref ref="SAVE-TO-FILE" /> 
+	</logger>
+	
+	<logger name="com.woaho" level="INFO" additivity="false">      
+	          <appender-ref ref="STDOUT" /> 
+	          <appender-ref ref="SAVE-TO-FILE" /> 
+	</logger>
+	
+	<logger name="org.hibernate" level="ERROR" />
+
+</configuration>
