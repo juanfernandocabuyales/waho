@@ -17,6 +17,11 @@ import { DialogComponent } from './pages/dialog/dialog.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+//Translation
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+        },
+        deps: [ HttpClient ]
+      }
+    })
   ],
   exports: [
     MatIconModule

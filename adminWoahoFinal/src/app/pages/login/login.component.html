@@ -6,14 +6,14 @@
                 <div class="card-body center-block">
                     <form [formGroup]="loginForm" (ngSubmit)="validarLogin()">
                         <div class="form-group">
-                            <label for="username">Login</label>
+                            <label for="username">{{'loginPage.usuario' | translate}}</label>
                             <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                <div *ngIf="f.username.errors.required">Username is required</div>
+                                <div *ngIf="f.username.errors.required">{{'loginPage.usuario_requerido' | translate}}</div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password">Clave</label>
+                            <label for="password">{{'loginPage.clave' | translate}}</label>
                             <div class="input-group">
                                 <input [type]="blnEscribio ? 'text' : 'password'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                                 <div class="input-group-append">
@@ -23,13 +23,13 @@
                                 </div>
                             </div>
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.required">{{'loginPage.clave_requerida' | translate}}</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <button [disabled]="loading" class="btn btn-primary">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                Ingresar
+                                {{'loginPage.ingresar' | translate}}
                             </button>
                         </div>
                     </form>

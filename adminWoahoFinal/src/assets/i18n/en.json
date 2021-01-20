@@ -1,0 +1,15 @@
+{
+    "title": "Woaho",
+    "general": {
+        "error": {
+            "sinConexion": "There is no connection with the server"
+        }
+    },
+    "loginPage": {
+        "usuario": "Login",
+        "clave": "Password",
+        "usuario_requerido": "Username is required",
+        "clave_requerida": "Password is required",
+        "ingresar": "Login"
+    }
+}

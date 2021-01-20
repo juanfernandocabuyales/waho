@@ -1,0 +1,15 @@
+{
+    "title": "Woaho",
+    "general": {
+        "error": {
+            "sinConexion": "No hay conexion con el servidor"
+        }
+    },
+    "loginPage": {
+        "usuario": "Usuario",
+        "clave": "Clave",
+        "usuario_requerido": "Debe ingresar un usuario",
+        "clave_requerida": "Debe ingrsar la clave del usuario",
+        "ingresar": "Ingresar"
+    }
+}
