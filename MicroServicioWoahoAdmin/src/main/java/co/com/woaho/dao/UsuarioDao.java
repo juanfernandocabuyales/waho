@@ -158,4 +158,20 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 		}
 	}
 
+	@Override
+	@Transactional
+	public Usuario obtenerUsuarioAdmin(String pCorreo, Long pTipo) throws Exception {
+		Usuario usuario = null;
+		try {
+			Query query = getEntityManager().createNamedQuery("Usuario.buscarAdmin");
+			query.setParameter("pCorreo", pCorreo);
+			query.setParameter("pTipo", pTipo);
+			usuario = (Usuario) query.getSingleResult();
+			return usuario;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerUsuarioAdmin", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
+
 }

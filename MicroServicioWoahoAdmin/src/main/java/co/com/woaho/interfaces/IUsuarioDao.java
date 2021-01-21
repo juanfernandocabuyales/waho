@@ -17,4 +17,6 @@ public interface IUsuarioDao {
 	String validarCodigoRegistro(String pStrCelular,String pStrCodigo,String pIdioma) throws Exception;
 	
 	Usuario obtenerUsuarioId(Long pIdUsuario) throws Exception;
+	
+	Usuario obtenerUsuarioAdmin(String pCorreo,Long pTipo) throws Exception;
 }

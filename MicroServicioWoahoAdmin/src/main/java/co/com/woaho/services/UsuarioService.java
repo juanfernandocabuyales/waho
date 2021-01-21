@@ -11,17 +11,20 @@ import org.springframework.stereotype.Service;
 import co.com.woaho.alertas.EnviarNotificacion;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
+import co.com.woaho.enumeraciones.EnumUsuarios;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IUsuarioDao;
 import co.com.woaho.interfaces.IUsuarioService;
 import co.com.woaho.modelo.Usuario;
 import co.com.woaho.request.ConsultarUsuarioRequest;
 import co.com.woaho.request.GenerarCodigoRequest;
+import co.com.woaho.request.LoginAdminRequest;
 import co.com.woaho.request.LoginRequest;
 import co.com.woaho.request.RegistrarUsuarioRequest;
 import co.com.woaho.request.ValidarCodigoRequest;
 import co.com.woaho.response.ConsultarUsuarioResponse;
 import co.com.woaho.response.GenerarCodigoResponse;
+import co.com.woaho.response.LoginAdminResponse;
 import co.com.woaho.response.LoginResponse;
 import co.com.woaho.response.RegistrarUsuarioResponse;
 import co.com.woaho.response.ValidarCodigoResponse;
@@ -296,5 +299,34 @@ public class UsuarioService implements IUsuarioService{
 			logs.registrarLogError("generarCodigoIngreso", "No se ha podido procesar la peticion", e);
 			throw e;
 		}
+	}
+
+	@Override
+	public LoginAdminResponse validarLoginAdmin(LoginAdminRequest request) {
+		LoginAdminResponse loginAdminResponse = new LoginAdminResponse();
+		try {
+			Usuario usuarioAdmin = usuarioDao.obtenerUsuarioAdmin(request.getUsuario(), EnumUsuarios.USUARIO_ADMIN.getValor());			
+			if( null == usuarioAdmin) {
+				loginAdminResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+				loginAdminResponse.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "email",request.getUsuario()));
+			}else {
+				String cifrado = Utilidades.getInstance().encriptarTexto(request.getLlave());				
+				if(cifrado.equals(usuarioAdmin.getStrClave())) {
+					loginAdminResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+					loginAdminResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+					loginAdminResponse.setIdUsuario(usuarioAdmin.getUsuarioId() + "");
+				}else {
+					loginAdminResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+					loginAdminResponse.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "email",request.getUsuario()));
+				}
+			}
+		}catch(Exception e) {
+			logs.registrarLogError("validarLoginAdmin", "No se ha podido procesar la peticion", e);
+			loginAdminResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			loginAdminResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return loginAdminResponse;
 	}
 }

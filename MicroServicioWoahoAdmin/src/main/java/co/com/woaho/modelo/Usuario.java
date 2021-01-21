@@ -21,7 +21,8 @@ import javax.persistence.TemporalType;
 @NamedQueries({ @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u"),
 	@NamedQuery(name="Usuario.findId", query="SELECT u FROM Usuario u WHERE u.usuarioId = :pId"),
 	@NamedQuery(name="Usuario.buscarCelular", query="SELECT u FROM Usuario u WHERE u.strCelular = :pCelular"),
-	@NamedQuery(name="Usuario.buscarEmail", query="SELECT u FROM Usuario u WHERE u.strCorreo = :pCorreo")})
+	@NamedQuery(name="Usuario.buscarEmail", query="SELECT u FROM Usuario u WHERE u.strCorreo = :pCorreo"),
+	@NamedQuery(name="Usuario.buscarAdmin", query="SELECT u FROM Usuario u WHERE u.strCorreo = :pCorreo AND u.tipoUsuario = :pTipo")})
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -59,6 +60,9 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "usuario_referralCode")
 	private String referralCode;
+	
+	@Column(name = "usuario_tipo")
+	private Long tipoUsuario;
 	
 
 	public Long getUsuarioId() {
@@ -143,5 +147,13 @@ public class Usuario implements Serializable {
 
 	public void setReferralCode(String referralCode) {
 		this.referralCode = referralCode;
+	}
+
+	public Long getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(Long tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 }
