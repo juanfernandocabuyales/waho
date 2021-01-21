@@ -288,6 +288,7 @@ CREATE TABLE woaho.usuario
     usuario_clave character varying(4000),
     usuario_id_suscriptor character varying(4000),
     usuario_referralCode character varying(4000),
+    usuario_tipo integer NOT NULL DEFAULT 2,
     CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
     CONSTRAINT celular_key UNIQUE (usuario_celular)
 );
