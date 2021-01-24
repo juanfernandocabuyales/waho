@@ -15,7 +15,7 @@ export class AppComponent {
   }
 
   inicializarIdioma(): void {
-    this.traslation.setDefaultLang('es');
     this.traslation.use(this.traslation.getBrowserLang());
+    console.log('Lenguaje', this.traslation.getLangs());
   }
 }

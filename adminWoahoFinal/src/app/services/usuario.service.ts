@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { PeticionRequest, PeticionResponse } from '../interface/interfaces';
+import { PeticionRequest } from '../interface/request';
 import { Observable } from 'rxjs';
+import { PeticionResponse } from '../interface/response';
 
 @Injectable({
   providedIn: 'root'

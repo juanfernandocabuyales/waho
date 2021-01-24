@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataDialog } from '../../interface/interfaces';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UtilidadesService } from '../../services/utilidades.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { PeticionRequest, LoginAdminRequest } from '../../interface/request';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   blnEscribio = false;
 
 
-  constructor( private formBuilder: FormBuilder, private utilidades: UtilidadesService) { }
+  constructor( private formBuilder: FormBuilder, private utilidades: UtilidadesService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -27,17 +28,44 @@ export class LoginComponent implements OnInit {
   }
 
   validarLogin(): void{
-    console.log('valor', this.f.username.value);
-    this.abrirDialogo();
+    this.submitted = true;
+
+    if (this.loginForm.invalid){
+      this.abrirDialogo('Por favor revisar los datos ingresados', 'Informacion');
+    }else{
+      this.loading = true;
+
+      const request: LoginAdminRequest = {
+        usuario : this.f.username.value,
+        llave: this.f.password.value,
+        idioma: this.utilidades.obtenerIdioma()
+      };
+
+      console.log('LoginAdminRequest', request);
+
+      this.usuarioService.validarLoginAdmin(this.utilidades.construirPeticion(request))
+      .subscribe(
+        data => {
+          this.loading = false;
+          console.log('data', data);
+        },
+        error => {
+          this.loading = false;
+          console.log('error', error);
+        }
+      );
+    }
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+     return this.loginForm.controls;
+  }
 
   cambioTexto(): void {
     this.blnEscribio = !this.blnEscribio;
   }
 
-  abrirDialogo(): void{
-    this.utilidades.abrirDialogo('Este mensaje llega desde el login component', false, 'Titulo');
+  abrirDialogo(pMensaje: string, pTitulo: string): void{
+    this.utilidades.abrirDialogo(pMensaje, false, pTitulo);
   }
 }
