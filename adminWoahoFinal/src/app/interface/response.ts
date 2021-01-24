@@ -2,12 +2,8 @@ export interface PeticionResponse{
     mensaje: string;
 }
 
-export interface ResponseGeneral{
+export interface LoginAdminResponse{
+    idUsuario: string;
     codigoRespuesta: string;
     mensajeRespuesta: string;
-}
-
-export interface LoginAdminResponse{
-    response: ResponseGeneral;
-    idUsuario: string;
 }

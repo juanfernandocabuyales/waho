@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { UtilidadesService } from '../../services/utilidades.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { PeticionRequest, LoginAdminRequest } from '../../interface/request';
+import { LoginAdminResponse } from '../../interface/response';
+import { IfStmt } from '@angular/compiler';
+import { Constantes } from '../../constants/constantes';
 
 @Component({
   selector: 'app-login',
@@ -48,6 +51,12 @@ export class LoginComponent implements OnInit {
         data => {
           this.loading = false;
           console.log('data', data);
+          const loginAdminResponse: LoginAdminResponse = JSON.parse(data.mensaje);
+          if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+            console.log('Podemos hacer el login');
+          }else{
+            this.abrirDialogo(loginAdminResponse.mensajeRespuesta, Constantes.INFORMACION);
+          }
         },
         error => {
           this.loading = false;
