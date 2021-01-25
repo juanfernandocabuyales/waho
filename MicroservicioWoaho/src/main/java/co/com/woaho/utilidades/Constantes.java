@@ -37,4 +37,21 @@ public class Constantes {
 	public static final String IDIOMA_ESPANOL = "es";
 	
 	public static final String IDIOMA_INGLES = "en";
+	
+	/** Constantes para envio de correo**/
+	public static final String HOSTSMTP = "HOSTSMTP";
+
+	public static final String SOCKETPORT = "SOCKETPORT";
+
+	public static final String PORT = "PORT";
+
+	public static final String SMTPATHENTICATION = "SMTPATHENTICATION";
+
+	public static final String CORREOENVIO = "CORREOENVIO";
+
+	public static final String USUARIOCUENTA = "USUARIOCUENTA";
+
+	public static final String CLAVECUENTA = "CLAVECUENTA";
+
+	public static final String TIPOCONEXION = "TIPOCONEXION";
 }

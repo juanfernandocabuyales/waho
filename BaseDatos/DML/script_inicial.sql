@@ -35,6 +35,15 @@ INSERT INTO woaho.estado (estado_codigo) VALUES ('CANCELADO');
 
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CANT_INT_COD_REGISTRO','3','Cantidad de intentos permitidos al ingresar el codigo de registro');
 INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIEMPO_COD_REGISTRO','2','Define el tiempo de valides de un codigo, se debe dar en Minutos');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('HOSTSMTP', 'smtp.gmail.com', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('SOCKETPORT', '465', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('PORT', '465', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('SMTPATHENTICATION', 'true', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CORREOENVIO', 'woahoapplication@gmail.com', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('USUARIOCUENTA', 'woahoapplication@gmail.com', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('CLAVECUENTA', 'wO4h0appl1c4ti0n;', 'Datos conexion servidor correo');
+INSERT INTO woaho.parametro (parametro_nombre,parametro_valor,parametro_descripcion) VALUES ('TIPOCONEXION', 'SSL', 'Datos conexion servidor correo');
+
 
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (1,'Todos');
 INSERT INTO woaho.categoria (categoria_imagen,categoria_descripcion) VALUES (2,'Manicure');
@@ -179,6 +188,8 @@ INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantall
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,4);
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,8);
 INSERT INTO woaho.mensaje_pantalla (mensaje_pantalla_pantalla_id,mensaje_pantalla_mensaje_id) VALUES (4,12);
+
+INSERT INTO woaho.mensaje_correo (mensaje_correo_codigo,mensaje_correo_mensaje) VALUES (1,'<p>Estimado(a) : {0}</p></br> <p>Bienvenido al portal de servicios Woaho.  </p></br> <p>A continuacion, encontrará el codigo de acceso para poder ingresar al aplicativo. </p></br> <p>Codigo:   <strong>  {1} </strong> </p></br>  </br>  <hr> <b><i> Este mensaje se dirige exclusivamente a su destinatario. Contiene información CONFIDENCIAL sometida a secreto profesional o cuya divulgación está prohibida por la ley. Si ha recibido este mensaje por error, debe saber que su lectura, copia y uso están prohibidos. Le rogamos que nos lo comunique inmediatamente por esta misma vía o por teléfono y proceda a su destrucción. </i></b>');
 
 INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide uno',14,1);
 INSERT INTO woaho.pantalla (pantalla_nombre,pantalla_imagen,pantalla_tipo_pantalla) VALUES ('Slide dos',15,1);

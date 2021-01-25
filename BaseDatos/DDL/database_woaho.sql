@@ -96,6 +96,9 @@ ALTER SEQUENCE woaho.sec_servicio_favorito OWNER TO postgres;
 
 CREATE SEQUENCE woaho.sec_medio_pago_usuario CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
 ALTER SEQUENCE woaho.sec_medio_pago_usuario OWNER TO postgres;
+
+CREATE SEQUENCE woaho.sec_mensaje_correo CYCLE INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1;
+ALTER SEQUENCE woaho.sec_mensaje_correo OWNER TO postgres;
 /***************************************************************************************************
 	  Zona de tablas
 ***************************************************************************************************/
@@ -109,6 +112,18 @@ ALTER TABLE woaho.tipo
     OWNER to postgres;
 COMMENT ON TABLE woaho.tipo
     IS 'Tabla que contiene la informaci�n de los tipos de pantalla';
+    
+CREATE TABLE woaho.mensaje_correo
+(
+    mensaje_correo_id integer NOT NULL DEFAULT nextval('woaho.sec_mensaje_correo'::regclass),
+    mensaje_correo_codigo integer,
+    mensaje_correo_mensaje character varying(4000),
+    CONSTRAINT mensaje_correo_pkey PRIMARY KEY (mensaje_correo_id)
+);
+ALTER TABLE woaho.mensaje_correo
+    OWNER to postgres;
+COMMENT ON TABLE woaho.mensaje_correo
+    IS 'Tabla que contiene los mensajes que se envian por correo electronico';
 
 CREATE TABLE woaho.idioma
 (
