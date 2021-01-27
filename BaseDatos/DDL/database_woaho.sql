@@ -118,6 +118,7 @@ CREATE TABLE woaho.mensaje_correo
     mensaje_correo_id integer NOT NULL DEFAULT nextval('woaho.sec_mensaje_correo'::regclass),
     mensaje_correo_codigo integer,
     mensaje_correo_mensaje character varying(4000),
+    mensaje_correo_idioma character varying(4000),
     CONSTRAINT mensaje_correo_pkey PRIMARY KEY (mensaje_correo_id)
 );
 ALTER TABLE woaho.mensaje_correo

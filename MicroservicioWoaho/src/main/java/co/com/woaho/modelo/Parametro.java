@@ -14,23 +14,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "parametro")
-@NamedQueries({ @NamedQuery(name="Parametro.findAll", query="SELECT pa FROM Parametro pa")})
+@NamedQueries({ @NamedQuery(name="Parametro.findAll", query="SELECT pa FROM Parametro pa"),
+	@NamedQuery(name = "Parametro.findCorreo", query = "SELECT pa FROM Parametro pa WHERE pa.parametroNombre IN ( :pList )")})
 public class Parametro implements Serializable {
 
-private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@SequenceGenerator(name = "PARAMETROID_GENERATOR", sequenceName = "SEC_PARAMETRO", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PARAMETROID_GENERATOR")
 	@Column(name = "parametro_id", unique = true, nullable = false, precision = 12)
 	private Long parametroId;
-	
+
 	@Column(name ="parametro_nombre",length = 4000)
 	private String parametroNombre;
-	
+
 	@Column(name ="parametro_valor",length = 4000)
 	private String parametroValor;
-	
+
 	@Column(name ="parametro_descripcion",length = 4000)
 	private String parametroDescripcion;
 

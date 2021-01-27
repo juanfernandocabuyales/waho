@@ -25,7 +25,7 @@ public class ParametroDao extends Persistencia implements IParametroDao {
 	public Map<String, String> obtenerParametrosCorreo(List<String> pList) {
 		Map<String, String> map = new HashMap<>();
 		try {
-			Query query = this.getEntityManager().createNamedQuery("ParametroSistema.findCorreo");
+			Query query = this.getEntityManager().createNamedQuery("Parametro.findCorreo");
 			query.setParameter("pList", pList);
 			List<Parametro> listParametros = query.getResultList();
 			map =  listParametros.stream().collect(
