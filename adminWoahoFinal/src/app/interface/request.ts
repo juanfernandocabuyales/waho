@@ -1,9 +1,12 @@
-export interface PeticionRequest{
+export class PeticionRequest{
     strMensaje: string;
 }
 
-export interface LoginAdminRequest{
+export class GeneralRequest{
+    idioma: string;
+}
+
+export class LoginAdminRequest extends GeneralRequest{
     usuario: string;
     llave: string;
-    idioma: string;
 }

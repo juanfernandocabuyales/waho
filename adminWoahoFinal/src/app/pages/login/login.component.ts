@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilidadesService } from '../../services/utilidades.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { PeticionRequest, LoginAdminRequest } from '../../interface/request';
+import { LoginAdminRequest } from '../../interface/request';
 import { LoginAdminResponse } from '../../interface/response';
-import { IfStmt } from '@angular/compiler';
 import { Constantes } from '../../constants/constantes';
 
 @Component({
