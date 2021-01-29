@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.loginForm.invalid){
-      this.abrirDialogo('Por favor revisar los datos ingresados', 'Informacion');
+      this.abrirDialogo('Por favor revisar los datos ingresados', true);
     }else{
       this.loading = true;
 
@@ -52,15 +52,16 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           console.log('data', data);
           const loginAdminResponse: LoginAdminResponse = JSON.parse(data.mensaje);
+          console.log('imprime objeto total', loginAdminResponse);
           if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
             console.log('Podemos hacer el login');
           }else{
-            this.abrirDialogo(loginAdminResponse.mensajeRespuesta, Constantes.INFORMACION);
+            this.abrirDialogo(loginAdminResponse.mensajeRespuesta, true);
           }
         },
         error => {
           this.loading = false;
-          console.log('error', error);
+          this.abrirDialogo('Se ha presentado un error', false);
         }
       );
     }
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
     this.blnEscribio = !this.blnEscribio;
   }
 
-  abrirDialogo(pMensaje: string, pTitulo: string): void{
-    this.utilidades.abrirDialogo(pMensaje, false, pTitulo);
+  abrirDialogo(pMensaje: string, pBandera: boolean): void{
+    this.utilidades.abrirDialogo(pMensaje, false, pBandera);
   }
 }

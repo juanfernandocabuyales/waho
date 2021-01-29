@@ -3,7 +3,9 @@
     "general": {
         "error": {
             "sinConexion": "There is no connection with the server"
-        }
+        },
+        "advertencia": "Warning",
+        "informacion": "Information"
     },
     "loginPage": {
         "usuario": "Login",

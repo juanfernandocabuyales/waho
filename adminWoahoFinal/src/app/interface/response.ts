@@ -2,8 +2,11 @@ export interface PeticionResponse{
     mensaje: string;
 }
 
-export interface LoginAdminResponse{
-    idUsuario: string;
+export class BaseResponse {
     codigoRespuesta: string;
     mensajeRespuesta: string;
+}
+
+export class LoginAdminResponse extends BaseResponse{
+    idUsuario: string;
 }

@@ -13,13 +13,12 @@ export class UtilidadesService {
 
   constructor(private dialog: MatDialog, private traslation: TranslateService) { }
 
-  abrirDialogo( pMensaje: string, pBotonCancelar: boolean, pTitulo: string): void{
+  abrirDialogo( pMensaje: string, pBotonCancelar: boolean, pBandera: boolean): void{
     const dataDialog: DataDialog = {
       blnBotonCancelar : pBotonCancelar,
       strInformacion: pMensaje,
-      strTitulo: pTitulo
+      strTitulo: pBandera ? this.traducirTexto('general.informacion') : this.traducirTexto('general.advertencia')
     };
-    console.log('alerta', dataDialog);
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: dataDialog,
@@ -41,5 +40,9 @@ export class UtilidadesService {
 
   obtenerIdioma(): string{
     return this.traslation.getLangs()[0];
+  }
+
+  traducirTexto(pTexto: string): string{
+    return this.traslation.instant(pTexto);
   }
 }
