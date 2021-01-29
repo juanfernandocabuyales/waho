@@ -13,5 +13,13 @@
         "usuario_requerido": "Username is required",
         "clave_requerida": "Password is required",
         "ingresar": "Login"
+    },
+    "homePage": {
+        "toolbar": {
+            "profesionales": "Professionals",
+            "categorias": "Categories",
+            "servicios": "Services",
+            "Monedas": "Coins"
+        }
     }
 }

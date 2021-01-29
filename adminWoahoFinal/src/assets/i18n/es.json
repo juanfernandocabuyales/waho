@@ -13,5 +13,13 @@
         "usuario_requerido": "Debe ingresar un usuario",
         "clave_requerida": "Debe ingrsar la clave del usuario",
         "ingresar": "Ingresar"
+    },
+    "homePage": {
+        "toolbar": {
+            "profesionales": "Profesionales",
+            "categorias": "Categorias",
+            "servicios": "Servicios",
+            "Monedas": "Monedas"
+        }
     }
 }
