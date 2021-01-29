@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DataDialog } from '../interface/interfaces';
-import { DialogComponent } from '../pages/dialog/dialog.component';
 import { PeticionRequest } from '../interface/request';
 
 import { TranslateService } from '@ngx-translate/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +13,12 @@ export class UtilidadesService {
   constructor(private dialog: MatDialog, private traslation: TranslateService) { }
 
   abrirDialogo( pMensaje: string, pBotonCancelar: boolean, pBandera: boolean): void{
-    const dataDialog: DataDialog = {
-      blnBotonCancelar : pBotonCancelar,
-      strInformacion: pMensaje,
-      strTitulo: pBandera ? this.traducirTexto('general.informacion') : this.traducirTexto('general.advertencia')
-    };
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data: dataDialog,
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    Swal.fire({
+      icon: pBandera ? 'info' : 'warning',
+      title: pBandera ? this.traducirTexto('general.informacion') : this.traducirTexto('general.advertencia'),
+      text: pMensaje,
+      allowOutsideClick: false,
+      width: '350px',
     });
   }
 
