@@ -1,20 +1,31 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <h1>Woaho</h1>
-        <span class="menu-spacer"></span>
-        <div>
-            <button mat-button [routerLink]="'/accounts'"> {{'homePage.toolbar.profesionales' | translate}} </button>
-            <button mat-button [routerLink]="'/create-account'"> {{'homePage.toolbar.categorias' | translate}} </button>
-            <button mat-button [routerLink]="'/contacts'"> {{'homePage.toolbar.servicios' | translate}} </button>
-            <button mat-button [routerLink]="'/create-contact'"> {{'homePage.toolbar.Monedas' | translate}} </button>
-            <button mat-button [routerLink]="'/accounts'"> {{'homePage.toolbar.profesionales' | translate}} </button>
-            <button mat-button [routerLink]="'/create-account'"> {{'homePage.toolbar.categorias' | translate}} </button>
-            <button mat-button [routerLink]="'/contacts'"> {{'homePage.toolbar.servicios' | translate}} </button>
-            <button mat-button [routerLink]="'/create-contact'"> {{'homePage.toolbar.Monedas' | translate}} </button>
-        </div>
+<nav class="navbar navbar-expand-md navbar-dark navbar-light bg-faded">
+
+
+    <a class="navbar-brand">
+        <img src="../../../favicon.ico" width="30" height="30" alt="">
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- active -->
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['home']">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['heroes']">Heroes</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['about']">About</a>
+            </li>
+        </ul>
+
         <span class="fill-space"></span>
-        <div>
-            <button mat-button [routerLink]="'/accounts'"> Salir </button>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item form-inline my-2 my-lg-0" routerLinkActive="active">
+                <a class="nav-link my-2 my-sm-0" [routerLink]="['about']">Salir</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
