@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { PeticionRequest } from '../interface/request';
+import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilidadesService {
 
-  constructor(private dialog: MatDialog, private traslation: TranslateService) { }
+  objetoAlmacenar: any;
 
-  abrirDialogo( pMensaje: string, pBotonCancelar: boolean, pBandera: boolean): void{
+  constructor(private traslation: TranslateService,
+              private router: Router) {
+
+  }
+
+  abrirDialogo( pMensaje: string, pBandera: boolean): void{
     Swal.fire({
       icon: pBandera ? 'info' : 'warning',
       title: pBandera ? this.traducirTexto('general.informacion') : this.traducirTexto('general.advertencia'),
@@ -36,5 +42,14 @@ export class UtilidadesService {
 
   traducirTexto(pTexto: string): string{
     return this.traslation.instant(pTexto);
+  }
+
+  navegarPagina(pPagina: string, pObjeto: any): void{
+    this.objetoAlmacenar = pObjeto;
+    this.router.navigate([pPagina]);
+  }
+
+  obtenerObjetoAlmacenado(): any{
+    return this.objetoAlmacenar;
   }
 }

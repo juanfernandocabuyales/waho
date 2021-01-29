@@ -18,7 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-//Translation
+// Translation
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 

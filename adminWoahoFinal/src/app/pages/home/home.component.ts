@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilidadesService } from '../../services/utilidades.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private utilidades: UtilidadesService) {
+
+  }
 
   ngOnInit(): void {
+    console.log('home objetoAlmacenado', this.utilidades.obtenerObjetoAlmacenado());
   }
 
 }

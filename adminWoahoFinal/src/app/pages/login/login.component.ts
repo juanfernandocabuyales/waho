@@ -66,14 +66,14 @@ export class LoginComponent implements OnInit {
   }
 
   abrirDialogo(pMensaje: string, pBandera: boolean): void{
-    this.utilidades.abrirDialogo(pMensaje, false, pBandera);
+    this.utilidades.abrirDialogo(pMensaje, pBandera);
   }
 
   validarRespuesta(pRespuesta: PeticionResponse): void{
     this.loading = false;
     const loginAdminResponse: LoginAdminResponse = JSON.parse(pRespuesta.mensaje);
     if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
-      console.log('Podemos hacer el login');
+      this.utilidades.navegarPagina('/home', loginAdminResponse);
     }else{
       this.abrirDialogo(loginAdminResponse.mensajeRespuesta, true);
     }
