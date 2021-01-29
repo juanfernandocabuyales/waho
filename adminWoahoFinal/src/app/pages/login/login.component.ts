@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UtilidadesService } from '../../services/utilidades.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { LoginAdminRequest } from '../../interface/request';
-import { LoginAdminResponse } from '../../interface/response';
+import { LoginAdminResponse, PeticionResponse } from '../../interface/response';
 import { Constantes } from '../../constants/constantes';
 
 @Component({
@@ -43,22 +43,13 @@ export class LoginComponent implements OnInit {
         idioma: this.utilidades.obtenerIdioma()
       };
 
-      console.log('LoginAdminRequest', request);
-
       this.usuarioService.validarLoginAdmin(this.utilidades.construirPeticion(request))
       .subscribe(
         data => {
-          this.loading = false;
-          console.log('data', data);
-          const loginAdminResponse: LoginAdminResponse = JSON.parse(data.mensaje);
-          console.log('imprime objeto total', loginAdminResponse);
-          if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
-            console.log('Podemos hacer el login');
-          }else{
-            this.abrirDialogo(loginAdminResponse.mensajeRespuesta, true);
-          }
+          this.validarRespuesta(data);
         },
         error => {
+          console.log('error', error);
           this.loading = false;
           this.abrirDialogo('Se ha presentado un error', false);
         }
@@ -76,5 +67,15 @@ export class LoginComponent implements OnInit {
 
   abrirDialogo(pMensaje: string, pBandera: boolean): void{
     this.utilidades.abrirDialogo(pMensaje, false, pBandera);
+  }
+
+  validarRespuesta(pRespuesta: PeticionResponse): void{
+    this.loading = false;
+    const loginAdminResponse: LoginAdminResponse = JSON.parse(pRespuesta.mensaje);
+    if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+      console.log('Podemos hacer el login');
+    }else{
+      this.abrirDialogo(loginAdminResponse.mensajeRespuesta, true);
+    }
   }
 }
