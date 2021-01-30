@@ -9,7 +9,7 @@
         <ul class="navbar-nav mr-auto">
             <!-- active -->
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['home']">Home</a>
+                <a class="nav-link" routerLink="servicios">{{ 'homePage.toolbar.servicios' | translate}}</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['heroes']">Heroes</a>
@@ -29,3 +29,5 @@
 
     </div>
 </nav>
+
+<router-outlet></router-outlet>

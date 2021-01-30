@@ -21,12 +21,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Translation
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ServiciosComponent
   ],
   imports: [
     ReactiveFormsModule,
