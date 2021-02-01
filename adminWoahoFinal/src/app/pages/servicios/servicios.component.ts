@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilidadesService } from '../../services/utilidades.service';
 
 @Component({
   selector: 'app-servicios',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosComponent implements OnInit {
 
-  constructor() { }
+  titulos: string[] = [
+    'idUsuario'
+  ];
+
+  data: any[] = [];
+
+  constructor(private utilidades: UtilidadesService) { }
 
   ngOnInit(): void {
+    this.data.push(this.utilidades.obtenerObjetoAlmacenado());
+    console.log('date seteada ', this.data);
   }
 
 }

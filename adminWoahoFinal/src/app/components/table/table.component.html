@@ -1,0 +1,14 @@
+<table id="table">
+    <tr>
+        <th *ngFor="let titulo of cabecera">
+            {{titulo}}
+        </th>
+    </tr>
+
+    <tr *ngFor="let item of data">
+        <td *ngFor="let titulo of cabecera">
+            {{ item[titulo] }}
+        </td>
+    </tr>
+
+</table>

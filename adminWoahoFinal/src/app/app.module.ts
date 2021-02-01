@@ -22,13 +22,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    TableComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -52,7 +54,8 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
     })
   ],
   exports: [
-    MatIconModule
+    MatIconModule,
+    TableComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
