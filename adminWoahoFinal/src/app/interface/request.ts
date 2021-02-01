@@ -10,3 +10,6 @@ export class LoginAdminRequest extends GeneralRequest{
     usuario: string;
     llave: string;
 }
+
+export class ConsultarServiciosRequest extends GeneralRequest{
+}

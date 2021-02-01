@@ -2,11 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Constantes } from 'src/app/constants/constantes';
+
 const url = 'http://198.54.123.142:8083/woahoAdmin/';
 
 export const environment = {
   production: false,
-  usuarioController : url + 'usuario'
+  usuarioController : url + Constantes.CONTROLLER_USUARIO,
+  servicioController : url + Constantes.CONTROLLER_SERVICIOS
 };
 
 /*

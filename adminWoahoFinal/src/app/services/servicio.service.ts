@@ -8,11 +8,11 @@ import { PeticionResponse } from '../interface/response';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class ServicioService {
 
   constructor(private httClient: HttpClient) { }
 
-  validarLoginAdmin(peticion: PeticionRequest): Observable<PeticionResponse>{
-    return this.httClient.post<PeticionResponse>(`${environment.usuarioController}validarLoginAdmin`, peticion);
+  consultarServicios(peticion: PeticionRequest): Observable<PeticionResponse>{
+    return this.httClient.post<PeticionResponse>(`${environment.servicioController}consultarServicios`, peticion);
   }
 }
