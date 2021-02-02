@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -37,6 +39,8 @@ import { TableComponent } from './components/table/table.component';
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,

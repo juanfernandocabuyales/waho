@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     const loginAdminResponse: LoginAdminResponse = JSON.parse(pRespuesta.mensaje);
     if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
-      this.utilidades.navegarPagina('/home', loginAdminResponse);
+      this.utilidades.navegarPagina('/home/servicios', loginAdminResponse);
     }else{
       this.abrirDialogo(loginAdminResponse.mensajeRespuesta, true);
     }

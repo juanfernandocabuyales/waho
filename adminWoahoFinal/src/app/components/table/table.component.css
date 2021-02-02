@@ -1,27 +1,21 @@
-#table {
-    margin-top: 12px;
-    border-collapse: collapse;
+.table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin-top: 20px;
+}
+
+.table-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+.mat-form-field {
+    font-size: 14px;
     width: 100%;
 }
 
-#table td,
-#table th {
-    border: 1px solid #ffffff;
-    padding: 8px;
-}
-
-#table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#table tr:hover {
-    background-color: #ffffff;
-}
-
-#table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgba(249, 25, 84, 1);
-    color: white;
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
 }
