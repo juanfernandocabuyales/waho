@@ -14,11 +14,8 @@ import { Constantes } from 'src/app/constants/constantes';
 export class ServiciosComponent implements OnInit {
 
   titulos: string[] = [
+    'codigo',
     'name',
-    'image',
-    'price',
-    'category',
-    'clicks',
     'description'
   ];
 

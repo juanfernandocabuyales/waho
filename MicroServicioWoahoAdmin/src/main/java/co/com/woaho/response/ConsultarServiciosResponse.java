@@ -36,7 +36,7 @@ public class ConsultarServiciosResponse {
 
 	public static class Servicio{
 	
-		private String id;
+		private String codigo;
 		
 		private String image;
 		
@@ -48,14 +48,14 @@ public class ConsultarServiciosResponse {
 		
 		private Long clicks;
 		
-		private String description;
+		private String description;		
 
-		public String getId() {
-			return id;
+		public String getCodigo() {
+			return codigo;
 		}
 
-		public void setId(String id) {
-			this.id = id;
+		public void setCodigo(String codigo) {
+			this.codigo = codigo;
 		}
 
 		public String getImage() {

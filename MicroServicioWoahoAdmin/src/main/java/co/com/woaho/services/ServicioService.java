@@ -51,7 +51,7 @@ public class ServicioService implements IServicioServices {
 				List<ConsultarServiciosResponse.Servicio> listServiciosDto = new ArrayList<>();
 				for(Servicio servicio : listServicios) {
 					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
-					servicioDto.setId(String.valueOf(servicio.getServicioId()));
+					servicioDto.setCodigo(String.valueOf(servicio.getServicioId()));
 					servicioDto.setImage(servicio.getImagen().getStrRuta());
 					servicioDto.setName(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrNombre(), request.getIdioma(), equivalenciaIdiomaDao));
 
@@ -93,7 +93,7 @@ public class ServicioService implements IServicioServices {
 				List<ConsultarServiciosResponse.Servicio> listServiciosDto = new ArrayList<>();
 				for(Servicio servicio : listServicios) {
 					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
-					servicioDto.setId(String.valueOf(servicio.getServicioId()));
+					servicioDto.setCodigo(String.valueOf(servicio.getServicioId()));
 					servicioDto.setImage(servicio.getImagen().getStrRuta());
 					servicioDto.setName(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrNombre(), request.getIdioma(), equivalenciaIdiomaDao));
 					

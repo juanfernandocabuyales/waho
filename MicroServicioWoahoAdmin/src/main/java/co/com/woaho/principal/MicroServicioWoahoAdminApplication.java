@@ -15,7 +15,7 @@ public class MicroServicioWoahoAdminApplication {
 	private static RegistrarLog logs = new RegistrarLog(MicroServicioWoahoAdminApplication.class);
 
 	public static void main(String[] args) {
-		logs.registrarInfo("INICIA SERVICIO ADMIN 01/02/2021 15:00 pm");
+		logs.registrarInfo("INICIA SERVICIO ADMIN 13/02/2021 17:00 pm");
 		SpringApplication.run(MicroServicioWoahoAdminApplication.class, args);
 	}
 
