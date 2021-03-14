@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UtilidadesService } from '../../services/utilidades.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { LoginAdminRequest } from '../../interface/request';
-import { LoginAdminResponse, PeticionResponse } from '../../interface/response';
+import { LoginAdminRequest } from '../../models/request/LoginAdminRequest';
+import { LoginAdminResponse } from '../../models/response/LoginAdminResponse';
+import { GeneralResponse } from '../../models/response/GeneralResponse';
 import { Constantes } from '../../constants/constantes';
 
 @Component({
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
     this.utilidades.abrirDialogo(pMensaje, pBandera);
   }
 
-  validarRespuesta(pRespuesta: PeticionResponse): void{
+  validarRespuesta(pRespuesta: GeneralResponse): void{
     this.loading = false;
     const loginAdminResponse: LoginAdminResponse = JSON.parse(pRespuesta.mensaje);
     if (loginAdminResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){

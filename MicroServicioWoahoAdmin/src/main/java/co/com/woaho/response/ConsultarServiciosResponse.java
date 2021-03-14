@@ -2,13 +2,9 @@ package co.com.woaho.response;
 
 import java.util.List;
 
-public class ConsultarServiciosResponse {
+public class ConsultarServiciosResponse extends BaseResponse {
 	
 	private List<Servicio> listServicios;
-	
-	private String codigoRespuesta;
-	
-	private String mensajeRespuesta;	
 	
 	public List<Servicio> getListServicios() {
 		return listServicios;
@@ -17,23 +13,7 @@ public class ConsultarServiciosResponse {
 	public void setListServicios(List<Servicio> listServicios) {
 		this.listServicios = listServicios;
 	}
-
-	public String getCodigoRespuesta() {
-		return codigoRespuesta;
-	}
-
-	public void setCodigoRespuesta(String codigoRespuesta) {
-		this.codigoRespuesta = codigoRespuesta;
-	}
-
-	public String getMensajeRespuesta() {
-		return mensajeRespuesta;
-	}
-
-	public void setMensajeRespuesta(String mensajeRespuesta) {
-		this.mensajeRespuesta = mensajeRespuesta;
-	}
-
+	
 	public static class Servicio{
 	
 		private String codigo;
@@ -42,7 +22,7 @@ public class ConsultarServiciosResponse {
 		
 		private String name;
 		
-		private double price;
+		private List<TarifaServicio> listTarifas;
 		
 		private Long category;
 		
@@ -74,12 +54,12 @@ public class ConsultarServiciosResponse {
 			this.name = name;
 		}
 
-		public double getPrice() {
-			return price;
+		public List<TarifaServicio> getListTarifas() {
+			return listTarifas;
 		}
 
-		public void setPrice(double price) {
-			this.price = price;
+		public void setListTarifas(List<TarifaServicio> listTarifas) {
+			this.listTarifas = listTarifas;
 		}
 
 		public Long getCategory() {
@@ -104,6 +84,49 @@ public class ConsultarServiciosResponse {
 
 		public void setDescription(String description) {
 			this.description = description;
-		}		
+		}
+		
+		public static class TarifaServicio {
+			
+			private String pais;
+			
+			private Double valor;
+			
+			private String moneda;
+			
+			private String unidad;
+
+			public String getPais() {
+				return pais;
+			}
+
+			public void setPais(String pais) {
+				this.pais = pais;
+			}
+
+			public Double getValor() {
+				return valor;
+			}
+
+			public void setValor(Double valor) {
+				this.valor = valor;
+			}
+
+			public String getMoneda() {
+				return moneda;
+			}
+
+			public void setMoneda(String moneda) {
+				this.moneda = moneda;
+			}
+
+			public String getUnidad() {
+				return unidad;
+			}
+
+			public void setUnidad(String unidad) {
+				this.unidad = unidad;
+			}
+		}
 	}
 }

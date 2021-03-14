@@ -6,6 +6,4 @@ import co.com.woaho.response.ConsultarServiciosResponse;
 public interface IServicioServices {
 
 	ConsultarServiciosResponse consultarServicios(ConsultarServiciosRequest request);
-	
-	ConsultarServiciosResponse consultarServiciosCategoria(ConsultarServiciosRequest request);
 }

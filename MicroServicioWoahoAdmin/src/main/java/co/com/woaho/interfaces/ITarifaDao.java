@@ -1,8 +1,10 @@
 package co.com.woaho.interfaces;
 
+import java.util.List;
+
 import co.com.woaho.modelo.Tarifa;
 
 public interface ITarifaDao {
 
-	Tarifa obtenerTarifaServicio(Long pIdServicio);
+	List<Tarifa> obtenerTarifaServicio(Long pIdServicio);
 }

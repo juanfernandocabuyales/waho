@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PeticionRequest } from '../interface/request';
+import { GeneralRequest } from '../models/request/GeneralRequest';
 import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -18,7 +18,7 @@ export class UtilidadesService {
 
   }
 
-  abrirDialogo( pMensaje: string, pBandera: boolean): void{
+  abrirDialogo(pMensaje: string, pBandera: boolean): void {
     Swal.fire({
       icon: pBandera ? 'info' : 'warning',
       title: pBandera ? this.traducirTexto('general.informacion') : this.traducirTexto('general.advertencia'),
@@ -28,28 +28,30 @@ export class UtilidadesService {
     });
   }
 
-  construirPeticion(pObjeto: any): PeticionRequest{
-    const peticion: PeticionRequest = {
-      strMensaje : JSON.stringify(pObjeto)
+  construirPeticion(pObjeto: any): GeneralRequest {
+    const peticion: GeneralRequest = {
+      strMensaje: JSON.stringify(pObjeto)
     };
     console.log('Peticion Generada ', peticion);
     return peticion;
   }
 
-  obtenerIdioma(): string{
-    return this.traslation.getLangs()[0];
+  obtenerIdioma(): string {
+    console.log('Lenguaje utilidades getLangs', this.traslation.getLangs()[0]);
+    const idioma = this.traslation.getLangs()[0];
+    return idioma ? idioma : 'es';
   }
 
-  traducirTexto(pTexto: string): string{
+  traducirTexto(pTexto: string): string {
     return this.traslation.instant(pTexto);
   }
 
-  navegarPagina(pPagina: string, pObjeto: any): void{
+  navegarPagina(pPagina: string, pObjeto: any): void {
     this.objetoAlmacenar = pObjeto;
     this.router.navigate([pPagina]);
   }
 
-  obtenerObjetoAlmacenado(): any{
+  obtenerObjetoAlmacenado(): any {
     return this.objetoAlmacenar;
   }
 }

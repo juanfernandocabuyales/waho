@@ -28,9 +28,9 @@ public class ServicioController {
 	private IServicioServices servicioService;
 	
 	@PostMapping(value = "/consultarServicios", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<GeneralResponse> consultarServicios(@RequestBody GeneralRequest request) {
+	public ResponseEntity<?> consultarServicios(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("consultarServicios");
+		logs.registrarLogInfoEjecutaServicio("consultarServicios", request.getStrMensaje());
 		
 		Gson gson = new Gson();
 		
@@ -40,25 +40,7 @@ public class ServicioController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarServiciosResponse));
 		
-		return new ResponseEntity<>(resp, HttpStatus.OK);
-	}
-	
-	@PostMapping(value = "/consultarServiciosCategoria", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<GeneralResponse> consultarServiciosCategoria(@RequestBody GeneralRequest request) {
-		
-		logs.registrarLogInfoEjecutaServicio("consultarServiciosCategoria");
-		
-		Gson gson = new Gson();
-		ConsultarServiciosRequest consultarServiciosRequest = gson.fromJson(request.getStrMensaje(), ConsultarServiciosRequest.class);
-		ConsultarServiciosResponse consultarServiciosResponse = null;
-		if(consultarServiciosRequest.getIdCategoria().equalsIgnoreCase("1")) {
-			consultarServiciosResponse = servicioService.consultarServicios(consultarServiciosRequest);
-		}else {
-			consultarServiciosResponse = servicioService.consultarServiciosCategoria(consultarServiciosRequest);
-		}		 
-		
-		GeneralResponse resp = new GeneralResponse();
-		resp.setMensaje(gson.toJson(consultarServiciosResponse));
+		logs.registrarLogInfoRespuestaServicio("consultarServicios", resp.getMensaje());
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}

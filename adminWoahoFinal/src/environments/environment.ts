@@ -4,7 +4,7 @@
 
 import { Constantes } from 'src/app/constants/constantes';
 
-const url = 'http://198.54.123.142:8083/woahoAdmin/';
+const url = 'http://localhost:8083/woahoAdmin/';
 
 export const environment = {
   production: false,
