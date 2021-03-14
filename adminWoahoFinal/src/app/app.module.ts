@@ -5,18 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ComponentsModule } from './components/components.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -24,27 +21,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
-import { TableComponent } from './components/table/table.component';
-
-import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ServiciosComponent,
-    TableComponent
+    ServiciosComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    MatDialogModule,
-    MatTableModule,
-    MatPaginatorModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -58,11 +47,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
         deps: [ HttpClient ]
       }
     }),
-    NgxSpinnerModule
+    ComponentsModule
   ],
   exports: [
-    MatIconModule,
-    TableComponent
+    MatIconModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
