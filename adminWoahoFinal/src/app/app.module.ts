@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,9 +11,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -34,9 +31,7 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatIconModule,
-    MatSidenavModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -53,7 +48,6 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
     MatIconModule
   ],
   providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

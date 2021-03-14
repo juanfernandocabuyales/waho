@@ -57,4 +57,8 @@ export class ServiciosComponent implements OnInit {
     this.spinner.hide();
   }
 
+  mostarOpciones(): void {
+    console.log('mostarOpciones');
+  }
+
 }

@@ -2,13 +2,20 @@
 
 <div class="row row-cols-3 row-cols-md-4 g-4" *ngIf="servicios.length > 0">
     <div class="col animated fadeIn mt-4" *ngFor="let servicio of servicios">
-        <div class="card">
+        <div class="card" style="height:350px">
             <img [src]="servicio.image">
             <div class="card-body">
-                <h5 class="card-title"><strong>{{servicio.name}}</strong></h5>
-                <p class="card-text">
-                    {{servicio.description}}
-                </p>
+                <div class="row">
+                    <h5 class="card-title"><strong>{{servicio.name}}</strong></h5>
+                    <div class="ml-auto mr-2">
+                        <i class="fa fa-align-right fa-ellipsis-v" (click)="mostarOpciones()"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="card-text">
+                        {{servicio.description}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
