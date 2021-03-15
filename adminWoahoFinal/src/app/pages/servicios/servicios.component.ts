@@ -22,11 +22,11 @@ export class ServiciosComponent implements OnInit {
 
   servicios: Servicio[] = [];
 
-  constructor(private utilidades: UtilidadesService, private servicio: ServicioService, private spinner: NgxSpinnerService)
-  {}
+  constructor(private utilidades: UtilidadesService,
+    private servicio: ServicioService) { }
 
   ngOnInit(): void {
-    this.spinner.show();
+    this.utilidades.mostrarCargue();
     this.cargarServicios();
   }
 
@@ -34,13 +34,13 @@ export class ServiciosComponent implements OnInit {
     const request: ConsultarServiciosRequest = {
       idioma: this.utilidades.obtenerIdioma()
     };
-    console.log('peticion servicio: ' , request);
+    console.log('peticion servicio: ', request);
     this.servicio.consultarServicios(this.utilidades.construirPeticion(request))
       .subscribe(
         data => {
           this.validarRespuesta(data);
         }, error => {
-          this.spinner.hide();
+          this.utilidades.ocultarCargue();
           console.log('error', error);
           this.utilidades.abrirDialogo('', false);
         }
@@ -54,11 +54,22 @@ export class ServiciosComponent implements OnInit {
     } else {
       this.utilidades.abrirDialogo(consultarServiciosResponse.mensajeRespuesta, true);
     }
-    this.spinner.hide();
+    this.utilidades.ocultarCargue();
   }
 
-  mostarOpciones(): void {
-    console.log('mostarOpciones');
+  mostarOpciones(pCodigo: string): void {
+    const servicioAux = this.servicios.find(servicio => servicio.codigo === pCodigo);
+    this.utilidades.mostarDialogoOpciones(servicioAux.name, this.utilidades.traducirTexto('serviciosPage.operaciones_servicio'),
+                                          [this.utilidades.traducirTexto('serviciosPage.editar'),
+                                          this.utilidades.traducirTexto('serviciosPage.eliminar'),
+                                          this.utilidades.traducirTexto('serviciosPage.cerrar')])
+      .then((result) => {
+        if (result.isConfirmed) {
+          console.log('Fue editado: ' + servicioAux.name);
+        } else if (result.isDenied) {
+          console.log('Fue eliminado: ' + servicioAux.name);
+        }
+      });
   }
 
 }

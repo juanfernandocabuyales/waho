@@ -5,7 +5,8 @@
             "sinConexion": "There is no connection with the server"
         },
         "advertencia": "Warning",
-        "informacion": "Information"
+        "informacion": "Information",
+        "cargando": "Loading..."
     },
     "loginPage": {
         "usuario": "Login",
@@ -21,5 +22,11 @@
             "servicios": "Services",
             "Monedas": "Coins"
         }
+    },
+    "serviciosPage": {
+        "operaciones_servicio": "What do you want to do with this service?",
+        "editar": "Edit",
+        "eliminar": "Delete",
+        "cerrar": "Close"
     }
 }

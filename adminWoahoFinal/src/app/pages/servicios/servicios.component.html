@@ -1,14 +1,14 @@
 <app-loading></app-loading>
 
 <div class="row row-cols-3 row-cols-md-4 g-4" *ngIf="servicios.length > 0">
-    <div class="col animated fadeIn mt-4" *ngFor="let servicio of servicios">
+    <div class="col animated fadeIn mt-4" *ngFor="let servicio of servicios;let i = index">
         <div class="card" style="height:350px">
             <img [src]="servicio.image">
             <div class="card-body">
                 <div class="row">
                     <h5 class="card-title"><strong>{{servicio.name}}</strong></h5>
                     <div class="ml-auto mr-2">
-                        <i class="fa fa-align-right fa-ellipsis-v" (click)="mostarOpciones()"></i>
+                        <i class="fa fa-align-right fa-ellipsis-v" (click)="mostarOpciones(servicio.codigo)" style="cursor: pointer;"></i>
                     </div>
                 </div>
                 <div class="row">

@@ -5,7 +5,8 @@
             "sinConexion": "No hay conexion con el servidor"
         },
         "advertencia": "Advertencia",
-        "informacion": "Información"
+        "informacion": "Información",
+        "cargando": "Cargando..."
     },
     "loginPage": {
         "usuario": "Usuario",
@@ -21,5 +22,11 @@
             "servicios": "Servicios",
             "Monedas": "Monedas"
         }
+    },
+    "serviciosPage": {
+        "operaciones_servicio": "¿Que deseas realizar con este servicio?",
+        "editar": "Editar",
+        "eliminar": "Eliminar",
+        "cerrar": "Cerrar"
     }
 }

@@ -3,7 +3,8 @@ import { GeneralRequest } from '../models/request/GeneralRequest';
 import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertResult } from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class UtilidadesService {
   objetoAlmacenar: any;
 
   constructor(private traslation: TranslateService,
-              private router: Router) {
+              private router: Router,
+              private spinner: NgxSpinnerService) {
 
   }
 
@@ -53,5 +55,28 @@ export class UtilidadesService {
 
   obtenerObjetoAlmacenado(): any {
     return this.objetoAlmacenar;
+  }
+
+  mostrarCargue(): void {
+    this.spinner.show();
+  }
+
+  ocultarCargue(): void {
+    this.spinner.hide();
+  }
+
+  mostarDialogoOpciones(pTitulo: string, pTexto: string, pOpciones: string[]): Promise<SweetAlertResult<any>>{
+    return Swal.fire({
+      title: pTitulo,
+      text: pTexto,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonColor: 'rgba(249, 25, 84, 1)',
+      confirmButtonText: `<i class="fa fa-pencil"></i> ${pOpciones[0]}`,
+      denyButtonColor: 'rgba(250, 0, 0, 1)',
+      denyButtonText: `<i class="fa fa-trash"></i> ${pOpciones[1]}`,
+      cancelButtonText: `<i class="fa fa-window-close"></i> ${pOpciones[2]}`,
+      allowOutsideClick: false,
+    });
   }
 }
