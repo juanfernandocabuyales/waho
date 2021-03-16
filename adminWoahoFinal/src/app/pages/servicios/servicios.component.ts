@@ -5,7 +5,6 @@ import { ConsultarServiciosRequest } from '../../models/request/ConsultarServici
 import { GeneralResponse } from '../../models/response/GeneralResponse';
 import { ConsultarServiciosResponse, Servicio } from '../../models/response/ConsultarServiciosResponse';
 import { Constantes } from 'src/app/constants/constantes';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-servicios',
@@ -23,7 +22,7 @@ export class ServiciosComponent implements OnInit {
   servicios: Servicio[] = [];
 
   constructor(private utilidades: UtilidadesService,
-    private servicio: ServicioService) { }
+              private servicio: ServicioService) { }
 
   ngOnInit(): void {
     this.utilidades.mostrarCargue();

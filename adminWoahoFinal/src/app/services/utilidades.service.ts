@@ -34,12 +34,10 @@ export class UtilidadesService {
     const peticion: GeneralRequest = {
       strMensaje: JSON.stringify(pObjeto)
     };
-    console.log('Peticion Generada ', peticion);
     return peticion;
   }
 
   obtenerIdioma(): string {
-    console.log('Lenguaje utilidades getLangs', this.traslation.getLangs()[0]);
     const idioma = this.traslation.getLangs()[0];
     return idioma ? idioma : 'es';
   }
