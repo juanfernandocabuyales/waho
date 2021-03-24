@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilidadesService } from '../../services/utilidades.service';
-import { ServicioService } from '../../services/servicio.service';
-import { ConsultarServiciosRequest } from '../../models/request/ConsultarServiciosRequest';
-import { GeneralResponse } from '../../models/response/GeneralResponse';
-import { ConsultarServiciosResponse, Servicio } from '../../models/response/ConsultarServiciosResponse';
+import { UtilidadesService } from '../../../services/utilidades.service';
+import { ServicioService } from '../../../services/servicio.service';
+import { ConsultarServiciosRequest } from '../../../models/request/ConsultarServiciosRequest';
+import { GeneralResponse } from '../../../models/response/GeneralResponse';
+import { ConsultarServiciosResponse, Servicio } from '../../../models/response/ConsultarServiciosResponse';
 import { Constantes } from 'src/app/constants/constantes';
 
 @Component({
@@ -69,6 +69,10 @@ export class ServiciosComponent implements OnInit {
           console.log('Fue eliminado: ' + servicioAux.name);
         }
       });
+  }
+
+  navegarCrearServicio(): void{
+    this.utilidades.navegarPagina('/home/servicios/crear-servicios', null);
   }
 
 }

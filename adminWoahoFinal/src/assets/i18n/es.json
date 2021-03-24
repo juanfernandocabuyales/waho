@@ -27,6 +27,11 @@
         "operaciones_servicio": "¿Que deseas realizar con este servicio?",
         "editar": "Editar",
         "eliminar": "Eliminar",
-        "cerrar": "Cerrar"
+        "cerrar": "Cerrar",
+        "crear": "Crear Servicio",
+        "nombre": "Nombre Servicio",
+        "imagen": "Imagen Servicio",
+        "categoria": "Categoria Servicio",
+        "pais_servicio": "Pais Servicio"
     }
 }

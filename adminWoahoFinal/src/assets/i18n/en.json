@@ -27,6 +27,11 @@
         "operaciones_servicio": "What do you want to do with this service?",
         "editar": "Edit",
         "eliminar": "Delete",
-        "cerrar": "Close"
+        "cerrar": "Close",
+        "crear": "Create Service",
+        "nombre": "Service Name",
+        "imagen": "Service Image",
+        "categoria": "Service Category",
+        "pais_servicio": "Service Country"
     }
 }

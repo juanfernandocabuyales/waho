@@ -1,0 +1,56 @@
+<div class="container">
+    <form [formGroup]="servicioForm" (ngSubmit)="crearServicio()">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label for="exampleInputEmail1">{{'serviciosPage.nombre' | translate}}</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="nombre">
+            </div>
+            <div class="col-sm form-group">
+                <label for="exampleFormControlSelect1">{{'serviciosPage.imagen' | translate}}</label>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="imagen">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="col-sm form-group">
+                <label for="exampleFormControlSelect1">{{'serviciosPage.categoria' | translate}}</label>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="categoria">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-5 form-group">
+            <div class="col-sm form-group">
+                <label for="exampleFormControlSelect1">{{'serviciosPage.pais_servicio' | translate}}</label>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="pais">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="col-sm form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea rows="3" maxlength="3000" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion"></textarea>
+                <span class="form-help">{{'Cantidad: ' + (max_caracteres - caracteres.length)}}</span>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary mt-4 mb-3">
+                <i class="fa fa-plus mr-1"></i>
+                {{ 'serviciosPage.crear' | translate }}
+            </button>
+        </div>
+
+    </form>
+</div>

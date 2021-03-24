@@ -5,5 +5,8 @@ export const Constantes = {
 
     /** RUTAS DE CONTROLADORES */
     CONTROLLER_USUARIO : 'usuario/',
-    CONTROLLER_SERVICIOS: 'servicio/'
+    CONTROLLER_SERVICIOS: 'servicio/',
+
+    /**Datos Generales */
+    CANT_MAX_CARACTERES: 4600
 };

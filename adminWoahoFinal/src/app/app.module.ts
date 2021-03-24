@@ -17,14 +17,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Translation
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { ServiciosComponent } from './pages/servicios/consultar-servicios/servicios.component';
+import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-servicio/crear-editar-servicio.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    CrearEditarServicioComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -42,7 +46,8 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
         deps: [ HttpClient ]
       }
     }),
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   exports: [
     MatIconModule
