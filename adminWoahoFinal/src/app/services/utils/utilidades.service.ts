@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GeneralRequest } from '../models/request/GeneralRequest';
+import { GeneralRequest } from '../../models/request/GeneralRequest';
 import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';

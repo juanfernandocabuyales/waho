@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilidadesService } from '../../../services/utilidades.service';
-import { ServicioService } from '../../../services/servicio.service';
+import { UtilidadesService } from '../../../services/utils/utilidades.service';
+import { ServicioService } from '../../../services/rest/servicio.service';
 import { ConsultarServiciosRequest } from '../../../models/request/ConsultarServiciosRequest';
 import { GeneralResponse } from '../../../models/response/GeneralResponse';
 import { ConsultarServiciosResponse, Servicio } from '../../../models/response/ConsultarServiciosResponse';

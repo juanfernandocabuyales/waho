@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UtilidadesService } from '../../services/utilidades.service';
-import { UsuarioService } from '../../services/usuario.service';
+import { UtilidadesService } from '../../services/utils/utilidades.service';
+import { UsuarioService } from '../../services/rest/usuario.service';
 import { LoginAdminRequest } from '../../models/request/LoginAdminRequest';
 import { LoginAdminResponse } from '../../models/response/LoginAdminResponse';
 import { GeneralResponse } from '../../models/response/GeneralResponse';
