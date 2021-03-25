@@ -1,3 +1,4 @@
+<app-loading></app-loading>
 <div class="container">
     <form [formGroup]="servicioForm" (ngSubmit)="crearServicio()">
         <div class="row mt-5">
@@ -8,21 +9,13 @@
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.imagen' | translate}}</label>
                 <select class="form-control" id="exampleFormControlSelect1" formControlName="imagen">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option *ngFor="let imagen of listImagenes">{{imagen.nombreImagen}}</option>
                 </select>
             </div>
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.categoria' | translate}}</label>
                 <select class="form-control" id="exampleFormControlSelect1" formControlName="categoria">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option *ngFor="let categoria of listCategorias" >{{categoria.nombreCategoria}}</option>
                 </select>
             </div>
         </div>
@@ -31,17 +24,13 @@
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.pais_servicio' | translate}}</label>
                 <select class="form-control" id="exampleFormControlSelect1" formControlName="pais">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option *ngFor="let pais of listPaises">{{pais.nombreTerritorio}}</option>
                 </select>
             </div>
             <div class="col-sm form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea rows="3" maxlength="3000" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion"></textarea>
-                <span class="form-help">{{'Cantidad: ' + (max_caracteres - caracteres.length)}}</span>
+                <label for="exampleFormControlTextarea1">{{'serviciosPage.descripcion' | translate}}</label>
+                <textarea rows="3" [maxlength]="maxCaracteres" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion"></textarea>
+                <span class="form-help">{{'Cantidad: ' + (maxCaracteres - caracteres.length)}}</span>
             </div>
         </div>
 

@@ -11,5 +11,6 @@ export const Constantes = {
     CONTROLLER_CATEGORIAS: 'categoria/',
 
     /** Datos Generales */
-    CANT_MAX_CARACTERES: 4600
+    CANT_MAX_CARACTERES: 4600,
+    TIPO_TERRITORIO_PAIS: '1'
 };

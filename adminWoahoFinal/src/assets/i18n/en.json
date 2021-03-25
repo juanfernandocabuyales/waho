@@ -6,7 +6,8 @@
         },
         "advertencia": "Warning",
         "informacion": "Information",
-        "cargando": "Loading..."
+        "cargando": "Loading...",
+        "carga_mal": "The information could not be loaded, please try again."
     },
     "loginPage": {
         "usuario": "Login",
@@ -32,6 +33,7 @@
         "nombre": "Service Name",
         "imagen": "Service Image",
         "categoria": "Service Category",
-        "pais_servicio": "Service Country"
+        "pais_servicio": "Service Country",
+        "descripcion": "Service Description"
     }
 }

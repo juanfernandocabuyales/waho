@@ -6,7 +6,8 @@
         },
         "advertencia": "Advertencia",
         "informacion": "Información",
-        "cargando": "Cargando..."
+        "cargando": "Cargando...",
+        "carga_mal": "No se ha podido cargar la información, intente nuevamente"
     },
     "loginPage": {
         "usuario": "Usuario",
@@ -32,6 +33,7 @@
         "nombre": "Nombre Servicio",
         "imagen": "Imagen Servicio",
         "categoria": "Categoria Servicio",
-        "pais_servicio": "Pais Servicio"
+        "pais_servicio": "Pais Servicio",
+        "descripcion": "Descripción Servicio"
     }
 }
