@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "territorio")
 @NamedQueries({ @NamedQuery(name="Territorio.findAll", query="SELECT t FROM Territorio t"),
-	@NamedQuery(name="Territorio.buscarTipo", query="SELECT t FROM Territorio t WHERE t.tipoTerritorio.strNombreTipo = :pTipoTerritorio")})
+	@NamedQuery(name="Territorio.buscarTipo", query="SELECT t FROM Territorio t WHERE t.tipoTerritorio.idTipoTerritorio = :pTipoTerritorio")})
 public class Territorio implements Serializable {
 
 	private static final long serialVersionUID = 1L;

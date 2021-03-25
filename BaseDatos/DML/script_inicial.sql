@@ -119,6 +119,7 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Servicio de peluqueria para mascotas domesticas','Services for pet groomer');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Servicio para el cuidado del jardin','Services for garden care');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('Servicio para arreglos en el hogar','Services for arrangements at home');
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se han encontrado registros para la busqueda','No records found for your search');
 
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
