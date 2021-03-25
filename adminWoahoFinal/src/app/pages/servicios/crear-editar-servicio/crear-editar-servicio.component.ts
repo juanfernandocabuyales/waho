@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { Constantes } from '../../../constants/constantes';
 import { ImagenService } from '../../../services/rest/imagen.service';
@@ -26,9 +26,11 @@ export class CrearEditarServicioComponent implements OnInit {
 
   maxCaracteres: number = Constantes.CANT_MAX_CARACTERES;
 
-  listImagenes: ImagenDto[];
-  listCategorias: Categoria[];
-  listPaises: PaisDTO[];
+  listImagenes: ImagenDto[] = [];
+  listCategorias: Categoria[] = [];
+  listPaises: PaisDTO[] = [];
+
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private utilidades: UtilidadesService,
@@ -37,15 +39,15 @@ export class CrearEditarServicioComponent implements OnInit {
               private territorioService: TerritorioService) { }
 
   ngOnInit(): void {
-    this.servicioForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      imagen: ['', Validators.required],
-      categoria: ['', Validators.required],
-      pais: ['', Validators.required],
-      descripcion: ['', Validators.required]
-    });
     this.utilidades.mostrarCargue();
     this.cargarInformacion();
+    this.servicioForm = this.formBuilder.group({
+      nombre: new FormControl('', Validators.required),
+      imagen: new FormControl('', Validators.required),
+      categoria: new FormControl('', Validators.required),
+      pais: new FormControl('', Validators.required),
+      descripcion: new FormControl('', Validators.required),
+    });
   }
 
   get f(): any {
@@ -53,7 +55,9 @@ export class CrearEditarServicioComponent implements OnInit {
   }
 
   crearServicio(): void {
+    this.submitted = true;
     console.log('Submit para crear servicios: ', this.f);
+    console.log('info formulario: ', this.servicioForm);
   }
 
   cargarInformacion(): void {

@@ -7,7 +7,9 @@
         "advertencia": "Warning",
         "informacion": "Information",
         "cargando": "Loading...",
-        "carga_mal": "The information could not be loaded, please try again."
+        "carga_mal": "The information could not be loaded, please try again.",
+        "limpiar": "Clean",
+        "cantidad": "Amount"
     },
     "loginPage": {
         "usuario": "Login",

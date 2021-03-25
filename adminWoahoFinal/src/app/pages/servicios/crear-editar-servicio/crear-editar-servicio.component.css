@@ -1,0 +1,12 @@
+.form-control {
+    box-shadow: none;
+}
+
+.form-control-error {
+    border-color: rgb(255, 0, 0);
+}
+
+table thead {
+    color: #fff;
+    background-color: gray
+}

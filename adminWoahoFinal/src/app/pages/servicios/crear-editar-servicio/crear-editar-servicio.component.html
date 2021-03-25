@@ -4,18 +4,22 @@
         <div class="row mt-5">
             <div class="col-sm form-group">
                 <label for="exampleInputEmail1">{{'serviciosPage.nombre' | translate}}</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="nombre">
+                <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="nombre">
             </div>
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.imagen' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="imagen">
-                    <option *ngFor="let imagen of listImagenes">{{imagen.nombreImagen}}</option>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="imagen" [ngStyle]="{'border-color':submitted && f.imagen.errors ? 'red':'gray'}">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let imagen of listImagenes" [value]="imagen.idImagen">{{imagen.nombreImagen}}
+                    </option>
                 </select>
             </div>
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.categoria' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="categoria">
-                    <option *ngFor="let categoria of listCategorias" >{{categoria.nombreCategoria}}</option>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="categoria" [ngStyle]="{'border-color':submitted && f.categoria.errors ? 'red':'gray'}">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let categoria of listCategorias" [value]="categoria.idCategoria">
+                        {{categoria.nombreCategoria}}</option>
                 </select>
             </div>
         </div>
@@ -23,21 +27,70 @@
         <div class="row mt-5 form-group">
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.pais_servicio' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="pais">
-                    <option *ngFor="let pais of listPaises">{{pais.nombreTerritorio}}</option>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="pais" [ngStyle]="{'border-color':submitted && f.pais.errors ? 'red':'gray'}">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
+                    </option>
                 </select>
             </div>
             <div class="col-sm form-group">
                 <label for="exampleFormControlTextarea1">{{'serviciosPage.descripcion' | translate}}</label>
-                <textarea rows="3" [maxlength]="maxCaracteres" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion"></textarea>
-                <span class="form-help">{{'Cantidad: ' + (maxCaracteres - caracteres.length)}}</span>
+                <textarea rows="3" [maxlength]="maxCaracteres" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion" [ngStyle]="{'border-color':submitted && f.descripcion.errors ? 'red':'gray'}"></textarea>
+                <span class="form-help">{{'general.cantidad' | translate}} {{(maxCaracteres -
+                    caracteres.length)}}</span>
             </div>
         </div>
+        <hr>
+        <h2 style="text-align: center;">Tarifas</h2>
+
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Moneda</th>
+                    <th scope="col">Pais</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary mt-4 mb-3">
+                <i class="fa fa-plus mr-1"></i>
+                {{ 'general.limpiar' | translate }}
+            </button>
+        </div>
+
+        <hr>
 
         <div class="text-center">
             <button class="btn btn-primary mt-4 mb-3">
                 <i class="fa fa-plus mr-1"></i>
                 {{ 'serviciosPage.crear' | translate }}
+            </button>
+            <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3">
+                <i class="fa fa-trash mr-1"></i>
+                {{ 'general.limpiar' | translate }}
             </button>
         </div>
 

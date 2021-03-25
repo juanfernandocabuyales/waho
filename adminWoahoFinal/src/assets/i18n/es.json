@@ -7,7 +7,9 @@
         "advertencia": "Advertencia",
         "informacion": "Información",
         "cargando": "Cargando...",
-        "carga_mal": "No se ha podido cargar la información, intente nuevamente"
+        "carga_mal": "No se ha podido cargar la información, intente nuevamente",
+        "limpiar": "Limpiar",
+        "cantidad": "Cantidad"
     },
     "loginPage": {
         "usuario": "Usuario",
