@@ -4,7 +4,7 @@
         <div class="row mt-5">
             <div class="col-sm form-group">
                 <label for="exampleInputEmail1">{{'serviciosPage.nombre' | translate}}</label>
-                <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="nombre">
+                <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nombre" autofocus>
             </div>
             <div class="col-sm form-group">
                 <label for="exampleFormControlSelect1">{{'serviciosPage.imagen' | translate}}</label>
@@ -60,7 +60,7 @@
                     <td>
                         <select class="form-control">
                             <option value="" [selected]="true">-- Seleccione --</option>
-                            <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
+                            <option *ngFor="let moneda of listMonedas" [value]="moneda.idMoneda">{{moneda.nombreMoneda}}
                             </option>
                         </select>
                     </td>

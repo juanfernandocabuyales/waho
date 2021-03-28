@@ -14,7 +14,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "unidad_tarifa")
-@NamedQueries({ @NamedQuery(name="UnidadTarifa.findAll", query="SELECT ut FROM UnidadTarifa ut")})
+@NamedQueries({ @NamedQuery(name="UnidadTarifa.findAll", query="SELECT ut FROM UnidadTarifa ut"),
+				@NamedQuery(name="UnidadTarifa.findId", query="SELECT ut FROM UnidadTarifa ut WHERE ut.unidadTarifaId = :pId")})
 public class UnidadTarifa implements Serializable {
 
 private static final long serialVersionUID = 1L;

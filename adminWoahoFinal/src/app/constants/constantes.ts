@@ -9,6 +9,7 @@ export const Constantes = {
     CONTROLLER_TERRITORIOS: 'territorio/',
     CONTROLLER_IMAGENES: 'imagen/',
     CONTROLLER_CATEGORIAS: 'categoria/',
+    CONTROLLER_MONEDAS: 'moneda/',
 
     /** Datos Generales */
     CANT_MAX_CARACTERES: 4600,

@@ -12,7 +12,8 @@ export const environment = {
   servicioController: url + Constantes.CONTROLLER_SERVICIOS,
   territorioController: url + Constantes.CONTROLLER_TERRITORIOS,
   imagenController: url + Constantes.CONTROLLER_IMAGENES,
-  categoriaController: url + Constantes.CONTROLLER_CATEGORIAS
+  categoriaController: url + Constantes.CONTROLLER_CATEGORIAS,
+  monedaController: url + Constantes.CONTROLLER_MONEDAS
 };
 
 /*

@@ -66,7 +66,7 @@ public class MonedaService implements IMonedaServices {
 		}catch(Exception e) {
 			logs.registrarLogError("consultarMonedas", "No se ha podido procesar la peticion", e);
 			consultarMonedasResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarMonedasResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+			consultarMonedasResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(),
 					request.getIdioma(), equivalenciaIdioma));
 		}
 		return consultarMonedasResponse;
