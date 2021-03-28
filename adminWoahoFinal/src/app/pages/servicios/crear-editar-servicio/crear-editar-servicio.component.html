@@ -46,38 +46,44 @@
         <table class="table table-bordered">
             <thead class="thead">
                 <tr>
-                    <th scope="col">Codigo</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Moneda</th>
                     <th scope="col">Pais</th>
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                    <td>
+                        <input type="number" class="form-control">
+                    </td>
+                    <td>
+                        <select class="form-control">
+                            <option value="" [selected]="true">-- Seleccione --</option>
+                            <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control">
+                            <option value="" [selected]="true">-- Seleccione --</option>
+                            <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="agregarFila()">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="text-center">
-            <button type="button" class="btn btn-primary mt-4 mb-3">
+            <button type="button" class="btn btn-primary mt-4 mb-3" (click)="agregarFila()">
                 <i class="fa fa-plus mr-1"></i>
-                {{ 'general.limpiar' | translate }}
+                {{ 'general.agregar' | translate }}
             </button>
         </div>
 

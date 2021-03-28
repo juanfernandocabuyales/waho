@@ -7,4 +7,6 @@ import co.com.woaho.modelo.Territorio;
 public interface ITerritorioDao {
 
 	List<Territorio> obtenerTerritorios(Long pStrTipoTerritorio);
+	
+	Territorio obtenerTerritorio(Long pId);
 }

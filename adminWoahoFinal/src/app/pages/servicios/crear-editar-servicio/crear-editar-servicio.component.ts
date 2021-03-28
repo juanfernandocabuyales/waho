@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { Constantes } from '../../../constants/constantes';
 import { ImagenService } from '../../../services/rest/imagen.service';
@@ -36,7 +36,8 @@ export class CrearEditarServicioComponent implements OnInit {
               private utilidades: UtilidadesService,
               private imagenService: ImagenService,
               private categoriaService: CategoriaService,
-              private territorioService: TerritorioService) { }
+              private territorioService: TerritorioService) {
+  }
 
   ngOnInit(): void {
     this.utilidades.mostrarCargue();
@@ -46,7 +47,7 @@ export class CrearEditarServicioComponent implements OnInit {
       imagen: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
       pais: new FormControl('', Validators.required),
-      descripcion: new FormControl('', Validators.required),
+      descripcion: new FormControl('', Validators.required)
     });
   }
 
@@ -56,8 +57,6 @@ export class CrearEditarServicioComponent implements OnInit {
 
   crearServicio(): void {
     this.submitted = true;
-    console.log('Submit para crear servicios: ', this.f);
-    console.log('info formulario: ', this.servicioForm);
   }
 
   cargarInformacion(): void {
@@ -107,4 +106,7 @@ export class CrearEditarServicioComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
+  agregarFila(): void{
+    
+  }
 }

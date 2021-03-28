@@ -9,7 +9,8 @@
         "cargando": "Loading...",
         "carga_mal": "The information could not be loaded, please try again.",
         "limpiar": "Clean",
-        "cantidad": "Amount"
+        "cantidad": "Amount",
+        "agregar": "Add"
     },
     "loginPage": {
         "usuario": "Login",

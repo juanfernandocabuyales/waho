@@ -16,7 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "moneda")
-@NamedQueries({ @NamedQuery(name="Moneda.findAll", query="SELECT mon FROM Moneda mon")})
+@NamedQueries({ @NamedQuery(name="Moneda.findAll", query="SELECT mon FROM Moneda mon"),
+				@NamedQuery(name="Moneda.findId", query="SELECT mon FROM Moneda mon WHERE mon.monedaId = :pId")})
 public class Moneda implements Serializable {
 
 private static final long serialVersionUID = 1L;
