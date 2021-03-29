@@ -40,65 +40,73 @@
                     caracteres.length)}}</span>
             </div>
         </div>
-        <hr>
-        <h2 style="text-align: center;">Tarifas</h2>
-
-        <table class="table table-bordered">
-            <thead class="thead">
-                <tr>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Moneda</th>
-                    <th scope="col">Pais</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="number" class="form-control">
-                    </td>
-                    <td>
-                        <select class="form-control">
-                            <option value="" [selected]="true">-- Seleccione --</option>
-                            <option *ngFor="let moneda of listMonedas" [value]="moneda.idMoneda">{{moneda.nombreMoneda}}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="form-control">
-                            <option value="" [selected]="true">-- Seleccione --</option>
-                            <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary" (click)="agregarFila()">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="text-center">
-            <button type="button" class="btn btn-primary mt-4 mb-3" (click)="agregarFila()">
-                <i class="fa fa-plus mr-1"></i>
-                {{ 'general.agregar' | translate }}
-            </button>
-        </div>
-
-        <hr>
-
-        <div class="text-center">
-            <button class="btn btn-primary mt-4 mb-3">
-                <i class="fa fa-plus mr-1"></i>
-                {{ 'serviciosPage.crear' | translate }}
-            </button>
-            <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3">
-                <i class="fa fa-trash mr-1"></i>
-                {{ 'general.limpiar' | translate }}
-            </button>
-        </div>
-
     </form>
+    <hr>
+    <h2 style="text-align: center;">Tarifas</h2>
+
+    <table class="table table-bordered">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Valor</th>
+                <th scope="col">Unidad</th>
+                <th scope="col">Moneda</th>
+                <th scope="col">Pais</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tarifa of listTarifas; let i = index">
+                <td>
+                    <input type="number" class="form-control" [(ngModel)]="tarifa.valor" autofocus>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="tarifa.unidad">
+                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option *ngFor="let unidad of listUnidades" [value]="unidad.idUnidad">{{unidad.nombreUnidad}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="tarifa.moneda">
+                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option *ngFor="let moneda of listMonedas" [value]="moneda.idMoneda">{{moneda.nombreMoneda}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="tarifa.pais">
+                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">
+                            {{pais.nombreTerritorio}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="eliminarFila(i)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mt-4 mb-3" (click)="agregarFila()">
+            <i class="fa fa-plus mr-1"></i>
+            {{ 'general.agregar' | translate }}
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <button class="btn btn-primary mt-4 mb-3" (click)="crearServicio()">
+            <i class="fa fa-plus mr-1"></i>
+            {{ 'serviciosPage.crear' | translate }}
+        </button>
+        <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3" (click)="limpiarCampos()">
+            <i class="fa fa-trash mr-1"></i>
+            {{ 'general.limpiar' | translate }}
+        </button>
+    </div>
 </div>

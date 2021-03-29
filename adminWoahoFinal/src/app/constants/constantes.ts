@@ -10,6 +10,7 @@ export const Constantes = {
     CONTROLLER_IMAGENES: 'imagen/',
     CONTROLLER_CATEGORIAS: 'categoria/',
     CONTROLLER_MONEDAS: 'moneda/',
+    CONTROLLER_UNIDAD: 'unidad/',
 
     /** Datos Generales */
     CANT_MAX_CARACTERES: 4600,

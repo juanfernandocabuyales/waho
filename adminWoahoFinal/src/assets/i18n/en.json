@@ -10,7 +10,8 @@
         "carga_mal": "The information could not be loaded, please try again.",
         "limpiar": "Clean",
         "cantidad": "Amount",
-        "agregar": "Add"
+        "agregar": "Add",
+        "completar_campos": "Please complete the form fields"
     },
     "loginPage": {
         "usuario": "Login",
@@ -37,6 +38,8 @@
         "imagen": "Service Image",
         "categoria": "Service Category",
         "pais_servicio": "Service Country",
-        "descripcion": "Service Description"
+        "descripcion": "Service Description",
+        "tarifas_mal": "Review data entered for service rates.",
+        "creacion_ok": "Successful creation"
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
@@ -30,6 +31,17 @@ public class TarifaDao extends Persistencia implements ITarifaDao {
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerTarifaServicio", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return tarifa;
+		}
+	}
+	
+	@Override
+	@Transactional
+	public Tarifa guardarActualizarTarifa(Tarifa pTarifa) {
+		try {
+			return getEntityManager().merge(pTarifa);
+		}catch(Exception e) {
+			logs.registrarLogError("guardarActualizarTarifa", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
 		}
 	}
 }

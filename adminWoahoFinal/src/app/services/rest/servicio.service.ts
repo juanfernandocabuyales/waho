@@ -15,4 +15,8 @@ export class ServicioService {
   consultarServicios(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.servicioController}consultarServicios`, peticion);
   }
+
+  crearServicio(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.servicioController}crearServicios`, peticion);
+  }
 }

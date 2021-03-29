@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
@@ -18,6 +19,17 @@ import co.com.woaho.utilidades.RegistrarLog;
 public class ServicioDao extends Persistencia implements IServicioDao {
 
 	private RegistrarLog logs = new RegistrarLog(ServicioDao.class);
+	
+	@Override
+	@Transactional
+	public Servicio guardarActualizarServicio(Servicio pServicio) {
+		try {
+			return getEntityManager().merge(pServicio);
+		}catch(Exception e) {
+			logs.registrarLogError("guardarActualizarServicio", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
 	
 	@Override
 	public List<Servicio> obtenerServiciosId(List<Long> ids) {

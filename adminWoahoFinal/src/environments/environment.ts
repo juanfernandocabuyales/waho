@@ -4,7 +4,8 @@
 
 import { Constantes } from 'src/app/constants/constantes';
 
-const url = 'http://198.54.123.142:8083/woahoAdmin/';
+// const url = 'http://198.54.123.142:8083/woahoAdmin/';
+const url = 'http://localhost:8083/woahoAdmin/';
 
 export const environment = {
   production: false,
@@ -13,7 +14,8 @@ export const environment = {
   territorioController: url + Constantes.CONTROLLER_TERRITORIOS,
   imagenController: url + Constantes.CONTROLLER_IMAGENES,
   categoriaController: url + Constantes.CONTROLLER_CATEGORIAS,
-  monedaController: url + Constantes.CONTROLLER_MONEDAS
+  monedaController: url + Constantes.CONTROLLER_MONEDAS,
+  unidadController: url + Constantes.CONTROLLER_UNIDAD
 };
 
 /*

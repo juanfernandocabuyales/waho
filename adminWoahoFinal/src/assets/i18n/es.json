@@ -10,7 +10,8 @@
         "carga_mal": "No se ha podido cargar la información, intente nuevamente",
         "limpiar": "Limpiar",
         "cantidad": "Cantidad",
-        "agregar": "Agregar"
+        "agregar": "Agregar",
+        "completar_campos": "Favor completar los campos del formulario"
     },
     "loginPage": {
         "usuario": "Usuario",
@@ -37,6 +38,8 @@
         "imagen": "Imagen Servicio",
         "categoria": "Categoria Servicio",
         "pais_servicio": "Pais Servicio",
-        "descripcion": "Descripción Servicio"
+        "descripcion": "Descripción Servicio",
+        "tarifas_mal": "Revisar los datos ingresados para las tarifas del servicio.",
+        "creacion_ok": "Creación exitosa"
     }
 }

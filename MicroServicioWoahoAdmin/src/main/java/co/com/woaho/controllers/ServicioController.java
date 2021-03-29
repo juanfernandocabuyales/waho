@@ -13,8 +13,10 @@ import com.google.gson.Gson;
 
 import co.com.woaho.interfaces.IServicioServices;
 import co.com.woaho.request.ConsultarServiciosRequest;
+import co.com.woaho.request.CrearServicioRequest;
 import co.com.woaho.request.GeneralRequest;
 import co.com.woaho.response.ConsultarServiciosResponse;
+import co.com.woaho.response.CrearServicioResponse;
 import co.com.woaho.response.GeneralResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -41,6 +43,24 @@ public class ServicioController {
 		resp.setMensaje(gson.toJson(consultarServiciosResponse));
 		
 		logs.registrarLogInfoRespuestaServicio("consultarServicios", resp.getMensaje());
+		
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/crearServicios", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> crearServicios(@RequestBody GeneralRequest request) {
+		
+		logs.registrarLogInfoEjecutaServicio("crearServicios", request.getStrMensaje());
+		
+		Gson gson = new Gson();
+		
+		CrearServicioRequest crearServicioRequest = gson.fromJson(request.getStrMensaje(), CrearServicioRequest.class);
+		CrearServicioResponse crearServicioResponse = servicioService.crearServicio(crearServicioRequest);
+		
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(crearServicioResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("crearServicios", resp.getMensaje());
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}

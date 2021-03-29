@@ -42,6 +42,10 @@ public class Servicio implements Serializable {
 	
 	@Column(name ="servicio_descripcion",length = 100)
 	private String strDescripcion;
+	
+	@ManyToOne
+	@JoinColumn(name = "servicio_territorio")
+	private Territorio pais;
 
 	public Long getServicioId() {
 		return servicioId;
@@ -81,5 +85,13 @@ public class Servicio implements Serializable {
 
 	public void setStrDescripcion(String strDescripcion) {
 		this.strDescripcion = strDescripcion;
+	}
+
+	public Territorio getPais() {
+		return pais;
+	}
+
+	public void setPais(Territorio pais) {
+		this.pais = pais;
 	}
 }

@@ -11,4 +11,6 @@ public interface IServicioDao {
 	List<Servicio> consultarServicios();
 	
 	List<Servicio> consultarServiciosCategoria(Long pIdCategoria);
+	
+	Servicio guardarActualizarServicio(Servicio pServicio);
 }
