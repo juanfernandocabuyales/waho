@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UtilidadesService } from '../../services/utils/utilidades.service';
 import { UsuarioService } from '../../services/rest/usuario.service';
-import { LoginAdminRequest } from '../../models/request/LoginAdminRequest';
-import { LoginAdminResponse } from '../../models/response/LoginAdminResponse';
-import { GeneralResponse } from '../../models/response/GeneralResponse';
+import { LoginAdminRequest } from '../../models/request/requests';
+import { LoginAdminResponse } from '../../models/response/reponses';
+import { GeneralResponse } from '../../models/response/reponses';
 import { Constantes } from '../../constants/constantes';
 
 @Component({

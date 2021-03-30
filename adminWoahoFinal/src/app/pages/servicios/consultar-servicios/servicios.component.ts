@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { ServicioService } from '../../../services/rest/servicio.service';
-import { ConsultarServiciosRequest } from '../../../models/request/ConsultarServiciosRequest';
-import { GeneralResponse } from '../../../models/response/GeneralResponse';
-import { ConsultarServiciosResponse, Servicio } from '../../../models/response/ConsultarServiciosResponse';
+import { ConsultarServiciosRequest } from '../../../models/request/requests';
+import { GeneralResponse } from '../../../models/response/reponses';
+import { ConsultarServiciosResponse, Servicio } from '../../../models/response/reponses';
 import { Constantes } from 'src/app/constants/constantes';
 
 @Component({
