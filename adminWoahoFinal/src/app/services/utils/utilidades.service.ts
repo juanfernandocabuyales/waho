@@ -47,12 +47,18 @@ export class UtilidadesService {
   }
 
   navegarPagina(pPagina: string, pObjeto: any): void {
-    this.objetoAlmacenar = pObjeto;
+    if (pObjeto){
+      this.objetoAlmacenar = pObjeto;
+    }
     this.router.navigate([pPagina]);
   }
 
   obtenerObjetoAlmacenado(): any {
     return this.objetoAlmacenar;
+  }
+
+  cambiarValorAlmacenado(pObjeto: any): void {
+    this.objetoAlmacenar = pObjeto;
   }
 
   mostrarCargue(): void {

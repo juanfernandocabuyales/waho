@@ -1,9 +1,9 @@
 <app-loading></app-loading>
 
-<div class="row row-cols-3 row-cols-md-4 g-4" *ngIf="servicios.length > 0">
+<div class="row row-cols-3 row-cols-md-4 g-4 ml-1" *ngIf="servicios.length > 0">
     <div class="col animated fadeIn mt-4" *ngFor="let servicio of servicios;let i = index">
         <div class="card" style="height:350px">
-            <img [src]="servicio.image">
+            <img [src]="servicio.image" onerror="this.src='./assets/no-image.jpg';">
             <div class="card-body">
                 <div class="row">
                     <h5 class="card-title"><strong>{{servicio.name}}</strong></h5>

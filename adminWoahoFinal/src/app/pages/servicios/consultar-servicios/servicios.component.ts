@@ -58,13 +58,14 @@ export class ServiciosComponent implements OnInit {
 
   mostarOpciones(pCodigo: string): void {
     const servicioAux = this.servicios.find(servicio => servicio.codigo === pCodigo);
+    this.utilidades.cambiarValorAlmacenado(servicioAux);
     this.utilidades.mostarDialogoOpciones(servicioAux.name, this.utilidades.traducirTexto('serviciosPage.operaciones_servicio'),
                                           [this.utilidades.traducirTexto('serviciosPage.editar'),
                                           this.utilidades.traducirTexto('serviciosPage.eliminar'),
                                           this.utilidades.traducirTexto('serviciosPage.cerrar')])
       .then((result) => {
         if (result.isConfirmed) {
-          console.log('Fue editado: ' + servicioAux.name);
+          this.utilidades.navegarPagina('/home/servicios/crear-servicios', null);
         } else if (result.isDenied) {
           console.log('Fue eliminado: ' + servicioAux.name);
         }

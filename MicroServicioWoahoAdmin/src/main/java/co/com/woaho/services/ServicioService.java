@@ -81,10 +81,10 @@ public class ServicioService implements IServicioServices {
 						List<ConsultarServiciosResponse.Servicio.TarifaServicio> tarifasListDto = new ArrayList<>();
 						tarifasList.forEach(tarifa -> {
 							ConsultarServiciosResponse.Servicio.TarifaServicio tarifaServicioDto = new ConsultarServiciosResponse.Servicio.TarifaServicio();
-							tarifaServicioDto.setMoneda(tarifa.getMoneda().getStrNombre());
-							tarifaServicioDto.setPais(tarifa.getPais().getStrNombreTerritorio());
+							tarifaServicioDto.setMoneda(String.valueOf(tarifa.getMoneda().getMonedaId()));
+							tarifaServicioDto.setPais(String.valueOf(tarifa.getPais().getIdTerritorio()));
 							tarifaServicioDto.setValor(tarifa.getValor());
-							tarifaServicioDto.setUnidad(tarifa.getUnidadTarifa().getStrNombre());
+							tarifaServicioDto.setUnidad(String.valueOf(tarifa.getUnidadTarifa().getUnidadTarifaId()));
 							tarifasListDto.add(tarifaServicioDto);
 						});
 						servicioDto.setListTarifas(tarifasListDto);	

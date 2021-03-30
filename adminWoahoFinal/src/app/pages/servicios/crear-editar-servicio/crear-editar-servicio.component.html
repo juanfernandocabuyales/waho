@@ -3,20 +3,20 @@
     <form [formGroup]="servicioForm" (ngSubmit)="crearServicio()">
         <div class="row mt-5">
             <div class="col-sm form-group">
-                <label for="exampleInputEmail1">{{'serviciosPage.nombre' | translate}}</label>
+                <label>{{'serviciosPage.nombre' | translate}}</label>
                 <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nombre" autofocus>
             </div>
             <div class="col-sm form-group">
-                <label for="exampleFormControlSelect1">{{'serviciosPage.imagen' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="imagen" [ngStyle]="{'border-color':submitted && f.imagen.errors ? 'red':'gray'}">
+                <label>{{'serviciosPage.imagen' | translate}}</label>
+                <select class="form-control" formControlName="imagen" [ngStyle]="{'border-color':submitted && f.imagen.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let imagen of listImagenes" [value]="imagen.idImagen">{{imagen.nombreImagen}}
                     </option>
                 </select>
             </div>
             <div class="col-sm form-group">
-                <label for="exampleFormControlSelect1">{{'serviciosPage.categoria' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="categoria" [ngStyle]="{'border-color':submitted && f.categoria.errors ? 'red':'gray'}">
+                <label>{{'serviciosPage.categoria' | translate}}</label>
+                <select class="form-control" formControlName="categoria" [ngStyle]="{'border-color':submitted && f.categoria.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let categoria of listCategorias" [value]="categoria.idCategoria">
                         {{categoria.nombreCategoria}}</option>
@@ -26,18 +26,17 @@
 
         <div class="row mt-5 form-group">
             <div class="col-sm form-group">
-                <label for="exampleFormControlSelect1">{{'serviciosPage.pais_servicio' | translate}}</label>
-                <select class="form-control" id="exampleFormControlSelect1" formControlName="pais" [ngStyle]="{'border-color':submitted && f.pais.errors ? 'red':'gray'}">
+                <label>{{'serviciosPage.pais_servicio' | translate}}</label>
+                <select class="form-control" formControlName="pais" [ngStyle]="{'border-color':submitted && f.pais.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
                     </option>
                 </select>
             </div>
             <div class="col-sm form-group">
-                <label for="exampleFormControlTextarea1">{{'serviciosPage.descripcion' | translate}}</label>
-                <textarea rows="3" [maxlength]="maxCaracteres" style="resize: none;" [(ngModel)]="caracteres" class="form-control" formControlName="descripcion" [ngStyle]="{'border-color':submitted && f.descripcion.errors ? 'red':'gray'}"></textarea>
-                <span class="form-help">{{'general.cantidad' | translate}} {{(maxCaracteres -
-                    caracteres.length)}}</span>
+                <label>{{'serviciosPage.descripcion' | translate}}</label>
+                <textarea rows="3" [maxlength]="maxCaracteres" style="resize: none;" class="form-control" formControlName="descripcion" [ngStyle]="{'border-color':submitted && f.descripcion.errors ? 'red':'gray'}"></textarea>
+                <span class="form-help">{{'general.cantidad' | translate}} {{(maxCaracteres - f.descripcion.value.length)}}</span>
             </div>
         </div>
     </form>

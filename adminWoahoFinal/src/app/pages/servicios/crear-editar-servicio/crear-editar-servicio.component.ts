@@ -23,6 +23,7 @@ import { CrearServicioRequest } from '../../../models/request/CrearServicioReque
 import { ServicioService } from '../../../services/rest/servicio.service';
 import { GeneralResponse } from 'src/app/models/response/GeneralResponse';
 import { CrearServicioResponse } from '../../../models/response/CrearServicioResponse';
+import { Servicio } from '../../../models/response/ConsultarServiciosResponse';
 
 @Component({
   selector: 'app-crear-editar-servicio',
@@ -58,16 +59,28 @@ export class CrearEditarServicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.utilidades.mostrarCargue();
+    const servicioAux: Servicio = this.utilidades.obtenerObjetoAlmacenado() as Servicio;
     this.cargarInformacion();
-    this.servicioForm = this.formBuilder.group({
-      nombre: new FormControl('', Validators.required),
-      imagen: new FormControl('', Validators.required),
-      categoria: new FormControl('', Validators.required),
-      pais: new FormControl('', Validators.required),
-      descripcion: new FormControl('', Validators.required)
-    });
-    this.agregarFila();
+    if (servicioAux) {
+      this.servicioForm = this.formBuilder.group({
+        nombre: new FormControl(servicioAux.name, Validators.required),
+        imagen: new FormControl(3, Validators.required),
+        categoria: new FormControl(servicioAux.category, Validators.required),
+        pais: new FormControl('', Validators.required),
+        descripcion: new FormControl(servicioAux.description, Validators.required)
+      });
+      this.listTarifas = servicioAux.listTarifas;
+    } else {
+      this.utilidades.mostrarCargue();
+      this.servicioForm = this.formBuilder.group({
+        nombre: new FormControl('', Validators.required),
+        imagen: new FormControl('', Validators.required),
+        categoria: new FormControl('', Validators.required),
+        pais: new FormControl('', Validators.required),
+        descripcion: new FormControl('', Validators.required)
+      });
+      this.agregarFila();
+    }
   }
 
   get f(): any {
