@@ -3,8 +3,9 @@ import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { ServicioService } from '../../../services/rest/servicio.service';
 import { ConsultarServiciosRequest } from '../../../models/request/requests';
 import { GeneralResponse } from '../../../models/response/reponses';
-import { ConsultarServiciosResponse, Servicio } from '../../../models/response/reponses';
+import { ConsultarServiciosResponse } from '../../../models/response/reponses';
 import { Constantes } from 'src/app/constants/constantes';
+import { ServicioDto } from '../../../models/general/general';
 
 @Component({
   selector: 'app-servicios',
@@ -19,7 +20,7 @@ export class ServiciosComponent implements OnInit {
     'description'
   ];
 
-  servicios: Servicio[] = [];
+  servicios: ServicioDto[] = [];
 
   constructor(private utilidades: UtilidadesService,
               private servicio: ServicioService) { }
@@ -59,7 +60,7 @@ export class ServiciosComponent implements OnInit {
   mostarOpciones(pCodigo: string): void {
     const servicioAux = this.servicios.find(servicio => servicio.codigo === pCodigo);
     this.utilidades.cambiarValorAlmacenado(servicioAux);
-    this.utilidades.mostarDialogoOpciones(servicioAux.name, this.utilidades.traducirTexto('serviciosPage.operaciones_servicio'),
+    this.utilidades.mostarDialogoOpciones(servicioAux.nombre, this.utilidades.traducirTexto('serviciosPage.operaciones_servicio'),
                                           [this.utilidades.traducirTexto('serviciosPage.editar'),
                                           this.utilidades.traducirTexto('serviciosPage.eliminar'),
                                           this.utilidades.traducirTexto('serviciosPage.cerrar')])
@@ -67,7 +68,7 @@ export class ServiciosComponent implements OnInit {
         if (result.isConfirmed) {
           this.utilidades.navegarPagina('/home/servicios/crear-servicios', null);
         } else if (result.isDenied) {
-          console.log('Fue eliminado: ' + servicioAux.name);
+          console.log('Fue eliminado: ' + servicioAux.nombre);
         }
       });
   }

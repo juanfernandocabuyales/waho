@@ -3,10 +3,14 @@ package co.com.woaho.dto;
 import java.util.List;
 
 public class ServicioDto {
+	
+	private String codigo;
 
 	private String nombre;
 	
 	private String imagen;
+	
+	private String codigoImagen;
 	
 	private String categoria;
 	
@@ -15,6 +19,14 @@ public class ServicioDto {
 	private String descripcion;
 	
 	private List<TarifaDto> listTarifas;
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -26,6 +38,14 @@ public class ServicioDto {
 
 	public String getImagen() {
 		return imagen;
+	}
+
+	public String getCodigoImagen() {
+		return codigoImagen;
+	}
+
+	public void setCodigoImagen(String codigoImagen) {
+		this.codigoImagen = codigoImagen;
 	}
 
 	public void setImagen(String imagen) {

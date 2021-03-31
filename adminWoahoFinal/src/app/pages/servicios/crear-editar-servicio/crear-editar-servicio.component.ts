@@ -9,10 +9,10 @@ import { ConsultarImagenesRequest } from '../../../models/request/requests';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { ConsultarCategoriaRequest } from 'src/app/models/request/requests';
 import { ConsultarTerritorioRequest } from '../../../models/request/requests';
-import { ConsultarImagenesResponse, ImagenDto } from '../../../models/response/reponses';
-import { ConsultarCategoriasResponse, Categoria } from 'src/app/models/response/reponses';
-import { ConsultarTerritorioResponse, PaisDTO } from '../../../models/response/reponses';
-import { MonedaDto, UnidadDto, TarifaDto } from '../../../models/general/general';
+import { ConsultarImagenesResponse } from '../../../models/response/reponses';
+import { ConsultarCategoriasResponse } from 'src/app/models/response/reponses';
+import { ConsultarTerritorioResponse } from '../../../models/response/reponses';
+import { MonedaDto, UnidadDto, TarifaDto, ServicioDto } from '../../../models/general/general';
 import { MonedaServiceService } from '../../../services/rest/moneda.service';
 import { ConsultarMonedasRequest } from '../../../models/request/requests';
 import { ConsultarMonedasResponse } from '../../../models/response/reponses';
@@ -23,7 +23,7 @@ import { CrearServicioRequest } from '../../../models/request/requests';
 import { ServicioService } from '../../../services/rest/servicio.service';
 import { GeneralResponse } from 'src/app/models/response/reponses';
 import { CrearServicioResponse } from '../../../models/response/reponses';
-import { Servicio } from '../../../models/response/reponses';
+import { ImagenDto, Categoria, PaisDTO } from '../../../models/general/general';
 
 @Component({
   selector: 'app-crear-editar-servicio',
@@ -59,15 +59,16 @@ export class CrearEditarServicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const servicioAux: Servicio = this.utilidades.obtenerObjetoAlmacenado() as Servicio;
+    const servicioAux: ServicioDto = this.utilidades.obtenerObjetoAlmacenado() as ServicioDto;
     this.cargarInformacion();
+    this.utilidades.mostrarCargue();
     if (servicioAux) {
       this.servicioForm = this.formBuilder.group({
-        nombre: new FormControl(servicioAux.name, Validators.required),
-        imagen: new FormControl(3, Validators.required),
-        categoria: new FormControl(servicioAux.category, Validators.required),
-        pais: new FormControl('', Validators.required),
-        descripcion: new FormControl(servicioAux.description, Validators.required)
+        nombre: new FormControl(servicioAux.nombre, Validators.required),
+        imagen: new FormControl(servicioAux.codigoImagen, Validators.required),
+        categoria: new FormControl(servicioAux.categoria, Validators.required),
+        pais: new FormControl(servicioAux.pais, Validators.required),
+        descripcion: new FormControl(servicioAux.descripcion, Validators.required)
       });
       this.listTarifas = servicioAux.listTarifas;
     } else {
@@ -80,6 +81,7 @@ export class CrearEditarServicioComponent implements OnInit {
         descripcion: new FormControl('', Validators.required)
       });
       this.agregarFila();
+      this.utilidades.ocultarCargue();
     }
   }
 
@@ -140,8 +142,10 @@ export class CrearEditarServicioComponent implements OnInit {
         this.utilidades.mostrarCargue();
         const requestCrear: CrearServicioRequest = {
           servicioDto: {
+            codigo: '',
             nombre: this.servicioForm.get('nombre').value,
             imagen: this.servicioForm.get('imagen').value,
+            codigoImagen: '',
             categoria: this.servicioForm.get('categoria').value,
             pais: this.servicioForm.get('pais').value,
             descripcion: this.servicioForm.get('descripcion').value,

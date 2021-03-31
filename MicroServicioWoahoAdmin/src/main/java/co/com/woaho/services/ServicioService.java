@@ -58,19 +58,21 @@ public class ServicioService implements IServicioServices {
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 				consultarServiciosResponse.setMensajeRespuesta(EnumMensajes.NO_SERVICIOS.getMensaje());
 			}else {
-				List<ConsultarServiciosResponse.Servicio> listServiciosDto = new ArrayList<>();
+				List<ServicioDto> listServiciosDto = new ArrayList<>();
 				for(Servicio servicio : listServicios) {
-					ConsultarServiciosResponse.Servicio servicioDto = new ConsultarServiciosResponse.Servicio();
+					ServicioDto servicioDto = new ServicioDto();
 					servicioDto.setCodigo(String.valueOf(servicio.getServicioId()));
-					servicioDto.setImage(servicio.getImagen().getStrRuta());
+					servicioDto.setImagen(servicio.getImagen().getStrRuta());
+					servicioDto.setCodigoImagen(String.valueOf(servicio.getImagen().getImagenId()));
+					servicioDto.setPais(String.valueOf(servicio.getPais().getIdTerritorio()));
 					EquivalenciaIdioma equivalencia  = equivalenciaIdiomaDao.obtenerEquivalencia(servicio.getStrNombre());
 					if(equivalencia == null) {
-						servicioDto.setName(servicio.getStrNombre());
+						servicioDto.setNombre(servicio.getStrNombre());
 					}else {
 						if(request.getIdioma().equalsIgnoreCase(Constantes.IDIOMA_INGLES)) {
-							servicioDto.setName(equivalencia.getEquivalenciaIdiomaIngles());
+							servicioDto.setNombre(equivalencia.getEquivalenciaIdiomaIngles());
 						}else {
-							servicioDto.setName(equivalencia.getEquivalenciaIdiomaOriginal());
+							servicioDto.setNombre(equivalencia.getEquivalenciaIdiomaOriginal());
 						}	
 					}
 					List<Tarifa> tarifasList = tarifaDao.obtenerTarifaServicio(servicio.getServicioId());
@@ -78,9 +80,9 @@ public class ServicioService implements IServicioServices {
 					if(null == tarifasList || tarifasList.isEmpty()) {
 						servicioDto.setListTarifas(new ArrayList<>());
 					}else {
-						List<ConsultarServiciosResponse.Servicio.TarifaServicio> tarifasListDto = new ArrayList<>();
+						List<TarifaDto> tarifasListDto = new ArrayList<>();
 						tarifasList.forEach(tarifa -> {
-							ConsultarServiciosResponse.Servicio.TarifaServicio tarifaServicioDto = new ConsultarServiciosResponse.Servicio.TarifaServicio();
+							TarifaDto tarifaServicioDto = new TarifaDto();
 							tarifaServicioDto.setMoneda(String.valueOf(tarifa.getMoneda().getMonedaId()));
 							tarifaServicioDto.setPais(String.valueOf(tarifa.getPais().getIdTerritorio()));
 							tarifaServicioDto.setValor(tarifa.getValor());
@@ -89,9 +91,8 @@ public class ServicioService implements IServicioServices {
 						});
 						servicioDto.setListTarifas(tarifasListDto);	
 					}									
-					servicioDto.setDescription(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrDescripcion(), request.getIdioma(), equivalenciaIdiomaDao));
-					servicioDto.setCategory(servicio.getCategoria().getCategoriaId());
-					servicioDto.setClicks(Long.parseLong("0"));
+					servicioDto.setDescripcion(Utilidades.getInstance().obtenerEquivalencia(servicio.getStrDescripcion(), request.getIdioma(), equivalenciaIdiomaDao));
+					servicioDto.setCategoria(String.valueOf(servicio.getCategoria().getCategoriaId()));
 					listServiciosDto.add(servicioDto);
 				}
 				consultarServiciosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
