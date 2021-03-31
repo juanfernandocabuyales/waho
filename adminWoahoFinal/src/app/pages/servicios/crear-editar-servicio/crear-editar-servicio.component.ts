@@ -47,6 +47,8 @@ export class CrearEditarServicioComponent implements OnInit {
   listUnidades: UnidadDto[] = [];
 
   submitted = false;
+  blnCreacion = false;
+  servicioAux: ServicioDto;
 
   constructor(private formBuilder: FormBuilder,
               private utilidades: UtilidadesService,
@@ -59,19 +61,20 @@ export class CrearEditarServicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const servicioAux: ServicioDto = this.utilidades.obtenerObjetoAlmacenado() as ServicioDto;
+    this.servicioAux = this.utilidades.obtenerObjetoAlmacenado() as ServicioDto;
     this.cargarInformacion();
     this.utilidades.mostrarCargue();
-    if (servicioAux) {
+    if (this.servicioAux) {
       this.servicioForm = this.formBuilder.group({
-        nombre: new FormControl(servicioAux.nombre, Validators.required),
-        imagen: new FormControl(servicioAux.codigoImagen, Validators.required),
-        categoria: new FormControl(servicioAux.categoria, Validators.required),
-        pais: new FormControl(servicioAux.pais, Validators.required),
-        descripcion: new FormControl(servicioAux.descripcion, Validators.required)
+        nombre: new FormControl(this.servicioAux.nombre, Validators.required),
+        imagen: new FormControl(this.servicioAux.codigoImagen, Validators.required),
+        categoria: new FormControl(this.servicioAux.categoria, Validators.required),
+        pais: new FormControl(this.servicioAux.pais, Validators.required),
+        descripcion: new FormControl(this.servicioAux.descripcion, Validators.required)
       });
-      this.listTarifas = servicioAux.listTarifas;
+      this.listTarifas = this.servicioAux.listTarifas;
     } else {
+      this.blnCreacion = true;
       this.utilidades.mostrarCargue();
       this.servicioForm = this.formBuilder.group({
         nombre: new FormControl('', Validators.required),
@@ -235,12 +238,22 @@ export class CrearEditarServicioComponent implements OnInit {
     this.listTarifas = [];
     this.agregarFila();
     this.maxCaracteres = Constantes.CANT_MAX_CARACTERES;
-    this.servicioForm.reset({
-      nombre: '',
-      imagen: '',
-      categoria: '',
-      pais: '',
-      descripcion: ''
-    });
+    if (!this.blnCreacion){
+      this.servicioForm.reset({
+        nombre: this.servicioAux.nombre,
+        imagen: this.servicioAux.codigoImagen,
+        categoria: this.servicioAux.categoria,
+        pais: this.servicioAux.pais,
+        descripcion: this.servicioAux.descripcion
+      });
+    }else{
+      this.servicioForm.reset({
+        nombre: '',
+        imagen: '',
+        categoria: '',
+        pais: '',
+        descripcion: ''
+      });
+    }
   }
 }
