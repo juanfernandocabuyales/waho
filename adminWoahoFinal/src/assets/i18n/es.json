@@ -11,7 +11,8 @@
         "limpiar": "Limpiar",
         "cantidad": "Cantidad",
         "agregar": "Agregar",
-        "completar_campos": "Favor completar los campos del formulario"
+        "completar_campos": "Favor completar los campos del formulario",
+        "restaurar": "Restaurar"
     },
     "loginPage": {
         "usuario": "Usuario",

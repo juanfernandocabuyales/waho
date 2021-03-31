@@ -15,8 +15,8 @@ export class UtilidadesService {
   objetoAlmacenar: any;
 
   constructor(private traslation: TranslateService,
-              private router: Router,
-              private spinner: NgxSpinnerService) {
+    private router: Router,
+    private spinner: NgxSpinnerService) {
 
   }
 
@@ -47,9 +47,8 @@ export class UtilidadesService {
   }
 
   navegarPagina(pPagina: string, pObjeto: any): void {
-    if (pObjeto){
-      this.objetoAlmacenar = pObjeto;
-    }
+
+    this.objetoAlmacenar = pObjeto;
     this.router.navigate([pPagina]);
   }
 
@@ -69,7 +68,7 @@ export class UtilidadesService {
     this.spinner.hide();
   }
 
-  mostarDialogoOpciones(pTitulo: string, pTexto: string, pOpciones: string[]): Promise<SweetAlertResult<any>>{
+  mostarDialogoOpciones(pTitulo: string, pTexto: string, pOpciones: string[]): Promise<SweetAlertResult<any>> {
     return Swal.fire({
       title: pTitulo,
       text: pTexto,

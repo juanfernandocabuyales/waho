@@ -66,7 +66,7 @@ export class ServiciosComponent implements OnInit {
                                           this.utilidades.traducirTexto('serviciosPage.cerrar')])
       .then((result) => {
         if (result.isConfirmed) {
-          this.utilidades.navegarPagina('/home/servicios/crear-servicios', null);
+          this.utilidades.navegarPagina('/home/servicios/crear-servicios', servicioAux);
         } else if (result.isDenied) {
           console.log('Fue eliminado: ' + servicioAux.nombre);
         }

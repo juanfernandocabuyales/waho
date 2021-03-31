@@ -235,10 +235,9 @@ export class CrearEditarServicioComponent implements OnInit {
   }
 
   limpiarCampos(): void {
-    this.listTarifas = [];
-    this.agregarFila();
     this.maxCaracteres = Constantes.CANT_MAX_CARACTERES;
     if (!this.blnCreacion){
+      this.listTarifas = this.servicioAux.listTarifas;
       this.servicioForm.reset({
         nombre: this.servicioAux.nombre,
         imagen: this.servicioAux.codigoImagen,
@@ -247,6 +246,8 @@ export class CrearEditarServicioComponent implements OnInit {
         descripcion: this.servicioAux.descripcion
       });
     }else{
+      this.listTarifas = [];
+      this.agregarFila();
       this.servicioForm.reset({
         nombre: '',
         imagen: '',

@@ -11,7 +11,8 @@
         "limpiar": "Clean",
         "cantidad": "Amount",
         "agregar": "Add",
-        "completar_campos": "Please complete the form fields"
+        "completar_campos": "Please complete the form fields",
+        "restaurar": "Restore"
     },
     "loginPage": {
         "usuario": "Login",
