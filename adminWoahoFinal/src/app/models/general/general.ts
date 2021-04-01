@@ -52,3 +52,9 @@ export class PaisDTO {
     idTerritorio: string;
     nombreTerritorio: string;
 }
+
+export class OpcionesDto{
+    nombre: string;
+    imagen: string;
+    ruta: string;
+}

@@ -15,7 +15,13 @@
         "restaurar": "Restaurar",
         "operacion_ok": "Operación Exitosa",
         "crear": "Crear",
-        "editar": "Editar"
+        "editar": "Editar",
+        "opciones": {
+            "monedas": "Monedas",
+            "imagenes": "Imagenes",
+            "unidad": "Unidades",
+            "pais": "Paises"
+        }
     },
     "loginPage": {
         "usuario": "Usuario",
@@ -29,7 +35,8 @@
             "profesionales": "Profesionales",
             "categorias": "Categorias",
             "servicios": "Servicios",
-            "Monedas": "Monedas"
+            "Monedas": "Monedas",
+            "general": "General"
         }
     },
     "serviciosPage": {

@@ -21,6 +21,8 @@ import { ServiciosComponent } from './pages/servicios/consultar-servicios/servic
 import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-servicio/crear-editar-servicio.component';
 
 import { FormsModule } from '@angular/forms';
+import { OpcionesComponent } from './pages/general/opciones/opciones.component';
+import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     HomeComponent,
     ServiciosComponent,
-    CrearEditarServicioComponent
+    CrearEditarServicioComponent,
+    OpcionesComponent,
+    ImagenesComponent
   ],
   imports: [
     ReactiveFormsModule,

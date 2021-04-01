@@ -15,7 +15,13 @@
         "restaurar": "Restore",
         "operacion_ok": "Successful Operation",
         "crear": "Create",
-        "editar": "Edit"
+        "editar": "Edit",
+        "opciones": {
+            "monedas": "Coins",
+            "imagenes": "Images",
+            "unidad": "Units",
+            "pais": "Countrys"
+        }
     },
     "loginPage": {
         "usuario": "Login",
@@ -29,7 +35,8 @@
             "profesionales": "Professionals",
             "categorias": "Categories",
             "servicios": "Services",
-            "Monedas": "Coins"
+            "Monedas": "Coins",
+            "general": "General"
         }
     },
     "serviciosPage": {

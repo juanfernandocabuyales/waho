@@ -122,7 +122,6 @@ export class CrearEditarServicioComponent implements OnInit {
 
     forkJoin([imagenesServicio, categoriaServicio, territorioServicio, monedaServicio, unidadServicio]).subscribe(
       results => {
-        console.log('result Join', results);
         this.validarRespuestas(results);
       }, error => {
         this.utilidades.ocultarCargue();

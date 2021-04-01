@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ServiciosComponent } from './pages/servicios/consultar-servicios/servicios.component';
 import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-servicio/crear-editar-servicio.component';
+import { OpcionesComponent } from './pages/general/opciones/opciones.component';
+import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,16 @@ const routes: Routes = [
       {
         path: 'servicios/crear-servicios',
         component: CrearEditarServicioComponent
+      },
+      {
+        path: 'opciones',
+        component: OpcionesComponent,
+        children: [
+          {
+            path: 'imagenes',
+            component: ImagenesComponent
+          }
+        ]
       }
     ],
   }

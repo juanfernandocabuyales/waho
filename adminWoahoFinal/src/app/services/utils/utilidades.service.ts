@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GeneralRequest } from '../../models/request/requests';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute  } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 import Swal, { SweetAlertResult } from 'sweetalert2';
@@ -16,6 +16,7 @@ export class UtilidadesService {
 
   constructor(private traslation: TranslateService,
               private router: Router,
+              private route: ActivatedRoute,
               private spinner: NgxSpinnerService) {
 
   }
@@ -51,7 +52,6 @@ export class UtilidadesService {
   }
 
   navegarPagina(pPagina: string, pObjeto: any): void {
-
     this.objetoAlmacenar = pObjeto;
     this.router.navigate([pPagina]);
   }
