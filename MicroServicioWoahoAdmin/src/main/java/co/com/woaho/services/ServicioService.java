@@ -196,7 +196,12 @@ public class ServicioService implements IServicioServices {
 				servicio = serviciosDao.guardarActualizarServicio(servicio);
 				
 				for( TarifaDto item: servicioDto.getListTarifas()) {
-					Tarifa tarifaServicio = tarifaDao.obtenerTarifaId(Long.parseLong(item.getCodigo()));
+					Tarifa tarifaServicio;
+					if(null == item.getCodigo() || item.getCodigo().isEmpty()) {
+						tarifaServicio = new Tarifa();
+					}else {
+						tarifaServicio = tarifaDao.obtenerTarifaId(Long.parseLong(item.getCodigo()));
+					} 
 					tarifaServicio.setValor(item.getValor());
 					
 					Moneda moneda = new Moneda();
