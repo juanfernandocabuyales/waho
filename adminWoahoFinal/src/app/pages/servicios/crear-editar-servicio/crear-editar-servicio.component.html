@@ -99,9 +99,9 @@
     <hr>
 
     <div class="text-center">
-        <button class="btn btn-primary mt-4 mb-3" (click)="crearServicio()">
+        <button class="btn btn-primary mt-4 mb-3" (click)="ejecutarOperacion()">
             <i class="fa fa-plus mr-1"></i>
-            {{ 'serviciosPage.crear' | translate }}
+            {{ (blnCreacion ? 'serviciosPage.crear' : 'general.editar') | translate }}
         </button>
         <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3" (click)="limpiarCampos()">
             <i class="fa fa-trash mr-1"></i>

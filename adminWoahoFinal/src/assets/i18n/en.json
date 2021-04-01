@@ -12,7 +12,10 @@
         "cantidad": "Amount",
         "agregar": "Add",
         "completar_campos": "Please complete the form fields",
-        "restaurar": "Restore"
+        "restaurar": "Restore",
+        "operacion_ok": "Successful Operation",
+        "crear": "Create",
+        "editar": "Edit"
     },
     "loginPage": {
         "usuario": "Login",

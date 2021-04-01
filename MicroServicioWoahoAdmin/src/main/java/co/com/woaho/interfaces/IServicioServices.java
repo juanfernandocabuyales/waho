@@ -10,4 +10,6 @@ public interface IServicioServices {
 	ConsultarServiciosResponse consultarServicios(ConsultarServiciosRequest request);
 	
 	CrearServicioResponse crearServicio(CrearServicioRequest request);
+	
+	CrearServicioResponse actualizarServicio(CrearServicioRequest request);
 }

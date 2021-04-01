@@ -9,4 +9,6 @@ public interface ITarifaDao {
 	List<Tarifa> obtenerTarifaServicio(Long pIdServicio);
 	
 	Tarifa guardarActualizarTarifa(Tarifa pTarifa);
+	
+	Tarifa obtenerTarifaId(Long pId);
 }

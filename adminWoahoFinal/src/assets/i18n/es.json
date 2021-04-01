@@ -12,7 +12,10 @@
         "cantidad": "Cantidad",
         "agregar": "Agregar",
         "completar_campos": "Favor completar los campos del formulario",
-        "restaurar": "Restaurar"
+        "restaurar": "Restaurar",
+        "operacion_ok": "Operación Exitosa",
+        "crear": "Crear",
+        "editar": "Editar"
     },
     "loginPage": {
         "usuario": "Usuario",

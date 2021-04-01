@@ -10,6 +10,7 @@ export class UnidadDto{
 }
 
 export class TarifaDto{
+    codigo: string;
     pais: string;
     valor: number;
     moneda: string;

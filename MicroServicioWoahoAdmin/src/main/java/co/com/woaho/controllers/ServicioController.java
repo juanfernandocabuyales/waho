@@ -30,7 +30,7 @@ public class ServicioController {
 	private IServicioServices servicioService;
 	
 	@PostMapping(value = "/consultarServicios", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> consultarServicios(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> consultarServicios(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("consultarServicios", request.getStrMensaje());
 		
@@ -48,7 +48,7 @@ public class ServicioController {
 	}
 	
 	@PostMapping(value = "/crearServicios", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> crearServicios(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> crearServicios(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("crearServicios", request.getStrMensaje());
 		
@@ -61,6 +61,24 @@ public class ServicioController {
 		resp.setMensaje(gson.toJson(crearServicioResponse));
 		
 		logs.registrarLogInfoRespuestaServicio("crearServicios", resp.getMensaje());
+		
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/actualizarServicio", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<GeneralResponse> actualizarServicio(@RequestBody GeneralRequest request) {
+		
+		logs.registrarLogInfoEjecutaServicio("actualizarServicio", request.getStrMensaje());
+		
+		Gson gson = new Gson();
+		
+		CrearServicioRequest crearServicioRequest = gson.fromJson(request.getStrMensaje(), CrearServicioRequest.class);
+		CrearServicioResponse crearServicioResponse = servicioService.actualizarServicio(crearServicioRequest);
+		
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(crearServicioResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("actualizarServicio", resp.getMensaje());
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}

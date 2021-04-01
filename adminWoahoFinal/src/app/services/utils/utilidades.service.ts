@@ -15,8 +15,8 @@ export class UtilidadesService {
   objetoAlmacenar: any;
 
   constructor(private traslation: TranslateService,
-    private router: Router,
-    private spinner: NgxSpinnerService) {
+              private router: Router,
+              private spinner: NgxSpinnerService) {
 
   }
 
@@ -28,6 +28,10 @@ export class UtilidadesService {
       allowOutsideClick: false,
       width: '350px',
     });
+  }
+
+  abrirDialogoExitoso(pMensaje: string): void {
+    Swal.fire(pMensaje, '', 'success');
   }
 
   construirPeticion(pObjeto: any): GeneralRequest {

@@ -44,4 +44,19 @@ public class TarifaDao extends Persistencia implements ITarifaDao {
 			return null;
 		}
 	}
+	
+	@Override
+	@Transactional
+	public Tarifa obtenerTarifaId(Long pId) {
+		Tarifa tarifa = null;
+		try {
+			Query query = getEntityManager().createNamedQuery("Tarifa.findId");
+			query.setParameter("pId", pId);
+			tarifa = (Tarifa) query.getSingleResult();
+			return tarifa;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerTarifaId", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
 }

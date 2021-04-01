@@ -1,6 +1,8 @@
 package co.com.woaho.dto;
 
 public class TarifaDto {
+	
+	private String codigo;
 
 	private String pais;
 
@@ -9,6 +11,14 @@ public class TarifaDto {
 	private String moneda;
 
 	private String unidad;
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getPais() {
 		return pais;

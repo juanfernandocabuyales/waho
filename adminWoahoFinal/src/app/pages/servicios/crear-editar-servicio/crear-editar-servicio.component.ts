@@ -132,6 +132,14 @@ export class CrearEditarServicioComponent implements OnInit {
     );
   }
 
+  ejecutarOperacion(): void {
+    if (this.blnCreacion) {
+      this.crearServicio();
+    } else {
+      this.actualizarServicio();
+    }
+  }
+
   crearServicio(): void {
     this.submitted = true;
     const validacionTarifa = this.validarTarifas();
@@ -168,7 +176,34 @@ export class CrearEditarServicioComponent implements OnInit {
         );
       }
     }
+  }
 
+  actualizarServicio(): void {
+    this.utilidades.mostrarCargue();
+    const requestCrear: CrearServicioRequest = {
+      servicioDto: {
+        codigo: this.servicioAux.codigo,
+        nombre: this.servicioForm.get('nombre').value,
+        imagen: this.servicioForm.get('imagen').value,
+        codigoImagen: this.servicioForm.get('imagen').value,
+        categoria: this.servicioForm.get('categoria').value,
+        pais: this.servicioForm.get('pais').value,
+        descripcion: this.servicioForm.get('descripcion').value,
+        listTarifas: this.listTarifas
+      },
+      idioma: this.utilidades.obtenerIdioma()
+    };
+    this.servicioAux = requestCrear.servicioDto;
+
+    this.servicio.actualizarServicio(this.utilidades.construirPeticion(requestCrear)).subscribe(
+      data => {
+        this.validarRespuestaActualizacion(data);
+      },
+      error => {
+        this.utilidades.ocultarCargue();
+        console.log('error creacion', error);
+      }
+    );
   }
 
   validarRespuestas(results: any): void {
@@ -205,8 +240,20 @@ export class CrearEditarServicioComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
+  validarRespuestaActualizacion(pRespuesta: GeneralResponse): void {
+    const crearServiciosResponse: CrearServicioResponse = JSON.parse(pRespuesta.mensaje);
+    if (crearServiciosResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
+      this.limpiarCampos();
+      this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.operacion_ok'));
+    } else {
+      this.utilidades.abrirDialogo(crearServiciosResponse.mensajeRespuesta, false);
+    }
+    this.utilidades.ocultarCargue();
+  }
+
   agregarFila(): void {
     this.listTarifas.push({
+      codigo: '',
       pais: '0',
       unidad: '0',
       valor: null,
@@ -236,7 +283,7 @@ export class CrearEditarServicioComponent implements OnInit {
 
   limpiarCampos(): void {
     this.maxCaracteres = Constantes.CANT_MAX_CARACTERES;
-    if (!this.blnCreacion){
+    if (!this.blnCreacion) {
       this.listTarifas = this.servicioAux.listTarifas;
       this.servicioForm.reset({
         nombre: this.servicioAux.nombre,
@@ -245,7 +292,7 @@ export class CrearEditarServicioComponent implements OnInit {
         pais: this.servicioAux.pais,
         descripcion: this.servicioAux.descripcion
       });
-    }else{
+    } else {
       this.listTarifas = [];
       this.agregarFila();
       this.servicioForm.reset({
