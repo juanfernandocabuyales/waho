@@ -1,19 +1,35 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { OpcionesDto } from '../../../models/general/general';
+import { Subscription } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-opciones',
   templateUrl: './opciones.component.html',
   styleUrls: ['./opciones.component.css']
 })
-export class OpcionesComponent implements OnInit {
+export class OpcionesComponent implements OnInit, OnDestroy {
 
   opciones: OpcionesDto[] = [];
 
   blnMostarOpciones = true;
 
-  constructor(private utilidades: UtilidadesService) { }
+  constructor(private utilidades: UtilidadesService, private router: Router) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/home/general') {
+          this.blnMostarOpciones = true;
+        } else {
+          this.blnMostarOpciones = false;
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.blnMostarOpciones = true;
+  }
 
   ngOnInit(): void {
     this.cargarOpciones();
@@ -51,8 +67,8 @@ export class OpcionesComponent implements OnInit {
   }
 
   abrirOpcion(pOpcion: OpcionesDto): void {
-    console.log('esta abriendo');
-    this.blnMostarOpciones = false;
+    this.blnMostarOpciones = !this.blnMostarOpciones;
+    console.log('abrirOpcion', this.blnMostarOpciones);
     this.utilidades.navegarPagina(pOpcion.ruta, null);
   }
 

@@ -15,4 +15,6 @@
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div *ngIf="!blnMostarOpciones">
+    <router-outlet></router-outlet>
+</div>

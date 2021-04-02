@@ -142,6 +142,7 @@ public class ImagenService implements IImagenService {
 					ConsultarImagenesResponse.ImagenDto imagenDto = new ConsultarImagenesResponse.ImagenDto();
 					imagenDto.setIdImagen(String.valueOf(item.getImagenId()));
 					imagenDto.setNombreImagen(item.getStrNombre());
+					imagenDto.setRuta(item.getStrRuta());
 					listImagenesDto.add(imagenDto);
 				});
 				consultarImagenesResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());

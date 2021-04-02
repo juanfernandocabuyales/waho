@@ -1,13 +1,13 @@
 <app-loading></app-loading>
 <div class="col">
-    <h2 style="text-align: center;" class="mt-4"> Seleccione una imagen para cargar</h2>
+    <h2 style="text-align: center;" class="mt-4"> Imagenes</h2>
 </div>
 
 <div class="row row-cols-3 row-cols-md-4 g-4 ml-1 mt-5">
     <div class="col-md-4">
         <h3>Seleccione archivos</h3>
         <div class="well drop-zone file-over" appNgDropFiles [archivo]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over' : estaSobreElemento}">
-            <h4>Deje caer aqui los archivos</h4>
+            <h4>Deje caer aqui el archivo</h4>
             <img src="assets/drop-images.png">
         </div>
     </div>
@@ -21,6 +21,10 @@
         <button class="btn btn-secondary ml-2" (click)="limpiar()">
             <i class="fa fa-trash"></i>
             Limpiar
+        </button>
+        <button class="btn btn-success ml-2" (click)="limpiar()">
+            <i class="fa fa-list-alt"></i>
+            Listar Imagenes
         </button>
     </div>
 </div>

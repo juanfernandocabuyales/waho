@@ -49,7 +49,10 @@ export class ImagenesComponent implements OnInit {
           }
         );
       }
-      this.limpiar();
+      this.utilidades.abrirDialogoExitoso('Proceso exitoso').
+      then( result => {
+        this.limpiar();
+      });
       this.utilidades.ocultarCargue();
     } else {
       this.utilidades.abrirDialogo('No se han cargado archivos.', false);

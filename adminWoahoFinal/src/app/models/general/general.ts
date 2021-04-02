@@ -36,6 +36,7 @@ export class Categoria {
 export class ImagenDto {
     idImagen: string;
     nombreImagen: string;
+    ruta: string;
 }
 
 export class Servicio {

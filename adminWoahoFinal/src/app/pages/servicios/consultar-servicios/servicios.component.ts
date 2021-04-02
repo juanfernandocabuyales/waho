@@ -14,12 +14,6 @@ import { ServicioDto } from '../../../models/general/general';
 })
 export class ServiciosComponent implements OnInit {
 
-  titulos: string[] = [
-    'codigo',
-    'name',
-    'description'
-  ];
-
   servicios: ServicioDto[] = [];
 
   constructor(private utilidades: UtilidadesService,

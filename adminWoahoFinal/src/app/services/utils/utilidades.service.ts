@@ -29,8 +29,8 @@ export class UtilidadesService {
     });
   }
 
-  abrirDialogoExitoso(pMensaje: string): void {
-    Swal.fire(pMensaje, '', 'success');
+  abrirDialogoExitoso(pMensaje: string): Promise<SweetAlertResult<any>> {
+    return Swal.fire(pMensaje, '', 'success');
   }
 
   construirPeticion(pObjeto: any): GeneralRequest {

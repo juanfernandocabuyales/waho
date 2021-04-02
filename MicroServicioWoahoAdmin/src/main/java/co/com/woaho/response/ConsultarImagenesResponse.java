@@ -19,6 +19,8 @@ public class ConsultarImagenesResponse extends BaseResponse {
 		private String idImagen;
 
 		private String nombreImagen;
+		
+		private String ruta;
 
 		public String getIdImagen() {
 			return idImagen;
@@ -34,6 +36,14 @@ public class ConsultarImagenesResponse extends BaseResponse {
 
 		public void setNombreImagen(String nombreImagen) {
 			this.nombreImagen = nombreImagen;
+		}
+
+		public String getRuta() {
+			return ruta;
+		}
+
+		public void setRuta(String ruta) {
+			this.ruta = ruta;
 		}
 	}
 }
