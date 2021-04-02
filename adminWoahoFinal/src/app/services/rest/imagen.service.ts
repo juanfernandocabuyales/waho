@@ -22,4 +22,8 @@ export class ImagenService {
     formData.append('peticion', peticion);
     return this.httClient.post<GeneralResponse>(`${environment.imagenController}guardarImagen`, formData);
   }
+
+  eliminarImagen(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.imagenController}eliminarImagen`, peticion);
+  }
 }

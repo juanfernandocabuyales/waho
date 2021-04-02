@@ -1,41 +1,41 @@
 <app-loading></app-loading>
 <div class="col">
-    <h2 style="text-align: center;" class="mt-4"> Imagenes</h2>
+    <h2 style="text-align: center;" class="mt-4"> {{ 'imagenesPage.imagenes' | translate}}</h2>
 </div>
 
 <div class="row row-cols-3 row-cols-md-4 g-4 ml-1 mt-5">
     <div class="col-md-4">
-        <h3>Seleccione archivos</h3>
+        <h3>{{ 'imagenesPage.seleccionar_archivo' | translate}}</h3>
         <div class="well drop-zone file-over" appNgDropFiles [archivo]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over' : estaSobreElemento}">
-            <h4>Deje caer aqui el archivo</h4>
+            <h4>{{ 'imagenesPage.arrastrar_img' | translate}}</h4>
             <img src="assets/drop-images.png">
         </div>
     </div>
 
     <div class="col-md-8">
-        <h4>Cargar archivos</h4>
+        <h4>{{ 'imagenesPage.cargar_archivos' | translate}}</h4>
         <button class="btn btn-danger" (click)="cargarArchivos()">
             <i class="fa fa-check"></i>
-            Cargar
+            {{ 'imagenesPage.cargar' | translate}}
         </button>
         <button class="btn btn-secondary ml-2" (click)="limpiar()">
             <i class="fa fa-trash"></i>
-            Limpiar
+            {{ 'general.limpiar' | translate}}
         </button>
         <button class="btn btn-success ml-2" (click)="listarImagenes()">
             <i class="fa fa-list-alt"></i>
-            {{ blnBanderaListar ? 'Listar Imagenes' : 'Dejar de listar' }}
+            {{ (blnBanderaListar ? 'imagenesPage.listar' : 'imagenesPage.dejar_listar') | translate }}
         </button>
     </div>
 </div>
 <div class="col mt-3" *ngIf="blnBanderaListar">
-    <h3>Recuerde cambiar el nombre de las imagenes</h3>
+    <h3>{{ 'imagenesPage.cambiar_nombre' | translate}}</h3>
     <table class="table table-bordered mt-3">
         <thead class="thead">
             <tr>
-                <th scope="col">Nombre archivo</th>
-                <th scope="col">Tamaño</th>
-                <th scope="col">Opciones</th>
+                <th scope="col">{{ 'imagenesPage.nombre_archivo' | translate}}</th>
+                <th scope="col">{{ 'imagenesPage.peso' | translate}}</th>
+                <th scope="col">{{ 'general.opcion' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -56,14 +56,19 @@
 </div>
 
 <div class="col mt-3" *ngIf="!blnBanderaListar">
-    <h3 style="text-align: center;">Listado de imagenes</h3>
+    <h3 style="text-align: center;">{{ 'imagenesPage.listado' | translate}}</h3>
     <div class="row row-cols-3 row-cols-md-4 g-4 ml-1">
         <div class="col animated fadeIn mt-4" *ngFor="let imagen of listImagenes;let i = index">
             <div class="card">
-                <img [src]="imagen.ruta" onerror="this.src='./assets/no-image.jpg';" style="height:350px">
+                <img [src]="imagen.ruta" onerror="this.src='./assets/no-image.jpg';" class="img-thumbnail" style="height: 350px;">
                 <div class="card-body">
                     <div class="row">
                         <h5 class="card-title"><strong>{{imagen.nombreImagen}}</strong></h5>
+                        <div class="ml-auto mr-2">
+                            <button type="button" class="btn btn-secondary ml-2" (click)="eliminarImagen(i,imagen)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

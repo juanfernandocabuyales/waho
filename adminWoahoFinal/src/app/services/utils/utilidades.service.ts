@@ -91,7 +91,18 @@ export class UtilidadesService {
       input: 'text',
       inputPlaceholder: placeHolder,
       confirmButtonColor: 'rgba(249, 25, 84, 1)',
-      confirmButtonText: `Aceptar`,
+      confirmButtonText: `${this.traducirTexto('general.aceptar')}`,
+      allowOutsideClick: false
+    });
+  }
+
+  mostrarDialogoConfirmacion(pTitulo: string): Promise<SweetAlertResult<any>>{
+    return Swal.fire({
+      title: pTitulo,
+      showCancelButton: true,
+      confirmButtonColor: 'rgba(249, 25, 84, 1)',
+      confirmButtonText: `<i class="fa fa-check"></i> ${this.traducirTexto('general.aceptar')}`,
+      cancelButtonText: `<i class="fa fa-window-close"></i> ${this.traducirTexto('general.cancelar')}`,
       allowOutsideClick: false
     });
   }

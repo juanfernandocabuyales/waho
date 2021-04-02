@@ -16,6 +16,10 @@
         "operacion_ok": "Successful Operation",
         "crear": "Create",
         "editar": "Edit",
+        "opcion": "Options",
+        "proceso_ok": "Successful Process",
+        "aceptar": "Accept",
+        "cancelar": "Cancel",
         "opciones": {
             "monedas": "Coins",
             "imagenes": "Images",
@@ -52,5 +56,21 @@
         "descripcion": "Service Description",
         "tarifas_mal": "Review data entered for service rates.",
         "creacion_ok": "Successful creation"
+    },
+    "imagenesPage": {
+        "imagenes": "Images",
+        "seleccionar_archivo": "Select Files",
+        "arrastrar_img": "Drop the file here",
+        "cargar_archivos": "Upload files",
+        "cargar": "Load",
+        "listar": "List images",
+        "dejar_listar": "Stop listing images",
+        "cambiar_nombre": "Remember to rename images",
+        "nombre_archivo": "File name",
+        "peso": "Size",
+        "listado": "List of images",
+        "no_archivos": "No files have been uploaded",
+        "ingrese_nombre": "Enter name",
+        "mensaje_eliminar": "You want to delete the selected image?"
     }
 }

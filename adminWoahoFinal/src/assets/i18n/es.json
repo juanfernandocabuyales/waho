@@ -16,6 +16,10 @@
         "operacion_ok": "Operación Exitosa",
         "crear": "Crear",
         "editar": "Editar",
+        "opcion": "Options",
+        "proceso_ok": "Successful Process",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
         "opciones": {
             "monedas": "Monedas",
             "imagenes": "Imagenes",
@@ -52,5 +56,21 @@
         "descripcion": "Descripción Servicio",
         "tarifas_mal": "Revisar los datos ingresados para las tarifas del servicio.",
         "creacion_ok": "Creación exitosa"
+    },
+    "imagenesPage": {
+        "imagenes": "Imagenes",
+        "seleccionar_archivo": "Seleccione archivos",
+        "arrastrar_img": "Deje caer aqui el archivo",
+        "cargar_archivos": "Cargar archivos",
+        "cargar": "Cargar",
+        "listar": "Listar imagenes",
+        "dejar_listar": "Dejar de listar",
+        "cambiar_nombre": "Recuerde cambiar el nombre de las imagenes",
+        "nombre_archivo": "Nombre Archivo",
+        "peso": "Tamaño",
+        "listado": "Listado de imagenes",
+        "no_archivos": "No se han cargado archivos",
+        "ingrese_nombre": "Ingrese nombre",
+        "mensaje_eliminar": "¿Desea eliminar la imagen seleccionada?"
     }
 }

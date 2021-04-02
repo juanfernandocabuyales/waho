@@ -42,3 +42,7 @@ export class CrearImagenRequest extends BaseRequest{
     alto: string;
     ancho: string;
 }
+
+export class EliminarRequest extends BaseRequest{
+    id: string;
+}

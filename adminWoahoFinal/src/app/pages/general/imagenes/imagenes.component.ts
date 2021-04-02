@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { FileDto, ImagenDto } from '../../../models/general/general';
-import { CrearImagenRequest, ConsultarImagenesRequest } from '../../../models/request/requests';
+import { CrearImagenRequest, ConsultarImagenesRequest, EliminarRequest } from '../../../models/request/requests';
 import { ImagenService } from '../../../services/rest/imagen.service';
-import { GeneralResponse, ConsultarImagenesResponse } from '../../../models/response/reponses';
+import { GeneralResponse, ConsultarImagenesResponse, EliminarResponse } from '../../../models/response/reponses';
 import { Constantes } from 'src/app/constants/constantes';
 
 @Component({
@@ -22,7 +22,7 @@ export class ImagenesComponent implements OnInit {
   estaSobreElemento = false;
 
   constructor(private utilidades: UtilidadesService,
-    private imagenService: ImagenService) { }
+              private imagenService: ImagenService) { }
 
   ngOnInit(): void {
   }
@@ -54,18 +54,20 @@ export class ImagenesComponent implements OnInit {
       this.utilidades.mostrarCargue();
       setTimeout(() => {
         this.utilidades.ocultarCargue();
-        this.utilidades.abrirDialogoExitoso('Proceso exitoso').
+        this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok')).
           then(result => {
             this.limpiar();
           });
       }, 5000);
     } else {
-      this.utilidades.abrirDialogo('No se han cargado archivos.', false);
+      this.utilidades.abrirDialogo(this.utilidades.traducirTexto('imagenesPage.no_archivos'), false);
     }
   }
 
   limpiar(): void {
     this.archivos = [];
+    this.listImagenes = [];
+    this.blnBanderaListar = true;
   }
 
   limpiarArchivos(): void {
@@ -77,11 +79,10 @@ export class ImagenesComponent implements OnInit {
   }
 
   editarFila(pArchivo: FileDto): void {
-    this.utilidades.mostarDialogoInput('Nombre archivo', 'ingrese el nombre')
+    this.utilidades.mostarDialogoInput(this.utilidades.traducirTexto('imagenesPage.nombre_archivo'),
+      this.utilidades.traducirTexto('imagenesPage.ingrese_nombre'))
       .then(result => {
-        console.log('result input', result);
         pArchivo.nombre = this.utilidades.obtenerNombreExtension(pArchivo.file, result.value);
-        console.log('Nombre editado', pArchivo.nombre);
       });
   }
 
@@ -97,12 +98,35 @@ export class ImagenesComponent implements OnInit {
         .subscribe(data => {
           this.validarRespuesta(data);
         },
-          error => {
+          () => {
             this.utilidades.ocultarCargue();
-            console.log('error creacion', error);
           }
         );
     }
+  }
+
+  eliminarImagen(pIndex: number, pImagen: ImagenDto): void {
+    this.utilidades.mostrarDialogoConfirmacion(this.utilidades.traducirTexto('imagenesPage.mensaje_eliminar'))
+      .then(result => {
+        if (result.isConfirmed) {
+          this.utilidades.mostrarCargue();
+
+          const eliminarRequest: EliminarRequest = {
+            id: pImagen.idImagen,
+            idioma: this.utilidades.obtenerIdioma()
+          };
+
+          this.imagenService.eliminarImagen(this.utilidades.construirPeticion(eliminarRequest)).subscribe(
+            data => {
+              this.validarEliminacion(data);
+              this.listImagenes.splice(pIndex, 1);
+            },
+            () => {
+              this.utilidades.ocultarCargue();
+            }
+          );
+        }
+      });
   }
 
   validarRespuesta(data: GeneralResponse): void {
@@ -115,5 +139,15 @@ export class ImagenesComponent implements OnInit {
     setTimeout(() => {
       this.utilidades.ocultarCargue();
     }, 5000);
+  }
+
+  validarEliminacion(data: GeneralResponse): void {
+    const response: EliminarResponse = JSON.parse(data.mensaje);
+    if (response.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
+      this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok'));
+    } else {
+      this.utilidades.abrirDialogo(this.utilidades.traducirTexto('general.carga_mal'), true);
+    }
+    this.utilidades.ocultarCargue();
   }
 }

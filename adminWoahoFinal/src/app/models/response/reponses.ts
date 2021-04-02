@@ -43,3 +43,6 @@ export class LoginAdminResponse extends BaseResponse{
 export class CrearImagenResponse extends BaseResponse{
     urlImagen: string;
 }
+
+export class EliminarResponse extends BaseResponse{
+}
