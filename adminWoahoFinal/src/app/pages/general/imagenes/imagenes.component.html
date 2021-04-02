@@ -22,13 +22,13 @@
             <i class="fa fa-trash"></i>
             Limpiar
         </button>
-        <button class="btn btn-success ml-2" (click)="limpiar()">
+        <button class="btn btn-success ml-2" (click)="listarImagenes()">
             <i class="fa fa-list-alt"></i>
-            Listar Imagenes
+            {{ blnBanderaListar ? 'Listar Imagenes' : 'Dejar de listar' }}
         </button>
     </div>
 </div>
-<div class="col mt-3">
+<div class="col mt-3" *ngIf="blnBanderaListar">
     <h3>Recuerde cambiar el nombre de las imagenes</h3>
     <table class="table table-bordered mt-3">
         <thead class="thead">
@@ -53,4 +53,20 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="col mt-3" *ngIf="!blnBanderaListar">
+    <h3 style="text-align: center;">Listado de imagenes</h3>
+    <div class="row row-cols-3 row-cols-md-4 g-4 ml-1">
+        <div class="col animated fadeIn mt-4" *ngFor="let imagen of listImagenes;let i = index">
+            <div class="card">
+                <img [src]="imagen.ruta" onerror="this.src='./assets/no-image.jpg';" style="height:350px">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title"><strong>{{imagen.nombreImagen}}</strong></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
