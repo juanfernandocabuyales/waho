@@ -23,12 +23,12 @@ import com.google.gson.Gson;
 
 import co.com.woaho.interfaces.IImagenService;
 import co.com.woaho.request.ConsultarImagenesRequest;
-import co.com.woaho.request.ConsultarTerritorioRequest;
 import co.com.woaho.request.CrearImagenRequest;
+import co.com.woaho.request.EliminarRequest;
 import co.com.woaho.request.GeneralRequest;
 import co.com.woaho.response.ConsultarImagenesResponse;
-import co.com.woaho.response.ConsultarTerritorioResponse;
 import co.com.woaho.response.CrearImagenResponse;
+import co.com.woaho.response.EliminarResponse;
 import co.com.woaho.response.GeneralResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -94,6 +94,20 @@ public class ImagenController {
 		resp.setMensaje(gson.toJson(consultarImagenesResponse));
 
 		logs.registrarLogInfoRespuestaServicio("consultarImages",resp.getMensaje());
+		return new ResponseEntity<>(resp, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/eliminarImagen", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<GeneralResponse> eliminarImagen(@RequestBody GeneralRequest request) {
+		logs.registrarLogInfoEjecutaServicio("eliminarImagen",request.getStrMensaje());
+		Gson gson = new Gson();
+		EliminarRequest eliminarRequest = gson.fromJson(request.getStrMensaje(), EliminarRequest.class);
+		EliminarResponse eliminarResponse = imagenService.eliminarImagen(eliminarRequest);
+
+		GeneralResponse resp = new GeneralResponse();
+		resp.setMensaje(gson.toJson(eliminarResponse));
+
+		logs.registrarLogInfoRespuestaServicio("eliminarImagen",resp.getMensaje());
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 }

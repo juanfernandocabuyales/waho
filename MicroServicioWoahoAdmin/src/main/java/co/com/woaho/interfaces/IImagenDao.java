@@ -11,4 +11,6 @@ public interface IImagenDao {
 	Imagen obtenerImagen(Long pIdImagen);
 	
 	List<Imagen> obtenerImagenes();
+	
+	void eliminarImagen(Imagen pImagen);
 }

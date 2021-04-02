@@ -12,6 +12,7 @@ import org.springframework.core.io.UrlResource;
 
 
 import java.nio.file.Path;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -27,8 +28,10 @@ import co.com.woaho.modelo.Imagen;
 import co.com.woaho.principal.Configuracion;
 import co.com.woaho.request.ConsultarImagenesRequest;
 import co.com.woaho.request.CrearImagenRequest;
+import co.com.woaho.request.EliminarRequest;
 import co.com.woaho.response.ConsultarImagenesResponse;
 import co.com.woaho.response.CrearImagenResponse;
+import co.com.woaho.response.EliminarResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
 
@@ -150,11 +153,49 @@ public class ImagenService implements IImagenService {
 				consultarImagenesResponse.setListImagenes(listImagenesDto);				
 			}			
 		}catch(Exception e) {
-			logs.registrarLogError("obtenerTerritorios", "No se ha podido procesar la peticion", e);
+			logs.registrarLogError("consultarImagenes", "No se ha podido procesar la peticion", e);
 			consultarImagenesResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 			consultarImagenesResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 		}
 		return consultarImagenesResponse;
+	}
+
+	@Override
+	public EliminarResponse eliminarImagen(EliminarRequest request) {
+		EliminarResponse eliminarResponse = new EliminarResponse();
+		try {			
+			Imagen imagen = imagenDao.obtenerImagen(Long.parseLong(request.getId()));
+			boolean encontro = false;
+			boolean resultado = false;
+			
+			if(null == imagen) {
+				eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdioma));
+			}else {
+				imagenDao.eliminarImagen(imagen);
+				File folder = new File(configuracion.getDirectorio());
+				File [] archivos = folder.listFiles();
+				for(int i= 0; i < archivos.length && !encontro; ++i) {
+					if(archivos[i].getName().contains(imagen.getStrNombre())) {
+						resultado = archivos[i].delete();
+						encontro = true;
+					}
+				}
+				
+				if(resultado) {
+					eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+					eliminarResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				}else {
+					eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdioma));
+				}
+			}
+		}catch(Exception e) {
+			logs.registrarLogError("eliminarImagen", "No se ha podido procesar la peticion", e);
+			eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdioma));
+		}
+		return eliminarResponse;
 	}
 
 }

@@ -36,4 +36,4 @@ eureka:
 parametracion-adicional:
   appid: '0942319e-1677-4480-8992-a96e3882f7c7'
   restKey: 'Basic MTJiZjhkNmUtMTc0Ni00OTU5LWJmNDgtOTA0NDVjZmI5N2U3'
-  directorio: '/archivos'
+  directorio: 'E:\archivos'

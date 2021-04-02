@@ -58,4 +58,14 @@ public class ImagenDao extends Persistencia implements IImagenDao {
 			return listImagenes;
 		}
 	}
+	
+	@Override
+	@Transactional
+	public void eliminarImagen(Imagen pImagen) {
+		try {
+			getEntityManager().remove(pImagen);
+		}catch(Exception e) {
+			logs.registrarLogError("eliminarImagen", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+		}	
+	}
 }
