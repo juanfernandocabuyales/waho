@@ -39,3 +39,7 @@ export class CrearServicioResponse extends BaseResponse{
 export class LoginAdminResponse extends BaseResponse{
     idUsuario: string;
 }
+
+export class CrearImagenResponse extends BaseResponse{
+    urlImagen: string;
+}

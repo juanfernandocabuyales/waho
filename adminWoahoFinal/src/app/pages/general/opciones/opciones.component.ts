@@ -28,25 +28,25 @@ export class OpcionesComponent implements OnInit {
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.imagenes'),
       imagen: '../../../../assets/ic_imagen.png',
-      ruta: '/home/opciones/imagenes'
+      ruta: '/home/general/imagenes'
     });
 
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.monedas'),
       imagen: '../../../../assets/ic_monedas.png',
-      ruta: '/opciones/monedas'
+      ruta: '/home/general/monedas'
     });
 
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.unidad'),
       imagen: '../../../../assets/ic_medida.png',
-      ruta: '/opciones/unidad'
+      ruta: '/home/general/unidad'
     });
 
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.pais'),
       imagen: '../../../../assets/ic_bandera.png',
-      ruta: '/opciones/pais'
+      ruta: '/home/general/pais'
     });
   }
 

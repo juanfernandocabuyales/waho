@@ -1,1 +1,52 @@
-<p>imagenes works!</p>
+<app-loading></app-loading>
+<div class="col">
+    <h2 style="text-align: center;" class="mt-4"> Seleccione una imagen para cargar</h2>
+</div>
+
+<div class="row row-cols-3 row-cols-md-4 g-4 ml-1 mt-5">
+    <div class="col-md-4">
+        <h3>Seleccione archivos</h3>
+        <div class="well drop-zone file-over" appNgDropFiles [archivo]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over' : estaSobreElemento}">
+            <h4>Deje caer aqui los archivos</h4>
+            <img src="assets/drop-images.png">
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4>Cargar archivos</h4>
+        <button class="btn btn-danger" (click)="cargarArchivos()">
+            <i class="fa fa-check"></i>
+            Cargar
+        </button>
+        <button class="btn btn-secondary ml-2" (click)="limpiar()">
+            <i class="fa fa-trash"></i>
+            Limpiar
+        </button>
+    </div>
+</div>
+<div class="col mt-3">
+    <h3>Recuerde cambiar el nombre de las imagenes</h3>
+    <table class="table table-bordered mt-3">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Nombre archivo</th>
+                <th scope="col">Tamaño</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let archivo of archivos;let i = index">
+                <td>{{archivo.nombre}}</td>
+                <td>{{archivo.file.size / 1024/1024 | number: '.2-2'}} MB</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="editarFila(archivo)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(i)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

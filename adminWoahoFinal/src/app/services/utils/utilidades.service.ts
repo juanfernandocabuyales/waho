@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GeneralRequest } from '../../models/request/requests';
-import { Router, ActivatedRoute  } from '@angular/router';
+import { Router} from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 import Swal, { SweetAlertResult } from 'sweetalert2';
@@ -16,9 +16,7 @@ export class UtilidadesService {
 
   constructor(private traslation: TranslateService,
               private router: Router,
-              private route: ActivatedRoute,
               private spinner: NgxSpinnerService) {
-
   }
 
   abrirDialogo(pMensaje: string, pBandera: boolean): void {
@@ -85,5 +83,21 @@ export class UtilidadesService {
       cancelButtonText: `<i class="fa fa-window-close"></i> ${pOpciones[2]}`,
       allowOutsideClick: false,
     });
+  }
+
+  mostarDialogoInput(pTitulo: string, placeHolder: string): Promise<SweetAlertResult<any>> {
+    return Swal.fire({
+      title: pTitulo,
+      input: 'text',
+      inputPlaceholder: placeHolder,
+      confirmButtonColor: 'rgba(249, 25, 84, 1)',
+      confirmButtonText: `Aceptar`,
+      allowOutsideClick: false
+    });
+  }
+
+  obtenerNombreExtension(pFile: File, pNombre: string): string {
+    const extension = pFile.name.split('.', 2)[1];
+    return pNombre + '.' + extension;
   }
 }

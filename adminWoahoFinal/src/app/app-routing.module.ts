@@ -25,7 +25,7 @@ const routes: Routes = [
         component: CrearEditarServicioComponent
       },
       {
-        path: 'opciones',
+        path: 'general',
         component: OpcionesComponent,
         children: [
           {

@@ -15,4 +15,11 @@ export class ImagenService {
   obtenerImagenes(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.imagenController}consultarImages`, peticion);
   }
+
+  guardarImagen(pFile: File, peticion: string): Observable<GeneralResponse>{
+    const formData = new FormData();
+    formData.append('file', pFile);
+    formData.append('peticion', peticion);
+    return this.httClient.post<GeneralResponse>(`${environment.imagenController}guardarImagen`, formData);
+  }
 }

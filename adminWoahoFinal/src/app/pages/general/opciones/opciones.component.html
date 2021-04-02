@@ -1,5 +1,7 @@
-<h2 style="text-align: center;" class="mt-4"> Seleccione una opción para gestionar</h2>
-<hr>
+<div class="col" *ngIf="blnMostarOpciones">
+    <h2 style="text-align: center;" class="mt-4"> Seleccione una opción para gestionar</h2>
+    <hr>
+</div>
 <div class="row row-cols-3 row-cols-md-4 g-4 ml-1" *ngIf="blnMostarOpciones">
     <div class="col animated fadeIn mt-4" *ngFor="let opcion of opciones;let i = index">
         <div class="card" style="cursor: pointer;" (click)="abrirOpcion(opcion)">

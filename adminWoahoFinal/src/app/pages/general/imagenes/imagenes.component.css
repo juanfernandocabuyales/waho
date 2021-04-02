@@ -1,0 +1,10 @@
+.drop-zone {
+    border: dotted 3px black;
+    opacity: 0.5;
+    color: black;
+    text-align: center
+}
+
+.file-over {
+    border: dotted 3px rgba(249, 25, 84, 1);
+}

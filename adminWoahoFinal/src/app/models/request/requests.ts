@@ -35,3 +35,10 @@ export class LoginAdminRequest extends BaseRequest{
     usuario: string;
     llave: string;
 }
+
+export class CrearImagenRequest extends BaseRequest{
+    idImagen: string;
+    nombreImagen: string;
+    alto: string;
+    ancho: string;
+}

@@ -58,3 +58,8 @@ export class OpcionesDto{
     imagen: string;
     ruta: string;
 }
+
+export class FileDto{
+    file: File;
+    nombre: string;
+}

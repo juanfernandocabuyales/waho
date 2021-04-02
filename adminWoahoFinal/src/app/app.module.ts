@@ -23,6 +23,7 @@ import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-ser
 import { FormsModule } from '@angular/forms';
 import { OpcionesComponent } from './pages/general/opciones/opciones.component';
 import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
     ServiciosComponent,
     CrearEditarServicioComponent,
     OpcionesComponent,
-    ImagenesComponent
+    ImagenesComponent,
+    NgDropFilesDirective
   ],
   imports: [
     ReactiveFormsModule,
