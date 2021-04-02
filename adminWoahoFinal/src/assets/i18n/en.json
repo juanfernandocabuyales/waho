@@ -24,7 +24,8 @@
             "monedas": "Coins",
             "imagenes": "Images",
             "unidad": "Units",
-            "pais": "Countrys"
+            "pais": "Territories",
+            "tipo": "Type Territory"
         }
     },
     "loginPage": {
@@ -72,5 +73,8 @@
         "no_archivos": "No files have been uploaded",
         "ingrese_nombre": "Enter name",
         "mensaje_eliminar": "You want to delete the selected image?"
+    },
+    "tipoPage": {
+        "nombre": "Name type territory"
     }
 }

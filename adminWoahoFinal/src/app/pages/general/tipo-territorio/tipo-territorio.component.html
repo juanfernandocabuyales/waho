@@ -1,0 +1,34 @@
+<app-loading></app-loading>
+<div class="container">
+    <form [formGroup]="tipoForm" (ngSubmit)="crearTipo()">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'tipoPage.nombre' | translate}}</label>
+                <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <h2 style="text-align: center;">Tipos</h2>
+
+    <table class="table table-bordered">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tipo of listTipos; let i = index">
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="tipo.nombre" />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="eliminarFila(i)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

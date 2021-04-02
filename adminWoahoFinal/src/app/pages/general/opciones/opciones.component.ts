@@ -62,13 +62,18 @@ export class OpcionesComponent implements OnInit, OnDestroy {
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.pais'),
       imagen: '../../../../assets/ic_bandera.png',
-      ruta: '/home/general/pais'
+      ruta: '/home/general/territorios'
+    });
+
+    this.opciones.push({
+      nombre: this.utilidades.traducirTexto('general.opciones.tipo'),
+      imagen: '../../../../assets/ic_bandera.png',
+      ruta: '/home/general/tipoTerritorios'
     });
   }
 
   abrirOpcion(pOpcion: OpcionesDto): void {
     this.blnMostarOpciones = !this.blnMostarOpciones;
-    console.log('abrirOpcion', this.blnMostarOpciones);
     this.utilidades.navegarPagina(pOpcion.ruta, null);
   }
 

@@ -64,3 +64,8 @@ export class FileDto{
     file: File;
     nombre: string;
 }
+
+export class TipoDto{
+    id: string;
+    nombre: string;
+}

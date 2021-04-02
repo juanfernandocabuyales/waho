@@ -24,7 +24,8 @@
             "monedas": "Monedas",
             "imagenes": "Imagenes",
             "unidad": "Unidades",
-            "pais": "Paises"
+            "pais": "Territorios",
+            "tipo": "Tipo Territorios"
         }
     },
     "loginPage": {
@@ -72,5 +73,8 @@
         "no_archivos": "No se han cargado archivos",
         "ingrese_nombre": "Ingrese nombre",
         "mensaje_eliminar": "¿Desea eliminar la imagen seleccionada?"
+    },
+    "tipoPage": {
+        "nombre": "Nombre tipo territorio"
     }
 }

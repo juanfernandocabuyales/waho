@@ -46,3 +46,6 @@ export class CrearImagenRequest extends BaseRequest{
 export class EliminarRequest extends BaseRequest{
     id: string;
 }
+
+export class ConsultarTiposRequest extends BaseRequest{
+}

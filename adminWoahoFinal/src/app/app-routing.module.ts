@@ -6,6 +6,9 @@ import { ServiciosComponent } from './pages/servicios/consultar-servicios/servic
 import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-servicio/crear-editar-servicio.component';
 import { OpcionesComponent } from './pages/general/opciones/opciones.component';
 import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
+import { TerritoriosComponent } from './pages/general/territorios/territorios.component';
+import { UnidadesComponent } from './pages/general/unidades/unidades.component';
+import { TipoTerritorioComponent } from './pages/general/tipo-territorio/tipo-territorio.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,18 @@ const routes: Routes = [
           {
             path: 'imagenes',
             component: ImagenesComponent
+          },
+          {
+            path: 'territorios',
+            component: TerritoriosComponent
+          },
+          {
+            path: 'tipoTerritorios',
+            component: TipoTerritorioComponent
+          },
+          {
+            path: 'unidades',
+            component: UnidadesComponent
           }
         ]
       }

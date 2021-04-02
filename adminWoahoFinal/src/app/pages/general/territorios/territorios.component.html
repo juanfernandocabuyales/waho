@@ -1,0 +1,11 @@
+<app-loading></app-loading>
+<div class="container">
+    <form [formGroup]="territorioForm" (ngSubmit)="crearTerritorio()">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'serviciosPage.nombre' | translate}}</label>
+                <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nombre" autofocus>
+            </div>
+        </div>
+    </form>
+</div>

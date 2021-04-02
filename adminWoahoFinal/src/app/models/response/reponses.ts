@@ -1,4 +1,5 @@
-import { MonedaDto, UnidadDto, Categoria, ImagenDto, ServicioDto, PaisDTO } from '../general/general';
+import { MonedaDto, UnidadDto, Categoria } from '../general/general';
+import { ImagenDto, ServicioDto, PaisDTO, TipoDto } from '../general/general';
 
 export class GeneralResponse{
     mensaje: string;
@@ -45,4 +46,8 @@ export class CrearImagenResponse extends BaseResponse{
 }
 
 export class EliminarResponse extends BaseResponse{
+}
+
+export class ConsultarTiposResponse extends BaseResponse{
+    listTipos: TipoDto[];
 }

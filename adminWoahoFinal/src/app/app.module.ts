@@ -21,9 +21,7 @@ import { ServiciosComponent } from './pages/servicios/consultar-servicios/servic
 import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-servicio/crear-editar-servicio.component';
 
 import { FormsModule } from '@angular/forms';
-import { OpcionesComponent } from './pages/general/opciones/opciones.component';
-import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
-import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { GeneralModule } from './pages/general/general.module';
 
 @NgModule({
   declarations: [
@@ -31,10 +29,7 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     LoginComponent,
     HomeComponent,
     ServiciosComponent,
-    CrearEditarServicioComponent,
-    OpcionesComponent,
-    ImagenesComponent,
-    NgDropFilesDirective
+    CrearEditarServicioComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -53,7 +48,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
       }
     }),
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    GeneralModule
   ],
   exports: [
     MatIconModule
