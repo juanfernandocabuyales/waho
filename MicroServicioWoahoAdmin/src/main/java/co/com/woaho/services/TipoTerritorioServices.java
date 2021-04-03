@@ -53,7 +53,7 @@ public class TipoTerritorioServices implements ITipoTerritorioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("crearTipoTerritorio", "No se ha podido procesar la peticion", e);
 			crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
 					request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return crearResponse;
@@ -77,7 +77,7 @@ public class TipoTerritorioServices implements ITipoTerritorioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("actualizarTipoTerritorio", "No se ha podido procesar la peticion", e);
 			crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
 					request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return crearResponse;
@@ -106,7 +106,7 @@ public class TipoTerritorioServices implements ITipoTerritorioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("consultarTipos", "No se ha podido procesar la peticion", e);
 			consultarTiposResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			consultarTiposResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+			consultarTiposResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
 					request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return consultarTiposResponse;
@@ -128,7 +128,7 @@ public class TipoTerritorioServices implements ITipoTerritorioServices {
 		}catch(Exception e) {
 			logs.registrarLogError("eliminarTipo", "No se ha podido procesar la peticion", e);
 			eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-			eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_CATEGORIAS.getMensaje(),
+			eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(),
 					request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return eliminarResponse;

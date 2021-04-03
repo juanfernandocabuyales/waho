@@ -51,3 +51,6 @@ export class EliminarResponse extends BaseResponse{
 export class ConsultarTiposResponse extends BaseResponse{
     listTipos: TipoDto[];
 }
+
+export class CrearResponse extends BaseResponse{
+}

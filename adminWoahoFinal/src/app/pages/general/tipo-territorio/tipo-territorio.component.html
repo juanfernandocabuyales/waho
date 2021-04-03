@@ -1,11 +1,16 @@
 <app-loading></app-loading>
 <div class="container">
-    <form [formGroup]="tipoForm" (ngSubmit)="crearTipo()">
+    <form [formGroup]="tipoForm">
         <div class="row mt-5">
             <div class="col-sm form-group">
                 <label>{{'tipoPage.nombre' | translate}}</label>
                 <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
             </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" (click)="crearTipo()">
+                <i class="fa fa-pencil mr-2"></i>Crear
+            </button>
         </div>
     </form>
     <hr>
@@ -14,17 +19,20 @@
     <table class="table table-bordered">
         <thead class="thead">
             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col"></th>
+                <th scope="col" style="text-align: center;">Nombre</th>
+                <th scope="col" style="text-align: center;">Opciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let tipo of listTipos; let i = index">
                 <td>
-                    <input type="text" class="form-control" [(ngModel)]="tipo.nombre" />
+                    {{tipo.nombre}}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-secondary" (click)="eliminarFila(i)">
+                    <button type="button" class="btn btn-primary" (click)="eliminarFila(i)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(i)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

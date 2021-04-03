@@ -11,6 +11,7 @@ export const Constantes = {
     CONTROLLER_CATEGORIAS: 'categoria/',
     CONTROLLER_MONEDAS: 'moneda/',
     CONTROLLER_UNIDAD: 'unidad/',
+    CONTROLLER_TIPO_TERRITORIOS : 'tipoTerritorio/',
 
     /** Datos Generales */
     CANT_MAX_CARACTERES: 4600,

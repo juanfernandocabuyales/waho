@@ -15,7 +15,8 @@ export const environment = {
   imagenController: url + Constantes.CONTROLLER_IMAGENES,
   categoriaController: url + Constantes.CONTROLLER_CATEGORIAS,
   monedaController: url + Constantes.CONTROLLER_MONEDAS,
-  unidadController: url + Constantes.CONTROLLER_UNIDAD
+  unidadController: url + Constantes.CONTROLLER_UNIDAD,
+  tipoTerritorioController: url + Constantes.CONTROLLER_TIPO_TERRITORIOS
 };
 
 /*
