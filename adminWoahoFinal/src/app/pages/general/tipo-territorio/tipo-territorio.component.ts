@@ -79,6 +79,7 @@ export class TipoTerritorioComponent implements OnInit {
   }
 
   limpiarCampos(): void {
+    this.submitted = false;
     this.tipoForm.reset({
       nombre: ''
     });
@@ -96,14 +97,16 @@ export class TipoTerritorioComponent implements OnInit {
 
   validarRespuestaCreacion(respuesta: GeneralResponse, pTipo: TipoDto): void {
     const crearTiposResponse: CrearResponse = JSON.parse(respuesta.mensaje);
+    this.utilidades.ocultarCargue();
     if (crearTiposResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
       this.limpiarCampos();
-      this.listTipos.push(pTipo);
-      this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.operacion_ok'));
+      this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.operacion_ok'))
+      .then( () => {
+        this.cargarTipos();
+      });
     }else{
       this.utilidades.abrirDialogo(crearTiposResponse.mensajeRespuesta, true);
     }
-    this.utilidades.ocultarCargue();
   }
 
 }
