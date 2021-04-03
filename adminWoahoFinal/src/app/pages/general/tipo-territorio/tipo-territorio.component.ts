@@ -20,8 +20,8 @@ export class TipoTerritorioComponent implements OnInit {
   listTipos: TipoDto[] = [];
 
   constructor(private formBuilder: FormBuilder,
-    private tipoService: TipoTerritorioService,
-    private utilidades: UtilidadesService) { }
+              private tipoService: TipoTerritorioService,
+              private utilidades: UtilidadesService) { }
 
   ngOnInit(): void {
     this.tipoForm = this.formBuilder.group({
@@ -135,7 +135,7 @@ export class TipoTerritorioComponent implements OnInit {
     });
   }
 
-  validarRespuestaConsulta(respuesta: GeneralResponse): void {
+  private validarRespuestaConsulta(respuesta: GeneralResponse): void {
     const consultarTiposResponse: ConsultarTiposResponse = JSON.parse(respuesta.mensaje);
     if (consultarTiposResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
       this.listTipos = consultarTiposResponse.listTipos;
@@ -145,7 +145,7 @@ export class TipoTerritorioComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
-  validarRespuestaCreacion(respuesta: GeneralResponse, pTipo: TipoDto): void {
+  private validarRespuestaCreacion(respuesta: GeneralResponse, pTipo: TipoDto): void {
     const crearTiposResponse: CrearResponse = JSON.parse(respuesta.mensaje);
     this.utilidades.ocultarCargue();
     if (crearTiposResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
@@ -159,7 +159,7 @@ export class TipoTerritorioComponent implements OnInit {
     }
   }
 
-  validarEliminacion(data: GeneralResponse): void {
+  private validarEliminacion(data: GeneralResponse): void {
     const response: EliminarResponse = JSON.parse(data.mensaje);
     if (response.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
       this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok'));
@@ -169,7 +169,7 @@ export class TipoTerritorioComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
-  validarActualizacion(data: GeneralResponse): void {
+  private validarActualizacion(data: GeneralResponse): void {
     const response: CrearResponse = JSON.parse(data.mensaje);
     if (response.codigoRespuesta === Constantes.RESPUESTA_POSITIVA) {
       this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok'));

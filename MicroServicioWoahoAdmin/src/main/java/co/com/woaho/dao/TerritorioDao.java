@@ -9,18 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 import co.com.woaho.conexion.Persistencia;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.ITerritorioDao;
-import co.com.woaho.modelo.Moneda;
 import co.com.woaho.modelo.Territorio;
 import co.com.woaho.utilidades.RegistrarLog;
 import javax.persistence.Query;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class TerritorioDao extends Persistencia implements ITerritorioDao {
 
 
 	private RegistrarLog logs = new RegistrarLog(TerritorioDao.class);
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Territorio> obtenerTerritorios(Long pStrTipoTerritorio) {
 
@@ -52,6 +51,40 @@ public class TerritorioDao extends Persistencia implements ITerritorioDao {
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerTerritorio", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return null;
+		}
+	}
+
+	@Override
+	@Transactional
+	public Territorio guardarActualizarTerritorio(Territorio pTerritorio) {
+		try {
+			return getEntityManager().merge(pTerritorio);
+		}catch(Exception e) {
+			logs.registrarLogError("guardarActualizarTerritorio", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return null;
+		}
+	}
+
+	@Override
+	@Transactional
+	public void eliminarTerritorio(Territorio pTerritorio) {
+		try {
+			getEntityManager().remove(pTerritorio);
+		}catch(Exception e) {
+			logs.registrarLogError("eliminarTerritorio", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+		}			
+	}
+
+	@Override
+	public List<Territorio> obtenerTerritorios() {
+		List<Territorio> listTerritorios = new ArrayList<>();
+		try {
+			Query query = getEntityManager().createNamedQuery("Territorio.findAll");
+			listTerritorios = query.getResultList();
+			return listTerritorios;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerTodosTerritorios", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return listTerritorios;
 		}
 	}
 

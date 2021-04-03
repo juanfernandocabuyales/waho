@@ -9,4 +9,10 @@ public interface ITerritorioDao {
 	List<Territorio> obtenerTerritorios(Long pStrTipoTerritorio);
 	
 	Territorio obtenerTerritorio(Long pId);
+	
+	Territorio guardarActualizarTerritorio(Territorio pTerritorio);
+	
+	void eliminarTerritorio(Territorio pTerritorio);
+	
+	List<Territorio> obtenerTerritorios();
 }

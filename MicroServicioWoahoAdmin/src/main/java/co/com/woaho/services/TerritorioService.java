@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
+import co.com.woaho.dto.TerritorioDto;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
@@ -15,7 +16,13 @@ import co.com.woaho.interfaces.ITerritorioDao;
 import co.com.woaho.interfaces.ITerritorioService;
 import co.com.woaho.modelo.Territorio;
 import co.com.woaho.request.ConsultarTerritorioRequest;
+import co.com.woaho.request.ConsultarTerritoriosRequest;
+import co.com.woaho.request.CrearTerritoriosRequest;
+import co.com.woaho.request.EliminarRequest;
 import co.com.woaho.response.ConsultarTerritorioResponse;
+import co.com.woaho.response.ConsultarTerritoriosResponse;
+import co.com.woaho.response.CrearResponse;
+import co.com.woaho.response.EliminarResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
 
@@ -59,6 +66,56 @@ public class TerritorioService implements ITerritorioService {
 			response.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
 		}
 		return response;
+	}
+
+	@Override
+	public ConsultarTerritoriosResponse consultarTerritorios(ConsultarTerritoriosRequest request) {
+		ConsultarTerritoriosResponse consultarTerritoriosResponse = new ConsultarTerritoriosResponse();
+		try {			
+			List<Territorio> listTerritorios = territorioDao.obtenerTerritorios();			
+			if(null == listTerritorios || listTerritorios.isEmpty()) {
+				consultarTerritoriosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				consultarTerritoriosResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+			}else {
+				List<TerritorioDto> listTerritoriosDto = new ArrayList<>();
+				listTerritorios.forEach( item ->{
+					TerritorioDto territorioDto = new TerritorioDto();
+					territorioDto.setId(String.valueOf(item.getIdTerritorio()));
+					territorioDto.setNombre(item.getStrNombreTerritorio());
+					territorioDto.setIdPadre(String.valueOf(item.getTerritorioPadre().getIdTerritorio()));
+					territorioDto.setIdTipo(String.valueOf(item.getTipoTerritorio().getIdTipoTerritorio()));
+					territorioDto.setCodigo(item.getStrCodigoTerritorio());
+					territorioDto.setIdImagen(String.valueOf(item.getTerritorioImagen().getImagenId()));
+					listTerritoriosDto.add(territorioDto);
+				});
+				consultarTerritoriosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				consultarTerritoriosResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				consultarTerritoriosResponse.setListTerritorios(listTerritoriosDto);
+			}			
+		}catch(Exception e) {
+			logs.registrarLogError("consultarTerritorios", "No se ha podido procesar la peticion", e);
+			consultarTerritoriosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			consultarTerritoriosResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return consultarTerritoriosResponse;
+	}
+
+	@Override
+	public CrearResponse crearTerritorios(CrearTerritoriosRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CrearResponse actualizarTerritorios(CrearTerritoriosRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EliminarResponse eliminarTerritorios(EliminarRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
