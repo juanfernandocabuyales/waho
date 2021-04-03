@@ -12,7 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tipo_territorio")
-@NamedQueries({ @NamedQuery(name="TipoTerritorio.findAll", query="SELECT tp FROM TipoTerritorio tp")})
+@NamedQueries({ @NamedQuery(name="TipoTerritorio.findAll", query="SELECT tp FROM TipoTerritorio tp"),
+				@NamedQuery(name="TipoTerritorio.findId", query="SELECT tp FROM TipoTerritorio tp WHERE tp.idTipoTerritorio = :pId")})
 public class TipoTerritorio implements Serializable {
 	
 private static final long serialVersionUID = 1L;

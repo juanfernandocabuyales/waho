@@ -60,6 +60,7 @@ public class MonedaDao extends Persistencia implements IMonedaDao {
 	}
 
 	@Override
+	@Transactional
 	public void eliminarMoneda(Moneda pMoneda) {
 		try {
 			getEntityManager().remove(pMoneda);
