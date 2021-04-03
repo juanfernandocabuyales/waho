@@ -85,10 +85,11 @@ export class UtilidadesService {
     });
   }
 
-  mostarDialogoInput(pTitulo: string, placeHolder: string): Promise<SweetAlertResult<any>> {
+  mostarDialogoInput(pTitulo: string, placeHolder: string, pValue?: string): Promise<SweetAlertResult<any>> {
     return Swal.fire({
       title: pTitulo,
       input: 'text',
+      inputValue: pValue ? pValue : '',
       inputPlaceholder: placeHolder,
       confirmButtonColor: 'rgba(249, 25, 84, 1)',
       confirmButtonText: `${this.traducirTexto('general.aceptar')}`,

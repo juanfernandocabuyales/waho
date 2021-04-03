@@ -75,6 +75,8 @@
         "mensaje_eliminar": "You want to delete the selected image?"
     },
     "tipoPage": {
-        "nombre": "Name type territory"
+        "nombre": "Name type territory",
+        "mensaje_eliminar": "You want to delete the selected type?",
+        "ingrese_nombre": "Enter name"
     }
 }

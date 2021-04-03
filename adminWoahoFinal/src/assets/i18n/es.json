@@ -17,7 +17,7 @@
         "crear": "Crear",
         "editar": "Editar",
         "opcion": "Options",
-        "proceso_ok": "Successful Process",
+        "proceso_ok": "Proceso exitoso",
         "aceptar": "Aceptar",
         "cancelar": "Cancelar",
         "opciones": {
@@ -75,6 +75,8 @@
         "mensaje_eliminar": "¿Desea eliminar la imagen seleccionada?"
     },
     "tipoPage": {
-        "nombre": "Nombre tipo territorio"
+        "nombre": "Nombre tipo territorio",
+        "mensaje_eliminar": "¿Desea eliminar el tipo seleccionado?",
+        "ingrese_nombre": "Ingrese nombre"
     }
 }
