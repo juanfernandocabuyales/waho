@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { TerritorioDto, TipoDto, ImagenDto } from '../../../models/general/general';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { TipoTerritorioService } from '../../../services/rest/tipo-territorio.service';
@@ -29,10 +29,18 @@ export class TerritoriosComponent implements OnInit {
   constructor(private utilidades: UtilidadesService,
               private tipoService: TipoTerritorioService,
               private territorioService: TerritorioService,
-              private imagenService: ImagenService) { }
+              private imagenService: ImagenService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.cargarInformacion();
+    this.territorioForm = this.formBuilder.group({
+      nombre: new FormControl('', Validators.required),
+      padre: new FormControl(''),
+      tipo: new FormControl('', Validators.required),
+      codigo: new FormControl('', Validators.required),
+      imagen: new FormControl('', Validators.required)
+    });
   }
 
   private cargarInformacion(): void {
@@ -64,6 +72,18 @@ export class TerritoriosComponent implements OnInit {
   }
 
   crearTerritorio(): void {
+    console.log('territorioForm invalid: ', this.territorioForm.invalid);
+  }
+
+  limpiar(): void {
+    this.submitted = false;
+    this.territorioForm.reset({
+      nombre: '',
+      padre: '',
+      tipo: '',
+      codigo: '',
+      imagen: ''
+    });
   }
 
   get f(): any {

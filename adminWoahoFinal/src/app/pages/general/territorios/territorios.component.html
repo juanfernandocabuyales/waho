@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm form-group">
                 <label>Territorio Padre</label>
-                <select class="form-control" formControlName="padre">
+                <select class="form-control" formControlName="padre" style="border-color: gray;">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let territorio of listTerritorios" [value]="territorio.id">{{territorio.nombre}}
                     </option>
@@ -24,10 +24,10 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-sm form-group">
                 <label>Codigo</label>
-                <input type="number" class="form-control" [ngStyle]="{'border-color':submitted && f.codigo.errors ? 'red':'gray'}" formControlName="codigo" autofocus>
+                <input type="number" class="form-control" maxlength="2" [ngStyle]="{'border-color':submitted && f.codigo.errors ? 'red':'gray'}" formControlName="codigo" autofocus>
             </div>
             <div class="col-sm form-group">
                 <label>Imagen</label>
@@ -41,11 +41,15 @@
     </form>
 
     <div class="text-center">
-        <button class="btn btn-primary mt-4 mb-3">
+        <button type="button" class="btn btn-primary mt-4 mb-3" (click)="crearTerritorio()">
             <i class="fa fa-plus mr-1"></i>
             Crear
         </button>
-        <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3">
+        <button type="button" class="btn btn-success mt-4 mb-3 ml-3 mr-3" (click)="crearTerritorio()">
+            <i class="fa fa-list-alt mr-1"></i>
+            Listar
+        </button>
+        <button type="button" class="btn btn-secondary mt-4 mb-3" (click)="limpiar()">
             <i class="fa fa-trash mr-1"></i>
             Limpiar
         </button>
