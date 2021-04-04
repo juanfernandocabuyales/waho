@@ -1,11 +1,53 @@
 <app-loading></app-loading>
 <div class="container">
-    <form [formGroup]="territorioForm" (ngSubmit)="crearTerritorio()">
+    <form [formGroup]="territorioForm">
         <div class="row mt-5">
             <div class="col-sm form-group">
-                <label>{{'serviciosPage.nombre' | translate}}</label>
-                <input type="email" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nombre" autofocus>
+                <label>Nombre</label>
+                <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
+            </div>
+            <div class="col-sm form-group">
+                <label>Territorio Padre</label>
+                <select class="form-control" formControlName="padre">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let territorio of listTerritorios" [value]="territorio.id">{{territorio.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm form-group">
+                <label>Tipo Territorio</label>
+                <select class="form-control" formControlName="tipo" [ngStyle]="{'border-color':submitted && f.tipo.errors ? 'red':'gray'}">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let tipo of listTipos" [value]="tipo.id">{{tipo.nombre}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>Codigo</label>
+                <input type="number" class="form-control" [ngStyle]="{'border-color':submitted && f.codigo.errors ? 'red':'gray'}" formControlName="codigo" autofocus>
+            </div>
+            <div class="col-sm form-group">
+                <label>Imagen</label>
+                <select class="form-control" formControlName="imagen" [ngStyle]="{'border-color':submitted && f.imagen.errors ? 'red':'gray'}">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let imagen of listImagenes" [value]="imagen.idImagen">{{imagen.nombreImagen}}
+                    </option>
+                </select>
             </div>
         </div>
     </form>
+
+    <div class="text-center">
+        <button class="btn btn-primary mt-4 mb-3">
+            <i class="fa fa-plus mr-1"></i>
+            Crear
+        </button>
+        <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3">
+            <i class="fa fa-trash mr-1"></i>
+            Limpiar
+        </button>
+    </div>
 </div>

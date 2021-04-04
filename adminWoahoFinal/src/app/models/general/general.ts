@@ -69,3 +69,12 @@ export class TipoDto{
     id: string;
     nombre: string;
 }
+
+export class TerritorioDto {
+    id: string;
+    nombre: string;
+    idPadre: string;
+    idTipo: string;
+    codigo: string;
+    idImagen: string;
+}

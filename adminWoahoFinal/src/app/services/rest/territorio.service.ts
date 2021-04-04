@@ -15,4 +15,20 @@ export class TerritorioService {
   obtenerPaises(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.territorioController}consultarPaises`, peticion);
   }
+
+  obtenerTerritorios(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.territorioController}consultarTerritorios`, peticion);
+  }
+
+  crearTerritorios(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.territorioController}crearTerritorios`, peticion);
+  }
+
+  actualizarTerritorios(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.territorioController}actualizarTerritorios`, peticion);
+  }
+
+  eliminarTerritorios(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.territorioController}eliminarTerritorio`, peticion);
+  }
 }

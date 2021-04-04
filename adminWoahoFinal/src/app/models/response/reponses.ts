@@ -1,4 +1,4 @@
-import { MonedaDto, UnidadDto, Categoria } from '../general/general';
+import { MonedaDto, UnidadDto, Categoria, TerritorioDto } from '../general/general';
 import { ImagenDto, ServicioDto, PaisDTO, TipoDto } from '../general/general';
 
 export class GeneralResponse{
@@ -53,4 +53,8 @@ export class ConsultarTiposResponse extends BaseResponse{
 }
 
 export class CrearResponse extends BaseResponse{
+}
+
+export class ConsultarTerritoriosResponse extends BaseResponse{
+    listTerritorios: TerritorioDto[];
 }

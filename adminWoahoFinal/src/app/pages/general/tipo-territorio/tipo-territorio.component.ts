@@ -35,7 +35,6 @@ export class TipoTerritorioComponent implements OnInit {
     const consultarRequest: ConsultarTiposRequest = {
       idioma: this.utilidades.obtenerIdioma()
     };
-
     this.tipoService.obtenerTipos(this.utilidades.construirPeticion(consultarRequest)).subscribe(
       data => {
         this.validarRespuestaConsulta(data);
@@ -48,7 +47,6 @@ export class TipoTerritorioComponent implements OnInit {
 
   crearTipo(): void {
     this.submitted = true;
-
     if (this.tipoForm.invalid) {
       this.utilidades.abrirDialogo(this.utilidades.traducirTexto('general.completar_campos'), false);
     } else {
@@ -76,12 +74,10 @@ export class TipoTerritorioComponent implements OnInit {
       result => {
         if (result.isConfirmed) {
           this.utilidades.mostrarCargue();
-
           const eliminarRequest: EliminarRequest = {
             id: pTipo.id,
             idioma: this.utilidades.obtenerIdioma()
           };
-
           this.tipoService.eliminarTipos(this.utilidades.construirPeticion(eliminarRequest)).subscribe(
             data => {
               this.validarEliminacion(data);
@@ -101,7 +97,6 @@ export class TipoTerritorioComponent implements OnInit {
       this.utilidades.traducirTexto('tipoPage.ingrese_nombre'), pTipo.nombre)
       .then(result => {
         this.utilidades.mostrarCargue();
-
         const crearTipo: CrearTipoRequest = {
           tipoDto: {
             id: pTipo.id,
@@ -109,7 +104,6 @@ export class TipoTerritorioComponent implements OnInit {
           },
           idioma: this.utilidades.obtenerIdioma()
         };
-
         this.tipoService.actualizarTipos(this.utilidades.construirPeticion(crearTipo)).subscribe(
           data => {
             this.validarActualizacion(data);
@@ -119,8 +113,6 @@ export class TipoTerritorioComponent implements OnInit {
             this.utilidades.ocultarCargue();
           }
         );
-
-
       });
   }
 
@@ -178,5 +170,4 @@ export class TipoTerritorioComponent implements OnInit {
     }
     this.utilidades.ocultarCargue();
   }
-
 }

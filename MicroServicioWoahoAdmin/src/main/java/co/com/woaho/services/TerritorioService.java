@@ -93,7 +93,7 @@ public class TerritorioService implements ITerritorioService {
 					territorioDto.setIdPadre(String.valueOf(item.getTerritorioPadre().getIdTerritorio()));
 					territorioDto.setIdTipo(String.valueOf(item.getTipoTerritorio().getIdTipoTerritorio()));
 					territorioDto.setCodigo(item.getStrCodigoTerritorio());
-					territorioDto.setIdImagen(String.valueOf(item.getTerritorioImagen().getImagenId()));
+					territorioDto.setIdImagen( (item.getTerritorioImagen() == null ? "": String.valueOf(item.getTerritorioImagen().getImagenId()))  );
 					listTerritoriosDto.add(territorioDto);
 				});
 				consultarTerritoriosResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());

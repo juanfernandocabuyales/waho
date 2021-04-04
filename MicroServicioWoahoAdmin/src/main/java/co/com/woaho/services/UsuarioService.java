@@ -318,8 +318,8 @@ public class UsuarioService implements IUsuarioService{
 					loginAdminResponse.setIdUsuario(usuarioAdmin.getUsuarioId() + "");
 				}else {
 					loginAdminResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
-					String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_USUARIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
-					loginAdminResponse.setMensajeRespuesta(ProcesarCadenas.getInstance().obtenerMensajeFormat(equivalencia, "email",request.getUsuario()));
+					String equivalencia = Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.CLAVE_INVALIDA.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao);
+					loginAdminResponse.setMensajeRespuesta(equivalencia);
 				}
 			}
 		}catch(Exception e) {
