@@ -24,6 +24,7 @@ public enum EnumMensajes {
 	NUMERO_REGISTRADO("El número {0} ya se encuentra registrado. Hemos enviado un codigo de acceso a este numero"),
 	NO_REGISTROS("No se han encontrado registros para la busqueda"),
 	OK("ok"),
+	NO_ELIMINAR_TERRITORIO("No se puede eliminar el territorio, dado que tiene servicios asignados"),
 	
 	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado."),
 	ARCHIVO_NULO("No se han enviando un archivo valido para guardar")

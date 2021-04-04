@@ -2,6 +2,7 @@ package co.com.woaho.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,9 +13,13 @@ import co.com.woaho.dto.TerritorioDto;
 import co.com.woaho.enumeraciones.EnumGeneral;
 import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
+import co.com.woaho.interfaces.IServicioDao;
 import co.com.woaho.interfaces.ITerritorioDao;
 import co.com.woaho.interfaces.ITerritorioService;
+import co.com.woaho.modelo.Imagen;
+import co.com.woaho.modelo.Servicio;
 import co.com.woaho.modelo.Territorio;
+import co.com.woaho.modelo.TipoTerritorio;
 import co.com.woaho.request.ConsultarTerritorioRequest;
 import co.com.woaho.request.ConsultarTerritoriosRequest;
 import co.com.woaho.request.CrearTerritoriosRequest;
@@ -32,6 +37,9 @@ public class TerritorioService implements ITerritorioService {
 
 	@Autowired
 	private ITerritorioDao territorioDao;
+	
+	@Autowired
+	private IServicioDao servicioDao;
 	
 	@Autowired
 	private IEquivalenciaIdiomaDao equivalenciaIdiomaDao;
@@ -102,20 +110,120 @@ public class TerritorioService implements ITerritorioService {
 
 	@Override
 	public CrearResponse crearTerritorios(CrearTerritoriosRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		CrearResponse crearResponse = new CrearResponse();
+		try {
+			
+			TerritorioDto territorioDto = request.getTerritorioDto();
+			
+			Territorio territorio = new Territorio();
+			territorio.setStrNombreTerritorio(territorioDto.getNombre());
+			
+			if(null == territorioDto.getIdPadre() || territorioDto.getIdPadre().isEmpty()) {
+				territorio.setTerritorioPadre(null);
+			}else {
+				Territorio padre = new Territorio();
+				padre.setIdTerritorio(Long.parseLong(territorioDto.getIdPadre()));
+				territorio.setTerritorioPadre(padre);
+			}
+			
+			TipoTerritorio tipoTerritorio = new TipoTerritorio();
+			tipoTerritorio.setIdTipoTerritorio(Long.parseLong(territorioDto.getIdTipo()));
+			
+			Imagen imagen = new Imagen();
+			imagen.setImagenId(Long.parseLong(territorioDto.getIdImagen()));
+			
+			territorio.setTipoTerritorio(tipoTerritorio);
+			territorio.setStrCodigoTerritorio(territorioDto.getCodigo());
+			territorio.setTerritorioImagen(imagen);
+			
+			territorioDao.guardarActualizarTerritorio(territorio);
+			crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+			crearResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+		}catch(Exception e) {
+			logs.registrarLogError("crearTerritorios", "No se ha podido procesar la peticion", e);
+			crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return crearResponse;
 	}
 
 	@Override
 	public CrearResponse actualizarTerritorios(CrearTerritoriosRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		CrearResponse crearResponse = new CrearResponse();
+		try {
+			
+			TerritorioDto territorioDto = request.getTerritorioDto();
+			
+			Territorio territorio = territorioDao.obtenerTerritorio(Long.parseLong(territorioDto.getId()));
+			
+			if(null == territorio) {
+				crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+			}else {
+				territorio.setStrNombreTerritorio(territorioDto.getNombre());
+				
+				if(null == territorioDto.getIdPadre() || territorioDto.getIdPadre().isEmpty()) {
+					territorio.setTerritorioPadre(null);
+				}else {
+					Territorio padre = new Territorio();
+					padre.setIdTerritorio(Long.parseLong(territorioDto.getIdPadre()));
+					territorio.setTerritorioPadre(padre);
+				}
+				
+				TipoTerritorio tipoTerritorio = new TipoTerritorio();
+				tipoTerritorio.setIdTipoTerritorio(Long.parseLong(territorioDto.getIdTipo()));
+				
+				Imagen imagen = new Imagen();
+				imagen.setImagenId(Long.parseLong(territorioDto.getIdImagen()));
+				
+				territorio.setTipoTerritorio(tipoTerritorio);
+				territorio.setStrCodigoTerritorio(territorioDto.getCodigo());
+				territorio.setTerritorioImagen(imagen);
+				
+				territorioDao.guardarActualizarTerritorio(territorio);
+				crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+				crearResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+			}
+		}catch(Exception e) {
+			logs.registrarLogError("actualizarTerritorios", "No se ha podido procesar la peticion", e);
+			crearResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			crearResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return crearResponse;
 	}
 
 	@Override
 	public EliminarResponse eliminarTerritorios(EliminarRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		EliminarResponse eliminarResponse = new EliminarResponse();
+		try {			
+			Territorio territorio = territorioDao.obtenerTerritorio(Long.parseLong(request.getId()));
+			if(null == territorio) {
+				eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+				eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+			}else {
+				if(territorio.getTipoTerritorio().getIdTipoTerritorio().equals(1L)) {
+					List<Servicio> listServicios = servicioDao.consultarServicios();
+					Optional<Servicio> servicio = listServicios.stream().filter(item -> item.getPais().getIdTerritorio().equals(territorio.getIdTerritorio())).findFirst();
+					if(!servicio.isPresent()) {
+						territorioDao.eliminarTerritorio(territorio);
+						eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+						eliminarResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+					}else {
+						eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+						eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_ELIMINAR_TERRITORIO.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+					}
+				}else {
+					territorioDao.eliminarTerritorio(territorio);
+					eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					eliminarResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				}
+			}			
+		}catch(Exception e) {
+			logs.registrarLogError("eliminarTerritorios", "No se ha podido procesar la peticion", e);
+			eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+			eliminarResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.INCONVENIENTE_EN_OPERACION.getMensaje(), request.getIdioma(), equivalenciaIdiomaDao));
+		}
+		return eliminarResponse;
 	}
 
 }
