@@ -3,11 +3,11 @@
     <form [formGroup]="territorioForm">
         <div class="row mt-5">
             <div class="col-sm form-group">
-                <label>Nombre</label>
+                <label>{{'territorioPage.nombre' | translate}}</label>
                 <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
             </div>
             <div class="col-sm form-group">
-                <label>Territorio Padre</label>
+                <label>{{'territorioPage.territorio_padre' | translate}}</label>
                 <select class="form-control" formControlName="padre" style="border-color: gray;">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let territorio of listTerritorios" [value]="territorio.id">{{territorio.nombre}}
@@ -15,7 +15,7 @@
                 </select>
             </div>
             <div class="col-sm form-group">
-                <label>Tipo Territorio</label>
+                <label>{{'territorioPage.tipo_territorio' | translate}}</label>
                 <select class="form-control" formControlName="tipo" [ngStyle]="{'border-color':submitted && f.tipo.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let tipo of listTipos" [value]="tipo.id">{{tipo.nombre}}
@@ -26,11 +26,11 @@
 
         <div class="row mt-3">
             <div class="col-sm form-group">
-                <label>Codigo</label>
+                <label>{{'territorioPage.codigo' | translate}}</label>
                 <input type="number" class="form-control" maxlength="2" [ngStyle]="{'border-color':submitted && f.codigo.errors ? 'red':'gray'}" formControlName="codigo" autofocus>
             </div>
             <div class="col-sm form-group">
-                <label>Imagen</label>
+                <label>{{'territorioPage.imagen' | translate}}</label>
                 <select class="form-control" formControlName="imagen" [ngStyle]="{'border-color':submitted && f.imagen.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
                     <option *ngFor="let imagen of listImagenes" [value]="imagen.idImagen">{{imagen.nombreImagen}}
@@ -43,24 +43,24 @@
     <div class="text-center">
         <button type="button" class="btn btn-primary mt-4 mb-3" (click)="crearTerritorio()">
             <i class="fa fa-plus mr-1"></i>
-            Crear
+            {{'general.crear' | translate}}
         </button>
 
         <button type="button" class="btn btn-secondary mt-4 mb-3 ml-2" (click)="limpiar()">
             <i class="fa fa-trash mr-1"></i>
-            Limpiar
+            {{'general.limpiar' | translate}}
         </button>
     </div>
 
     <table class="table table-bordered" *ngIf="listTerritorios.length >= 1">
         <thead class="thead">
             <tr>
-                <th scope="col">Nombre(*)</th>
-                <th scope="col">Territorio Padre</th>
-                <th scope="col">Tipo(*)</th>
-                <th scope="col">Codigo(*)</th>
-                <th scope="col">Imagen(*)</th>
-                <th scope="col">Operaciones</th>
+                <th scope="col">{{'territorioPage.nombre_obligatorio' | translate}}</th>
+                <th scope="col">{{'territorioPage.territorio_padre' | translate}}</th>
+                <th scope="col">{{'territorioPage.tipo_obligatorio' | translate}}</th>
+                <th scope="col">{{'territorioPage.codigo_obligatorio' | translate}}</th>
+                <th scope="col">{{'territorioPage.imagen_obligatorio' | translate}}</th>
+                <th scope="col">{{'territorioPage.operaciones' | translate}}</th>
             </tr>
         </thead>
         <tbody>

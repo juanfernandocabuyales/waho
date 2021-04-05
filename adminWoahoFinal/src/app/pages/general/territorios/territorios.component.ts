@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TerritorioDto, TipoDto, ImagenDto } from '../../../models/general/general';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { TipoTerritorioService } from '../../../services/rest/tipo-territorio.service';
@@ -27,10 +27,10 @@ export class TerritoriosComponent implements OnInit {
   listImagenes: ImagenDto[] = [];
 
   constructor(private utilidades: UtilidadesService,
-    private tipoService: TipoTerritorioService,
-    private territorioService: TerritorioService,
-    private imagenService: ImagenService,
-    private formBuilder: FormBuilder) { }
+              private tipoService: TipoTerritorioService,
+              private territorioService: TerritorioService,
+              private imagenService: ImagenService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.cargarInformacion();
@@ -95,7 +95,7 @@ export class TerritoriosComponent implements OnInit {
   }
 
   eliminarFila(territorio: TerritorioDto, index: number): void {
-    this.utilidades.mostrarDialogoConfirmacion('¿Desea eliminar el territorio seleccionado?')
+    this.utilidades.mostrarDialogoConfirmacion(this.utilidades.traducirTexto('territorioPage.mensaje_eliminar'))
     .then( result => {
       if (result.isConfirmed){
         this.procesoEliminar(territorio, index);

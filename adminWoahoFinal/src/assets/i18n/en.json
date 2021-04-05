@@ -78,5 +78,18 @@
         "nombre": "Name type territory",
         "mensaje_eliminar": "You want to delete the selected type?",
         "ingrese_nombre": "Enter name"
+    },
+    "territorioPage": {
+        "nombre": "Name",
+        "territorio_padre": "Territory Father",
+        "tipo_territorio": "Type Territory",
+        "codigo": "Code",
+        "imagen": "Image",
+        "nombre_obligatorio": "Name(*)",
+        "tipo_obligatorio": "Type(*)",
+        "codigo_obligatorio": "Code(*)",
+        "imagen_obligatorio": "Image(*)",
+        "operaciones": "Operations.",
+        "mensaje_eliminar": "Do you want to delete the selected territory?"
     }
 }

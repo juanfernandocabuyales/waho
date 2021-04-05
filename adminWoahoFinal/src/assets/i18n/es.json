@@ -78,5 +78,18 @@
         "nombre": "Nombre tipo territorio",
         "mensaje_eliminar": "¿Desea eliminar el tipo seleccionado?",
         "ingrese_nombre": "Ingrese nombre"
+    },
+    "territorioPage": {
+        "nombre": "Nombre",
+        "territorio_padre": "Territorio Padre",
+        "tipo_territorio": "Tipo Territorio",
+        "codigo": "Codigo",
+        "imagen": "Imagen",
+        "nombre_obligatorio": "Nombre(*)",
+        "tipo_obligatorio": "Tipo(*)",
+        "codigo_obligatorio": "Codigo(*)",
+        "imagen_obligatorio": "Imagen(*)",
+        "operaciones": "Operaciones",
+        "mensaje_eliminar": "¿Desea eliminar el territorio seleccionado?"
     }
 }
