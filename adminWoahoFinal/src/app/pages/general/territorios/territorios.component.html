@@ -54,4 +54,58 @@
             Limpiar
         </button>
     </div>
+
+    <table class="table table-bordered" *ngIf="listTerritorios.length >= 1">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Territorio Padre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Operaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let territorio of listTerritorios; let i = index">
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="territorio.nombre" autofocus>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="territorio.idPadre">
+                        <option [selected]="true" value="">-- Seleccione --</option>
+                        <option *ngFor="let padre of listTerritorios" [value]="padre.id">{{padre.nombre}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="territorio.idTipo">
+                        <option [selected]="true" value="">-- Seleccione --</option>
+                        <option *ngFor="let tipo of listTipos" [value]="tipo.id">{{tipo.nombre}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="territorio.codigo" autofocus>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="territorio.idImagen">
+                        <option [selected]="true" value="">-- Seleccione --</option>
+                        <option *ngFor="let imagen of listImagenes" [value]="imagen.idImagen">
+                            {{imagen.nombreImagen}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="editarFila(territorio)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(i)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

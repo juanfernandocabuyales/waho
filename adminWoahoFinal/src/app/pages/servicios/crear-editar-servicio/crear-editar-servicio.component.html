@@ -60,21 +60,21 @@
                 </td>
                 <td>
                     <select class="form-control" [(ngModel)]="tarifa.unidad">
-                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option [selected]="true" value="0">-- Seleccione --</option>
                         <option *ngFor="let unidad of listUnidades" [value]="unidad.idUnidad">{{unidad.nombreUnidad}}
                         </option>
                     </select>
                 </td>
                 <td>
                     <select class="form-control" [(ngModel)]="tarifa.moneda">
-                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option [selected]="true" value="0">-- Seleccione --</option>
                         <option *ngFor="let moneda of listMonedas" [value]="moneda.idMoneda">{{moneda.nombreMoneda}}
                         </option>
                     </select>
                 </td>
                 <td>
                     <select class="form-control" [(ngModel)]="tarifa.pais">
-                        <option value="" [selected]="true" value="0">-- Seleccione --</option>
+                        <option [selected]="true" value="0">-- Seleccione --</option>
                         <option *ngFor="let pais of listPaises" [value]="pais.idTerritorio">
                             {{pais.nombreTerritorio}}
                         </option>

@@ -75,6 +75,14 @@ export class TerritoriosComponent implements OnInit {
     console.log('territorioForm invalid: ', this.territorioForm.invalid);
   }
 
+  eliminarFila(index: number): void {
+    this.listTerritorios.splice(index, 1);
+  }
+
+  editarFila(territorio: TerritorioDto): void {
+    console.log('territorio editado', territorio);
+  }
+
   limpiar(): void {
     this.submitted = false;
     this.territorioForm.reset({
@@ -106,5 +114,4 @@ export class TerritoriosComponent implements OnInit {
     }
     this.utilidades.ocultarCargue();
   }
-
 }
