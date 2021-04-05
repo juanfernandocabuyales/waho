@@ -214,7 +214,7 @@ public class TerritorioService implements ITerritorioService {
 					}
 				}else {
 					territorioDao.eliminarTerritorio(territorio);
-					eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 					eliminarResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 				}
 			}			
