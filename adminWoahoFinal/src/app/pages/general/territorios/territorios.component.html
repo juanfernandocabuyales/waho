@@ -45,11 +45,8 @@
             <i class="fa fa-plus mr-1"></i>
             Crear
         </button>
-        <button type="button" class="btn btn-success mt-4 mb-3 ml-3 mr-3" (click)="crearTerritorio()">
-            <i class="fa fa-list-alt mr-1"></i>
-            Listar
-        </button>
-        <button type="button" class="btn btn-secondary mt-4 mb-3" (click)="limpiar()">
+
+        <button type="button" class="btn btn-secondary mt-4 mb-3 ml-2" (click)="limpiar()">
             <i class="fa fa-trash mr-1"></i>
             Limpiar
         </button>
@@ -58,11 +55,11 @@
     <table class="table table-bordered" *ngIf="listTerritorios.length >= 1">
         <thead class="thead">
             <tr>
-                <th scope="col">Nombre</th>
+                <th scope="col">Nombre(*)</th>
                 <th scope="col">Territorio Padre</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Codigo</th>
-                <th scope="col">Imagen</th>
+                <th scope="col">Tipo(*)</th>
+                <th scope="col">Codigo(*)</th>
+                <th scope="col">Imagen(*)</th>
                 <th scope="col">Operaciones</th>
             </tr>
         </thead>
@@ -100,7 +97,7 @@
                     <button type="button" class="btn btn-primary" (click)="editarFila(territorio)">
                         <i class="fa fa-pencil"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(i)">
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(territorio,i)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

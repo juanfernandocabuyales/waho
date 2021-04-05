@@ -15,5 +15,6 @@ export const Constantes = {
 
     /** Datos Generales */
     CANT_MAX_CARACTERES: 4600,
-    TIPO_TERRITORIO_PAIS: '1'
+    TIPO_TERRITORIO_PAIS: '1',
+    SIGNO_MAS: '+'
 };
