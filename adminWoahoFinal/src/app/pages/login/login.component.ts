@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
         data => {
           this.validarRespuesta(data);
         },
-        error => {
-          console.log('error', error);
+        () => {
           this.loading = false;
           this.abrirDialogo('Se ha presentado un error', false);
         }

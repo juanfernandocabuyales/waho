@@ -23,7 +23,7 @@ import { CrearServicioRequest } from '../../../models/request/requests';
 import { ServicioService } from '../../../services/rest/servicio.service';
 import { GeneralResponse } from 'src/app/models/response/reponses';
 import { CrearServicioResponse } from '../../../models/response/reponses';
-import { ImagenDto, Categoria, PaisDTO } from '../../../models/general/general';
+import { ImagenDto, CategoriaDto, PaisDTO } from '../../../models/general/general';
 
 @Component({
   selector: 'app-crear-editar-servicio',
@@ -41,7 +41,7 @@ export class CrearEditarServicioComponent implements OnInit {
   maxCaracteres: number = Constantes.CANT_MAX_CARACTERES;
 
   listImagenes: ImagenDto[] = [];
-  listCategorias: Categoria[] = [];
+  listCategorias: CategoriaDto[] = [];
   listPaises: PaisDTO[] = [];
   listMonedas: MonedaDto[] = [];
   listUnidades: UnidadDto[] = [];
@@ -123,10 +123,8 @@ export class CrearEditarServicioComponent implements OnInit {
     forkJoin([imagenesServicio, categoriaServicio, territorioServicio, monedaServicio, unidadServicio]).subscribe(
       results => {
         this.validarRespuestas(results);
-      }, error => {
+      }, () => {
         this.utilidades.ocultarCargue();
-        console.log('error', error);
-        this.utilidades.abrirDialogo('', false);
       }
     );
   }
@@ -168,9 +166,8 @@ export class CrearEditarServicioComponent implements OnInit {
           data => {
             this.validarRespuestaCreacion(data);
           },
-          error => {
+          () => {
             this.utilidades.ocultarCargue();
-            console.log('error creacion', error);
           }
         );
       }
@@ -200,7 +197,6 @@ export class CrearEditarServicioComponent implements OnInit {
       },
       error => {
         this.utilidades.ocultarCargue();
-        console.log('error creacion', error);
       }
     );
   }

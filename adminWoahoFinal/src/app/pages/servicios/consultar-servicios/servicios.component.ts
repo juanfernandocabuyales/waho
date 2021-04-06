@@ -28,15 +28,12 @@ export class ServiciosComponent implements OnInit {
     const request: ConsultarServiciosRequest = {
       idioma: this.utilidades.obtenerIdioma()
     };
-    console.log('peticion servicio: ', request);
     this.servicio.consultarServicios(this.utilidades.construirPeticion(request))
       .subscribe(
         data => {
           this.validarRespuesta(data);
         }, error => {
           this.utilidades.ocultarCargue();
-          console.log('error', error);
-          this.utilidades.abrirDialogo('', false);
         }
       );
   }

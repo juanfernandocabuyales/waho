@@ -28,9 +28,10 @@ export class ServicioDto{
     listTarifas: TarifaDto[];
 }
 
-export class Categoria {
-    idCategoria: string;
-    nombreCategoria: string;
+export class CategoriaDto {
+    id: string;
+    nombre: string;
+    idImagen: string;
 }
 
 export class ImagenDto {

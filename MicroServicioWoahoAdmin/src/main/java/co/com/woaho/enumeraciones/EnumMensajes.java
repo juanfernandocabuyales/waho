@@ -25,6 +25,7 @@ public enum EnumMensajes {
 	NO_REGISTROS("No se han encontrado registros para la busqueda"),
 	OK("ok"),
 	NO_ELIMINAR_TERRITORIO("No se puede eliminar el territorio, dado que tiene servicios asignados"),
+	NO_ELIMINAR_CATEGORIA("No se puede eliminar la categoria, dado que tiene servicios asignados"),
 	
 	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado."),
 	ARCHIVO_NULO("No se han enviando un archivo valido para guardar")

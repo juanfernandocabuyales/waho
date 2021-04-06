@@ -206,7 +206,7 @@ public class TerritorioService implements ITerritorioService {
 					Optional<Servicio> servicio = listServicios.stream().filter(item -> item.getPais().getIdTerritorio().equals(territorio.getIdTerritorio())).findFirst();
 					if(!servicio.isPresent()) {
 						territorioDao.eliminarTerritorio(territorio);
-						eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+						eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
 						eliminarResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
 					}else {
 						eliminarResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());

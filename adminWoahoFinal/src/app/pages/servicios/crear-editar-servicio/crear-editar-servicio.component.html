@@ -18,8 +18,8 @@
                 <label>{{'serviciosPage.categoria' | translate}}</label>
                 <select class="form-control" formControlName="categoria" [ngStyle]="{'border-color':submitted && f.categoria.errors ? 'red':'gray'}">
                     <option value="" [selected]="true">-- Seleccione --</option>
-                    <option *ngFor="let categoria of listCategorias" [value]="categoria.idCategoria">
-                        {{categoria.nombreCategoria}}</option>
+                    <option *ngFor="let categoria of listCategorias" [value]="categoria.id">
+                        {{categoria.nombre}}</option>
                 </select>
             </div>
         </div>
