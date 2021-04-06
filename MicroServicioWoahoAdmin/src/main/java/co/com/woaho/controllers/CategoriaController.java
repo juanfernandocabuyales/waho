@@ -32,7 +32,7 @@ public class CategoriaController {
 	private ICategoriaService categoriaService;
 	
 	@PostMapping(value = "/consultarCategorias", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> consultarCategorias(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> consultarCategorias(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("consultarCategorias",request.getStrMensaje());
 		
@@ -49,7 +49,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping(value = "/crearCategoria", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> crearCategorias(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> crearCategorias(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("crearCategorias",request.getStrMensaje());
 		
@@ -66,7 +66,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping(value = "/actualizarCategorias", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> actualizarCategorias(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> actualizarCategorias(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("actualizarCategorias",request.getStrMensaje());
 		
@@ -83,7 +83,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping(value = "/eliminarCategorias", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> eliminarCategorias(@RequestBody GeneralRequest request) {
+	public ResponseEntity<GeneralResponse> eliminarCategorias(@RequestBody GeneralRequest request) {
 		
 		logs.registrarLogInfoEjecutaServicio("eliminarCategorias",request.getStrMensaje());
 		
