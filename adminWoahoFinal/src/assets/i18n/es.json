@@ -16,7 +16,7 @@
         "operacion_ok": "Operación Exitosa",
         "crear": "Crear",
         "editar": "Editar",
-        "opcion": "Options",
+        "opcion": "Opciones",
         "proceso_ok": "Proceso exitoso",
         "aceptar": "Aceptar",
         "cancelar": "Cancelar",
@@ -25,7 +25,8 @@
             "imagenes": "Imagenes",
             "unidad": "Unidades",
             "pais": "Territorios",
-            "tipo": "Tipo Territorios"
+            "tipo": "Tipo Territorios",
+            "categoria": "Categories"
         }
     },
     "loginPage": {
@@ -78,6 +79,12 @@
         "nombre": "Nombre tipo territorio",
         "mensaje_eliminar": "¿Desea eliminar el tipo seleccionado?",
         "ingrese_nombre": "Ingrese nombre"
+    },
+    "unidadPage": {
+        "nombre": "Nombre unidad",
+        "mensaje_eliminar": "¿Desea eliminar la unidad seleccionada?",
+        "ingrese_nombre": "Ingrese nombre",
+        "nombres": "Unidades"
     },
     "territorioPage": {
         "nombre": "Nombre",

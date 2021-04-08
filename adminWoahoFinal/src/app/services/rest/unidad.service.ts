@@ -15,4 +15,16 @@ export class UnidadService {
   obtenerUnidades(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.unidadController}consultarUnidades`, peticion);
   }
+
+  crearUnidades(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.unidadController}crearUnidades`, peticion);
+  }
+
+  actualizarUnidades(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.unidadController}actualizarUnidades`, peticion);
+  }
+
+  eliminarUnidades(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.unidadController}eliminarUnidades`, peticion);
+  }
 }

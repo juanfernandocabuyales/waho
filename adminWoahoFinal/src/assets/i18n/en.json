@@ -25,7 +25,8 @@
             "imagenes": "Images",
             "unidad": "Units",
             "pais": "Territories",
-            "tipo": "Type Territory"
+            "tipo": "Type Territory",
+            "categoria": "Categories"
         }
     },
     "loginPage": {
@@ -78,6 +79,12 @@
         "nombre": "Name type territory",
         "mensaje_eliminar": "You want to delete the selected type?",
         "ingrese_nombre": "Enter name"
+    },
+    "unidadPage": {
+        "nombre": "Name unit",
+        "mensaje_eliminar": "You want to delete the unit type?",
+        "ingrese_nombre": "Enter name",
+        "nombres": "Units"
     },
     "territorioPage": {
         "nombre": "Name",

@@ -39,6 +39,15 @@ sudo systemctl stop postgresql ==> detiene el servicio
 
 ionic cordova run android ==> correr apk ionic
 
+****************** Instrucciones para montar la aplicacion Angular en el servidor ********************************************
+sudo dnf module list nodejs ==> se listan las versiones disponibles de NodeJS en el repositorio de CentosOs8
+sudo dnf module enable nodejs:14 ==> el numero 14 representa la version a instalar de NodeJS
+sudo dnf install nodejs ==> Instala la version de NodeJs del paso anterior
+sudo npm install -g @angular/cli ==> instalamos Angular
+npm install ==> al subir el proyecto, para generar la carpete node_modules
+ng serve --port 8085 --host 172.108.45.159 & ==> comando para subir el proyecto por el puerto e ip deseados 
+*******************************************************************************************************************************
+
 /************************************************************************
 		Peticiones OneSignal
 {app_id=0942319e-1677-4480-8992-a96e3882f7c7, contents={es=Este es el mensaje en español, en=message english}, headings={es=Este es el mensaje en español, en=message english}, include_player_ids=[8c09da82-a90e-4c1b-8bb5-34b34e839efc]} ==> funciona

@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { OpcionesDto } from '../../../models/general/general';
-import { Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -56,7 +55,7 @@ export class OpcionesComponent implements OnInit, OnDestroy {
     this.opciones.push({
       nombre: this.utilidades.traducirTexto('general.opciones.unidad'),
       imagen: '../../../../assets/ic_medida.png',
-      ruta: '/home/general/unidad'
+      ruta: '/home/general/unidades'
     });
 
     this.opciones.push({

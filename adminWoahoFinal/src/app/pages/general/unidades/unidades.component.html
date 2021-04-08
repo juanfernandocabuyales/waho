@@ -1,1 +1,42 @@
-<p>unidades works!</p>
+<app-loading></app-loading>
+<div class="container">
+    <form [formGroup]="unidadForm">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'unidadPage.nombre' | translate}}</label>
+                <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" (click)="crearUnidad()">
+                <i class="fa fa-plus mr-2"></i>{{'general.crear' | translate}}
+            </button>
+        </div>
+    </form>
+    <hr>
+    <h2 style="text-align: center;">{{'unidadPage.nombres' | translate}}</h2>
+
+    <table class="table table-bordered">
+        <thead class="thead">
+            <tr>
+                <th scope="col" style="text-align: center;">{{'unidadPage.nombre' | translate}}</th>
+                <th scope="col" style="text-align: center;">{{'general.opcion' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let unidad of listUnidades; let i = index">
+                <td>
+                    {{unidad.nombreUnidad}}
+                </td>
+                <td style="text-align: start;">
+                    <button type="button" class="btn btn-primary" (click)="editarFila(unidad)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(unidad)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

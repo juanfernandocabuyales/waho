@@ -60,6 +60,7 @@ public class UnidadDao extends Persistencia implements IUnidadDao {
 	}
 
 	@Override
+	@Transactional
 	public void eliminarUnidad(UnidadTarifa pUnidad) {
 		try {
 			getEntityManager().remove(pUnidad);

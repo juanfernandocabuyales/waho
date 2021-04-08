@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GeneralRequest } from '../../models/request/requests';
+import { GeneralRequest, EliminarRequest } from '../../models/request/requests';
 import { Router} from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -111,5 +111,12 @@ export class UtilidadesService {
   obtenerNombreExtension(pFile: File, pNombre: string): string {
     const extension = pFile.name.split('.', 2)[1];
     return pNombre + '.' + extension;
+  }
+
+  obtenerRequestEliminar(pId: string): EliminarRequest{
+    return{
+      idioma: this.obtenerIdioma(),
+      id: pId
+    };
   }
 }

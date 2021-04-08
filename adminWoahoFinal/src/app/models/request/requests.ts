@@ -1,4 +1,4 @@
-import { ServicioDto, TipoDto, TerritorioDto } from '../general/general';
+import { ServicioDto, TipoDto, TerritorioDto, UnidadDto } from '../general/general';
 
 export class GeneralRequest {
     strMensaje: string;
@@ -59,4 +59,8 @@ export class ConsultarTerritoriosRequest extends BaseRequest{
 
 export class CrearTerritoriosRequest extends BaseRequest{
     territorioDto: TerritorioDto;
+}
+
+export class CrearUnidadRequest extends BaseRequest{
+    unidad: UnidadDto;
 }
