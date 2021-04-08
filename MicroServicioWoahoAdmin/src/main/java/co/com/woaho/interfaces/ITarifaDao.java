@@ -5,6 +5,8 @@ import java.util.List;
 import co.com.woaho.modelo.Tarifa;
 
 public interface ITarifaDao {
+	
+	List<Tarifa> obtenerTarifas();
 
 	List<Tarifa> obtenerTarifaServicio(Long pIdServicio);
 	

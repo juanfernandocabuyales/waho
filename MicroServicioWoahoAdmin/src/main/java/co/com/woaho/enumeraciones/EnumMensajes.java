@@ -26,6 +26,7 @@ public enum EnumMensajes {
 	OK("ok"),
 	NO_ELIMINAR_TERRITORIO("No se puede eliminar el territorio, dado que tiene servicios asignados"),
 	NO_ELIMINAR_CATEGORIA("No se puede eliminar la categoria, dado que tiene servicios asignados"),
+	NO_ELIMINAR_MONEDA("No se puede eliminar la moneda, dado que tiene tarifas asignadas"),
 	
 	NOMBRE_ARCHIVO_INVALIDO("El nombre del archivo no cumple con el formato esperado."),
 	ARCHIVO_NULO("No se han enviando un archivo valido para guardar")

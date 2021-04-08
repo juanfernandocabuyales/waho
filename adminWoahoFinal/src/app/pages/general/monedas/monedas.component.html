@@ -1,0 +1,64 @@
+<app-loading></app-loading>
+<div class="container">
+    <form [formGroup]="monedaForm">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'monedaPage.nombre' | translate}}</label>
+                <input type="text" class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
+            </div>
+            <div class="col-sm form-group">
+                <label>{{'monedaPage.pais' | translate}}</label>
+                <select class="form-control" formControlName="pais" style="border-color: gray;">
+                    <option value="" [selected]="true">-- Seleccione --</option>
+                    <option *ngFor="let territorio of listTerritorios" [value]="territorio.idTerritorio">{{territorio.nombreTerritorio}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mt-4 mb-3" (click)="crearMoneda()">
+            <i class="fa fa-plus mr-1"></i>
+            {{'general.crear' | translate}}
+        </button>
+
+        <button type="button" class="btn btn-secondary mt-4 mb-3 ml-2" (click)="limpiar()">
+            <i class="fa fa-trash mr-1"></i>
+            {{'general.limpiar' | translate}}
+        </button>
+    </div>
+
+    <table class="table table-bordered" *ngIf="listMonedas.length >= 1">
+        <thead class="thead">
+            <tr>
+                <th scope="col">{{'monedaPage.nombre' | translate}}</th>
+                <th scope="col">{{'monedaPage.pais' | translate}}</th>
+                <th scope="col">{{'monedaPage.operaciones' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let moneda of listMonedas; let i = index">
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="moneda.nombreMoneda" autofocus>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="moneda.idTerritorio">
+                        <option [selected]="true" value="">-- Seleccione --</option>
+                        <option *ngFor="let pais of listTerritorios" [value]="pais.idTerritorio">{{pais.nombreTerritorio}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="editarFila(moneda)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(moneda)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

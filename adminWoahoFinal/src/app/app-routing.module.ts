@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -9,6 +9,7 @@ import { ImagenesComponent } from './pages/general/imagenes/imagenes.component';
 import { TerritoriosComponent } from './pages/general/territorios/territorios.component';
 import { UnidadesComponent } from './pages/general/unidades/unidades.component';
 import { TipoTerritorioComponent } from './pages/general/tipo-territorio/tipo-territorio.component';
+import { MonedasComponent } from './pages/general/monedas/monedas.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
           {
             path: 'unidades',
             component: UnidadesComponent
+          },
+          {
+            path: 'monedas',
+            component: MonedasComponent
           }
         ]
       }

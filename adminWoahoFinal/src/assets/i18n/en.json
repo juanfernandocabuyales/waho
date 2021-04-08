@@ -86,6 +86,14 @@
         "ingrese_nombre": "Enter name",
         "nombres": "Units"
     },
+    "monedaPage": {
+        "nombre": "Name coin",
+        "mensaje_eliminar": "You want to delete the coin?",
+        "ingrese_nombre": "Enter name",
+        "pais": "Country",
+        "nombres": "Coins",
+        "operaciones": "Operations"
+    },
     "territorioPage": {
         "nombre": "Name",
         "territorio_padre": "Territory Father",

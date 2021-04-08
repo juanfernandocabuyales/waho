@@ -19,6 +19,7 @@ import { NgDropFilesDirective } from 'src/app/directives/ng-drop-files.directive
 import { ReactiveFormsModule } from '@angular/forms';
 import { TipoTerritorioComponent } from './tipo-territorio/tipo-territorio.component';
 import { FormsModule } from '@angular/forms';
+import { MonedasComponent } from './monedas/monedas.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     TerritoriosComponent,
     UnidadesComponent,
     NgDropFilesDirective,
-    TipoTerritorioComponent
+    TipoTerritorioComponent,
+    MonedasComponent
   ],
   imports: [
     CommonModule,

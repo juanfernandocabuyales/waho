@@ -2,6 +2,7 @@ package co.com.woaho.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -14,8 +15,11 @@ import co.com.woaho.enumeraciones.EnumMensajes;
 import co.com.woaho.interfaces.IEquivalenciaIdiomaDao;
 import co.com.woaho.interfaces.IMonedaDao;
 import co.com.woaho.interfaces.IMonedaServices;
+import co.com.woaho.interfaces.ITarifaDao;
 import co.com.woaho.interfaces.ITerritorioDao;
 import co.com.woaho.modelo.Moneda;
+import co.com.woaho.modelo.Servicio;
+import co.com.woaho.modelo.Tarifa;
 import co.com.woaho.modelo.Territorio;
 import co.com.woaho.request.ConsultarMonedasRequest;
 import co.com.woaho.request.CrearMonedaRequest;
@@ -38,6 +42,9 @@ public class MonedaService implements IMonedaServices {
 	
 	@Autowired
 	private ITerritorioDao territorioDao;
+	
+	@Autowired
+	private ITarifaDao tarifaDao;
 
 	private RegistrarLog logs = new RegistrarLog(MonedaService.class);
 
@@ -140,9 +147,16 @@ public class MonedaService implements IMonedaServices {
 				eliminarMonedaResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 				eliminarMonedaResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdioma));
 			}else {
-				monedaDao.eliminarMoneda(moneda);				
-				eliminarMonedaResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
-				eliminarMonedaResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				List<Tarifa> listTarifas = tarifaDao.obtenerTarifas();
+				Optional<Tarifa> tarifa = listTarifas.stream().filter(item -> item.getMoneda().getMonedaId().equals(moneda.getMonedaId())).findFirst();
+				if(tarifa.isPresent()) {
+					eliminarMonedaResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
+					eliminarMonedaResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_ELIMINAR_MONEDA.getMensaje(), request.getIdioma(), equivalenciaIdioma));
+				}else {
+					monedaDao.eliminarMoneda(moneda);				
+					eliminarMonedaResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
+					eliminarMonedaResponse.setMensajeRespuesta(EnumGeneral.OK.getValor());
+				}				
 			}			
 		}catch(Exception e) {
 			logs.registrarLogError("eliminarMoneda", "No se ha podido procesar la peticion", e);

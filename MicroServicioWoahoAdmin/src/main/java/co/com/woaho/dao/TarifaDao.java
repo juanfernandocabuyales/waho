@@ -19,6 +19,19 @@ import co.com.woaho.utilidades.RegistrarLog;
 public class TarifaDao extends Persistencia implements ITarifaDao {
 
 	private RegistrarLog logs = new RegistrarLog(TarifaDao.class);
+	
+	@Override
+	public List<Tarifa> obtenerTarifas() {
+		List<Tarifa> tarifa = new ArrayList<>();
+		try {
+			Query query = getEntityManager().createNamedQuery("Tarifa.findAll");
+			tarifa = query.getResultList();
+			return tarifa;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerTarifas", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return tarifa;
+		}
+	}
 
 	@Override
 	public List<Tarifa> obtenerTarifaServicio(Long pIdServicio) {

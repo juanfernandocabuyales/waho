@@ -86,6 +86,14 @@
         "ingrese_nombre": "Ingrese nombre",
         "nombres": "Unidades"
     },
+    "monedaPage": {
+        "nombre": "Nombre Moneda",
+        "mensaje_eliminar": "¿Desea eliminar la moneda seleccionada?",
+        "ingrese_nombre": "Ingrese nombre",
+        "pais": "Pais",
+        "nombres": "Monedas",
+        "operaciones": "Operaciones"
+    },
     "territorioPage": {
         "nombre": "Nombre",
         "territorio_padre": "Territorio Padre",
