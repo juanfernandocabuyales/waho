@@ -18,15 +18,14 @@ import co.com.woaho.interfaces.IMonedaServices;
 import co.com.woaho.interfaces.ITarifaDao;
 import co.com.woaho.interfaces.ITerritorioDao;
 import co.com.woaho.modelo.Moneda;
-import co.com.woaho.modelo.Servicio;
 import co.com.woaho.modelo.Tarifa;
 import co.com.woaho.modelo.Territorio;
 import co.com.woaho.request.ConsultarMonedasRequest;
 import co.com.woaho.request.CrearMonedaRequest;
-import co.com.woaho.request.EliminarMonedaRequest;
+import co.com.woaho.request.EliminarRequest;
 import co.com.woaho.response.ConsultarMonedasResponse;
-import co.com.woaho.response.CrearMonedaResponse;
-import co.com.woaho.response.EliminarMonedaResponse;
+import co.com.woaho.response.CrearResponse;
+import co.com.woaho.response.EliminarResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 import co.com.woaho.utilidades.Utilidades;
 
@@ -80,8 +79,8 @@ public class MonedaService implements IMonedaServices {
 	}
 
 	@Override
-	public CrearMonedaResponse crearMoneda(CrearMonedaRequest request) {
-		CrearMonedaResponse crearMonedaResponse = new CrearMonedaResponse();
+	public CrearResponse crearMoneda(CrearMonedaRequest request) {
+		CrearResponse crearMonedaResponse = new CrearResponse();
 		try {
 			MonedaDto monedaDto = request.getMoneda();
 			Territorio pais = territorioDao.obtenerTerritorio(Long.parseLong(monedaDto.getIdTerritorio()));			
@@ -107,8 +106,8 @@ public class MonedaService implements IMonedaServices {
 	}
 
 	@Override
-	public CrearMonedaResponse actualizarMoneda(CrearMonedaRequest request) {
-		CrearMonedaResponse crearMonedaResponse = new CrearMonedaResponse();
+	public CrearResponse actualizarMoneda(CrearMonedaRequest request) {
+		CrearResponse crearMonedaResponse = new CrearResponse();
 		try {
 			MonedaDto monedaDto = request.getMoneda();
 			Territorio pais = territorioDao.obtenerTerritorio(Long.parseLong(monedaDto.getIdTerritorio()));			
@@ -139,10 +138,10 @@ public class MonedaService implements IMonedaServices {
 	}
 
 	@Override
-	public EliminarMonedaResponse eliminarMoneda(EliminarMonedaRequest request) {
-		EliminarMonedaResponse eliminarMonedaResponse = new EliminarMonedaResponse();
+	public EliminarResponse eliminarMoneda(EliminarRequest request) {
+		EliminarResponse eliminarMonedaResponse = new EliminarResponse();
 		try {
-			Moneda moneda = monedaDao.obtenerMonedaId(Long.parseLong(request.getIdMoneda()));
+			Moneda moneda = monedaDao.obtenerMonedaId(Long.parseLong(request.getId()));
 			if(null == moneda) {
 				eliminarMonedaResponse.setCodigoRespuesta(EnumGeneral.RESPUESTA_NEGATIVA.getValor());
 				eliminarMonedaResponse.setMensajeRespuesta(Utilidades.getInstance().obtenerEquivalencia(EnumMensajes.NO_REGISTROS.getMensaje(), request.getIdioma(), equivalenciaIdioma));

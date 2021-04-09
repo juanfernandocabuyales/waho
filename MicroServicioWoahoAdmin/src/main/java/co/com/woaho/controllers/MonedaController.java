@@ -14,11 +14,11 @@ import com.google.gson.Gson;
 import co.com.woaho.interfaces.IMonedaServices;
 import co.com.woaho.request.ConsultarMonedasRequest;
 import co.com.woaho.request.CrearMonedaRequest;
-import co.com.woaho.request.EliminarMonedaRequest;
+import co.com.woaho.request.EliminarRequest;
 import co.com.woaho.request.GeneralRequest;
 import co.com.woaho.response.ConsultarMonedasResponse;
-import co.com.woaho.response.CrearMonedaResponse;
-import co.com.woaho.response.EliminarMonedaResponse;
+import co.com.woaho.response.CrearResponse;
+import co.com.woaho.response.EliminarResponse;
 import co.com.woaho.response.GeneralResponse;
 import co.com.woaho.utilidades.RegistrarLog;
 
@@ -55,7 +55,7 @@ public class MonedaController {
 		
 		Gson gson = new Gson();
 		CrearMonedaRequest crearMonedaRequest = gson.fromJson(request.getStrMensaje(), CrearMonedaRequest.class);
-		CrearMonedaResponse crearMonedaResponse = monedaServices.crearMoneda(crearMonedaRequest);
+		CrearResponse crearMonedaResponse = monedaServices.crearMoneda(crearMonedaRequest);
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(crearMonedaResponse));
@@ -72,7 +72,7 @@ public class MonedaController {
 		
 		Gson gson = new Gson();
 		CrearMonedaRequest crearMonedaRequest = gson.fromJson(request.getStrMensaje(), CrearMonedaRequest.class);
-		CrearMonedaResponse crearMonedaResponse = monedaServices.actualizarMoneda(crearMonedaRequest);
+		CrearResponse crearMonedaResponse = monedaServices.actualizarMoneda(crearMonedaRequest);
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(crearMonedaResponse));
@@ -88,8 +88,8 @@ public class MonedaController {
 		logs.registrarLogInfoEjecutaServicio("eliminarMonedas",request.getStrMensaje());
 		
 		Gson gson = new Gson();
-		EliminarMonedaRequest eliminarMonedaRequest = gson.fromJson(request.getStrMensaje(), EliminarMonedaRequest.class);
-		EliminarMonedaResponse eliminarMonedaResponse = monedaServices.eliminarMoneda(eliminarMonedaRequest);
+		EliminarRequest eliminarMonedaRequest = gson.fromJson(request.getStrMensaje(), EliminarRequest.class);
+		EliminarResponse eliminarMonedaResponse = monedaServices.eliminarMoneda(eliminarMonedaRequest);
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(eliminarMonedaResponse));
