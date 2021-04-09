@@ -15,4 +15,16 @@ export class MonedaServiceService {
   obtenerMonedas(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.monedaController}consultarMonedas`, peticion);
   }
+
+  crearMonedas(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.monedaController}crearMonedas`, peticion);
+  }
+
+  actualizarMonedas(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.monedaController}actualizarMonedas`, peticion);
+  }
+
+  eliminarMonedas(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.monedaController}eliminarMonedas`, peticion);
+  }
 }

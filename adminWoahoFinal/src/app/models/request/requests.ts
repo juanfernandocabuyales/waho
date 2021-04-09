@@ -1,4 +1,4 @@
-import { ServicioDto, TipoDto, TerritorioDto, UnidadDto } from '../general/general';
+import { ServicioDto, TipoDto, TerritorioDto, UnidadDto, MonedaDto } from '../general/general';
 
 export class GeneralRequest {
     strMensaje: string;
@@ -63,4 +63,8 @@ export class CrearTerritoriosRequest extends BaseRequest{
 
 export class CrearUnidadRequest extends BaseRequest{
     unidad: UnidadDto;
+}
+
+export class CrearMonedaRequest extends BaseRequest{
+    moneda: MonedaDto;
 }
