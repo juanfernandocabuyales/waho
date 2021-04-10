@@ -21,6 +21,7 @@ public enum EnumMensajes {
 	NO_PEDIDOS_PARA("No se han encontrado pedidos para el {0} ."),
 	NO_PEDIDO("No se ha encontrado un pedido para cancelar"),
 	USUARIO_REGISTRADO("El número {0} ya se encuentra registrado."),
+	CORREO_REGISTRADO("El correo ingresado ya se encuentra registrado"),
 	NUMERO_REGISTRADO("El número {0} ya se encuentra registrado. Hemos enviado un codigo de acceso a este numero"),
 	NO_REGISTROS("No se han encontrado registros para la busqueda"),
 	OK("ok"),

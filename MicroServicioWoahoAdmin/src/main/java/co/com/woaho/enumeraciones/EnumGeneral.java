@@ -13,6 +13,9 @@ public enum EnumGeneral {
 	SI("S"),
 	NO("N"),
 	
+	USUARIO_ADMIN("1"),
+	USUARIO_CLIENTE("2"),
+	
 	
 	SERVICIO_CONSULTA_PANTALLAS("1"),
 	SERVICIO_CONSULTAR_PAISES("2"),

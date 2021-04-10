@@ -84,7 +84,7 @@ public class Utilidades {
 	}
 
 
-	public String desencriptarTexto(String textoEncriptado) throws Exception {		
+	public String desencriptarTexto(String textoEncriptado) {		
 		String secretKey = EnumGeneral.LLAVE_CIFRADO.getValor(); 
 		String base64EncryptedString = "";
 

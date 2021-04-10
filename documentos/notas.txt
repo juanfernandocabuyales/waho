@@ -46,6 +46,8 @@ sudo dnf install nodejs ==> Instala la version de NodeJs del paso anterior
 sudo npm install -g @angular/cli ==> instalamos Angular
 npm install ==> al subir el proyecto, para generar la carpete node_modules
 ng serve --port 8085 --host 172.108.45.159 & ==> comando para subir el proyecto por el puerto e ip deseados 
+
+sudo netstat -lpn |grep :'8085' ==> comando para ver el proceso que usa el puerto 8085
 *******************************************************************************************************************************
 
 /************************************************************************

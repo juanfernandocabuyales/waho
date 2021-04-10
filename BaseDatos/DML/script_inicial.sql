@@ -125,6 +125,8 @@ INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se puede eliminar la categoria, dado que tiene servicios asignados','The category cannot be deleted, since it has services assigned to it.');
 INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('No se puede eliminar la moneda, dado que tiene tarifas asignadas','The currency cannot be deleted, since it has assigned rates.');
 
+INSERT INTO woaho.equivalencia_idioma (equivalencia_idioma_original,equivalencia_idioma_ingles) VALUES ('El correo ingresado ya se encuentra registrado.','The entered email is already registered.');
+
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('COP',1);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('USD',2);
 INSERT INTO woaho.moneda (moneda_nombre,moneda_territorio) VALUES ('MXN',3);

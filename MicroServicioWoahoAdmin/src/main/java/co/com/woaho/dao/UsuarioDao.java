@@ -4,6 +4,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.ParameterMode;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
@@ -16,43 +19,20 @@ import co.com.woaho.modelo.Usuario;
 import co.com.woaho.utilidades.RegistrarLog;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class UsuarioDao extends Persistencia implements IUsuarioDao {
 
 	private RegistrarLog logs = new RegistrarLog(UsuarioDao.class);
 
 	@Override
-	@Transactional(propagation = Propagation.NESTED)
-	public void registarUsuario(Usuario pUsuario) throws Exception {
+	@Transactional
+	public Usuario crearActualizarUsuario(Usuario pUsuario) throws Exception {
 		try {
-
-			getEntityManager().persist(pUsuario);
-
-			getEntityManager().flush();
-
-			getEntityManager().clear();
-
+			return getEntityManager().merge(pUsuario);
 		}catch(Exception e) {
 			logs.registrarLogError("registarUsuario", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
-			throw new Exception(e);
+			return null;
 		}
-
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.NESTED)
-	public void actualizarUsuario(Usuario pUsuario) throws Exception {
-		try {
-
-			getEntityManager().merge(pUsuario);
-
-			getEntityManager().flush();
-
-			getEntityManager().clear();
-
-		}catch(Exception e) {
-			logs.registrarLogError("actualizarUsuario", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
-			throw new Exception(e);
-		}		
 	}
 
 	@Override
@@ -171,6 +151,20 @@ public class UsuarioDao extends Persistencia implements IUsuarioDao {
 		}catch (Exception e) {
 			logs.registrarLogError("obtenerUsuarioAdmin", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
 			return null;
+		}
+	}
+
+	@Override
+	public List<Usuario> obtenerUsuarios(Long pTipo) {
+		List<Usuario> listUsuarios = new ArrayList<>();
+		try {
+			Query query = getEntityManager().createNamedQuery("Usuario.buscarTipo");
+			query.setParameter("pTipo", pTipo);
+			listUsuarios = query.getResultList();
+			return listUsuarios;
+		}catch (Exception e) {
+			logs.registrarLogError("obtenerUsuarios", EnumMensajes.NO_SOLICITUD.getMensaje(), e);
+			return listUsuarios;
 		}
 	}
 

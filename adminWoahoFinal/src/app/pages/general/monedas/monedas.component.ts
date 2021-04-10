@@ -52,33 +52,33 @@ export class MonedasComponent implements OnInit {
   }
 
   editarFila(pMoneda: MonedaDto): void {
-    if(pMoneda.nombreMoneda === '' || pMoneda.idTerritorio === ''){
+    if (pMoneda.nombreMoneda === '' || pMoneda.idTerritorio === ''){
       this.utilidades.abrirDialogo(this.utilidades.traducirTexto('general.completar_campos'), false);
     }else{
       this.crearActualizarMoneda(pMoneda);
-    }    
+    }
   }
 
   eliminarFila(pMoneda: MonedaDto): void {
     this.utilidades.mostrarDialogoConfirmacion(this.utilidades.traducirTexto('monedaPage.mensaje_eliminar')).then(
       result => {
-        if(result.isConfirmed){
+        if (result.isConfirmed){
           this.utilidades.mostrarCargue();
-          const eliminarRequest : EliminarRequest = {
+          const eliminarRequest: EliminarRequest = {
             id: pMoneda.idMoneda,
             idioma: this.utilidades.obtenerIdioma()
-          }
+          };
           this.monedaService.eliminarMonedas(this.utilidades.construirPeticion(eliminarRequest)).subscribe(
-            data =>{
+            data => {
               this.validarEliminacion(data);
             },
-            () =>{
+            () => {
               this.utilidades.ocultarCargue();
             }
           );
         }
       }
-    );    
+    );
   }
 
   private cargarInformacion(): void {
@@ -104,7 +104,7 @@ export class MonedasComponent implements OnInit {
     );
   }
 
-  private crearActualizarMoneda(pMoneda: MonedaDto){
+  private crearActualizarMoneda(pMoneda: MonedaDto): void{
     this.utilidades.mostrarCargue();
     const crearMonedaRequest: CrearMonedaRequest = {
       moneda : {
@@ -113,8 +113,8 @@ export class MonedasComponent implements OnInit {
         nombreMoneda: !pMoneda ? this.monedaForm.get('nombre').value : pMoneda.nombreMoneda
       },
       idioma: this.utilidades.obtenerIdioma()
-    }
-    if(!pMoneda){
+    };
+    if (!pMoneda){
       this.monedaService.crearMonedas(this.utilidades.construirPeticion(crearMonedaRequest)).subscribe(
         data => {
           this.validarCreacionActualizacion(data);
@@ -144,7 +144,7 @@ export class MonedasComponent implements OnInit {
       data => {
         this.validarConsulta(data);
       },
-      () =>{
+      () => {
         this.utilidades.ocultarCargue();
       }
     );
@@ -165,9 +165,9 @@ export class MonedasComponent implements OnInit {
 
   private validarCreacionActualizacion(pRespuesta: GeneralResponse): void {
     const crearResponse: CrearResponse = JSON.parse(pRespuesta.mensaje);
-    if(crearResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+    if (crearResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
       this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok'))
-      .then( () =>{
+      .then( () => {
         this.limpiar();
         this.cargarMonedas();
       });
@@ -177,9 +177,9 @@ export class MonedasComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
-  private validarConsulta(pRespuesta: GeneralResponse):void {
+  private validarConsulta(pRespuesta: GeneralResponse): void {
     const monedasResponse: ConsultarMonedasResponse = JSON.parse(pRespuesta.mensaje);
-    if(monedasResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+    if (monedasResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
       this.listMonedas = monedasResponse.listMonedas;
     }else{
       this.utilidades.abrirDialogo(this.utilidades.traducirTexto('general.carga_mal'), true);
@@ -187,11 +187,11 @@ export class MonedasComponent implements OnInit {
     this.utilidades.ocultarCargue();
   }
 
-  private validarEliminacion(pRespuesta: GeneralResponse):void {
+  private validarEliminacion(pRespuesta: GeneralResponse): void {
     const eliminarResponse: EliminarResponse = JSON.parse(pRespuesta.mensaje);
-    if(eliminarResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+    if (eliminarResponse.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
       this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.proceso_ok'))
-      .then( () =>{
+      .then( () => {
         this.limpiar();
         this.cargarMonedas();
       });
