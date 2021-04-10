@@ -39,9 +39,8 @@
     "homePage": {
         "toolbar": {
             "profesionales": "Professionals",
-            "categorias": "Categories",
+            "usuarios": "Users",
             "servicios": "Services",
-            "Monedas": "Coins",
             "general": "General"
         }
     },
@@ -106,5 +105,11 @@
         "imagen_obligatorio": "Image(*)",
         "operaciones": "Operations.",
         "mensaje_eliminar": "Do you want to delete the selected territory?"
+    },
+    "usuarioPage": {
+        "tipo": "Select the type of users to be consulted",
+        "admin": "Administrator",
+        "cliente": "Client",
+        "tipo_valido": "Select the type of users to be consulted"
     }
 }

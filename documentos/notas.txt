@@ -8,6 +8,8 @@ correo: woahoapplication@gmail.com
 clave correo: wO4h0appl1c4ti0n;
 wO4h0;
 
+juanfernandocabuyales
+
 var/lib/pgsql/12/data/  ==> directorio de configuracion para postgres
 
 /home/woaho/componentes/microservicio  ==> ruta archivos microservicio

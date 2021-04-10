@@ -1,6 +1,8 @@
 package co.com.woaho.dto;
 
 public class UsuarioDto {
+	
+	private String id;
 
 	private String nombres;
 	
@@ -17,6 +19,14 @@ public class UsuarioDto {
 	private String referrealCode;
 	
 	private String tipoUsuario;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getNombres() {
 		return nombres;

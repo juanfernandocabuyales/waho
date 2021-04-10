@@ -115,6 +115,7 @@ public class UsuarioService implements IUsuarioService{
 				List<UsuarioDto> listUsuarioDto = new ArrayList<>();
 				listUsuarios.forEach(item ->{
 					UsuarioDto usuarioDto = new UsuarioDto();
+					usuarioDto.setId(String.valueOf(item.getUsuarioId()));
 					usuarioDto.setNombres(item.getStrNombre());
 					usuarioDto.setApellidos(item.getStrApellido());
 					usuarioDto.setCelular(item.getStrCelular());

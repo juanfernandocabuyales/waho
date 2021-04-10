@@ -4,12 +4,12 @@ export class MonedaDto {
     idTerritorio: string;
 }
 
-export class UnidadDto{
+export class UnidadDto {
     idUnidad: string;
     nombreUnidad: string;
 }
 
-export class TarifaDto{
+export class TarifaDto {
     codigo: string;
     pais: string;
     valor: number;
@@ -17,7 +17,7 @@ export class TarifaDto{
     unidad: string;
 }
 
-export class ServicioDto{
+export class ServicioDto {
     codigo: string;
     nombre: string;
     imagen: string;
@@ -55,18 +55,18 @@ export class PaisDTO {
     nombreTerritorio: string;
 }
 
-export class OpcionesDto{
+export class OpcionesDto {
     nombre: string;
     imagen: string;
     ruta: string;
 }
 
-export class FileDto{
+export class FileDto {
     file: File;
     nombre: string;
 }
 
-export class TipoDto{
+export class TipoDto {
     id: string;
     nombre: string;
 }
@@ -78,4 +78,16 @@ export class TerritorioDto {
     idTipo: string;
     codigo: string;
     idImagen: string;
+}
+
+export class UsuarioDto {
+    id: string;
+    nombres: string;
+    apellidos: string;
+    celular: string;
+    correo: string;
+    clave: string;
+    idSuscriptor: string;
+    referrealCode: string;
+    tipoUsuario: string;
 }

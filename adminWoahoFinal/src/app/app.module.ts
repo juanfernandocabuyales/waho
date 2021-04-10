@@ -22,6 +22,8 @@ import { CrearEditarServicioComponent } from './pages/servicios/crear-editar-ser
 
 import { FormsModule } from '@angular/forms';
 import { GeneralModule } from './pages/general/general.module';
+import { ConsultarUsuariosComponent } from './pages/usuarios/consultar-usuarios/consultar-usuarios.component';
+import { CrearEditarUsuariosComponent } from './pages/usuarios/crear-editar-usuarios/crear-editar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { GeneralModule } from './pages/general/general.module';
     LoginComponent,
     HomeComponent,
     ServiciosComponent,
-    CrearEditarServicioComponent
+    CrearEditarServicioComponent,
+    ConsultarUsuariosComponent,
+    CrearEditarUsuariosComponent
   ],
   imports: [
     ReactiveFormsModule,

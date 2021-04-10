@@ -10,6 +10,8 @@ import { TerritoriosComponent } from './pages/general/territorios/territorios.co
 import { UnidadesComponent } from './pages/general/unidades/unidades.component';
 import { TipoTerritorioComponent } from './pages/general/tipo-territorio/tipo-territorio.component';
 import { MonedasComponent } from './pages/general/monedas/monedas.component';
+import { ConsultarUsuariosComponent } from './pages/usuarios/consultar-usuarios/consultar-usuarios.component';
+import { CrearEditarUsuariosComponent } from './pages/usuarios/crear-editar-usuarios/crear-editar-usuarios.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,14 @@ const routes: Routes = [
       {
         path: 'servicios/crear-servicios',
         component: CrearEditarServicioComponent
+      },
+      {
+        path: 'usuarios',
+        component: ConsultarUsuariosComponent
+      },
+      {
+        path: 'usuarios/crear-usuarios',
+        component: CrearEditarUsuariosComponent
       },
       {
         path: 'general',

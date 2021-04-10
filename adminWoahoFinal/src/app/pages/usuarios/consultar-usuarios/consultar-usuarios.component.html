@@ -1,0 +1,13 @@
+<app-loading></app-loading>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm form-group">
+            <label>{{'usuarioPage.tipo' | translate}}</label>
+            <select class="form-control" style="border-color: gray;" (change)="consultar($event.target.value)">
+                <option value="0" [selected]="true">-- Seleccione --</option>
+                <option value="1">{{'usuarioPage.admin' | translate}}  </option>
+                <option value="2">{{'usuarioPage.cliente' | translate}}  </option>
+            </select>
+        </div>
+    </div>
+</div>

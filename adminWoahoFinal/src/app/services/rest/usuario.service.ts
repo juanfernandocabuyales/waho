@@ -15,4 +15,16 @@ export class UsuarioService {
   validarLoginAdmin(peticion: GeneralRequest): Observable<GeneralResponse>{
     return this.httClient.post<GeneralResponse>(`${environment.usuarioController}validarLoginAdmin`, peticion);
   }
+
+  crearUsuario(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.usuarioController}registrarUsuario`, peticion);
+  }
+
+  actualizarUsuario(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.usuarioController}actualizarUsuario`, peticion);
+  }
+
+  consultarUsuarios(peticion: GeneralRequest): Observable<GeneralResponse>{
+    return this.httClient.post<GeneralResponse>(`${environment.usuarioController}consultarUsuarios`, peticion);
+  }
 }
