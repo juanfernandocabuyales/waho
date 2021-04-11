@@ -5,9 +5,48 @@
             <label>{{'usuarioPage.tipo' | translate}}</label>
             <select class="form-control" style="border-color: gray;" (change)="consultar($event.target.value)">
                 <option value="0" [selected]="true">-- Seleccione --</option>
-                <option value="1">{{'usuarioPage.admin' | translate}}  </option>
-                <option value="2">{{'usuarioPage.cliente' | translate}}  </option>
+                <option value="1">{{'usuarioPage.admin' | translate}} </option>
+                <option value="2">{{'usuarioPage.cliente' | translate}} </option>
             </select>
         </div>
     </div>
+
+    <hr>
+    <div class="text-center">
+        <h2>{{titulo}}</h2>
+    </div>
+
+
+    <table class="table table-bordered" *ngIf="listUsuarios.length >= 1">
+        <thead class="thead">
+            <tr>
+                <th scope="col">{{'usuarioPage.nombre' | translate}}</th>
+                <th scope="col">{{'usuarioPage.celular' | translate}}</th>
+                <th scope="col">{{'usuarioPage.correo' | translate}}</th>
+                <th scope="col">{{'general.opcion' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of listUsuarios; let i = index">
+                <td>
+                    {{usuario.nombres +' ' + usuario.apellidos}}
+                </td>
+                <td>
+                    {{usuario.celular}}
+                </td>
+                <td>
+                    {{usuario.correo}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="editarFila(usuario)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary ml-2" (click)="eliminarFila(usuario)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

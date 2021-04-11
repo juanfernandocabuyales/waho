@@ -110,6 +110,12 @@
         "tipo": "Seleccione el tipo de usuarios a consultar",
         "admin": "Administrador",
         "cliente": "Cliente",
-        "tipo_valido": "Favor seleccione un tipo valido para la consulta"
+        "tipo_valido": "Favor seleccione un tipo valido para la consulta",
+        "nombre": "Nombre",
+        "celular": "Celular",
+        "correo": "Correo",
+        "usuarios": "Usuarios",
+        "administradores": "Administradores",
+        "clientes": "Clientes"
     }
 }

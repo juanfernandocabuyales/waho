@@ -110,6 +110,12 @@
         "tipo": "Select the type of users to be consulted",
         "admin": "Administrator",
         "cliente": "Client",
-        "tipo_valido": "Select the type of users to be consulted"
+        "tipo_valido": "Select the type of users to be consulted",
+        "nombre": "Name",
+        "celular": "Mobile",
+        "correo": "Email",
+        "usuarios": "Usuarios",
+        "administradores": "Administrators",
+        "clientes": "Clients"
     }
 }
