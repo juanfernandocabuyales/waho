@@ -90,4 +90,5 @@ export class UsuarioDto {
     idSuscriptor: string;
     referrealCode: string;
     tipoUsuario: string;
+    terminos: boolean;
 }

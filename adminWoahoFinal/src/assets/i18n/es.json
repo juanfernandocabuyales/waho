@@ -118,12 +118,16 @@
         "administradores": "Administradores",
         "clientes": "Clientes",
         "apellido": "Apellido",
-        "terminos": "Aceptar Terminos y Condiciones",
-        "clave": "Clave",
+        "terminos": "Acepta Terminos y Condiciones(*)",
+        "clave": "Clave (*)",
         "suscriptor": "Codigo Dispositivo",
         "codigo": "Referral",
-        "tipo_usuario": "Tipo Usuario",
+        "tipo_usuario": "Tipo Usuario (*)",
         "si": "Si",
-        "no": "No"
+        "no": "No",
+        "nombre_obli": "Nombre (*)",
+        "celular_obli": "Celular (*)",
+        "correo_obli": "Correo (*)",
+        "aceptar_terminos": "Pare crear el usuario se deben aceptar los Terminos y Condiciones"
     }
 }

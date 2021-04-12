@@ -19,6 +19,8 @@ public class UsuarioDto {
 	private String referrealCode;
 	
 	private String tipoUsuario;
+	
+	private boolean terminos;
 
 	public String getId() {
 		return id;
@@ -90,5 +92,13 @@ public class UsuarioDto {
 
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+
+	public boolean isTerminos() {
+		return terminos;
+	}
+
+	public void setTerminos(boolean terminos) {
+		this.terminos = terminos;
 	}
 }

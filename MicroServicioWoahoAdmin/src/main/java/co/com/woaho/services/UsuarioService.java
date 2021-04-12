@@ -55,7 +55,7 @@ public class UsuarioService implements IUsuarioService{
 				usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
 				usuario.setStrCorreo(pUsuarioDTO.getCorreo());
 				usuario.setReferralCode(pUsuarioDTO.getReferrealCode());
-				usuario.setStrClave(Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getClave()));
+				usuario.setStrClave( (pUsuarioDTO.getClave() == null || pUsuarioDTO.getClave().isEmpty() ? null : Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getClave())) );
 				usuario.setTipoUsuario(EnumGeneral.USUARIO_ADMIN.getValorLong());
 				usuarioDao.crearActualizarUsuario(usuario);				
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
@@ -124,6 +124,7 @@ public class UsuarioService implements IUsuarioService{
 					usuarioDto.setIdSuscriptor(item.getIdSuscriptor());
 					usuarioDto.setReferrealCode(item.getReferralCode());
 					usuarioDto.setTipoUsuario(String.valueOf(item.getTipoUsuario()));
+					usuarioDto.setTerminos(item.getStrAceptaTerminos().equalsIgnoreCase("S"));
 					listUsuarioDto.add(usuarioDto);
 				});
 				response.setCodigoRespuesta(EnumGeneral.RESPUESTA_POSITIVA.getValor());
