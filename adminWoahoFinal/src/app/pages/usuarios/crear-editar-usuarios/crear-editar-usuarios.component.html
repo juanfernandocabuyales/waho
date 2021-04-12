@@ -31,7 +31,7 @@
                     <input [type]="blnEscribio ? 'text' : 'password'" formControlName="clave" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clave.errors }" />
                     <div class="input-group-append">
                         <span class="input-group-text" (click)="cambioTexto()">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa" [ngClass]="{'fa-eye-slash': !blnEscribio,'fa-eye': blnEscribio}"></i>
                         </span>
                     </div>
                 </div>

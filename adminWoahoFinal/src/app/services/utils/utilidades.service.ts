@@ -108,28 +108,31 @@ export class UtilidadesService {
     });
   }
 
-  mostrarDialogoInputs(pTitulo: string, pEtiquetas: string[]){
+  mostrarDialogoInputs(pTitulo: string, pEtiquetas: string[], blnClaves?: boolean): Promise<SweetAlertResult<any>>{
     return Swal.fire({
-      title: 'Multiple inputs',
-      html: this.obtenerHtmlInput(pEtiquetas),
+      title: pTitulo,
+      html: this.obtenerHtmlInput(pEtiquetas, blnClaves),
       focusConfirm: false,
       preConfirm: () => {
-        let aux = [];
-        let contador = 1;
-        for(let etiqueta of pEtiquetas){          
-          aux.push((<HTMLInputElement>document.getElementById(`swal-input${contador}`)).value);
-          contador +=1;          
+        const aux = [];
+        for (const i in pEtiquetas){
+          const index = Number(i);
+          aux.push((document.getElementById(`swal-input${index + 1}`) as HTMLInputElement).value);
         }
         return aux;
       }
-    })
+    });
   }
 
-  private obtenerHtmlInput(pEtiquetas: string[]): string {
+  private obtenerHtmlInput(pEtiquetas: string[], blnClaves?: boolean): string {
     let cadenaHtml = '';
     let contador = 1;
-    for(let etiqueta of pEtiquetas) {
-      cadenaHtml += `<label for="swal-input${contador}">${etiqueta}</label>`+`<input id="swal-input${contador}" class="swal2-input">`;
+    for (const etiqueta of pEtiquetas) {
+      if (blnClaves) {
+        cadenaHtml += `<label for="swal-input${contador}">${etiqueta}</label>` + `<input id="swal-input${contador}" class="swal2-input" type="password">`;
+      }else{
+        cadenaHtml += `<label for="swal-input${contador}">${etiqueta}</label>` + `<input id="swal-input${contador}" class="swal2-input">`;
+      }
       contador += 1;
     }
     return cadenaHtml;

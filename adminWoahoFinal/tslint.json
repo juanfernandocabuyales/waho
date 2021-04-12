@@ -43,6 +43,7 @@
         ]
       }
     ],
+    "forin": false,
     "no-console": [
       true,
       "debug",
