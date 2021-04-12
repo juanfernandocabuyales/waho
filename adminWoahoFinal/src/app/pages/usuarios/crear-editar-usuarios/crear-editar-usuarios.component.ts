@@ -22,6 +22,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
   etiqueta = '';
   blnClave = true;
   blnCreacion = true;
+  blnTerminos = true;
 
   usuarioAux: UsuarioDto;
 
@@ -74,9 +75,11 @@ export class CrearEditarUsuariosComponent implements OnInit {
   validaClave(pTipo: string): void {
     if (pTipo === '1'){
       this.blnClave = true;
+      this.blnTerminos = false;
       this.usuarioForm.get('clave').setValidators(Validators.required);
     }else{
       this.blnClave = false;
+      this.blnTerminos = true;
       this.usuarioForm.get('clave').setValidators(null);
       this.usuarioForm.get('clave').setValue('');
     }

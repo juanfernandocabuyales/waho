@@ -51,7 +51,7 @@
                 <label>{{'usuarioPage.correo_obli' | translate}}</label>
                 <input class="form-control" [ngStyle]="{'border-color':submitted && f.correo.errors ? 'red':'gray'}" formControlName="correo">
             </div>
-            <div class="col-sm form-group">
+            <div class="col-sm form-group" *ngIf="blnTerminos">
                 <label>{{'usuarioPage.terminos' | translate}}</label>
                 <div class="custom-control custom-switch custom-switch-md">
                     <input type="checkbox" class="custom-control-input" id="customSwitch4" (change)="cambio($event.currentTarget.checked)" formControlName="terminos">

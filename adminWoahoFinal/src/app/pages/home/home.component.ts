@@ -16,4 +16,14 @@ export class HomeComponent implements OnInit {
     console.log('home objetoAlmacenado', this.utilidades.obtenerObjetoAlmacenado());
   }
 
+  salir(): void{
+    this.utilidades.mostrarDialogoConfirmacion(this.utilidades.traducirTexto('general.salir')).then(
+      result => {
+        if (result.isConfirmed){
+          this.utilidades.navegarPagina('', null);
+        }
+      }
+    );
+  }
+
 }

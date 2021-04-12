@@ -22,8 +22,10 @@
         <span class="fill-space"></span>
 
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item form-inline my-2 my-lg-0" routerLinkActive="active">
-                <a class="nav-link my-2 my-sm-0" [routerLink]="['about']">Salir</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" (click)="salir()">
+                    <i class="fa fa-sign-out"></i> Salir
+                </a>
             </li>
         </ul>
 

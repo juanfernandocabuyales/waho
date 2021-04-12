@@ -27,7 +27,8 @@
             "pais": "Territorios",
             "tipo": "Tipo Territorios",
             "categoria": "Categories"
-        }
+        },
+        "salir": "¿ Desea salir de la aplicación ?"
     },
     "loginPage": {
         "usuario": "Usuario",

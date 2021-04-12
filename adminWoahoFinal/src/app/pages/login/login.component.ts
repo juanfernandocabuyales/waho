@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   blnEscribio = false;
 
 
-  constructor( private formBuilder: FormBuilder, private utilidades: UtilidadesService, private usuarioService: UsuarioService) { }
+  constructor(private formBuilder: FormBuilder,
+              private utilidades: UtilidadesService,
+              private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -32,18 +34,15 @@ export class LoginComponent implements OnInit {
 
   validarLogin(): void{
     this.submitted = true;
-
     if (this.loginForm.invalid){
-      this.abrirDialogo('Por favor revisar los datos ingresados', true);
+      this.abrirDialogo(this.utilidades.traducirTexto('general.completar_campos'), true);
     }else{
       this.loading = true;
-
       const request: LoginAdminRequest = {
         usuario : this.f.username.value,
         llave: this.f.password.value,
         idioma: this.utilidades.obtenerIdioma()
       };
-
       this.usuarioService.validarLoginAdmin(this.utilidades.construirPeticion(request))
       .subscribe(
         data => {
@@ -51,7 +50,6 @@ export class LoginComponent implements OnInit {
         },
         () => {
           this.loading = false;
-          this.abrirDialogo('Se ha presentado un error', false);
         }
       );
     }
