@@ -89,6 +89,7 @@ public class UsuarioService implements IUsuarioService{
 				usuario.setFechaHoraAceptaTerminos(new Date());
 				usuario.setIdSuscriptor(pUsuarioDTO.getIdSuscriptor());
 				usuario.setStrCorreo(pUsuarioDTO.getCorreo());
+				usuario.setStrClave( (pUsuarioDTO.getClave() == null || pUsuarioDTO.getClave().isEmpty() ? null : Utilidades.getInstance().encriptarTexto(pUsuarioDTO.getClave())) );
 				usuario.setReferralCode(pUsuarioDTO.getReferrealCode());
 				usuario.setTipoUsuario(EnumGeneral.USUARIO_ADMIN.getValorLong());
 				usuarioDao.crearActualizarUsuario(usuario);			

@@ -31,8 +31,8 @@ export class CrearEditarUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioAux = this.utilidades.obtenerObjetoAlmacenado() as UsuarioDto;
-    console.log('usuarioAux',this.usuarioAux);
-    if(this.usuarioAux){
+    console.log('usuarioAux', this.usuarioAux);
+    if (this.usuarioAux){
       this.blnCreacion = false;
       this.usuarioForm = this.formBuilder.group({
         nombre: new FormControl(this.usuarioAux.nombres, Validators.required),
@@ -60,7 +60,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
         correo : new FormControl('', Validators.required),
         tipo: new FormControl('0', Validators.required)
       });
-    }    
+    }
   }
 
   get f(): any {
@@ -72,7 +72,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
   }
 
   validaClave(pTipo: string): void {
-    if(pTipo === '1'){
+    if (pTipo === '1'){
       this.blnClave = true;
       this.usuarioForm.get('clave').setValidators(Validators.required);
     }else{
@@ -123,7 +123,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
   private ejecutarOperacion(): void {
     this.utilidades.mostrarCargue();
     const tipo = this.usuarioForm.get('tipo').value;
-    const crearRequest : CrearUsuarioRequest = {
+    const crearRequest: CrearUsuarioRequest = {
       usuarioDto : {
         id: this.blnCreacion ? '' : this.usuarioAux.id,
         nombres: this.usuarioForm.get('nombre').value,
@@ -137,7 +137,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
         terminos: this.usuarioForm.get('terminos').value,
       },
       idioma: this.utilidades.obtenerIdioma()
-    }
+    };
     let servicio: Observable<GeneralResponse>;
     if (this.blnCreacion){
       servicio = this.usuarioService.crearUsuario(this.utilidades.construirPeticion(crearRequest));
@@ -154,11 +154,11 @@ export class CrearEditarUsuariosComponent implements OnInit {
 
   private validarCreacionActualizacion(pRespuesta: GeneralResponse): void {
     const response: CrearResponse = JSON.parse(pRespuesta.mensaje);
-    if(response.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
+    if (response.codigoRespuesta === Constantes.RESPUESTA_POSITIVA){
       this.utilidades.abrirDialogoExitoso(this.utilidades.traducirTexto('general.operacion_ok'))
-        .then( () =>{ this.limpiarCampos() } );
+        .then( () => { this.limpiarCampos(); } );
     }else{
-      this.utilidades.abrirDialogo(response.mensajeRespuesta,false)
+      this.utilidades.abrirDialogo(response.mensajeRespuesta, false);
     }
     this.utilidades.ocultarCargue();
   }
