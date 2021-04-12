@@ -116,6 +116,14 @@
         "correo": "Correo",
         "usuarios": "Usuarios",
         "administradores": "Administradores",
-        "clientes": "Clientes"
+        "clientes": "Clientes",
+        "apellido": "Apellido",
+        "terminos": "Aceptar Terminos y Condiciones",
+        "clave": "Clave",
+        "suscriptor": "Codigo Dispositivo",
+        "codigo": "Referral",
+        "tipo_usuario": "Tipo Usuario",
+        "si": "Si",
+        "no": "No"
     }
 }

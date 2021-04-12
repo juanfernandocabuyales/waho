@@ -1,1 +1,59 @@
-<p>crear-editar-usuarios works!</p>
+<app-loading></app-loading>
+<div class="container">
+    <form [formGroup]="usuarioForm">
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.nombre' | translate}}</label>
+                <input class="form-control" [ngStyle]="{'border-color':submitted && f.nombre.errors ? 'red':'gray'}" formControlName="nombre" autofocus>
+            </div>
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.apellido' | translate}}</label>
+                <input class="form-control" [ngStyle]="{'border-color':submitted && f.apellido.errors ? 'red':'gray'}" formControlName="apellido">
+            </div>
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.celular' | translate}}</label>
+                <input type="number" class="form-control" [ngStyle]="{'border-color':submitted && f.celular.errors ? 'red':'gray'}" formControlName="celular">
+            </div>
+        </div>
+
+        <div class="row mt-5 form-group">
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.terminos' | translate}}</label>
+                <div class="custom-control custom-switch custom-switch-md">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch4" (change)="cambio($event.currentTarget.checked)" formControlName="terminos">
+                    <label class="custom-control-label" for="customSwitch4">{{etiqueta}}</label>
+                </div>
+            </div>
+            <div class="col-sm form-group">
+                <label for="password">{{'usuarioPage.clave' | translate}}</label>
+                <div class="input-group">
+                    <input [type]="blnEscribio ? 'text' : 'password'" formControlName="clave" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clave.errors }" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" (click)="cambioTexto()">
+                            <i class="fa" [ngClass]="{'fa-eye-slash': !blnEscribio,'fa-eye': blnEscribio}"></i>
+                          </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.suscriptor' | translate}}</label>
+                <input class="form-control" [ngStyle]="{'border-color':submitted && f.dispositivo.errors ? 'red':'gray'}" formControlName="dispositivo">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.codigo' | translate}}</label>
+                <input class="form-control" [ngStyle]="{'border-color':submitted && f.codigo.errors ? 'red':'gray'}" formControlName="codigo">
+            </div>
+            <div class="col-sm form-group">
+                <label>{{'usuarioPage.tipo' | translate}}</label>
+                <select class="form-control" [ngStyle]="{'border-color':submitted && f.tipo.errors ? 'red':'gray'}" formControlName="tipo">
+                <option value="0" [selected]="true">-- Seleccione --</option>
+                <option value="1">{{'usuarioPage.admin' | translate}} </option>
+                <option value="2">{{'usuarioPage.cliente' | translate}} </option>
+            </select>
+            </div>
+        </div>
+    </form>
+</div>

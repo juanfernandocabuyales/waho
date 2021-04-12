@@ -39,6 +39,10 @@ export class ConsultarUsuariosComponent implements OnInit {
 
   }
 
+  crearUsuario(): void {
+    this.utilidades.navegarPagina('/home/usuarios/crear-usuarios', null);
+  }
+
   private cargarUsuarios(pTipo: string): void {
     this.utilidades.mostrarCargue();
     const request: ConsultarUsuariosRequest = {

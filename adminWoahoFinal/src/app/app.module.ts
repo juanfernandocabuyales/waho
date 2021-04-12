@@ -25,6 +25,8 @@ import { GeneralModule } from './pages/general/general.module';
 import { ConsultarUsuariosComponent } from './pages/usuarios/consultar-usuarios/consultar-usuarios.component';
 import { CrearEditarUsuariosComponent } from './pages/usuarios/crear-editar-usuarios/crear-editar-usuarios.component';
 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import { CrearEditarUsuariosComponent } from './pages/usuarios/crear-editar-usua
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
