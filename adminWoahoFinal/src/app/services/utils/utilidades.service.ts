@@ -129,8 +129,6 @@ export class UtilidadesService {
     let cadenaHtml = '';
     let contador = 1;
     for(let etiqueta of pEtiquetas) {
-      console.log('etiqueta',etiqueta);
-      console.log('contador',contador);
       cadenaHtml += `<label for="swal-input${contador}">${etiqueta}</label>`+`<input id="swal-input${contador}" class="swal2-input">`;
       contador += 1;
     }
