@@ -32,7 +32,7 @@ export class ConsultarUsuariosComponent implements OnInit {
   }
 
   editarFila(usuario: UsuarioDto): void {
-
+    this.utilidades.navegarPagina('/home/usuarios/crear-usuarios', usuario);
   }
 
   eliminarFila(usuario: UsuarioDto): void {

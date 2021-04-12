@@ -20,7 +20,7 @@
             <div class="col-sm form-group">
                 <label>{{'usuarioPage.tipo_usuario' | translate}}</label>
                 <select class="form-control" [ngStyle]="{'border-color':submitted && f.tipo.errors ? 'red':'gray'}" formControlName="tipo" (change)="validaClave($event.target.value)">
-                    <option value="0" [selected]="true">-- Seleccione --</option>
+                    <option value="0">-- Seleccione --</option>
                     <option value="1">{{'usuarioPage.admin' | translate}} </option>
                     <option value="2">{{'usuarioPage.cliente' | translate}} </option>
                 </select>
@@ -31,7 +31,7 @@
                     <input [type]="blnEscribio ? 'text' : 'password'" formControlName="clave" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clave.errors }" />
                     <div class="input-group-append">
                         <span class="input-group-text" (click)="cambioTexto()">
-                            <i class="fa" [ngClass]="{'fa-eye-slash': !blnEscribio,'fa-eye': blnEscribio}"></i>
+                            <i class="fa fa-pencil"></i>
                         </span>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
 
     <div class="text-center">
         <button class="btn btn-primary mt-4 mb-3" (click)="validarOperacion()">
-            <i class="fa fa-plus mr-1"></i>
+            <i class="fa mr-1" [ngClass]="{'fa-plus': blnCreacion,'fa-pencil': !blnCreacion}"></i>
             {{ (blnCreacion ? 'general.crear' : 'general.editar') | translate }}
         </button>
         <button type="button" class="btn btn-secondary mt-4 mb-3 ml-3" (click)="limpiarCampos()">

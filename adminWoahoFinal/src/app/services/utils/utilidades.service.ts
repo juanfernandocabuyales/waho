@@ -108,6 +108,35 @@ export class UtilidadesService {
     });
   }
 
+  mostrarDialogoInputs(pTitulo: string, pEtiquetas: string[]){
+    return Swal.fire({
+      title: 'Multiple inputs',
+      html: this.obtenerHtmlInput(pEtiquetas),
+      focusConfirm: false,
+      preConfirm: () => {
+        let aux = [];
+        let contador = 1;
+        for(let etiqueta of pEtiquetas){          
+          aux.push((<HTMLInputElement>document.getElementById(`swal-input${contador}`)).value);
+          contador +=1;          
+        }
+        return aux;
+      }
+    })
+  }
+
+  private obtenerHtmlInput(pEtiquetas: string[]): string {
+    let cadenaHtml = '';
+    let contador = 1;
+    for(let etiqueta of pEtiquetas) {
+      console.log('etiqueta',etiqueta);
+      console.log('contador',contador);
+      cadenaHtml += `<label for="swal-input${contador}">${etiqueta}</label>`+`<input id="swal-input${contador}" class="swal2-input">`;
+      contador += 1;
+    }
+    return cadenaHtml;
+  }
+
   obtenerNombreExtension(pFile: File, pNombre: string): string {
     const extension = pFile.name.split('.', 2)[1];
     return pNombre + '.' + extension;
