@@ -116,6 +116,18 @@
         "correo": "Email",
         "usuarios": "Usuarios",
         "administradores": "Administrators",
-        "clientes": "Clients"
+        "clientes": "Clients",
+        "apellido": "Last name",
+        "terminos": "Accept Terms and Conditions(*)",
+        "clave": "Password(*)",
+        "suscriptor": "Device Code",
+        "codigo": "Referral",
+        "tipo_usuario": "User Type(*)",
+        "si": "Yes",
+        "no": "No",
+        "nombre_obli": "Name(*)",
+        "celular_obli": "Mobile(*)",
+        "correo_obli": "Email(*)",
+        "aceptar_terminos": "To create the user you must accept the Terms and Conditions."
     }
 }
