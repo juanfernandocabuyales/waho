@@ -129,7 +129,7 @@ public class PedidoService implements IPedidoService{
 					pedidoUsuarioDto.setServicio(pedido.getPedidoServicio().getStrNombre());
 					pedidoUsuarioDto.setDescripcion(pedido.getPedidoDescripcion());
 					pedidoUsuarioDto.setEstado(pedido.getPedidoEstado().getStrCodigoEstado());
-					pedidoUsuarioDto.setDireccion(pedido.getPedidoDireccion().getStrDireccion());
+					pedidoUsuarioDto.setDireccion( pedido.getPedidoDireccion() != null ? pedido.getPedidoDireccion().getStrDireccion() : "--" );
 					pedidoUsuarioDto.setFechaHora(pedido.getPedidoFecha() + " " + pedido.getPedidoHora());
 					pedidoUsuarioDto.setProfesional(pedido.getPedidoProfesional().getNombreCompleto());
 					pedidoUsuarioDto.setMedioPago(pedido.getPedidoMedioPago().getMedioPagoNombre());

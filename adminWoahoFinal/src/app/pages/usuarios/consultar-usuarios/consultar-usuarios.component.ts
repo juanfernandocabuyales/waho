@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilidadesService } from '../../../services/utils/utilidades.service';
 import { UsuarioDto } from '../../../models/general/general';
-import { ConsultarUsuariosRequest } from '../../../models/request/requests';
+import { ConsultarUsuariosRequest, EliminarRequest } from '../../../models/request/requests';
 import { UsuarioService } from '../../../services/rest/usuario.service';
 import { GeneralResponse, ConsultarUsuariosResponse } from '../../../models/response/reponses';
 import { Constantes } from 'src/app/constants/constantes';
@@ -34,11 +34,7 @@ export class ConsultarUsuariosComponent implements OnInit {
   editarFila(usuario: UsuarioDto): void {
     this.utilidades.navegarPagina('/home/usuarios/crear-usuarios', usuario);
   }
-
-  eliminarFila(usuario: UsuarioDto): void {
-
-  }
-
+  
   crearUsuario(): void {
     this.utilidades.navegarPagina('/home/usuarios/crear-usuarios', null);
   }

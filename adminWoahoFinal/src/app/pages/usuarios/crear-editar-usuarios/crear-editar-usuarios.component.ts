@@ -98,7 +98,7 @@ export class CrearEditarUsuariosComponent implements OnInit {
     if (this.usuarioForm.invalid) {
       this.utilidades.abrirDialogo(this.utilidades.traducirTexto('general.completar_campos'), false);
     } else {
-      if (!this.usuarioForm.get('terminos').value) {
+      if (!this.usuarioForm.get('terminos').value && this.usuarioForm.get('tipo').value === '2') {
         this.utilidades.abrirDialogo(this.utilidades.traducirTexto('usuarioPage.aceptar_terminos'), false);
       }else{
         this.ejecutarOperacion();
