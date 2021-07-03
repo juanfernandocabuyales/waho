@@ -36,7 +36,7 @@ public class PedidoController {
 	@PostMapping(value = "/solicitarPedido", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> solicitarPedido(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("solicitarPedido");		
+		logs.registrarLogInfoEjecutaServicio("solicitarPedido",request.getStrMensaje());		
 		Gson gson = new Gson();
 		
 		SolicitarPedidoRequest solicitarPedidoRequest = gson.fromJson(request.getStrMensaje(), SolicitarPedidoRequest.class);
@@ -45,13 +45,15 @@ public class PedidoController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(solicitarPedidoResponse));
 		
+		logs.registrarLogInfoRespuestaServicio("solicitarPedido",resp.getMensaje());
+		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/actualizarPedido", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> actualizarPedido(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("actualizarPedido");		
+		logs.registrarLogInfoEjecutaServicio("actualizarPedido",request.getStrMensaje());
 		Gson gson = new Gson();
 		
 		SolicitarPedidoRequest solicitarPedidoRequest = gson.fromJson(request.getStrMensaje(), SolicitarPedidoRequest.class);
@@ -60,13 +62,15 @@ public class PedidoController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(solicitarPedidoResponse));
 		
+		logs.registrarLogInfoRespuestaServicio("actualizarPedido",resp.getMensaje());
+		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/consultarPedidosUsuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> consultarPedidosUsuario(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("consultarPedidosUsuario");		
+		logs.registrarLogInfoEjecutaServicio("consultarPedidosUsuario",request.getStrMensaje());
 		Gson gson = new Gson();
 		
 		ConsultarPedidoUsuarioRequest consultarPedidoUsuarioRequest = gson.fromJson(request.getStrMensaje(), ConsultarPedidoUsuarioRequest.class);
@@ -75,13 +79,15 @@ public class PedidoController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarPedidoUsuarioResponse));
 		
+		logs.registrarLogInfoRespuestaServicio("consultarPedidosUsuario",resp.getMensaje());
+		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/consultarPedidosProfesional", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> consultarPedidosProfesional(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("consultarPedidosProfesional");		
+		logs.registrarLogInfoEjecutaServicio("consultarPedidosProfesional",request.getStrMensaje());		
 		Gson gson = new Gson();
 		
 		ConsultarPedidoProfesionalRequest consultarPedidoProfesionalRequest = gson.fromJson(request.getStrMensaje(), ConsultarPedidoProfesionalRequest.class);
@@ -90,13 +96,15 @@ public class PedidoController {
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(consultarPedidoProfesionalResponse));
 		
+		logs.registrarLogInfoRespuestaServicio("consultarPedidosProfesional",resp.getMensaje());
+		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/cancelarPedido", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> cancelarPedido(@RequestBody GeneralRequest request) {
 		
-		logs.registrarLogInfoEjecutaServicio("cancelarPedido");		
+		logs.registrarLogInfoEjecutaServicio("cancelarPedido",request.getStrMensaje());		
 		Gson gson = new Gson();
 		
 		CancelarPedidoRequest cancelarPedidoRequest = gson.fromJson(request.getStrMensaje(), CancelarPedidoRequest.class);
@@ -104,6 +112,8 @@ public class PedidoController {
 		
 		GeneralResponse resp = new GeneralResponse();
 		resp.setMensaje(gson.toJson(cancelarPedidoResponse));
+		
+		logs.registrarLogInfoRespuestaServicio("cancelarPedido",resp.getMensaje());
 		
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
